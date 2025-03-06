@@ -1,0 +1,88 @@
+WEBVTT
+
+00:00:00.520 --> 00:00:02.580
+<v Instructor>Now let's learn about Amazon Cognito.</v>
+
+00:00:02.580 --> 00:00:06.540
+So Cognito is a way for you to provide identity
+
+00:00:06.540 --> 00:00:09.220
+for your web and mobile applications users.
+
+00:00:09.220 --> 00:00:11.700
+So potentially you have millions of these users
+
+00:00:11.700 --> 00:00:14.450
+that are using, for example, your newest web application
+
+00:00:14.450 --> 00:00:16.100
+or your newest mobile application
+
+00:00:16.100 --> 00:00:18.870
+but you shouldn't create IAM users for them, okay?
+
+00:00:18.870 --> 00:00:21.610
+IAM users are only for the people who belong
+
+00:00:21.610 --> 00:00:25.080
+to your company and need to use AWS directly.
+
+00:00:25.080 --> 00:00:27.920
+Instead, what you can do is to create users
+
+00:00:27.920 --> 00:00:30.660
+for your mobile and web apps in Cognito.
+
+00:00:30.660 --> 00:00:31.990
+So this is a simplified version,
+
+00:00:31.990 --> 00:00:34.060
+but you would have Amazon Cognito
+
+00:00:34.060 --> 00:00:36.420
+which will have its own internal database of users,
+
+00:00:36.420 --> 00:00:37.960
+potentially millions of users,
+
+00:00:37.960 --> 00:00:40.920
+and then your mobile and web applications
+
+00:00:40.920 --> 00:00:44.210
+will have an integrated login into Amazon Cognito.
+
+00:00:44.210 --> 00:00:46.490
+Now Cognito is what you would maybe see behind some
+
+00:00:46.490 --> 00:00:48.880
+of these websites where you can also login
+
+00:00:48.880 --> 00:00:51.230
+with Facebook, Google, and Twitter
+
+00:00:51.230 --> 00:00:52.660
+by saying by click on the button
+
+00:00:52.660 --> 00:00:54.380
+and then you're redirected to Google or Facebook
+
+00:00:54.380 --> 00:00:55.760
+so it does that as well.
+
+00:00:55.760 --> 00:00:57.480
+So if you're thinking of building a web
+
+00:00:57.480 --> 00:00:59.400
+or mobile application and you want to have
+
+00:00:59.400 --> 00:01:01.980
+a way to mange users on AWS
+
+00:01:01.980 --> 00:01:04.000
+then Cognito would be the way to go.
+
+00:01:04.000 --> 00:01:05.250
+So that's it, I hope you liked it
+
+00:01:05.250 --> 00:01:07.000
+and I will see in the next lecture.

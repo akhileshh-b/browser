@@ -1,0 +1,138 @@
+WEBVTT
+
+1
+00:00:00.750 --> 00:00:02.307
+<v Instructor>So now let's talk about</v>
+
+2
+00:00:02.307 --> 00:00:04.620
+AWS Migration Evaluator,
+
+3
+00:00:04.620 --> 00:00:07.020
+which is a service to help you build a data-driven
+
+4
+00:00:07.020 --> 00:00:10.110
+business case for migrations to AWS.
+
+5
+00:00:10.110 --> 00:00:11.820
+So the idea is that you wanna migrate,
+
+6
+00:00:11.820 --> 00:00:14.070
+and first you need to get the clear
+
+7
+00:00:14.070 --> 00:00:17.130
+baseline of what your organization is running today,
+
+8
+00:00:17.130 --> 00:00:18.510
+so you know your workloads.
+
+9
+00:00:18.510 --> 00:00:21.580
+And so therefore, you install the Agentless Collector
+
+10
+00:00:22.833 --> 00:00:23.700
+to conduct a broad-based discovery
+
+11
+00:00:23.700 --> 00:00:25.710
+of all your infrastructure.
+
+12
+00:00:25.710 --> 00:00:27.480
+And then you're going to take a snapshot
+
+13
+00:00:27.480 --> 00:00:29.790
+of your on-premises footprint,
+
+14
+00:00:29.790 --> 00:00:31.560
+your server dependencies, and so on.
+
+15
+00:00:31.560 --> 00:00:33.270
+And you will analyze your current state,
+
+16
+00:00:33.270 --> 00:00:36.360
+you will define the target state in AWS,
+
+17
+00:00:36.360 --> 00:00:39.180
+and then develop a migration plan.
+
+18
+00:00:39.180 --> 00:00:41.820
+So to summarize, you can install a Collector,
+
+19
+00:00:41.820 --> 00:00:43.920
+and that will gather data for you.
+
+20
+00:00:43.920 --> 00:00:47.520
+Or you can use the data import feature,
+
+21
+00:00:47.520 --> 00:00:49.740
+and there is a tool, and there is a template.
+
+22
+00:00:49.740 --> 00:00:50.760
+And what you can do is that you can
+
+23
+00:00:50.760 --> 00:00:53.384
+shape the data you have into this template,
+
+24
+00:00:53.384 --> 00:00:56.670
+and these sources of data will allow you
+
+25
+00:00:56.670 --> 00:01:00.600
+to run the Migration Evaluator Service,
+
+26
+00:01:00.600 --> 00:01:02.490
+which is going to give you quick insights
+
+27
+00:01:02.490 --> 00:01:05.610
+to understand your customized cost insights,
+
+28
+00:01:05.610 --> 00:01:07.980
+and to make sure that your migration can be cost efficient
+
+29
+00:01:07.980 --> 00:01:10.230
+and also good for your business.
+
+30
+00:01:10.230 --> 00:01:12.750
+And therefore, you will have a good business case.
+
+31
+00:01:12.750 --> 00:01:15.870
+And if you need to, you can even get expert guidance
+
+32
+00:01:15.870 --> 00:01:19.200
+on your business case from AWS.
+
+33
+00:01:19.200 --> 00:01:20.774
+So that's it for this lecture, I hope you liked it.
+
+34
+00:01:20.774 --> 00:01:23.103
+And I will see you in the next lecture.
+

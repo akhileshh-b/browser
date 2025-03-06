@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":5140064,"quiz_title":"Other Services Quiz","questions":[{"_class":"assessment","id":28717578,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["24682648"],"question":"<p>You would like to access desktop applications through a browser. Which AWS service would you use?</p>","answers":["<p>Outposts</p>","<p>WorkSpaces</p>","<p>AppStream 2.0</p>","<p>EC2 Instance Connect</p>"],"feedbacks":["AWS Outposts bring native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility. It is not used to access applications through a browser.","Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe. It is not used to access applications through a browser.","Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere.","Amazon EC2 Instance Connect provides a simple and secure way to connect to your Linux instances using Secure Shell (SSH). It is not used to access applications through a browser."]},"correct_response":["c"],"section":"","question_plain":"You would like to access desktop applications through a browser. Which AWS service would you use?","related_lectures":[{"_class":"lecture","id":24682648,"title":"AppStream 2.0 Overview","created":"2021-01-31T19:49:00Z","is_published":true,"asset":{"_class":"asset","id":31073370,"asset_type":"Video","title":"CCP - Other - AppStream 2.0.mp4","created":"2021-01-31T19:32:58Z"},"object_index":241,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682648"}]},{"_class":"assessment","id":34448950,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["26623550"],"question":"<p>Which AWS service can be used to test your application across real desktop browsers and mobile devices?</p>","answers":["<p>IoT Core</p>","<p>AppStream 2.0</p>","<p>WorkSpaces</p>","<p>Device Farm</p>"],"feedbacks":["AWS IoT Core lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers. It is not used to test your application across real desktop browsers and mobile devices.","Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere. It is not used to test your application across real desktop browsers and mobile devices.","Amazon WorkSpaces is a fully managed, secure cloud desktop service to provision either Windows or Linux desktops in a few minutes. It is not used to test your application across real desktop browsers and mobile devices.","AWS Device Farm is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices; without having to provision and manage any testing infrastructure."]},"correct_response":["d"],"section":"","question_plain":"Which AWS service can be used to test your application across real desktop browsers and mobile devices?","related_lectures":[{"_class":"lecture","id":26623550,"title":"Device Farm Overview","created":"2021-05-21T07:10:03Z","is_published":true,"asset":{"_class":"asset","id":33685514,"asset_type":"Video","title":"CCP_-_Other_-_Device_Farm.mp4","created":"2021-05-20T19:21:24Z"},"object_index":247,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/26623550"}]},{"_class":"assessment","id":28717590,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["24682654"],"question":"<p>Which AWS service is serverless and lets you connect billions of devices to the AWS Cloud?</p>","answers":["<p>Transit Gateway</p>","<p>Connect</p>","<p>Elastic Transcoder</p>","<p>IoT Core</p>"],"feedbacks":["Transit Gateway connects thousands of VPC and on-premises networks together in a single gateway. It is not used to connect devices to the AWS Cloud.","Amazon Connect is an easy-to-use omnichannel cloud contact center that helps companies provide superior customer service at a lower cost. It is not used to connect devices to the AWS Cloud.","Elastic Transcoder is media transcoding in the cloud. It is used to convert media files from their source format into versions that will play back on devices like smartphones, tablets, and PCs. It is not used to connect devices to the AWS Cloud.","AWS IoT Core lets you securely connect IoT devices to the AWS Cloud and other devices without the need to provision or manage servers."]},"correct_response":["d"],"section":"","question_plain":"Which AWS service is serverless and lets you connect billions of devices to the AWS Cloud?","related_lectures":[{"_class":"lecture","id":24682654,"title":"IoT Core Overview","created":"2021-01-31T19:49:13Z","is_published":true,"asset":{"_class":"asset","id":31073342,"asset_type":"Video","title":"CCP - Other - IoT Core.mp4","created":"2021-01-31T19:32:58Z"},"object_index":242,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682654"}]},{"_class":"assessment","id":34448954,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["26623552"],"question":"<p>CloudEndure Disaster Recovery is used to centrally automate backups across AWS services while AWS Backup is used to quickly and easily recover servers into AWS.</p>","answers":["<p>True</p>","<p>False</p>"],"feedbacks":["AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers.","AWS Backup is a centralized backup service that makes it easy and cost-effective for you to backup your application data across AWS services in the AWS Cloud. CloudEndure Disaster Recovery minimizes downtime and data loss by providing fast, reliable recovery into AWS of your physical, virtual, and cloud-based servers."]},"correct_response":["b"],"section":"","question_plain":"CloudEndure Disaster Recovery is used to centrally automate backups across AWS services while AWS Backup is used to quickly and easily recover servers into AWS.","related_lectures":[{"_class":"lecture","id":26623552,"title":"AWS Backup Overview","created":"2021-05-21T07:10:17Z","is_published":true,"asset":{"_class":"asset","id":33685490,"asset_type":"Video","title":"CCP_-_Other_-_Backup_v1.mp4","created":"2021-05-20T19:21:24Z"},"object_index":248,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/26623552"}]},{"_class":"assessment","id":28717572,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["24682644"],"question":"<p>A hybrid company would like to provision desktops to their employees so they can access securely both the AWS Cloud and their data centers. Which AWS service can help?</p>","answers":["<p>WorkSpaces</p>","<p>AppStream 2.0</p>","<p>Site-to-Site VPN</p>","<p>Sumerian</p>"],"feedbacks":["Amazon WorkSpaces is a fully managed, secure cloud desktop service. You can use Amazon WorkSpaces to provision either Windows or Linux desktops in just a few minutes and quickly scale to provide thousands of desktops to workers across the globe.","Amazon AppStream 2.0 is a fully managed non-persistent application and desktop streaming service that provides users instant access to their desktop applications from anywhere. It is not used to provision desktops.","Site-to-Site VPN allows you to enable access to your remote network from your VPC. It goes over the public internet. It is not used to provision desktops.","Amazon Sumerian is a managed service that lets you create and run 3D, Augmented Reality (AR) and Virtual Reality (VR) applications. You can build immersive and interactive scenes that run on AR and VR, mobile devices, and your web browser. It is not used to provision desktops."]},"correct_response":["a"],"section":"","question_plain":"A hybrid company would like to provision desktops to their employees so they can access securely both the AWS Cloud and their data centers. Which AWS service can help?","related_lectures":[{"_class":"lecture","id":24682644,"title":"WorkSpaces Overview","created":"2021-01-31T19:48:49Z","is_published":true,"asset":{"_class":"asset","id":37017980,"asset_type":"Video","title":"CCP_-_Other_-_WorkSpaces_v2.mp4","created":"2021-10-23T09:19:41Z"},"object_index":240,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682644"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

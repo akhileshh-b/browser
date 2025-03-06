@@ -1,0 +1,98 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.840
+<v Instructor>Now let's talk about Macie.</v>
+
+2
+00:00:01.840 --> 00:00:04.650
+Macie is a fully managed data security
+
+3
+00:00:04.650 --> 00:00:07.470
+and data privacy service that will use machine learning
+
+4
+00:00:07.470 --> 00:00:09.360
+and pattern matching to discover
+
+5
+00:00:09.360 --> 00:00:12.510
+and protect your sensitive data in AWS.
+
+6
+00:00:12.510 --> 00:00:16.410
+More specifically, it will alert you around sensitive data
+
+7
+00:00:16.410 --> 00:00:19.320
+such as personally identifiable information,
+
+8
+00:00:19.320 --> 00:00:21.510
+which is named PII.
+
+9
+00:00:21.510 --> 00:00:25.440
+So very simply, your PII data will be in your S3 buckets
+
+10
+00:00:25.440 --> 00:00:27.300
+and it will be analyzed by Macie
+
+11
+00:00:27.300 --> 00:00:30.903
+which will discover what data can be classified as PII.
+
+12
+00:00:31.740 --> 00:00:33.690
+And then will notify you
+
+13
+00:00:33.690 --> 00:00:36.870
+through EventBridge of the discoveries.
+
+14
+00:00:36.870 --> 00:00:40.800
+Then you can have integrations into an SNS topic,
+
+15
+00:00:40.800 --> 00:00:42.990
+Lambda functions and so on.
+
+16
+00:00:42.990 --> 00:00:45.750
+So Macie in this instance will be used
+
+17
+00:00:45.750 --> 00:00:49.170
+to find the sensitive data in your S3 buckets
+
+18
+00:00:49.170 --> 00:00:51.270
+and that's the only thing it will do.
+
+19
+00:00:51.270 --> 00:00:53.070
+It's just one click to enable it.
+
+20
+00:00:53.070 --> 00:00:55.470
+You just specify the S3 buckets you want to have
+
+21
+00:00:55.470 --> 00:00:56.790
+and that will be it.
+
+22
+00:00:56.790 --> 00:00:58.740
+So that's it for this lecture, very, very short,
+
+23
+00:00:58.740 --> 00:01:00.240
+but that's enough on Macie.
+
+24
+00:01:00.240 --> 00:01:03.173
+I hope you liked it, and I will see you in the next lecture.
+

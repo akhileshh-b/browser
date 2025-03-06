@@ -1,0 +1,182 @@
+WEBVTT
+
+1
+00:00:00.480 --> 00:00:02.910
+<v Instructor>So now, let's talk about Amazon Pinpoint.</v>
+
+2
+00:00:02.910 --> 00:00:05.220
+And Amazon Pinpoint is scalable two ways,
+
+3
+00:00:05.220 --> 00:00:08.940
+so inbound and outbound marketing communication service.
+
+4
+00:00:08.940 --> 00:00:10.980
+The idea is that you want to send email,
+
+5
+00:00:10.980 --> 00:00:13.170
+SMS, push notifications, voice,
+
+6
+00:00:13.170 --> 00:00:15.840
+and in-app messaging through Pinpoint.
+
+7
+00:00:15.840 --> 00:00:18.720
+And one of the main use cases is SMS.
+
+8
+00:00:18.720 --> 00:00:20.880
+So the customers will receive an SMS
+
+9
+00:00:20.880 --> 00:00:22.980
+that you send from Amazon Pinpoint.
+
+10
+00:00:22.980 --> 00:00:24.870
+And you have the ability to segment
+
+11
+00:00:24.870 --> 00:00:26.370
+and personalize the messages
+
+12
+00:00:26.370 --> 00:00:28.140
+with the right content to customers.
+
+13
+00:00:28.140 --> 00:00:30.960
+So you can create groups and segments and so on.
+
+14
+00:00:30.960 --> 00:00:32.250
+You also have the possibility to,
+
+15
+00:00:32.250 --> 00:00:34.110
+of course, receive replies.
+
+16
+00:00:34.110 --> 00:00:37.140
+And this scales to billions of messages per day.
+
+17
+00:00:37.140 --> 00:00:40.140
+So the use cases for Pinpoint is to run campaigns
+
+18
+00:00:40.140 --> 00:00:42.570
+by sending marketing email in bulk,
+
+19
+00:00:42.570 --> 00:00:45.330
+or sending transactional SMS messages.
+
+20
+00:00:45.330 --> 00:00:48.780
+And should someone reply or should it be successful,
+
+21
+00:00:48.780 --> 00:00:51.780
+then all the events such as text success,
+
+22
+00:00:51.780 --> 00:00:54.210
+text delivered replies, and so on,
+
+23
+00:00:54.210 --> 00:00:56.610
+will be delivered to Amazon SNS,
+
+24
+00:00:56.610 --> 00:00:59.040
+Kinesis Data Firehose, and CloudWatch Logs.
+
+25
+00:00:59.040 --> 00:01:01.110
+So you can build any kind of automation
+
+26
+00:01:01.110 --> 00:01:03.870
+easily on top of Amazon Pinpoint.
+
+27
+00:01:03.870 --> 00:01:04.920
+And so you may be wondering,
+
+28
+00:01:04.920 --> 00:01:06.660
+well, what is the difference between Pinpoint
+
+29
+00:01:06.660 --> 00:01:09.540
+and Amazon SNS or Amazon SES?
+
+30
+00:01:09.540 --> 00:01:12.150
+Because there is obviously some overlap.
+
+31
+00:01:12.150 --> 00:01:15.780
+So the idea is that in SNS or SES,
+
+32
+00:01:15.780 --> 00:01:18.960
+you have to manage each message's audience,
+
+33
+00:01:18.960 --> 00:01:20.850
+content, and delivery schedule.
+
+34
+00:01:20.850 --> 00:01:23.550
+And this is the responsibility of your application.
+
+35
+00:01:23.550 --> 00:01:24.870
+And that may be a lot of work,
+
+36
+00:01:24.870 --> 00:01:26.730
+and that may be not very scalable.
+
+37
+00:01:26.730 --> 00:01:29.550
+So in Amazon Pinpoint, instead, you're going to create
+
+38
+00:01:29.550 --> 00:01:32.340
+message templates, delivery schedules,
+
+39
+00:01:32.340 --> 00:01:35.280
+highly targeted segments, and full campaigns.
+
+40
+00:01:35.280 --> 00:01:38.220
+And all of this is managed by the Pinpoint service.
+
+41
+00:01:38.220 --> 00:01:43.080
+So see Pinpoint as the next evolution of SNS and SES,
+
+42
+00:01:43.080 --> 00:01:45.180
+in case you wanna do full-blown
+
+43
+00:01:45.180 --> 00:01:47.820
+marketing communications service.
+
+44
+00:01:47.820 --> 00:01:49.080
+So that's it for this lecture.
+
+45
+00:01:49.080 --> 00:01:52.080
+I hope you liked it, and I will see you in the next lecture.
+

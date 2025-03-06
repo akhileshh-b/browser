@@ -1,0 +1,290 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.210
+<v Instructor>So now let's talk</v>
+
+2
+00:00:01.210 --> 00:00:03.000
+about Microsoft Active Directory
+
+3
+00:00:03.000 --> 00:00:05.830
+and this is not AWS just yet, but I will get to it.
+
+4
+00:00:05.830 --> 00:00:07.110
+So this is a simplified version
+
+5
+00:00:07.110 --> 00:00:10.850
+but Microsoft Active Directory or AD is found
+
+6
+00:00:10.850 --> 00:00:14.470
+on any windows server that has AD domain services.
+
+7
+00:00:14.470 --> 00:00:16.590
+And it's going to be a database of objects,
+
+8
+00:00:16.590 --> 00:00:19.810
+and these objects can be user accounts, computers, printers
+
+9
+00:00:19.810 --> 00:00:21.540
+file shares, security groups,
+
+10
+00:00:21.540 --> 00:00:23.270
+and with Microsoft Directory,
+
+11
+00:00:23.270 --> 00:00:25.270
+you have Centralized Security Management,
+
+12
+00:00:25.270 --> 00:00:26.103
+you can create your accounts,
+
+13
+00:00:26.103 --> 00:00:28.390
+you can assign permissions all within it.
+
+14
+00:00:28.390 --> 00:00:31.540
+So when would you have used Active Directory before?
+
+15
+00:00:31.540 --> 00:00:34.810
+Well, say for example, that you had a Windows laptop,
+
+16
+00:00:34.810 --> 00:00:37.960
+and you were connected to your corporate internet,
+
+17
+00:00:37.960 --> 00:00:39.390
+then you would have a Domain Controller
+
+18
+00:00:39.390 --> 00:00:42.240
+which defined that you, John, have a password,
+
+19
+00:00:42.240 --> 00:00:43.870
+maybe the password is password.
+
+20
+00:00:43.870 --> 00:00:45.420
+And so that means that if you log in
+
+21
+00:00:45.420 --> 00:00:48.560
+onto any of the machines, belonging to your company,
+
+22
+00:00:48.560 --> 00:00:51.570
+because they are connected to the Domain Controller,
+
+23
+00:00:51.570 --> 00:00:53.270
+you can use this combination of username
+
+24
+00:00:53.270 --> 00:00:56.480
+and password on password of any of these machines
+
+25
+00:00:56.480 --> 00:00:58.470
+allowing you to seamlessly use your log in
+
+26
+00:00:58.470 --> 00:01:02.090
+on too many different services or laptops and so on.
+
+27
+00:01:02.090 --> 00:01:04.390
+So this is a very, very high level
+
+28
+00:01:04.390 --> 00:01:05.800
+of what Active Directory is.
+
+29
+00:01:05.800 --> 00:01:07.590
+It's a way for you to manage users,
+
+30
+00:01:07.590 --> 00:01:09.220
+computers, printers, and so on,
+
+31
+00:01:09.220 --> 00:01:11.760
+usually within on-premises system.
+
+32
+00:01:11.760 --> 00:01:13.150
+Now, AWS is different
+
+33
+00:01:13.150 --> 00:01:15.180
+because it doesn't have active directory on it,
+
+34
+00:01:15.180 --> 00:01:17.010
+but you can extend Active Directory
+
+35
+00:01:17.010 --> 00:01:19.420
+using AWS directory services.
+
+36
+00:01:19.420 --> 00:01:20.580
+So you have three files on it
+
+37
+00:01:20.580 --> 00:01:22.330
+and to be honest, you don't really need know them,
+
+38
+00:01:22.330 --> 00:01:23.881
+but I just wanna give you an overview again
+
+39
+00:01:23.881 --> 00:01:28.520
+that what is possible on active on directory services.
+
+40
+00:01:28.520 --> 00:01:31.650
+So the first one is, AWS Manage Microsoft AD,
+
+41
+00:01:31.650 --> 00:01:34.600
+which is to create your own Active Directory in AWS,
+
+42
+00:01:34.600 --> 00:01:36.660
+where you can manage users locally,
+
+43
+00:01:36.660 --> 00:01:39.479
+and you have support for multifactor authentication.
+
+44
+00:01:39.479 --> 00:01:43.130
+If you have a on-premises Active Directory already
+
+45
+00:01:43.130 --> 00:01:45.470
+you can establish a trust between the two
+
+46
+00:01:45.470 --> 00:01:46.770
+and they will be joined together,
+
+47
+00:01:46.770 --> 00:01:50.140
+and they will be basically trusting each other.
+
+48
+00:01:50.140 --> 00:01:53.780
+So this is the first way to do Active Directory on AWS.
+
+49
+00:01:53.780 --> 00:01:57.810
+Then you have the AD connector, and this is a proxy,
+
+50
+00:01:57.810 --> 00:02:00.520
+that is going to redirect request originating
+
+51
+00:02:00.520 --> 00:02:04.440
+from AWS, to your on-premises AD,
+
+52
+00:02:04.440 --> 00:02:07.370
+and it supports multifactor authentication
+
+53
+00:02:07.370 --> 00:02:11.790
+but the users themself, they live on the on-premises AD.
+
+54
+00:02:11.790 --> 00:02:14.760
+So that means that you authorize into the AD connector
+
+55
+00:02:14.760 --> 00:02:18.240
+which is going to proxy request into your on-prem AD.
+
+56
+00:02:18.240 --> 00:02:19.700
+And finally, you have simple AD,
+
+57
+00:02:19.700 --> 00:02:22.080
+which is not Microsoft Active Directory,
+
+58
+00:02:22.080 --> 00:02:23.170
+but it's an Active Directory
+
+59
+00:02:23.170 --> 00:02:25.380
+compatible managed directory on AWS,
+
+60
+00:02:25.380 --> 00:02:27.710
+and it cannot be joined with an on-premise AD.
+
+61
+00:02:27.710 --> 00:02:29.510
+It would just be a simple standalone
+
+62
+00:02:29.510 --> 00:02:31.740
+Active Directory in the Cloud.
+
+63
+00:02:31.740 --> 00:02:33.200
+Now you don't need to know all these staff
+
+64
+00:02:33.200 --> 00:02:34.680
+going into the exam, this is more something
+
+65
+00:02:34.680 --> 00:02:37.470
+for the Certified Solutions Architect Associates,
+
+66
+00:02:37.470 --> 00:02:40.492
+or professional, but from a exams stand point
+
+67
+00:02:40.492 --> 00:02:42.760
+at the Cloud Practitioner Exam,
+
+68
+00:02:42.760 --> 00:02:44.930
+all you need to is know that Directory Services
+
+69
+00:02:44.930 --> 00:02:47.870
+is used whenever you hear about Active Directory
+
+70
+00:02:47.870 --> 00:02:49.690
+or Microsoft Active Directory.
+
+71
+00:02:49.690 --> 00:02:50.900
+So that's it, I hope you liked it.
+
+72
+00:02:50.900 --> 00:02:52.850
+And I will see you in the next lecture.
+

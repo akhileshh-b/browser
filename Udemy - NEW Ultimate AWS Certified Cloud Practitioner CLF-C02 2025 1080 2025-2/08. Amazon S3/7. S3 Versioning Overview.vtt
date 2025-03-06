@@ -1,0 +1,138 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:01.860
+<v Instructor>So, now let's talk about versioning</v>
+
+2
+00:00:01.860 --> 00:00:03.240
+in Amazon S3.
+
+3
+00:00:03.240 --> 00:00:04.500
+Because we've seen how to create a website,
+
+4
+00:00:04.500 --> 00:00:07.530
+but it would be nice to be able to update it in a safe way.
+
+5
+00:00:07.530 --> 00:00:10.080
+So, you can version your files in Amazon S3,
+
+6
+00:00:10.080 --> 00:00:11.670
+and this is a setting you have to enable
+
+7
+00:00:11.670 --> 00:00:13.350
+at the bucket level.
+
+8
+00:00:13.350 --> 00:00:15.960
+So, we have my bucket and it's enabled with versioning.
+
+9
+00:00:15.960 --> 00:00:17.730
+So, whenever a user uploads a file,
+
+10
+00:00:17.730 --> 00:00:20.430
+it's going to create a version of that file
+
+11
+00:00:20.430 --> 00:00:22.230
+at the selected key.
+
+12
+00:00:22.230 --> 00:00:24.990
+And then should we re-upload the same key,
+
+13
+00:00:24.990 --> 00:00:27.000
+should we overwrite that file,
+
+14
+00:00:27.000 --> 00:00:29.400
+then instead it's going to create a version two,
+
+15
+00:00:29.400 --> 00:00:31.830
+and then a version three, and so on.
+
+16
+00:00:31.830 --> 00:00:34.830
+So, therefore, it is best practice to version your buckets.
+
+17
+00:00:34.830 --> 00:00:35.663
+Why?
+
+18
+00:00:35.663 --> 00:00:36.990
+Well, the first thing is that it protects
+
+19
+00:00:36.990 --> 00:00:38.760
+against unintended deletes.
+
+20
+00:00:38.760 --> 00:00:41.310
+So, for example, if you delete a file version,
+
+21
+00:00:41.310 --> 00:00:43.230
+actually you just add a delete marker
+
+22
+00:00:43.230 --> 00:00:45.420
+and therefore you can restore versions
+
+23
+00:00:45.420 --> 00:00:47.940
+that were previously there instead.
+
+24
+00:00:47.940 --> 00:00:50.700
+You can also easily roll back to a previous version.
+
+25
+00:00:50.700 --> 00:00:53.760
+So, if you want to go back to what happened two days ago,
+
+26
+00:00:53.760 --> 00:00:56.220
+you can take a file and roll it back.
+
+27
+00:00:56.220 --> 00:00:57.900
+So, there are some notes you need to be aware of.
+
+28
+00:00:57.900 --> 00:01:00.030
+First of all, that any file that is not versioned
+
+29
+00:01:00.030 --> 00:01:03.180
+prior to enabling versioning will have the version null.
+
+30
+00:01:03.180 --> 00:01:05.790
+And also that if you suspend versioning,
+
+31
+00:01:05.790 --> 00:01:07.500
+it does not delete the previous version,
+
+32
+00:01:07.500 --> 00:01:09.570
+so, it's a safe operation.
+
+33
+00:01:09.570 --> 00:01:10.890
+Okay, so now let's go into the console
+
+34
+00:01:10.890 --> 00:01:13.140
+and have a look at how we can use versioning.
+

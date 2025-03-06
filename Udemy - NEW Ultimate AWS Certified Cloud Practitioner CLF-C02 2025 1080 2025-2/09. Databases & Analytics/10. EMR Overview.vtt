@@ -1,0 +1,88 @@
+WEBVTT
+
+00:00:00.180 --> 00:00:01.640
+<v Instructor>Another type of database we have</v>
+
+00:00:01.640 --> 00:00:06.640
+on AWS is Amazon EMR, and EMR stands for Elastic MapReduce.
+
+00:00:07.370 --> 00:00:09.710
+So EMR is actually not really a database.
+
+00:00:09.710 --> 00:00:12.280
+It's to create what's called a Hadoop cluster
+
+00:00:12.280 --> 00:00:15.240
+when you wanna do big data on AWS,
+
+00:00:15.240 --> 00:00:17.780
+and a Hadoop cluster is used to analyze
+
+00:00:17.780 --> 00:00:20.650
+and process vast amount of data.
+
+00:00:20.650 --> 00:00:22.980
+So Hadoop is an open source technology,
+
+00:00:22.980 --> 00:00:26.270
+and they allow multiple servers that work in a cluster
+
+00:00:26.270 --> 00:00:29.630
+to analyze the data together, and so when you're using EMR,
+
+00:00:29.630 --> 00:00:34.070
+you can create a cluster made of hundreds of EC2 instances
+
+00:00:34.070 --> 00:00:37.430
+that will be collaborating together to analyze your data.
+
+00:00:37.430 --> 00:00:40.850
+So part of the Hadoop ecosystem, the Big Data ecosystem,
+
+00:00:40.850 --> 00:00:44.290
+you will see projects names such as Apache Spark, HBase,
+
+00:00:44.290 --> 00:00:46.450
+Presto, and Flink, and all these things
+
+00:00:46.450 --> 00:00:48.980
+will be working on top of your Hadoop cluster.
+
+00:00:48.980 --> 00:00:50.450
+So what is EMR then?
+
+00:00:50.450 --> 00:00:54.700
+Well, EMR takes care of provisioning all these EC2 instances
+
+00:00:54.700 --> 00:00:57.120
+and configuring them so that they work together
+
+00:00:57.120 --> 00:01:00.790
+and can analyze together data from a big data perspective.
+
+00:01:00.790 --> 00:01:02.430
+Finally, it has auto-scaling
+
+00:01:02.430 --> 00:01:04.630
+and it is integrated with Spot instances,
+
+00:01:04.630 --> 00:01:07.680
+and the use cases for EMR will be data processing,
+
+00:01:07.680 --> 00:01:11.110
+machine learning, web indexing, or big data in general.
+
+00:01:11.110 --> 00:01:12.770
+So from an exam perspective,
+
+00:01:12.770 --> 00:01:14.910
+any time you see Hadoop cluster,
+
+00:01:14.910 --> 00:01:17.670
+think no more, it's going to be Amazon EMR.
+
+00:01:17.670 --> 00:01:19.020
+That's it, I hope that was helpful,
+
+00:01:19.020 --> 00:01:20.970
+and I will see you in the next lecture.

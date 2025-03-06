@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900314,"quiz_title":"Databases & Analytics Quiz","questions":[{"_class":"assessment","id":28717258,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon DocumentDB (with MongoDB compatibility) is a fast, calable, highly available, and fully managed document database service that supports MongoDB workloads. It is not used to create decentralized blockchains.","Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. Amazon QLDB is not a blockchain or distributed ledger technology.","Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority.","Amazon QuickSight is a fast, cloud-powered business intelligence (BI) service that makes it easy for you to deliver insights to everyone in your organization. It is not used to create decentralized blockchains."],"question":"<p>You want to create a decentralized blockchain on AWS. Which AWS service would you use?</p>","answers":["<p>DocumentDB</p>","<p>QLDB</p>","<p>Managed Blockchain</p>","<p>QuickSight</p>"],"relatedLectureIds":["24682540"]},"correct_response":["c"],"section":"","question_plain":"You want to create a decentralized blockchain on AWS. Which AWS service would you use?","related_lectures":[{"_class":"lecture","id":24682540,"title":"Managed Blockchain Overview","created":"2021-01-31T19:44:05Z","is_published":true,"asset":{"_class":"asset","id":31073290,"asset_type":"Video","title":"CCP - Databases - Managed Blockchain.mp4","created":"2021-01-31T19:32:58Z"},"object_index":109,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682540"}]},{"_class":"assessment","id":18816716,"assessment_type":"multiple-choice","prompt":{"feedbacks":["DynamoDB is a fast and flexible non-relational database service for any scale. It is not a data warehouse.","Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. It is not a data warehouse.","Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.","Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks. It is not a data warehouse."],"question":"<p>Which AWS database is a data warehouse?</p>","answers":["<p>DynamoDB</p>","<p>ElastiCache</p>","<p>Redshift</p>","<p>RDS</p>"],"relatedLectureIds":["20056000"]},"correct_response":["c"],"section":"","question_plain":"Which AWS database is a data warehouse?","related_lectures":[{"_class":"lecture","id":20056000,"title":"Redshift Overview","created":"2020-05-25T18:17:42Z","is_published":true,"asset":{"_class":"asset","id":52246756,"asset_type":"Video","title":"CCP_-_Redshift_-_Overview_v2.mp4","created":"2023-10-24T15:00:32Z"},"object_index":101,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056000"}]},{"_class":"assessment","id":18816744,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20056008"],"answers":["<p>RDS</p>","<p>Aurora</p>","<p>DynamoDB</p>","<p>Athena</p>"],"feedbacks":["Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. It has SQL capabilities but it is not fully serverless.","Amazon Aurora is a relational database engine that combines the speed and reliability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases. It has SQL capabilities but it is not necessarily serverless.","DynamoDB is a fast and flexible non-relational database service for any scale. It is serverless but does not have SQL capabilities","Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run."],"question":"<p>Which AWS&nbsp;service is always serverless and has SQL capabilities?</p>"},"correct_response":["d"],"section":"","question_plain":"Which AWS&nbsp;service is always serverless and has SQL capabilities?","related_lectures":[{"_class":"lecture","id":20056008,"title":"Athena Overview","created":"2020-05-25T18:18:04Z","is_published":true,"asset":{"_class":"asset","id":36708266,"asset_type":"Video","title":"SAA - Athena Overview v2.mp4","created":"2021-10-08T08:26:24Z"},"object_index":103,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056008"}]},{"_class":"assessment","id":19762730,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run. However, it does not have extract, transform, and load (ETL) capacity.","Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. It is not serverless, and it does not have extract, transform, and load (ETL) capacity.","AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics. ","Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. It is not serverless, and it does not have extract, transform, and load (ETL) capacity."],"question":"<p>You would like to use a serverless service to prepare data so it can be loaded for analytics. Which service would you use?</p>","answers":["<p>Athena</p>","<p>RDS</p>","<p>Glue</p>","<p>ElastiCache</p>"],"relatedLectureIds":["20514614"]},"correct_response":["c"],"section":"","question_plain":"You would like to use a serverless service to prepare data so it can be loaded for analytics. Which service would you use?","related_lectures":[{"_class":"lecture","id":20514614,"title":"Glue Overview","created":"2020-06-17T12:01:27Z","is_published":true,"asset":{"_class":"asset","id":25579230,"asset_type":"Video","title":"CCP_-_Glue_-_Overview.mp4","created":"2020-06-18T08:34:21Z"},"object_index":110,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20514614"}]},{"_class":"assessment","id":18816446,"assessment_type":"multiple-choice","prompt":{"feedbacks":["DynamoDB is a fast and flexible non-relational database service for any scale. While it is proprietary and it is cloud optimized, it is not a relational database.","Oracle Database is a relational database management system developed by Oracle. Amazon RDS makes it easy to set up, operate, and scale Oracle Database deployments in the cloud. It is not a proprietary technology from AWS.","Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. ","Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, that combines the performance and availability of traditional enterprise databases with the simplicity and cost-effectiveness of open source databases. It is a proprietary technology from AWS."],"question":"<p>Which relational database is a proprietary technology from AWS and is cloud-optimized?</p>","answers":["<p>DynamoDB</p>","<p>Oracle</p>","<p>Athena</p>","<p>Aurora</p>"],"relatedLectureIds":["20055978"]},"correct_response":["d"],"section":"","question_plain":"Which relational database is a proprietary technology from AWS and is cloud-optimized?","related_lectures":[{"_class":"lecture","id":20055978,"title":"RDS & Aurora Overview","created":"2020-05-25T18:16:39Z","is_published":true,"asset":{"_class":"asset","id":54587052,"asset_type":"Video","title":"CCP_-_RDS_and_Aurora_Overview_v4.mp4","created":"2024-02-11T17:44:29Z"},"object_index":94,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055978"}]},{"_class":"assessment","id":18816776,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. It is not used to migrate databases.","AWS Database Migration Service helps you migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.","AWS Storage Gateway is a hybrid cloud storage service that gives you on-premises access to virtually unlimited cloud storage. It is not used to migrate databases.","Snowball is used to move petabytes of data. It could be used to migrate a database, but the migration would not be continuous"],"question":"<p>You would like to migrate databases to AWS while still being able to use the database during the migration. What service allows you to do this?</p>","answers":["<p>Elastic MapReduce (EMR)</p>","<p>Database Migration&nbsp;Service (DMS)</p>","<p>AWS&nbsp;Storage Gateway</p>","<p>Snowball</p>"],"relatedLectureIds":["20056010"]},"correct_response":["b"],"section":"","question_plain":"You would like to migrate databases to AWS while still being able to use the database during the migration. What service allows you to do this?","related_lectures":[{"_class":"lecture","id":20056010,"title":"DMS Overview","created":"2020-05-25T18:18:14Z","is_published":true,"asset":{"_class":"asset","id":25144634,"asset_type":"Video","title":"CCP - DMS - Overview.mp4","created":"2020-06-01T19:40:06Z"},"object_index":111,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056010"}]},{"_class":"assessment","id":18816726,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. EMR helps creating Hadoop clusters (Big Data) to analyze and process vast amount of data ","Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. It cannot create Hadoop clusters.","An EC2 instance is a virtual server used for running applications on the Amazon Web Services infrastructure. It cannot create Hadoop clusters.","Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. It cannot create Hadoop clusters."],"question":"<p>How can you create Hadoop clusters to analyze and process a vast amount of data?</p>","answers":["<p>EMR</p>","<p>Athena</p>","<p>EC2 Instances</p>","<p>Redshift</p>"],"relatedLectureIds":["20056006"]},"correct_response":["a"],"section":"","question_plain":"How can you create Hadoop clusters to analyze and process a vast amount of data?","related_lectures":[{"_class":"lecture","id":20056006,"title":"EMR Overview","created":"2020-05-25T18:17:48Z","is_published":true,"asset":{"_class":"asset","id":25144626,"asset_type":"Video","title":"CCP - EMR - Overview.mp4","created":"2020-06-01T19:40:06Z"},"object_index":102,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056006"}]},{"_class":"assessment","id":18816464,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. It is not used to reduce the load off databases.","Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. ElastiCache caches are in-memory databases with high performance, low latency. They help reduce load off databases for read intensive workloads.","Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It is not used to reduce the load off databases.","DynamoDB is a fast and flexible non-relational database service for any scale. It is not an in-memory database."],"question":"<p>Which in-memory AWS&nbsp;database can you use to reduce the load off databases and has high performance, low latency?</p>","answers":["<p>Redshift</p>","<p>ElastiCache</p>","<p>RDS</p>","<p>DynamoDB</p>"],"relatedLectureIds":["20055990"]},"correct_response":["b"],"section":"","question_plain":"Which in-memory AWS&nbsp;database can you use to reduce the load off databases and has high performance, low latency?","related_lectures":[{"_class":"lecture","id":20055990,"title":"ElastiCache Overview","created":"2020-05-25T18:17:10Z","is_published":true,"asset":{"_class":"asset","id":25144632,"asset_type":"Video","title":"CCP - ElastiCache - Overview.mp4","created":"2020-06-01T19:40:06Z"},"object_index":97,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055990"}]},{"_class":"assessment","id":19762906,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This does not exist. It is made up with words related to the service.","This does not exist. It is made up with words related to the service.","The AWS Glue Data Catalog is a central repository to store structural and operational metadata for all your data assets. For a given data set, you can store its table definition, physical location, add business relevant attributes, as well as track how this data has changed over time."],"question":"<p>What is the name of a central repository to store structural and operational metadata for data assets in AWS&nbsp;Glue?</p>","answers":["<p>Glue Data Table</p>","<p>Glue Data Dictionary</p>","<p>Glue Data Catalog</p>"],"relatedLectureIds":["20514614"]},"correct_response":["c"],"section":"","question_plain":"What is the name of a central repository to store structural and operational metadata for data assets in AWS&nbsp;Glue?","related_lectures":[{"_class":"lecture","id":20514614,"title":"Glue Overview","created":"2020-06-17T12:01:27Z","is_published":true,"asset":{"_class":"asset","id":25579230,"asset_type":"Video","title":"CCP_-_Glue_-_Overview.mp4","created":"2020-06-18T08:34:21Z"},"object_index":110,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20514614"}]},{"_class":"assessment","id":18816422,"assessment_type":"multiple-choice","prompt":{"feedbacks":["DynamoDB is a fully managed NoSQL database. ","Redshift is a fully managed, SQL data warehouse service in the cloud. It is suited for OLAP workloads, not OLTP.","Amazon Relational Database Service (Amazon RDS) is a SQL managed service that makes it easy to set up, operate, and scale a relational database in the cloud. It is suited for OLTP workloads","You can deploy MySQL on EC2, but it won’t be a managed service"],"question":"<p>Which of the following databases is a managed service with SQL capability suited for Online Transaction Processing (OLTP)?</p>","answers":["<p>DynamoDB</p>","<p>Redshift</p>","<p>RDS</p>","<p>MySQL on EC2</p>"],"relatedLectureIds":["20055978"]},"correct_response":["c"],"section":"","question_plain":"Which of the following databases is a managed service with SQL capability suited for Online Transaction Processing (OLTP)?","related_lectures":[{"_class":"lecture","id":20055978,"title":"RDS & Aurora Overview","created":"2020-05-25T18:16:39Z","is_published":true,"asset":{"_class":"asset","id":54587052,"asset_type":"Video","title":"CCP_-_RDS_and_Aurora_Overview_v4.mp4","created":"2024-02-11T17:44:29Z"},"object_index":94,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055978"}]},{"_class":"assessment","id":28716950,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. Amazon QLDB tracks each and every application data change and maintains a complete and verifiable history of changes over time.","Amazon EMR is a web service that enables businesses, researchers, data analysts, and developers to easily and cost-effectively process vast amounts of data. It is not an immutable ledger database.","Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger Fabric and Ethereum. It allows multiple parties to execute transactions without the need of a trusted, central authority. It is not an immutable ledger database.","This is a distractor. We will see this service later in the course. Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It is not an immutable ledger database."],"question":"<p>Which AWS service is an immutable ledger database?</p>","answers":["<p>QLDB</p>","<p>EMR</p>","<p>Managed Blockchain</p>","<p>Inspector</p>"],"relatedLectureIds":["24682538"]},"correct_response":["a"],"section":"","question_plain":"Which AWS service is an immutable ledger database?","related_lectures":[{"_class":"lecture","id":24682538,"title":"QLDB Overview","created":"2021-01-31T19:43:55Z","is_published":true,"asset":{"_class":"asset","id":59209617,"asset_type":"Video","title":"CCP_-_Databases_-_Amazon_QLDB.mp4","created":"2024-09-13T07:18:18Z"},"object_index":108,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682538"}]},{"_class":"assessment","id":18816706,"assessment_type":"multiple-choice","prompt":{"feedbacks":["DynamoDB is a fast and flexible non-relational database service for any scale. It can scale with no downtime, it can process millions of requests per second, and is fast and consistent in performance.","Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. RDS is a SQL database. Therefore, it is not suited for this work. ","Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. Amazon Redshift offers fast query performance using SQL-based tools. Therefore, it is not suited for this work.","Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Therefore, it is not suited for this work."],"question":"<p>You would like to set up a NoSQL database that can scale with no downtime and can handle millions of requests per second.&nbsp;Which AWS&nbsp;database is best suited for this work?</p>","answers":["<p>DynamoDB</p>","<p>RDS</p>","<p>Redshift</p>","<p>Athena</p>"],"relatedLectureIds":["20055996"]},"correct_response":["a"],"section":"","question_plain":"You would like to set up a NoSQL database that can scale with no downtime and can handle millions of requests per second.&nbsp;Which AWS&nbsp;database is best suited for this work?","related_lectures":[{"_class":"lecture","id":20055996,"title":"DynamoDB Overview","created":"2020-05-25T18:17:30Z","is_published":true,"asset":{"_class":"asset","id":40630550,"asset_type":"Video","title":"CCP_-_DynamoDB_-_Overview_v2.mp4","created":"2022-04-06T23:39:47Z"},"object_index":98,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055996"}]},{"_class":"assessment","id":28716942,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. It is not used to build complex graphs with highly connected datasets.","Amazon Neptune is a fast, reliable, fully-managed graph database service that makes it easy to build and run applications that work with highly connected datasets. It can be used for knowledge graphs, fraud detection, recommendations engines, social networking, etc.","Amazon QLDB is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. It is not used to build complex graphs with highly connected datasets.","AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics. It is not used to build complex graphs with highly connected datasets."],"question":"<p>Which AWS service can create complex graphs for fraud detection?</p>","answers":["<p>Redshift</p>","<p>Neptune</p>","<p>QLDB</p>","<p>Glue</p>"],"relatedLectureIds":["24682534"]},"correct_response":["b"],"section":"","question_plain":"Which AWS service can create complex graphs for fraud detection?","related_lectures":[{"_class":"lecture","id":24682534,"title":"Neptune Overview","created":"2021-01-31T19:43:49Z","is_published":true,"asset":{"_class":"asset","id":31073332,"asset_type":"Video","title":"CCP - Databases - Neptune.mp4","created":"2021-01-31T19:32:58Z"},"object_index":106,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682534"}]},{"_class":"assessment","id":28717282,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon QuickSight is a fast, cloud-powered business intelligence (BI) service that makes it easy for you to deliver insights to everyone in your organization. You can create and publish interactive dashboards.","Amazon Aurora is a relational database engine that combines the speed and reliability of high-end commercial databases with the simplicity and cost-effectiveness of open-source databases. It is not used to create interactive dashboards.","Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Even though Athena can be used for business analytics, it does not provide interactive dashboards.","Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using the popular open source frameworks Hyperledger and Ethereum. It is not used to create interactive dashboards."],"question":"<p>Which AWS serverless service can use machine learning-powered business intelligence to create interactive dashboards such as business analytics?</p>","answers":["<p>QuickSight</p>","<p>Aurora</p>","<p>Athena</p>","<p>Managed Blockchain</p>"],"relatedLectureIds":["24682528"]},"correct_response":["a"],"section":"","question_plain":"Which AWS serverless service can use machine learning-powered business intelligence to create interactive dashboards such as business analytics?","related_lectures":[{"_class":"lecture","id":24682528,"title":"QuickSight Overview","created":"2021-01-31T19:43:34Z","is_published":true,"asset":{"_class":"asset","id":31073312,"asset_type":"Video","title":"CCP - Databases - QuickSight.mp4","created":"2021-01-31T19:32:58Z"},"object_index":104,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682528"}]},{"_class":"assessment","id":28716934,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon DocumentDB (with MongoDB compatibility) is a fast, calable, highly available, and fully managed document database service that supports MongoDB workloads.","Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. It is not used to set up a managed MongoDB database.","Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. MongoDB is a NoSQL database while RDS is used for SQLs databases.","Amazon Neptune is a fast, reliable, fully-managed graph database service that makes it easy to build and run applications that work with highly connected datasets. It is not used to set up a managed MongoDB database."],"question":"<p>A company would like to set up a fully managed MongoDB database. Which AWS database is best-suited for this task?</p>","answers":["<p>DocumentDB</p>","<p>ElastiCache</p>","<p>RDS</p>","<p>Neptune</p>"],"relatedLectureIds":["24682532"]},"correct_response":["a"],"section":"","question_plain":"A company would like to set up a fully managed MongoDB database. Which AWS database is best-suited for this task?","related_lectures":[{"_class":"lecture","id":24682532,"title":"DocumentDB Overview","created":"2021-01-31T19:43:41Z","is_published":true,"asset":{"_class":"asset","id":53082778,"asset_type":"Video","title":"CCP_-_Databases_-_DocumentDB_v2.mp4","created":"2023-12-02T13:07:58Z"},"object_index":105,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682532"}]},{"_class":"assessment","id":28717272,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud. Despite being an in-memory cache service, it is not exclusively for DynamoDB, and can be used for other databases for example.","Edge Locations are caching sites to deliver content to end users with lower latency. They are not an exclusive DynamoDB feature.","Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for Amazon DynamoDB that delivers up to a 10 times performance improvement—from milliseconds to microseconds—even at millions of requests per second.","Snowball Edge devices are used to move petabytes of data while offering computing capacities. They are not an exclusive in-memory cache DynamoDB feature."],"question":"<p>Which exclusive DynamoDB feature is an in-memory cache that can improve your performance up to 10x?</p>","answers":["<p>ElastiCache</p>","<p>Edge Locations</p>","<p>DynamoDB&nbsp;Accelerator</p>","<p>Snowball Edge</p>"],"relatedLectureIds":["20055996"]},"correct_response":["c"],"section":"","question_plain":"Which exclusive DynamoDB feature is an in-memory cache that can improve your performance up to 10x?","related_lectures":[{"_class":"lecture","id":20055996,"title":"DynamoDB Overview","created":"2020-05-25T18:17:30Z","is_published":true,"asset":{"_class":"asset","id":40630550,"asset_type":"Video","title":"CCP_-_DynamoDB_-_Overview_v2.mp4","created":"2022-04-06T23:39:47Z"},"object_index":98,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055996"}]},{"_class":"assessment","id":28717266,"assessment_type":"multiple-choice","prompt":{"feedbacks":["RDS Multi-AZ deployments’ main purpose is high availability, and RDS Read replicas’ main purpose is scalability. Moreover, Multi-Region deployments’ main purpose is disaster recovery and local performance.","RDS Multi-AZ deployments’ main purpose is high availability, and RDS Read replicas’ main purpose is scalability. Moreover, Multi-Region deployments’ main purpose is disaster recovery and local performance."],"question":"<p>RDS Multi-AZ deployments’ main purpose is high availability, while RDS Read replicas’ main purpose is scalability.</p>","answers":["<p>True</p>","<p>False</p>"],"relatedLectureIds":["24682526"]},"correct_response":["a"],"section":"","question_plain":"RDS Multi-AZ deployments’ main purpose is high availability, while RDS Read replicas’ main purpose is scalability.","related_lectures":[{"_class":"lecture","id":24682526,"title":"RDS Deployments Options","created":"2021-01-31T19:43:25Z","is_published":true,"asset":{"_class":"asset","id":47700188,"asset_type":"Video","title":"CCP_-_RDS_Deployment_Options_v2.mp4","created":"2023-03-25T14:35:24Z"},"object_index":96,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682526"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

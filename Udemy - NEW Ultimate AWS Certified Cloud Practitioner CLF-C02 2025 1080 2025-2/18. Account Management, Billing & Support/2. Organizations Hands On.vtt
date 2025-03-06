@@ -1,0 +1,934 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:01.970
+<v Narrator>Okay. So we're going to practice</v>
+
+2
+00:00:01.970 --> 00:00:03.760
+using the organizations.
+
+3
+00:00:03.760 --> 00:00:06.720
+For this I'm just going to go into the organization service
+
+4
+00:00:06.720 --> 00:00:08.620
+and get started.
+
+5
+00:00:08.620 --> 00:00:11.550
+So as we can see in this example
+
+6
+00:00:11.550 --> 00:00:13.300
+Organizations is a global service
+
+7
+00:00:13.300 --> 00:00:15.000
+because it has to do with accounts
+
+8
+00:00:15.000 --> 00:00:17.550
+and regrouping them together, okay?
+
+9
+00:00:17.550 --> 00:00:18.870
+The other thing I did is that I created
+
+10
+00:00:18.870 --> 00:00:20.410
+my own new account for this.
+
+11
+00:00:20.410 --> 00:00:22.860
+So I created AWS course master account
+
+12
+00:00:22.860 --> 00:00:26.553
+and on the other window I have AWS course child account
+
+13
+00:00:26.553 --> 00:00:28.257
+because I don't wanna use my main accounts for this
+
+14
+00:00:28.257 --> 00:00:30.830
+and I wanted to do a demo with two separate accounts.
+
+15
+00:00:30.830 --> 00:00:32.270
+So if you wanna follow along
+
+16
+00:00:32.270 --> 00:00:34.600
+I would suggest creating two new accounts.
+
+17
+00:00:34.600 --> 00:00:37.090
+Call them as you want so that you can have one master
+
+18
+00:00:37.090 --> 00:00:40.000
+and one child account within your organization.
+
+19
+00:00:40.000 --> 00:00:41.110
+So from the master account
+
+20
+00:00:41.110 --> 00:00:44.750
+I'm going to go ahead and create an organization.
+
+21
+00:00:44.750 --> 00:00:46.420
+Now within the organization
+
+22
+00:00:46.420 --> 00:00:48.350
+we have to define the accounts within it.
+
+23
+00:00:48.350 --> 00:00:50.060
+So as we can see right now,
+
+24
+00:00:50.060 --> 00:00:52.790
+this is very quick, the organization is created
+
+25
+00:00:52.790 --> 00:00:56.320
+and we have the root organizational units.
+
+26
+00:00:56.320 --> 00:00:59.760
+And within it, we have the AWS course master account
+
+27
+00:00:59.760 --> 00:01:00.860
+which is the master account
+
+28
+00:01:00.860 --> 00:01:04.350
+or also called the management account, okay?
+
+29
+00:01:04.350 --> 00:01:05.610
+So we're going to do that.
+
+30
+00:01:05.610 --> 00:01:07.060
+And the organization is created.
+
+31
+00:01:07.060 --> 00:01:09.520
+Now we want to add a second
+
+32
+00:01:09.520 --> 00:01:11.790
+AWS as account into this organization.
+
+33
+00:01:11.790 --> 00:01:14.730
+And to do so I'm going to add an account.
+
+34
+00:01:14.730 --> 00:01:15.790
+And we have two options,
+
+35
+00:01:15.790 --> 00:01:17.340
+either we want to create an account
+
+36
+00:01:17.340 --> 00:01:19.120
+and you specify the account name,
+
+37
+00:01:19.120 --> 00:01:20.810
+the email address of the account owner
+
+38
+00:01:20.810 --> 00:01:23.010
+as well as an IAM role that will be created
+
+39
+00:01:23.010 --> 00:01:24.460
+in the target account
+
+40
+00:01:24.460 --> 00:01:27.220
+to be allowed to be managed by the organization.
+
+41
+00:01:27.220 --> 00:01:30.330
+Or you can invite an existing AWS account,
+
+42
+00:01:30.330 --> 00:01:32.730
+in which case you need to provide the email address
+
+43
+00:01:32.730 --> 00:01:33.730
+associated with that account
+
+44
+00:01:33.730 --> 00:01:36.610
+or the account ID of the account to invite.
+
+45
+00:01:36.610 --> 00:01:40.980
+And for this, I will just do the name of my account.
+
+46
+00:01:40.980 --> 00:01:43.482
+So I would just add the email which is
+
+47
+00:01:43.482 --> 00:01:47.680
+aws-child-account@stephanemaarek.com.
+
+48
+00:01:47.680 --> 00:01:48.770
+And this is good to go.
+
+49
+00:01:48.770 --> 00:01:51.000
+We can include the message if you wanted to
+
+50
+00:01:51.000 --> 00:01:52.440
+and add some tags but I will just go ahead
+
+51
+00:01:52.440 --> 00:01:54.410
+and send my invitation.
+
+52
+00:01:54.410 --> 00:01:58.067
+So now my invitation has been sent to my other account
+
+53
+00:01:58.067 --> 00:02:02.700
+and we can view all pending invitations through this UI
+
+54
+00:02:02.700 --> 00:02:03.950
+and it hasn't expired yet,
+
+55
+00:02:03.950 --> 00:02:04.783
+so if in two weeks
+
+56
+00:02:04.783 --> 00:02:07.390
+it doesn't get accepted, then this will expire.
+
+57
+00:02:07.390 --> 00:02:08.850
+So what I can do next is go
+
+58
+00:02:08.850 --> 00:02:11.010
+to my organization on my child account.
+
+59
+00:02:11.010 --> 00:02:13.230
+And on the left hand side, there is Invitations.
+
+60
+00:02:13.230 --> 00:02:14.570
+So I click on Invitations.
+
+61
+00:02:14.570 --> 00:02:16.120
+I'm going to refresh this page.
+
+62
+00:02:17.550 --> 00:02:20.970
+And now we see my invitation from the master account.
+
+63
+00:02:20.970 --> 00:02:23.770
+So as we can see in this organization right now
+
+64
+00:02:23.770 --> 00:02:26.010
+we'll get full control as this organization
+
+65
+00:02:26.962 --> 00:02:27.800
+has full features enabled
+
+66
+00:02:27.800 --> 00:02:29.480
+and can assume full control of your account.
+
+67
+00:02:29.480 --> 00:02:31.740
+So as soon as you're part of an organization,
+
+68
+00:02:31.740 --> 00:02:33.360
+you accept to be controlled
+
+69
+00:02:33.360 --> 00:02:37.150
+by whoever is the master of that organization.
+
+70
+00:02:37.150 --> 00:02:39.630
+So we'll accept the invitation.
+
+71
+00:02:39.630 --> 00:02:40.570
+And here we go.
+
+72
+00:02:40.570 --> 00:02:43.640
+Now my account, the child account is enrolled into
+
+73
+00:02:43.640 --> 00:02:48.000
+my AWS organization and we can only see the organization ID
+
+74
+00:02:48.000 --> 00:02:49.060
+as well as the feature set.
+
+75
+00:02:49.060 --> 00:02:50.440
+And an account may have
+
+76
+00:02:50.440 --> 00:02:53.590
+the ability to leave the organization.
+
+77
+00:02:53.590 --> 00:02:56.470
+So back into my AWS organization.
+
+78
+00:02:56.470 --> 00:03:00.650
+Now, if I go to my accounts, I click on AWS accounts.
+
+79
+00:03:00.650 --> 00:03:03.600
+As we can see now within my organization
+
+80
+00:03:03.600 --> 00:03:05.810
+we have roots and within roots, we have two accounts now,
+
+81
+00:03:05.810 --> 00:03:08.750
+the master and the child accounts.
+
+82
+00:03:08.750 --> 00:03:11.280
+So we can do is now organize our accounts
+
+83
+00:03:11.280 --> 00:03:14.380
+using organizational units or OUs.
+
+84
+00:03:14.380 --> 00:03:16.690
+So for this, we'll just do action
+
+85
+00:03:16.690 --> 00:03:18.060
+and we can create a new OU.
+
+86
+00:03:18.060 --> 00:03:21.500
+So to do so we'll go on the roots, okay?
+
+87
+00:03:21.500 --> 00:03:25.560
+And action creates new OU and I can have one,
+
+88
+00:03:25.560 --> 00:03:27.140
+for example, for my Dev accounts.
+
+89
+00:03:27.140 --> 00:03:28.770
+And I create the OU.
+
+90
+00:03:28.770 --> 00:03:32.910
+I can also go again in here and create the OU,
+
+91
+00:03:32.910 --> 00:03:36.350
+And this time I will say tests and maybe less time
+
+92
+00:03:36.350 --> 00:03:39.828
+we'll have a product, so I'll just do a prod OU.
+
+93
+00:03:39.828 --> 00:03:44.440
+And maybe within the prod OU we have different departments.
+
+94
+00:03:44.440 --> 00:03:46.960
+So I can again create OUs within OUs.
+
+95
+00:03:46.960 --> 00:03:49.510
+So I can have HR, if we have an HR department
+
+96
+00:03:49.510 --> 00:03:51.600
+that has production applications,
+
+97
+00:03:51.600 --> 00:03:54.000
+or maybe we have a finance department
+
+98
+00:03:54.000 --> 00:03:55.720
+that has analytics applications within it.
+
+99
+00:03:55.720 --> 00:03:56.820
+So as you can see here
+
+100
+00:03:57.707 --> 00:04:00.870
+you can create as many nested OUs as you want.
+
+101
+00:04:00.870 --> 00:04:04.390
+And if you go all the way to your organization
+
+102
+00:04:04.390 --> 00:04:06.270
+and then you look at the OU,
+
+103
+00:04:06.270 --> 00:04:08.670
+now we can see we have roots, dev,
+
+104
+00:04:08.670 --> 00:04:10.350
+and right now, no accounts within dev,
+
+105
+00:04:10.350 --> 00:04:12.540
+prod and we have finance and HR within prod
+
+106
+00:04:12.540 --> 00:04:13.690
+and then we have test.
+
+107
+00:04:13.690 --> 00:04:15.967
+So as we can see, we can start organizing the accounts
+
+108
+00:04:15.967 --> 00:04:17.860
+and we have many accounts in organization
+
+109
+00:04:17.860 --> 00:04:19.670
+within specific OUs.
+
+110
+00:04:19.670 --> 00:04:23.770
+And the reason we do so is to have service control policies.
+
+111
+00:04:23.770 --> 00:04:27.140
+So what we're going to do is first take our child account
+
+112
+00:04:27.140 --> 00:04:28.560
+and we want to move it in to,
+
+113
+00:04:28.560 --> 00:04:31.590
+for example, the finance department within prod.
+
+114
+00:04:31.590 --> 00:04:35.780
+So I take this account and I can say move
+
+115
+00:04:35.780 --> 00:04:39.920
+and then I can have it into my finance department
+
+116
+00:04:39.920 --> 00:04:40.753
+within my prod OU.
+
+117
+00:04:40.753 --> 00:04:42.900
+So I move the account there.
+
+118
+00:04:42.900 --> 00:04:45.270
+And now if we have a look we can see
+
+119
+00:04:45.270 --> 00:04:48.600
+that the finance department contains the course child.
+
+120
+00:04:48.600 --> 00:04:51.080
+It's best practice as well to leave the management account
+
+121
+00:04:51.080 --> 00:04:54.330
+under the root OU but you could move it if you wanted to.
+
+122
+00:04:54.330 --> 00:04:58.660
+Okay. So now we want to enable service control policies
+
+123
+00:04:58.660 --> 00:05:02.560
+to restrict what my course child account can do.
+
+124
+00:05:02.560 --> 00:05:05.980
+So to do so we go into Policies and as we can see
+
+125
+00:05:05.980 --> 00:05:07.970
+we have four different kinds of policies available
+
+126
+00:05:07.970 --> 00:05:11.670
+to us right now, and they're currently disabled.
+
+127
+00:05:11.670 --> 00:05:14.350
+So what we can do is take the important policy types
+
+128
+00:05:14.350 --> 00:05:16.070
+that we want and enable them.
+
+129
+00:05:16.070 --> 00:05:18.300
+So one we definitely want to enable is the
+
+130
+00:05:18.300 --> 00:05:20.950
+service control policy, because this will allow you to
+
+131
+00:05:20.950 --> 00:05:23.160
+restrict what our children account can do.
+
+132
+00:05:23.160 --> 00:05:27.980
+So this is enabled and I go back to Policies.
+
+133
+00:05:27.980 --> 00:05:29.500
+We have other ones that could be of interest,
+
+134
+00:05:29.500 --> 00:05:31.590
+for example, backup policy allows you to
+
+135
+00:05:31.590 --> 00:05:34.190
+deploy organization-wide backup plans, to ensure
+
+136
+00:05:34.190 --> 00:05:36.040
+that all your accounts are compliant
+
+137
+00:05:36.040 --> 00:05:37.660
+and have backups enabled
+
+138
+00:05:37.660 --> 00:05:41.330
+or tag policies also to help standardize how you use tags
+
+139
+00:05:41.330 --> 00:05:45.450
+within all the different accounts in your organization.
+
+140
+00:05:45.450 --> 00:05:46.700
+But for the sake of this hands-on
+
+141
+00:05:46.700 --> 00:05:47.670
+and from an exam perspective
+
+142
+00:05:47.670 --> 00:05:50.760
+I believe only service control policies will be used,
+
+143
+00:05:50.760 --> 00:05:51.610
+but still good to know
+
+144
+00:05:51.610 --> 00:05:54.883
+that you can apply a backup policy across all the accounts
+
+145
+00:05:54.883 --> 00:05:58.840
+and a tag policy across all the accounts as well.
+
+146
+00:05:58.840 --> 00:06:01.920
+Okay. So service control policies are enabled.
+
+147
+00:06:01.920 --> 00:06:03.490
+And so now what we'd like to do
+
+148
+00:06:03.490 --> 00:06:05.580
+is to have service control policy defined.
+
+149
+00:06:05.580 --> 00:06:07.470
+So I'm going to click on service control policy
+
+150
+00:06:07.470 --> 00:06:10.330
+and this is the documentation, excuse me.
+
+151
+00:06:10.330 --> 00:06:12.840
+And here we have one service control policy
+
+152
+00:06:12.840 --> 00:06:17.400
+that has been created so far, which is the full AWS access.
+
+153
+00:06:17.400 --> 00:06:20.980
+Okay? And the full AWS access allows all the
+
+154
+00:06:20.980 --> 00:06:23.410
+accounts to access all the services.
+
+155
+00:06:23.410 --> 00:06:27.250
+But we can create a new policy and attach it.
+
+156
+00:06:27.250 --> 00:06:29.770
+So we can created a policy called oops-
+
+157
+00:06:29.770 --> 00:06:34.770
+We can create a policy called DenyAccess to S3
+
+158
+00:06:35.250 --> 00:06:37.700
+and this will deny access to the S3 service
+
+159
+00:06:37.700 --> 00:06:41.290
+to whichever OU or account this is attached to.
+
+160
+00:06:41.290 --> 00:06:44.520
+So in terms of the policy, we could find a statement.
+
+161
+00:06:44.520 --> 00:06:47.154
+For example, we can find the S3 service in here
+
+162
+00:06:47.154 --> 00:06:51.360
+and within S3, we can say all actions
+
+163
+00:06:51.360 --> 00:06:55.130
+and the resource is going to be star as well.
+
+164
+00:06:55.130 --> 00:06:57.390
+So I'm going to have a star in here.
+
+165
+00:06:57.390 --> 00:07:00.172
+So we're denied anything on this (murmurs),
+
+166
+00:07:00.172 --> 00:07:01.005
+a very simple policy
+
+167
+00:07:01.005 --> 00:07:03.213
+and I'll call it deny S3 as an Sid.
+
+168
+00:07:04.370 --> 00:07:07.090
+And then I will click on Create policy.
+
+169
+00:07:07.090 --> 00:07:09.400
+So this, when attached to my accounts,
+
+170
+00:07:09.400 --> 00:07:11.960
+should deny access to S3.
+
+171
+00:07:11.960 --> 00:07:13.400
+So we can have a look.
+
+172
+00:07:13.400 --> 00:07:16.203
+So let's go into our accounts.
+
+173
+00:07:19.210 --> 00:07:22.780
+Okay. So if we look at the root to you and click on root,
+
+174
+00:07:22.780 --> 00:07:24.880
+as we can see, there is enabled policy types
+
+175
+00:07:24.880 --> 00:07:26.780
+which is service control policies.
+
+176
+00:07:26.780 --> 00:07:28.300
+And if I click on Policies
+
+177
+00:07:28.300 --> 00:07:31.010
+there is one applied policies that is attached directly
+
+178
+00:07:31.010 --> 00:07:34.280
+to the root OU, which is the full access to AWS,
+
+179
+00:07:34.280 --> 00:07:37.520
+which allows everything on root
+
+180
+00:07:37.520 --> 00:07:42.400
+and all its children to access all the services within AWS.
+
+181
+00:07:42.400 --> 00:07:43.550
+So if you look at the children
+
+182
+00:07:43.550 --> 00:07:46.790
+of the root OU, we have, for example, the prod OU.
+
+183
+00:07:46.790 --> 00:07:49.180
+And if we look at the prod OU, in terms of policies
+
+184
+00:07:49.180 --> 00:07:52.290
+there are two policies, one that is attached directly
+
+185
+00:07:52.290 --> 00:07:55.360
+which is the full AWS access,
+
+186
+00:07:55.360 --> 00:07:57.920
+but also one that is inherited from root,
+
+187
+00:07:57.920 --> 00:07:59.320
+which is the full AWS access.
+
+188
+00:07:59.320 --> 00:08:02.130
+So it has duplicated this one for some reason.
+
+189
+00:08:02.130 --> 00:08:04.890
+And then if I go into children in a go into finance
+
+190
+00:08:04.890 --> 00:08:07.840
+and click on policies, we have three attached policies.
+
+191
+00:08:07.840 --> 00:08:10.570
+So one inherited from prod, one inherited from root
+
+192
+00:08:10.570 --> 00:08:11.930
+and one attached directly.
+
+193
+00:08:11.930 --> 00:08:13.570
+And this is probably because I've enabled
+
+194
+00:08:13.570 --> 00:08:16.280
+service control policies after creating the OUs.
+
+195
+00:08:16.280 --> 00:08:18.360
+So this full AWS access was attached
+
+196
+00:08:18.360 --> 00:08:21.859
+to every single element within my account.
+
+197
+00:08:21.859 --> 00:08:24.630
+And if we look at the children of the course
+
+198
+00:08:24.630 --> 00:08:28.657
+of the finance OU within the prod OU,
+
+199
+00:08:28.657 --> 00:08:31.670
+and you click on the course itself, the account itself
+
+200
+00:08:31.670 --> 00:08:33.600
+and go to policies, now we have four.
+
+201
+00:08:33.600 --> 00:08:35.470
+So we have full AWS access four times.
+
+202
+00:08:35.470 --> 00:08:37.350
+So you understand at least the concept of inheritance,
+
+203
+00:08:37.350 --> 00:08:38.320
+which makes sense.
+
+204
+00:08:38.320 --> 00:08:40.650
+And you can just inherit things from Root that are clear.
+
+205
+00:08:40.650 --> 00:08:43.050
+You inherit things from the topmost layer,
+
+206
+00:08:43.050 --> 00:08:45.860
+but what we can do is if we go back one up.
+
+207
+00:08:45.860 --> 00:08:50.840
+So if we go to my prod and finance OU, for example,
+
+208
+00:08:50.840 --> 00:08:52.860
+we can attach a new policy.
+
+209
+00:08:52.860 --> 00:08:54.510
+So I'm going to attach a new policy
+
+210
+00:08:54.510 --> 00:08:56.833
+and this one will be the DenyAccessS3.
+
+211
+00:08:57.760 --> 00:08:58.840
+I will attach it
+
+212
+00:08:58.840 --> 00:09:01.920
+and now that means that anything within my finance OU
+
+213
+00:09:01.920 --> 00:09:04.540
+should also have this inherited.
+
+214
+00:09:04.540 --> 00:09:06.920
+So if I click on my course child and then policies,
+
+215
+00:09:06.920 --> 00:09:09.644
+as we can see the DenyAccessS3 has been inherited
+
+216
+00:09:09.644 --> 00:09:11.320
+from finance.
+
+217
+00:09:11.320 --> 00:09:13.350
+So how do we make sure that this is working?
+
+218
+00:09:13.350 --> 00:09:16.010
+Well, if I go to my account
+
+219
+00:09:16.010 --> 00:09:19.763
+now my child account, and open the S3 console in a new tab.
+
+220
+00:09:23.500 --> 00:09:26.500
+We are in S3 and the buckets are being loaded
+
+221
+00:09:26.500 --> 00:09:28.830
+but as we can see, we don't have permission
+
+222
+00:09:28.830 --> 00:09:33.540
+to list buckets and therefore we can not use Amazon S3.
+
+223
+00:09:33.540 --> 00:09:38.540
+And this was due to the policy we have attached to the OU.
+
+224
+00:09:38.820 --> 00:09:41.230
+So it's quite powerful because we are able to
+
+225
+00:09:41.230 --> 00:09:43.090
+restrict what an account can do overall,
+
+226
+00:09:43.090 --> 00:09:44.930
+even though I am logged in right now
+
+227
+00:09:44.930 --> 00:09:48.120
+with my root user, okay, with my root user of my account,
+
+228
+00:09:48.120 --> 00:09:50.390
+I still don't have the access to Amazon S3.
+
+229
+00:09:50.390 --> 00:09:53.250
+So this is very powerful and this is how STPs work.
+
+230
+00:09:53.250 --> 00:09:54.990
+And hopefully that makes sense for you.
+
+231
+00:09:54.990 --> 00:09:56.560
+So that's it for this hands-on.
+
+232
+00:09:56.560 --> 00:09:57.590
+I hope you liked it.
+
+233
+00:09:57.590 --> 00:09:59.540
+And I will see you in the next lecture.
+

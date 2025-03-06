@@ -1,0 +1,1202 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:03.257
+<v Instructor>So now let's talk pricing models in AWS.</v>
+
+2
+00:00:03.257 --> 00:00:05.420
+AWS has four different pricing models.
+
+3
+00:00:05.420 --> 00:00:06.610
+There is pay as you go,
+
+4
+00:00:06.610 --> 00:00:08.110
+where you pay for what you use.
+
+5
+00:00:08.110 --> 00:00:09.000
+You remain agile,
+
+6
+00:00:09.000 --> 00:00:10.700
+because you can start and stop
+
+7
+00:00:10.700 --> 00:00:12.390
+and delete resources whenever you want,
+
+8
+00:00:12.390 --> 00:00:13.370
+responsive,
+
+9
+00:00:13.370 --> 00:00:16.800
+and you can scale to meet demands as demand happens.
+
+10
+00:00:16.800 --> 00:00:19.420
+There's also a model where you save when you reserve.
+
+11
+00:00:19.420 --> 00:00:20.820
+So this is to minimize risk
+
+12
+00:00:20.820 --> 00:00:22.930
+and to get a predictable budget
+
+13
+00:00:22.930 --> 00:00:24.960
+and to comply with long-term requirements.
+
+14
+00:00:24.960 --> 00:00:27.530
+For example, we can do instance reservations
+
+15
+00:00:27.530 --> 00:00:32.530
+for EC2, DynamoDB, ElastiCache, RDS and Redshift.
+
+16
+00:00:32.940 --> 00:00:35.990
+Also, you get to pay less by using more.
+
+17
+00:00:35.990 --> 00:00:37.660
+You get volume-based discounts,
+
+18
+00:00:37.660 --> 00:00:39.740
+for example, on Amazon S3.
+
+19
+00:00:39.740 --> 00:00:42.430
+And as AWS grows their infrastructure,
+
+20
+00:00:42.430 --> 00:00:43.890
+they will have some cost savings,
+
+21
+00:00:43.890 --> 00:00:45.630
+and they will pass them onto you.
+
+22
+00:00:45.630 --> 00:00:49.160
+So AWS is very famous for doing cost reductions
+
+23
+00:00:49.160 --> 00:00:51.470
+every month or every year,
+
+24
+00:00:51.470 --> 00:00:52.303
+which is really good,
+
+25
+00:00:52.303 --> 00:00:53.780
+because as their infrastructure grow,
+
+26
+00:00:53.780 --> 00:00:55.400
+and more people use AWS,
+
+27
+00:00:55.400 --> 00:00:58.200
+they have volume and scale,
+
+28
+00:00:58.200 --> 00:01:00.410
+and therefore, they will pass on that economy of scale
+
+29
+00:01:00.410 --> 00:01:03.080
+onto you to get discounts.
+
+30
+00:01:03.080 --> 00:01:04.960
+On top of it, in AWS,
+
+31
+00:01:04.960 --> 00:01:06.770
+some services are going to be free,
+
+32
+00:01:06.770 --> 00:01:08.810
+and other will be part of the free tier.
+
+33
+00:01:08.810 --> 00:01:10.110
+So I AM is free,
+
+34
+00:01:10.110 --> 00:01:11.090
+VPC is free,
+
+35
+00:01:11.090 --> 00:01:13.810
+and consolidated billing is free as well.
+
+36
+00:01:13.810 --> 00:01:17.200
+If you use the Elastic Beanstalk, CloudFormation and ASG,
+
+37
+00:01:17.200 --> 00:01:18.770
+they are free services.
+
+38
+00:01:18.770 --> 00:01:21.100
+But whatever these services creates,
+
+39
+00:01:21.100 --> 00:01:22.720
+obviously, you need to pay.
+
+40
+00:01:22.720 --> 00:01:23.640
+So Elastic Beanstalk,
+
+41
+00:01:23.640 --> 00:01:25.890
+if you create an application load balancer
+
+42
+00:01:25.890 --> 00:01:27.480
+and EC2 instance,
+
+43
+00:01:27.480 --> 00:01:29.430
+it has to be paid by you.
+
+44
+00:01:29.430 --> 00:01:30.670
+And your Auto Scaling group obviously,
+
+45
+00:01:30.670 --> 00:01:32.390
+when it adds more EC2 instances,
+
+46
+00:01:32.390 --> 00:01:33.700
+you're going to pay for those.
+
+47
+00:01:33.700 --> 00:01:36.100
+And obviously, what is created through CloudFormation,
+
+48
+00:01:36.100 --> 00:01:37.670
+you will have to pay as well.
+
+49
+00:01:37.670 --> 00:01:40.540
+Those are free tier that you can find at this address.
+
+50
+00:01:40.540 --> 00:01:42.370
+And for example, as part of the free tier,
+
+51
+00:01:42.370 --> 00:01:44.800
+you get a t2.micro instance for a year,
+
+52
+00:01:44.800 --> 00:01:49.370
+or you get S3, EBS, ELB and data transfer for free
+
+53
+00:01:49.370 --> 00:01:51.980
+at up to a certain amounts.
+
+54
+00:01:51.980 --> 00:01:53.610
+Okay. So we have the free tier here,
+
+55
+00:01:53.610 --> 00:01:55.910
+and we can see that there are kinds of free tiers.
+
+56
+00:01:55.910 --> 00:01:56.900
+There is featured.
+
+57
+00:01:56.900 --> 00:01:57.990
+There is 12 months free
+
+58
+00:01:57.990 --> 00:01:59.640
+which is when you start a new account.
+
+59
+00:01:59.640 --> 00:02:00.530
+There is always free
+
+60
+00:02:00.530 --> 00:02:02.840
+which is going to be free even after 12 months.
+
+61
+00:02:02.840 --> 00:02:05.160
+And trials, for example, the 30-day trials
+
+62
+00:02:05.160 --> 00:02:09.310
+for GuardDuty, for SageMaker, Inspector and so on.
+
+63
+00:02:09.310 --> 00:02:10.840
+So here, I think it's really helpful for you
+
+64
+00:02:10.840 --> 00:02:13.450
+to have a look at it and to see what is free.
+
+65
+00:02:13.450 --> 00:02:16.417
+I think the most important ones are going to be Amazon EC2,
+
+66
+00:02:16.417 --> 00:02:20.280
+Amazon S3, Amazon RDS and so on.
+
+67
+00:02:20.280 --> 00:02:22.450
+So now let's do a deep dive into the pricing
+
+68
+00:02:22.450 --> 00:02:23.560
+for different services.
+
+69
+00:02:23.560 --> 00:02:24.930
+For example, for EC2,
+
+70
+00:02:24.930 --> 00:02:25.840
+with the On-Demand,
+
+71
+00:02:25.840 --> 00:02:27.900
+you are only charged for what you use,
+
+72
+00:02:27.900 --> 00:02:29.390
+which is the number of instances
+
+73
+00:02:29.390 --> 00:02:31.560
+as well as the instance configuration,
+
+74
+00:02:31.560 --> 00:02:34.220
+what's the capacity number of CPU and RAM,
+
+75
+00:02:34.220 --> 00:02:35.330
+the region you in,
+
+76
+00:02:35.330 --> 00:02:37.580
+the operating system and the software you install
+
+77
+00:02:37.580 --> 00:02:38.870
+on your EC2 instance,
+
+78
+00:02:38.870 --> 00:02:41.030
+the instance type and instance size.
+
+79
+00:02:41.030 --> 00:02:42.950
+And if you're using a load balancer, for example,
+
+80
+00:02:42.950 --> 00:02:44.440
+how long the load balancer will run
+
+81
+00:02:44.440 --> 00:02:47.600
+and the amount of data processed by your load balancer.
+
+82
+00:02:47.600 --> 00:02:49.270
+Also, you can enable detailed monitoring
+
+83
+00:02:49.270 --> 00:02:52.140
+on your EC2 instance to get CloudWatch metrics every minute
+
+84
+00:02:52.140 --> 00:02:53.550
+instead of every five minutes,
+
+85
+00:02:53.550 --> 00:02:55.800
+and you will have to pay for that as well.
+
+86
+00:02:55.800 --> 00:02:57.420
+So now let's talk about the different models
+
+87
+00:02:57.420 --> 00:02:58.980
+for pricing on EC2.
+
+88
+00:02:58.980 --> 00:03:01.450
+The first one is with On-Demand instances.
+
+89
+00:03:01.450 --> 00:03:03.210
+And you're going to have a minimum billing time
+
+90
+00:03:03.210 --> 00:03:04.270
+of 60 seconds.
+
+91
+00:03:04.270 --> 00:03:06.060
+And then you're going to pay per second
+
+92
+00:03:06.060 --> 00:03:07.420
+for Linux and Windows
+
+93
+00:03:07.420 --> 00:03:10.130
+or per hour for your other EC2 instances.
+
+94
+00:03:10.130 --> 00:03:11.940
+But if you know you're going to use your instances
+
+95
+00:03:11.940 --> 00:03:13.050
+for a long time,
+
+96
+00:03:13.050 --> 00:03:15.360
+then you should use Reserved instances,
+
+97
+00:03:15.360 --> 00:03:18.010
+and it's going to give you up to 75% discount
+
+98
+00:03:18.010 --> 00:03:21.030
+compared to the On-Demand price for the hourly rate.
+
+99
+00:03:21.030 --> 00:03:22.790
+But you need to commit for a long period of time,
+
+100
+00:03:22.790 --> 00:03:25.190
+so either one or three-year commitment.
+
+101
+00:03:25.190 --> 00:03:27.610
+And you get more discounts if you pay early.
+
+102
+00:03:27.610 --> 00:03:28.990
+So you can pay everything upfront,
+
+103
+00:03:28.990 --> 00:03:30.170
+and you get more discounts.
+
+104
+00:03:30.170 --> 00:03:31.170
+Or partial upfront,
+
+105
+00:03:31.170 --> 00:03:33.280
+so just a part of the total amounts.
+
+106
+00:03:33.280 --> 00:03:34.170
+Or no upfront.
+
+107
+00:03:34.170 --> 00:03:36.900
+But this is going to give you a bit less discounts.
+
+108
+00:03:36.900 --> 00:03:38.610
+You also have Spot instances,
+
+109
+00:03:38.610 --> 00:03:40.280
+and you get up to 90% discount
+
+110
+00:03:40.280 --> 00:03:42.730
+compared to your On-Demand hourly rate.
+
+111
+00:03:42.730 --> 00:03:43.810
+And what this means is that
+
+112
+00:03:43.810 --> 00:03:46.240
+you're going to bid for unused capacity
+
+113
+00:03:46.240 --> 00:03:48.370
+in the EC2 instances.
+
+114
+00:03:48.370 --> 00:03:50.160
+And so because you use these unused capacity,
+
+115
+00:03:50.160 --> 00:03:52.570
+you can get it at a very, very aggressive discount.
+
+116
+00:03:52.570 --> 00:03:53.800
+But with Spot instances,
+
+117
+00:03:53.800 --> 00:03:55.970
+you run the risk of losing them
+
+118
+00:03:55.970 --> 00:03:58.150
+in case someone is willing to pay a bit more
+
+119
+00:03:58.150 --> 00:04:00.120
+for your Spot instances.
+
+120
+00:04:00.120 --> 00:04:01.700
+You can also have Dedicated Host
+
+121
+00:04:01.700 --> 00:04:04.520
+which can be On-Demand and can be Reserved as well.
+
+122
+00:04:04.520 --> 00:04:07.420
+And this is a tendency way of running EC2.
+
+123
+00:04:07.420 --> 00:04:10.200
+This means that you are going to run a loan on these hosts,
+
+124
+00:04:10.200 --> 00:04:11.890
+because they're dedicated to you.
+
+125
+00:04:11.890 --> 00:04:14.820
+And finally, there's another component called Savings Plan
+
+126
+00:04:14.820 --> 00:04:17.120
+which is an alternative to all these things above.
+
+127
+00:04:17.120 --> 00:04:19.970
+And I'm going to describe Savings Plans to you
+
+128
+00:04:19.970 --> 00:04:21.210
+in a future lecture.
+
+129
+00:04:21.210 --> 00:04:22.860
+So don't worry about it too much.
+
+130
+00:04:24.070 --> 00:04:25.710
+Next, we have Lambda and ECS,
+
+131
+00:04:25.710 --> 00:04:27.350
+again under compute category.
+
+132
+00:04:27.350 --> 00:04:29.580
+So Lambda, you pay per API call,
+
+133
+00:04:29.580 --> 00:04:32.430
+and you pay per duration of your Lambda functions
+
+134
+00:04:32.430 --> 00:04:34.500
+times the number of the amount of RAM
+
+135
+00:04:34.500 --> 00:04:37.160
+that you have assigned for your Lambda function.
+
+136
+00:04:37.160 --> 00:04:40.350
+For ECS, you get an EC2 launch type model.
+
+137
+00:04:40.350 --> 00:04:42.540
+That means that you don't get any fees for using ECS,
+
+138
+00:04:42.540 --> 00:04:45.350
+but any time you start an EC2 instance
+
+139
+00:04:45.350 --> 00:04:47.030
+underlying your ECS cluster,
+
+140
+00:04:47.030 --> 00:04:49.590
+then you will have to pay for that EC2 instance.
+
+141
+00:04:49.590 --> 00:04:50.900
+For Fargate, it sort of different,
+
+142
+00:04:50.900 --> 00:04:53.080
+because we don't manage EC2 instances,
+
+143
+00:04:53.080 --> 00:04:56.060
+and therefore, we're going to pay for each container
+
+144
+00:04:56.060 --> 00:04:57.830
+for the amount of CPU and memory
+
+145
+00:04:57.830 --> 00:04:59.840
+that gets assigned for your container.
+
+146
+00:04:59.840 --> 00:05:01.460
+Now let's talk about the pricing
+
+147
+00:05:01.460 --> 00:05:03.350
+of the storage on Amazon S3.
+
+148
+00:05:03.350 --> 00:05:05.380
+So as we saw, there are different storage classes
+
+149
+00:05:05.380 --> 00:05:06.540
+that you need to know for the exam.
+
+150
+00:05:06.540 --> 00:05:10.760
+We have S3 Standard, S3 Infrequent Access, S3 One-Zone IA,
+
+151
+00:05:10.760 --> 00:05:15.010
+S3 Intelligent Tiering, Glacier and Glacier Deep Archive.
+
+152
+00:05:15.010 --> 00:05:16.760
+As well on S3, you're going to pay
+
+153
+00:05:16.760 --> 00:05:19.310
+for the number and the size of the objects.
+
+154
+00:05:19.310 --> 00:05:20.380
+And the price is going to be tiered,
+
+155
+00:05:20.380 --> 00:05:21.750
+so the more volume you have,
+
+156
+00:05:21.750 --> 00:05:23.700
+the more objects and the more,
+
+157
+00:05:23.700 --> 00:05:25.700
+the bigger the objects are,
+
+158
+00:05:25.700 --> 00:05:27.510
+the more discounts you're going to get.
+
+159
+00:05:27.510 --> 00:05:30.160
+Then if you do request in and out of Amazon S3,
+
+160
+00:05:30.160 --> 00:05:32.230
+you're going to pay for these requests.
+
+161
+00:05:32.230 --> 00:05:34.730
+You're also going to pay for any data transfer
+
+162
+00:05:34.730 --> 00:05:36.660
+out of the S3 region.
+
+163
+00:05:36.660 --> 00:05:38.970
+So sending data into S3 is free,
+
+164
+00:05:38.970 --> 00:05:40.670
+but retrieving data from S3,
+
+165
+00:05:40.670 --> 00:05:42.240
+you will have to pay something.
+
+166
+00:05:42.240 --> 00:05:44.130
+If you use S3 Transfer Acceleration,
+
+167
+00:05:44.130 --> 00:05:46.850
+it is also a cost that has to be incurred for it.
+
+168
+00:05:46.850 --> 00:05:49.210
+And any time you do a Lifecycle transition
+
+169
+00:05:49.210 --> 00:05:51.500
+between the storage classes defined above,
+
+170
+00:05:51.500 --> 00:05:53.440
+then you're going to have to pay for it.
+
+171
+00:05:53.440 --> 00:05:55.950
+A similar service is going to be EFS.
+
+172
+00:05:55.950 --> 00:05:58.380
+Because EFS, you're going pay per use.
+
+173
+00:05:58.380 --> 00:06:01.170
+It will also have an infrequent access tier
+
+174
+00:06:01.170 --> 00:06:03.370
+and lifecycle rules.
+
+175
+00:06:03.370 --> 00:06:06.750
+A different way to do storage pricing is with EBS.
+
+176
+00:06:06.750 --> 00:06:07.610
+So with EBS,
+
+177
+00:06:07.610 --> 00:06:10.690
+we're going to have pricing based on the volume type
+
+178
+00:06:10.690 --> 00:06:11.523
+that we've provisioned,
+
+179
+00:06:11.523 --> 00:06:13.350
+so the performance of that volume.
+
+180
+00:06:13.350 --> 00:06:15.970
+Then the size of the volume in gigabytes
+
+181
+00:06:15.970 --> 00:06:17.270
+that you provision in advance.
+
+182
+00:06:17.270 --> 00:06:19.280
+Okay, you don't pay per use with EBS.
+
+183
+00:06:19.280 --> 00:06:22.430
+You say, yes, I want one hundred gigabyte EBS volume,
+
+184
+00:06:22.430 --> 00:06:23.330
+and you're going to pay for it
+
+185
+00:06:23.330 --> 00:06:25.850
+regardless whether your use it or not.
+
+186
+00:06:25.850 --> 00:06:28.180
+Then the IOPS, so the performance of your volumes.
+
+187
+00:06:28.180 --> 00:06:30.660
+So if it's a General Purpose SSD, it's included.
+
+188
+00:06:30.660 --> 00:06:32.289
+But if it's Provisioned IOPS,
+
+189
+00:06:32.289 --> 00:06:34.260
+you're going to pay for the IOPS provision.
+
+190
+00:06:34.260 --> 00:06:36.730
+And for Magnetic, the number of requests.
+
+191
+00:06:36.730 --> 00:06:39.212
+Then you're going to pay for your EBS snapshots.
+
+192
+00:06:39.212 --> 00:06:41.260
+So the more snapshots you get, the more you pay.
+
+193
+00:06:41.260 --> 00:06:42.840
+So you're gonna get a cost
+
+194
+00:06:42.840 --> 00:06:45.250
+per gigabyte of snapshot per month.
+
+195
+00:06:45.250 --> 00:06:46.640
+And then data transfer.
+
+196
+00:06:46.640 --> 00:06:49.630
+Any data transfer out of EBS is going to be paid
+
+197
+00:06:49.630 --> 00:06:52.060
+and is going to be tiered for volume discounts.
+
+198
+00:06:52.060 --> 00:06:55.313
+But anything you write into EBS inbound is going to be free.
+
+199
+00:06:56.260 --> 00:06:57.750
+Now let's talk about database pricing,
+
+200
+00:06:57.750 --> 00:06:59.100
+for example, for RDS.
+
+201
+00:06:59.100 --> 00:07:00.720
+So it's a per hour billing.
+
+202
+00:07:00.720 --> 00:07:02.280
+And based on the database you use,
+
+203
+00:07:02.280 --> 00:07:03.510
+you have different pricing.
+
+204
+00:07:03.510 --> 00:07:06.840
+So the engine type, the size, the memory class.
+
+205
+00:07:06.840 --> 00:07:08.380
+Then for an RDS database,
+
+206
+00:07:08.380 --> 00:07:11.260
+you can either have On-Demand as a purchase type,
+
+207
+00:07:11.260 --> 00:07:12.980
+or you can reserve an RDS database
+
+208
+00:07:12.980 --> 00:07:14.710
+which is a very smart thing to do,
+
+209
+00:07:14.710 --> 00:07:16.770
+for example, for one or three years,
+
+210
+00:07:16.770 --> 00:07:20.320
+and you can pay upfront for that RDS database.
+
+211
+00:07:20.320 --> 00:07:21.760
+Then if you do RDS backups,
+
+212
+00:07:21.760 --> 00:07:23.180
+you're gonna have to pay for those.
+
+213
+00:07:23.180 --> 00:07:25.750
+But usually, there is no charge for backup storage
+
+214
+00:07:25.750 --> 00:07:29.470
+up to 100% of your total database storage for a region.
+
+215
+00:07:29.470 --> 00:07:31.920
+And in the experience of AWS,
+
+216
+00:07:31.920 --> 00:07:33.280
+that means that all in all,
+
+217
+00:07:33.280 --> 00:07:34.750
+the backup storage should be free
+
+218
+00:07:34.750 --> 00:07:38.070
+if your database is not all the way up to full.
+
+219
+00:07:38.070 --> 00:07:39.390
+Then for RDS,
+
+220
+00:07:39.390 --> 00:07:41.740
+you're going to pay obviously for the underlying storage
+
+221
+00:07:41.740 --> 00:07:42.770
+in gigabytes per month
+
+222
+00:07:42.770 --> 00:07:45.070
+based on the EBS volume that you provision
+
+223
+00:07:45.070 --> 00:07:46.659
+for your RDS database.
+
+224
+00:07:46.659 --> 00:07:48.210
+You're going to pay for the number of input
+
+225
+00:07:48.210 --> 00:07:49.750
+and output requests per month.
+
+226
+00:07:49.750 --> 00:07:50.690
+The deployment type.
+
+227
+00:07:50.690 --> 00:07:53.310
+Is it a Single AZ or is it Multi AZ,
+
+228
+00:07:53.310 --> 00:07:56.120
+in which case you have to pay for two RDS databases.
+
+229
+00:07:56.120 --> 00:07:57.630
+And as well as the data transfer.
+
+230
+00:07:57.630 --> 00:08:00.390
+So any data transfer out of your database
+
+231
+00:08:00.390 --> 00:08:03.550
+is going to be paid and tiered based on volume.
+
+232
+00:08:03.550 --> 00:08:06.530
+And any transfer into your database is free.
+
+233
+00:08:06.530 --> 00:08:07.751
+Now let's talk about CloudFront.
+
+234
+00:08:07.751 --> 00:08:09.110
+So CloudFront is a CDN,
+
+235
+00:08:09.110 --> 00:08:09.943
+and it is global,
+
+236
+00:08:09.943 --> 00:08:12.370
+so therefore, the pricing is going to be different
+
+237
+00:08:12.370 --> 00:08:15.120
+based on where the content is served from.
+
+238
+00:08:15.120 --> 00:08:18.160
+So you have different pricing based on usually continents.
+
+239
+00:08:18.160 --> 00:08:21.600
+So for example, America, Europe, South America,
+
+240
+00:08:21.600 --> 00:08:24.060
+Japan, Australia, India and so on.
+
+241
+00:08:24.060 --> 00:08:25.230
+And this is in the table
+
+242
+00:08:25.230 --> 00:08:26.920
+that you can see in this slide down.
+
+243
+00:08:26.920 --> 00:08:30.070
+And then the more you're going to use CloudFront
+
+244
+00:08:30.070 --> 00:08:31.660
+in a specific edge location,
+
+245
+00:08:31.660 --> 00:08:33.360
+the more you're going to get discounts,
+
+246
+00:08:33.360 --> 00:08:35.000
+and you're going to get to an aggregated bill
+
+247
+00:08:35.000 --> 00:08:37.110
+for all the edge locations.
+
+248
+00:08:37.110 --> 00:08:38.910
+You're going to pay for any data transfer
+
+249
+00:08:38.910 --> 00:08:40.470
+out of CloudFront,
+
+250
+00:08:40.470 --> 00:08:41.690
+but not for in.
+
+251
+00:08:41.690 --> 00:08:43.120
+In is always free.
+
+252
+00:08:43.120 --> 00:08:45.580
+Finally, you're going to get a paid bill
+
+253
+00:08:45.580 --> 00:08:47.080
+based on the number of requests
+
+254
+00:08:47.080 --> 00:08:48.630
+that are made into CloudFront.
+
+255
+00:08:48.630 --> 00:08:50.190
+They are counted.
+
+256
+00:08:50.190 --> 00:08:51.620
+Okay. So in AWS finally,
+
+257
+00:08:51.620 --> 00:08:53.030
+you need to understand the networking costs
+
+258
+00:08:53.030 --> 00:08:55.090
+which are, to be honest, very, very complicated.
+
+259
+00:08:55.090 --> 00:08:57.020
+But I try to simplify it in this slide.
+
+260
+00:08:57.020 --> 00:08:58.190
+So you have a region,
+
+261
+00:08:58.190 --> 00:08:59.280
+and we have two AZ.
+
+262
+00:08:59.280 --> 00:09:02.120
+And say we have an EC2 instance in one AZ.
+
+263
+00:09:02.120 --> 00:09:05.120
+Any traffic going inbound of your EC2 instance
+
+264
+00:09:05.120 --> 00:09:06.450
+is going to be free.
+
+265
+00:09:06.450 --> 00:09:08.530
+And then say you have another EC2 instance
+
+266
+00:09:08.530 --> 00:09:09.730
+in the same AZ.
+
+267
+00:09:09.730 --> 00:09:12.237
+If these two EC2 instance talk together,
+
+268
+00:09:12.237 --> 00:09:15.648
+then the traffic is free using the private IP.
+
+269
+00:09:15.648 --> 00:09:18.590
+Now say you have another easy three instance in another AZ.
+
+270
+00:09:18.590 --> 00:09:21.670
+Then if you use the public IP of the EC2 instances
+
+271
+00:09:21.670 --> 00:09:23.180
+to talk to one another,
+
+272
+00:09:23.180 --> 00:09:25.760
+then the traffic will have to go through the internet,
+
+273
+00:09:25.760 --> 00:09:28.370
+and you're going to pay 2 cents per gigabytes.
+
+274
+00:09:28.370 --> 00:09:30.590
+But if you're using the private IP instead
+
+275
+00:09:30.590 --> 00:09:33.250
+to make these EC2 instance talk to one another,
+
+276
+00:09:33.250 --> 00:09:35.350
+then it's going to be 1 cents per gigabyte.
+
+277
+00:09:35.350 --> 00:09:37.980
+So overall, I would recommend you always use the private IP
+
+278
+00:09:37.980 --> 00:09:42.040
+if you can to have communication between your EC2 instances.
+
+279
+00:09:42.040 --> 00:09:44.960
+And if you happen to have EC2 instance in another region,
+
+280
+00:09:44.960 --> 00:09:47.740
+then you're going to get a fee of 2 cents per gigabyte
+
+281
+00:09:47.740 --> 00:09:49.640
+as an inter-region cost.
+
+282
+00:09:49.640 --> 00:09:50.473
+Okay.
+
+283
+00:09:50.473 --> 00:09:52.930
+So summary is that you should use a private IP
+
+284
+00:09:52.930 --> 00:09:53.950
+instead of a public IP
+
+285
+00:09:53.950 --> 00:09:56.220
+for good savings and better network performance.
+
+286
+00:09:56.220 --> 00:09:57.200
+And then if possible,
+
+287
+00:09:57.200 --> 00:09:59.430
+if you want to have the maximum amount of cost saving,
+
+288
+00:09:59.430 --> 00:10:01.410
+use one Availability Zone,
+
+289
+00:10:01.410 --> 00:10:04.960
+but you sacrifice obviously the high availability.
+
+290
+00:10:04.960 --> 00:10:06.020
+So there's a trade-off here
+
+291
+00:10:06.020 --> 00:10:08.710
+between cost and high availability.
+
+292
+00:10:08.710 --> 00:10:11.170
+So that's it for an overview of pricing on AWS.
+
+293
+00:10:11.170 --> 00:10:13.890
+You won't be testing on the actual details of each service,
+
+294
+00:10:13.890 --> 00:10:15.360
+but it's good for you to understand
+
+295
+00:10:15.360 --> 00:10:17.870
+the reasoning behind cost in AWS,
+
+296
+00:10:17.870 --> 00:10:19.920
+because this is what the exam will test you on
+
+297
+00:10:19.920 --> 00:10:23.140
+to understand how at a high level it cost
+
+298
+00:10:23.140 --> 00:10:25.530
+to use some AWS services.
+
+299
+00:10:25.530 --> 00:10:26.380
+So hope you like this.
+
+300
+00:10:26.380 --> 00:10:28.330
+And I will see you in the next lecture.
+

@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00:00.530 --> 00:00:03.660
+<v ->Okay, so now new have an application</v>
+
+00:00:03.660 --> 00:00:06.640
+that can be load balanced through a load balancer,
+
+00:00:06.640 --> 00:00:09.530
+but how do we create, automatically
+
+00:00:09.530 --> 00:00:10.830
+these servers in the back end.
+
+00:00:10.830 --> 00:00:13.210
+For this we can use an auto scaling group.
+
+00:00:13.210 --> 00:00:14.050
+So why?
+
+00:00:14.050 --> 00:00:16.600
+Well in real life you're load on the websites
+
+00:00:16.600 --> 00:00:18.700
+can change over time.
+
+00:00:18.700 --> 00:00:22.090
+So for example, say your users are doing shopping,
+
+00:00:22.090 --> 00:00:23.950
+they're most likely doing shopping during the day
+
+00:00:23.950 --> 00:00:24.960
+and not at night.
+
+00:00:24.960 --> 00:00:27.360
+So you expect more load during the day
+
+00:00:27.360 --> 00:00:29.310
+and less load during the night.
+
+00:00:29.310 --> 00:00:31.670
+So in the cloud we know we can create
+
+00:00:31.670 --> 00:00:33.800
+and get rid of servers very quickly
+
+00:00:33.800 --> 00:00:37.440
+and so the goal of an auto scaling group is to scale out.
+
+00:00:37.440 --> 00:00:41.410
+That means add EC2 instances to match an increased load
+
+00:00:41.410 --> 00:00:43.891
+or scale in, that means remove EC2 instances
+
+00:00:43.891 --> 00:00:46.276
+to match a decreased load.
+
+00:00:46.276 --> 00:00:48.810
+With this we can ensure that we have,
+
+00:00:48.810 --> 00:00:49.932
+also as well, a minimum,
+
+00:00:49.932 --> 00:00:52.630
+and a maximum number of machines
+
+00:00:52.630 --> 00:00:54.128
+running at any point of time
+
+00:00:54.128 --> 00:00:57.620
+and once the auto scaling group does create,
+
+00:00:57.620 --> 00:01:00.980
+or remove EC2 instances we can make sure
+
+00:01:00.980 --> 00:01:03.600
+that these instances will be registered,
+
+00:01:03.600 --> 00:01:06.520
+or de registered into our load balancer.
+
+00:01:06.520 --> 00:01:08.768
+So these two things work hand in hand.
+
+00:01:08.768 --> 00:01:12.820
+Finally, in case one of our servers becomes unhealthy,
+
+00:01:12.820 --> 00:01:14.480
+maybe there's an application bug,
+
+00:01:14.480 --> 00:01:16.510
+then the auto scaling group can detect it
+
+00:01:16.510 --> 00:01:18.160
+and say, yeah, you know what,
+
+00:01:18.160 --> 00:01:20.030
+I don't need an unhealthy instance.
+
+00:01:20.030 --> 00:01:21.760
+I'm going to de register it.
+
+00:01:21.760 --> 00:01:23.420
+I'm going to terminate it
+
+00:01:23.420 --> 00:01:26.260
+and replace it by a new healthy one.
+
+00:01:26.260 --> 00:01:28.870
+So with an auto scaling group we get a lot of benefits
+
+00:01:28.870 --> 00:01:30.450
+and another benefit we get,
+
+00:01:30.450 --> 00:01:32.690
+is that we have huge cost savings,
+
+00:01:32.690 --> 00:01:35.010
+because we are only running all the time
+
+00:01:35.010 --> 00:01:37.180
+at the optimal capacity
+
+00:01:37.180 --> 00:01:38.013
+and that is one of
+
+00:01:38.013 --> 00:01:42.630
+the guiding principle of the cloud, elasticity.
+
+00:01:42.630 --> 00:01:46.280
+So if we look at our autos scaling group in AWS.
+
+00:01:46.280 --> 00:01:47.180
+This is it.
+
+00:01:47.180 --> 00:01:50.710
+We have a minimum size, maybe it's one EC2 instance.
+
+00:01:50.710 --> 00:01:53.590
+Then there is a setting called desired capacity,
+
+00:01:53.590 --> 00:01:55.370
+which is also usually the actual size
+
+00:01:55.370 --> 00:01:57.110
+of your auto scaling group
+
+00:01:57.110 --> 00:01:57.943
+and then finally,
+
+00:01:57.943 --> 00:02:00.794
+you can define a maximum size of you auto scaling group
+
+00:02:00.794 --> 00:02:04.420
+and automatically your ASG, auto scaling group,
+
+00:02:04.420 --> 00:02:06.470
+can scale out as needed
+
+00:02:06.470 --> 00:02:11.080
+or scale in as needed by adding EC2 instances over time
+
+00:02:11.080 --> 00:02:14.721
+and it work hand in hand with a load balancer.
+
+00:02:14.721 --> 00:02:18.430
+So that means that if we have our auto scaling group,
+
+00:02:18.430 --> 00:02:20.700
+for example, with one EC2 instance,
+
+00:02:20.700 --> 00:02:24.610
+web traffic can be coming in through our load balancer,
+
+00:02:24.610 --> 00:02:26.530
+which will be redirecting the traffic
+
+00:02:26.530 --> 00:02:29.030
+directly into your EC2 instance
+
+00:02:29.030 --> 00:02:31.720
+and as our auto scaling group scales out
+
+00:02:31.720 --> 00:02:33.820
+by adding EC2 instances,
+
+00:02:33.820 --> 00:02:35.800
+the load balancer will have them registered
+
+00:02:35.800 --> 00:02:37.750
+and will send traffic to them as well.
+
+00:02:37.750 --> 00:02:40.586
+So as we add on more and EC2 instances,
+
+00:02:40.586 --> 00:02:42.320
+the load balancer distributes more
+
+00:02:42.320 --> 00:02:43.550
+and more of the traffic,
+
+00:02:43.550 --> 00:02:46.820
+all the way to the maximum size of your auto scaling group
+
+00:02:46.820 --> 00:02:49.105
+if it scales all that point.
+
+00:02:49.105 --> 00:02:51.600
+So that's it for this lecture.
+
+00:02:51.600 --> 00:02:52.433
+In the next lecture
+
+00:02:52.433 --> 00:02:54.580
+we will be reproducing that very same set up
+
+00:02:54.580 --> 00:02:57.800
+with an auto scaling group, multiple EC2 instance,
+
+00:02:57.800 --> 00:02:59.020
+and a load balancer.
+
+00:02:59.020 --> 00:03:00.260
+So I hope that was helpful
+
+00:03:00.260 --> 00:03:02.210
+and I will see you in the next lecture.

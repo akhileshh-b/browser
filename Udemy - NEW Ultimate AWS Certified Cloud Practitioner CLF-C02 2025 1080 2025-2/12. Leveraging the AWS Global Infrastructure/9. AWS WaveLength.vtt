@@ -1,0 +1,178 @@
+WEBVTT
+
+1
+00:00:00.590 --> 00:00:03.150
+<v Instructor>Now let's talk about AWS WaveLengths.</v>
+
+2
+00:00:03.150 --> 00:00:05.850
+So, WaveLength Zones are infrastructure deployments,
+
+3
+00:00:05.850 --> 00:00:08.400
+embedded within the telecommunications providers'
+
+4
+00:00:08.400 --> 00:00:12.260
+datacenters at the edge of 5G networks.
+
+5
+00:00:12.260 --> 00:00:15.460
+The idea is that whenever you see 5G in your questions,
+
+6
+00:00:15.460 --> 00:00:16.990
+this is most likely going to be WaveLength,
+
+7
+00:00:16.990 --> 00:00:18.670
+but let's go a little bit deeper in this.
+
+8
+00:00:18.670 --> 00:00:22.620
+So the idea is that you're able to deploy some AWS services
+
+9
+00:00:22.620 --> 00:00:25.910
+directly to the edge on the 5G networks.
+
+10
+00:00:25.910 --> 00:00:28.320
+For example, you can deploy easy two instances,
+
+11
+00:00:28.320 --> 00:00:32.850
+EBS volumes, even VPC to a WaveLength Zone.
+
+12
+00:00:32.850 --> 00:00:34.830
+So, say you have a, for example
+
+13
+00:00:34.830 --> 00:00:37.660
+a telecom carrier, has a 5G network
+
+14
+00:00:37.660 --> 00:00:40.610
+and you're going to have a WaveLength Zone
+
+15
+00:00:40.610 --> 00:00:42.860
+and through a carrier gateway, you're able to
+
+16
+00:00:42.860 --> 00:00:45.610
+actually deploy an easy two instance on that Zone.
+
+17
+00:00:45.610 --> 00:00:48.580
+But that zone belongs to the 5G network itself,
+
+18
+00:00:48.580 --> 00:00:52.280
+so that whenever a user on the 5G for a mobile device
+
+19
+00:00:52.280 --> 00:00:54.260
+accesses your WaveLength Zone,
+
+20
+00:00:54.260 --> 00:00:55.730
+they have really, really low latency
+
+21
+00:00:55.730 --> 00:00:59.230
+because the application is really deployed at the edge.
+
+22
+00:00:59.230 --> 00:01:01.980
+So, this is the whole idea behind WaveLength is to
+
+23
+00:01:01.980 --> 00:01:06.120
+give ultra-low latency to applications through 5G networks.
+
+24
+00:01:06.120 --> 00:01:08.410
+The traffic, for example, in this example,
+
+25
+00:01:08.410 --> 00:01:10.600
+never leaves the Communication Service Provider,
+
+26
+00:01:10.600 --> 00:01:12.080
+the CSP network.
+
+27
+00:01:12.080 --> 00:01:15.150
+It actually never reaches AWS, but in case you
+
+28
+00:01:15.150 --> 00:01:18.580
+do need to have a secure connection to AWS, we can.
+
+29
+00:01:18.580 --> 00:01:21.650
+So, the wavelength zone is connected to the parent region.
+
+30
+00:01:21.650 --> 00:01:23.582
+In case, for example, your easy two instances
+
+31
+00:01:23.582 --> 00:01:27.190
+in your WaveLength Zone needs to access a database.
+
+32
+00:01:27.190 --> 00:01:29.100
+For example, RDS or DynamoDB,
+
+33
+00:01:29.100 --> 00:01:32.370
+within your main parents, AWS Region.
+
+34
+00:01:32.370 --> 00:01:33.750
+There is no additional charges
+
+35
+00:01:33.750 --> 00:01:35.920
+or service agreements for using WaveLength.
+
+36
+00:01:35.920 --> 00:01:37.900
+And the use cases for this are multiple.
+
+37
+00:01:37.900 --> 00:01:41.040
+This is to have Smart Cities, ML-assisted diagnostics,
+
+38
+00:01:41.040 --> 00:01:44.490
+ConnectedVehicles, Interactive Live Video Streams,
+
+39
+00:01:44.490 --> 00:01:46.450
+AR and VR, Real-time Gaming.
+
+40
+00:01:46.450 --> 00:01:48.697
+Anything that requires really low latency
+
+41
+00:01:48.697 --> 00:01:51.600
+and to be very, very close at the edge to your users.
+
+42
+00:01:51.600 --> 00:01:54.000
+And this is a use case enabled by 5G.
+
+43
+00:01:54.000 --> 00:01:54.990
+So, I hope you liked it
+
+44
+00:01:54.990 --> 00:01:56.940
+and I will see you in the next lecture.
+

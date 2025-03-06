@@ -1,0 +1,206 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:03.540
+<v ->So now let's talk about AWS CloudTrail.</v>
+
+2
+00:00:03.540 --> 00:00:06.570
+So CloudTrail is a service that provides governance,
+
+3
+00:00:06.570 --> 00:00:10.830
+compliance and audit for your AWS accounts.
+
+4
+00:00:10.830 --> 00:00:12.960
+And whenever you use an account
+
+5
+00:00:12.960 --> 00:00:15.510
+it's going to be enabled by default
+
+6
+00:00:15.510 --> 00:00:19.830
+because CloudTrail will get an history of all the API calls
+
+7
+00:00:19.830 --> 00:00:22.050
+or events that happen within your accounts.
+
+8
+00:00:22.050 --> 00:00:24.510
+And this is very important because you've
+
+9
+00:00:24.510 --> 00:00:27.030
+if someone, for example, logs in the console
+
+10
+00:00:27.030 --> 00:00:30.000
+then whatever they do will be logged in CloudTrail.
+
+11
+00:00:30.000 --> 00:00:33.420
+If someone uses the SDK, it will be logged in CloudTrail.
+
+12
+00:00:33.420 --> 00:00:37.320
+If someone does a command with the commanded line interface
+
+13
+00:00:37.320 --> 00:00:38.700
+it will again be logged
+
+14
+00:00:38.700 --> 00:00:39.960
+with CloudTrail
+
+15
+00:00:39.960 --> 00:00:42.720
+as well as any service activity
+
+16
+00:00:42.720 --> 00:00:44.730
+as well will be logged in CloudTrail.
+
+17
+00:00:44.730 --> 00:00:45.563
+So that means
+
+18
+00:00:45.563 --> 00:00:49.260
+that anything that happens will be put in CloudTrail.
+
+19
+00:00:49.260 --> 00:00:50.280
+And then for you,
+
+20
+00:00:50.280 --> 00:00:52.650
+for audit and security purposes
+
+21
+00:00:52.650 --> 00:00:55.500
+you can take the logs of all the history
+
+22
+00:00:55.500 --> 00:00:58.140
+of events and API calls made within CloudTrail
+
+23
+00:00:58.140 --> 00:01:00.300
+and send them to two locations,
+
+24
+00:01:00.300 --> 00:01:03.720
+either CloudWatch Logs or Amazon S3.
+
+25
+00:01:03.720 --> 00:01:06.600
+Now, when you create a trail in CloudTrail,
+
+26
+00:01:06.600 --> 00:01:08.700
+you can actually apply it to all the regions
+
+27
+00:01:08.700 --> 00:01:10.170
+to monitor what's happening in all regions.
+
+28
+00:01:10.170 --> 00:01:13.260
+And then the trail can go into CloudWatch Logs or Amazon S3
+
+29
+00:01:13.260 --> 00:01:16.200
+or just trail it down to a single region.
+
+30
+00:01:16.200 --> 00:01:18.510
+So the example that's queued, hey for example,
+
+31
+00:01:18.510 --> 00:01:21.450
+a user has deleted something.
+
+32
+00:01:21.450 --> 00:01:23.280
+How would we know what has been deleted
+
+33
+00:01:23.280 --> 00:01:24.930
+and who deleted it and when?
+
+34
+00:01:24.930 --> 00:01:26.790
+Then the answer is going to be CloudTrail.
+
+35
+00:01:26.790 --> 00:01:29.670
+So anytime there is an API call that needs to be looked up
+
+36
+00:01:29.670 --> 00:01:32.520
+CloudTrail is going to be the right answer.
+
+37
+00:01:32.520 --> 00:01:33.660
+So to summarize.
+
+38
+00:01:33.660 --> 00:01:35.340
+From within the CloudTrail console
+
+39
+00:01:35.340 --> 00:01:38.520
+we can have information about usage of the SDK,
+
+40
+00:01:38.520 --> 00:01:40.530
+CLI and console,
+
+41
+00:01:40.530 --> 00:01:43.590
+as well as any IAM users and IAM roles
+
+42
+00:01:43.590 --> 00:01:45.540
+and all the API calls they make,
+
+43
+00:01:45.540 --> 00:01:47.490
+then the CloudTrail consult will display it.
+
+44
+00:01:47.490 --> 00:01:50.640
+But if you want long term retention of data
+
+45
+00:01:50.640 --> 00:01:54.300
+what you can do is that you can send them to CloudWatch Logs
+
+46
+00:01:54.300 --> 00:01:57.630
+or to your S3 bucket for longer term retention.
+
+47
+00:01:57.630 --> 00:01:58.710
+And from within CloudTrail
+
+48
+00:01:58.710 --> 00:02:01.980
+you can do any type of inspection and audit.
+
+49
+00:02:01.980 --> 00:02:03.360
+So that's it for this lecture.
+
+50
+00:02:03.360 --> 00:02:04.320
+I hope you liked it.
+
+51
+00:02:04.320 --> 00:02:06.333
+And I will see you in the next lecture.
+

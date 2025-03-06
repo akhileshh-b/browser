@@ -1,0 +1,67 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.060
+<v Instructor>We are nearing the end of the section,</v>
+
+00:00:02.060 --> 00:00:04.650
+but first let's talk about the kind of security tools
+
+00:00:04.650 --> 00:00:06.100
+we have in IAM.
+
+00:00:06.100 --> 00:00:08.570
+So we can create an IAM Credentials Report
+
+00:00:08.570 --> 00:00:10.740
+and this is at your account-level.
+
+00:00:10.740 --> 00:00:13.670
+This report will contain all your accounts users
+
+00:00:13.670 --> 00:00:16.220
+and the status of their various credentials.
+
+00:00:16.220 --> 00:00:18.460
+We'll be actually generating it right now
+
+00:00:18.460 --> 00:00:20.260
+and having a look at it.
+
+00:00:20.260 --> 00:00:22.710
+The second security tool we're gonna use in IAM
+
+00:00:22.710 --> 00:00:24.600
+is called IAM Access Advisor.
+
+00:00:24.600 --> 00:00:26.690
+This one is at the user-level
+
+00:00:26.690 --> 00:00:28.910
+and the Access Advisor is going to show
+
+00:00:28.910 --> 00:00:31.100
+the service permissions granted to a user
+
+00:00:31.100 --> 00:00:35.150
+and when those services were last accessed.
+
+00:00:35.150 --> 00:00:37.850
+This will be very helpful because we are talking already
+
+00:00:37.850 --> 00:00:40.320
+about the principle of least privilege,
+
+00:00:40.320 --> 00:00:44.170
+and so using this tool, we're able to see which permissions
+
+00:00:44.170 --> 00:00:47.460
+are not used and reduce the permission a user can get
+
+00:00:47.460 --> 00:00:50.640
+to be inline with the principle of least privilege.
+
+00:00:50.640 --> 00:00:52.370
+So I will see you in the next lecture
+
+00:00:52.370 --> 00:00:54.393
+to show you how to use the security tools.

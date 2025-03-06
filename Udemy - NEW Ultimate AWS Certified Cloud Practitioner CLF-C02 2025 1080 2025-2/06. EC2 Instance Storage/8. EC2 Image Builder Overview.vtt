@@ -1,0 +1,242 @@
+WEBVTT
+
+1
+00:00:00.510 --> 00:00:02.040
+<v Instructor>Okay, so let's talk about</v>
+
+2
+00:00:02.040 --> 00:00:03.750
+a new service that I really like
+
+3
+00:00:03.750 --> 00:00:05.910
+and that does come up in the exam now.
+
+4
+00:00:05.910 --> 00:00:08.760
+It is called EC2 Image Builder.
+
+5
+00:00:08.760 --> 00:00:11.040
+It is used to automate the creation
+
+6
+00:00:11.040 --> 00:00:14.820
+of virtual machines or container images.
+
+7
+00:00:14.820 --> 00:00:17.040
+Quickly, what does that mean for the exam?
+
+8
+00:00:17.040 --> 00:00:20.130
+That means that you're gonna be able with EC2 Image Builder
+
+9
+00:00:20.130 --> 00:00:22.470
+to automate the creation, maintain,
+
+10
+00:00:22.470 --> 00:00:27.470
+validate and test AMIs for EC2 instances.
+
+11
+00:00:27.630 --> 00:00:28.920
+So let's have a look at diagram
+
+12
+00:00:28.920 --> 00:00:31.050
+to see how that works in detail.
+
+13
+00:00:31.050 --> 00:00:33.840
+So we have the EC2 Image Builder service
+
+14
+00:00:33.840 --> 00:00:36.420
+and it is automatically, when it's going to run,
+
+15
+00:00:36.420 --> 00:00:38.850
+it is going to create an EC2 instance
+
+16
+00:00:38.850 --> 00:00:40.710
+called a Builder EC2 instance,
+
+17
+00:00:40.710 --> 00:00:44.730
+and that EC2 instance is going to build components
+
+18
+00:00:44.730 --> 00:00:46.710
+and customize the software, for example,
+
+19
+00:00:46.710 --> 00:00:49.487
+install Java, update the CLI,
+
+20
+00:00:49.487 --> 00:00:52.800
+update the software system, maybe install firewalls,
+
+21
+00:00:52.800 --> 00:00:55.680
+whatever you define to happen on that EC2 instance,
+
+22
+00:00:55.680 --> 00:00:57.510
+maybe install your application.
+
+23
+00:00:57.510 --> 00:00:59.400
+And then once this is done,
+
+24
+00:00:59.400 --> 00:01:04.290
+then an AMI is going to be created out of that EC2 instance,
+
+25
+00:01:04.290 --> 00:01:06.723
+but all of this is obviously automated.
+
+26
+00:01:07.590 --> 00:01:10.440
+Then the AMI is created, but we want to validate it.
+
+27
+00:01:10.440 --> 00:01:14.100
+So EC2 Image Builder will automatically create
+
+28
+00:01:14.100 --> 00:01:17.640
+a test EC2 instance from that AMI
+
+29
+00:01:17.640 --> 00:01:19.770
+and going to run a bunch of tests
+
+30
+00:01:19.770 --> 00:01:21.930
+that you are defining in advance.
+
+31
+00:01:21.930 --> 00:01:23.010
+And if you don't wanna run any tests,
+
+32
+00:01:23.010 --> 00:01:25.380
+obviously you can just skip that test,
+
+33
+00:01:25.380 --> 00:01:27.780
+but the test can be asking,
+
+34
+00:01:27.780 --> 00:01:30.090
+is the AMI working, is it secure?
+
+35
+00:01:30.090 --> 00:01:32.040
+Is my application running correctly?
+
+36
+00:01:32.040 --> 00:01:33.420
+All these kinds of things.
+
+37
+00:01:33.420 --> 00:01:36.600
+And then once the AMI is tested,
+
+38
+00:01:36.600 --> 00:01:39.150
+then the AMI is going to be distributed.
+
+39
+00:01:39.150 --> 00:01:42.510
+So while EC2 Image Builder is original service,
+
+40
+00:01:42.510 --> 00:01:45.300
+it is possible for you to take that AMI
+
+41
+00:01:45.300 --> 00:01:48.090
+and distribute it to multiple regions,
+
+42
+00:01:48.090 --> 00:01:49.530
+therefor allowing your application
+
+43
+00:01:49.530 --> 00:01:51.843
+and your workflow to be truly global.
+
+44
+00:01:53.220 --> 00:01:56.910
+Next, EC2 Image Builder can be run on a schedule.
+
+45
+00:01:56.910 --> 00:01:58.860
+So you can define a weekly schedule
+
+46
+00:01:58.860 --> 00:02:01.890
+or you can say you can run whenever packages are updated
+
+47
+00:02:01.890 --> 00:02:04.530
+or you can run it manually, et cetera, et cetera.
+
+48
+00:02:04.530 --> 00:02:06.120
+And it is a free service,
+
+49
+00:02:06.120 --> 00:02:09.570
+so you're only going to pay for the underlying resources.
+
+50
+00:02:09.570 --> 00:02:10.530
+What does that mean?
+
+51
+00:02:10.530 --> 00:02:12.780
+Well, that means that if you create
+
+52
+00:02:12.780 --> 00:02:15.780
+an EC2 instance during this process
+
+53
+00:02:15.780 --> 00:02:19.410
+and EC2 Image Builder will create these EC2 instances,
+
+54
+00:02:19.410 --> 00:02:21.990
+then you're going to pay for these EC2 instances
+
+55
+00:02:21.990 --> 00:02:24.510
+and when the AMI is created and distributed,
+
+56
+00:02:24.510 --> 00:02:27.090
+you're going to pay for the storage of that AMI
+
+57
+00:02:27.090 --> 00:02:29.130
+wherever it has been created
+
+58
+00:02:29.130 --> 00:02:31.170
+and wherever it has been distributed,
+
+59
+00:02:31.170 --> 00:02:32.550
+but that should make sense, right?
+
+60
+00:02:32.550 --> 00:02:34.450
+So I will see you in the next lecture.
+

@@ -1,0 +1,446 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:01.980
+<v Instructor>Okay, so now let's discuss</v>
+
+2
+00:00:01.980 --> 00:00:06.510
+cloud migration strategies, and there is a blog on the AWS
+
+3
+00:00:06.510 --> 00:00:10.020
+that describe the seven Rs of cloud migration.
+
+4
+00:00:10.020 --> 00:00:11.730
+Now there's a very complex diagram.
+
+5
+00:00:11.730 --> 00:00:14.880
+We're going to go over it in time, not the diagram itself,
+
+6
+00:00:14.880 --> 00:00:17.070
+but the concepts behind the diagram.
+
+7
+00:00:17.070 --> 00:00:18.780
+What I would recommend you to do is
+
+8
+00:00:18.780 --> 00:00:21.030
+to actually read the blog if you can,
+
+9
+00:00:21.030 --> 00:00:23.730
+after this lecture, just to get a better understanding
+
+10
+00:00:23.730 --> 00:00:24.780
+of cloud migration,
+
+11
+00:00:24.780 --> 00:00:27.030
+if that's something you're interested into.
+
+12
+00:00:27.030 --> 00:00:28.470
+But let's go over the seven Rs
+
+13
+00:00:28.470 --> 00:00:31.740
+because the exam may ask you which strategy you use.
+
+14
+00:00:31.740 --> 00:00:33.360
+So you want to migrate to the cloud,
+
+15
+00:00:33.360 --> 00:00:35.700
+and the first strategy is to actually retire.
+
+16
+00:00:35.700 --> 00:00:36.540
+What does that mean?
+
+17
+00:00:36.540 --> 00:00:38.490
+That means you turn off things you don't need.
+
+18
+00:00:38.490 --> 00:00:41.160
+So for example, you have some services
+
+19
+00:00:41.160 --> 00:00:42.990
+and you actually don't need to migrate them,
+
+20
+00:00:42.990 --> 00:00:44.550
+so you turn them off.
+
+21
+00:00:44.550 --> 00:00:47.250
+It helps to also reduce the service areas for attacks
+
+22
+00:00:47.250 --> 00:00:48.720
+because you have more security, because you have
+
+23
+00:00:48.720 --> 00:00:50.430
+less services active.
+
+24
+00:00:50.430 --> 00:00:54.720
+You save costs because you retire services, maybe 10 to 20%,
+
+25
+00:00:54.720 --> 00:00:56.850
+and you focus your attention on resources
+
+26
+00:00:56.850 --> 00:00:58.293
+that must be maintained.
+
+27
+00:00:59.190 --> 00:01:01.050
+The second option is to retain.
+
+28
+00:01:01.050 --> 00:01:03.960
+So that means that you actually don't do a cloud migration,
+
+29
+00:01:03.960 --> 00:01:08.430
+which is still a decision in your cloud migration strategy.
+
+30
+00:01:08.430 --> 00:01:11.280
+And you may want to just retain the resource on premises,
+
+31
+00:01:11.280 --> 00:01:14.430
+for example, because of security, data compliance,
+
+32
+00:01:14.430 --> 00:01:17.040
+performance, and unresolved dependencies,
+
+33
+00:01:17.040 --> 00:01:19.860
+or because maybe there is no business value to migrate
+
+34
+00:01:19.860 --> 00:01:21.150
+or it's too complicated.
+
+35
+00:01:21.150 --> 00:01:23.160
+Next, we have relocate.
+
+36
+00:01:23.160 --> 00:01:27.030
+So relocate is actually to move your app from on-premises
+
+37
+00:01:27.030 --> 00:01:28.740
+to its cloud version,
+
+38
+00:01:28.740 --> 00:01:31.770
+or move EC2 instances to a different VPC,
+
+39
+00:01:31.770 --> 00:01:35.040
+a different account, or a different AWS region.
+
+40
+00:01:35.040 --> 00:01:36.870
+So for example, you have servers
+
+41
+00:01:36.870 --> 00:01:40.920
+that you manage on-premises using VMware software-defined
+
+42
+00:01:40.920 --> 00:01:44.520
+data centers, so SSDC, and you just want to keep the same
+
+43
+00:01:44.520 --> 00:01:47.730
+but use now VMware cloud on AWS,
+
+44
+00:01:47.730 --> 00:01:50.250
+you just relocate, but nothing has changed.
+
+45
+00:01:50.250 --> 00:01:53.160
+Then there is rehost for lift and shift.
+
+46
+00:01:53.160 --> 00:01:55.320
+So these are very simple migrations,
+
+47
+00:01:55.320 --> 00:01:59.490
+and what you do is that you rehost your application on AWS.
+
+48
+00:01:59.490 --> 00:02:01.050
+So that can be your applications,
+
+49
+00:02:01.050 --> 00:02:03.300
+your databases, and your data.
+
+50
+00:02:03.300 --> 00:02:05.370
+You're going to migrate your machines.
+
+51
+00:02:05.370 --> 00:02:08.220
+That could be physical, virtual, or servers
+
+52
+00:02:08.220 --> 00:02:11.310
+or another cloud into AWS cloud.
+
+53
+00:02:11.310 --> 00:02:14.850
+So here you don't do any kind of cloud optimization.
+
+54
+00:02:14.850 --> 00:02:17.190
+The application stays as is,
+
+55
+00:02:17.190 --> 00:02:20.340
+but you leverage the cloud resources.
+
+56
+00:02:20.340 --> 00:02:23.760
+And so possibly, by using the cloud resources,
+
+57
+00:02:23.760 --> 00:02:26.910
+you could save as much as 30% on cost.
+
+58
+00:02:26.910 --> 00:02:29.155
+And some services, for example, the
+
+59
+00:02:29.155 --> 00:02:31.530
+AWS application migration service,
+
+60
+00:02:31.530 --> 00:02:33.840
+allow you to just do that, the lift and shift.
+
+61
+00:02:33.840 --> 00:02:35.340
+That means you take your application
+
+62
+00:02:35.340 --> 00:02:37.500
+and you just put it on the cloud.
+
+63
+00:02:37.500 --> 00:02:41.490
+Next, we have replatform for lift and reshape.
+
+64
+00:02:41.490 --> 00:02:44.280
+So as an example, you want to migrate your database
+
+65
+00:02:44.280 --> 00:02:47.760
+into RDS, or you want to migrate your application
+
+66
+00:02:47.760 --> 00:02:49.380
+to Elastic Beanstalk.
+
+67
+00:02:49.380 --> 00:02:52.140
+So here you don't change the core architecture
+
+68
+00:02:52.140 --> 00:02:53.910
+of your application, but you're going
+
+69
+00:02:53.910 --> 00:02:56.430
+to leverage some cloud optimizations,
+
+70
+00:02:56.430 --> 00:02:58.200
+and you're going to save time and money
+
+71
+00:02:58.200 --> 00:03:01.830
+by moving to fully-managed service or a serverless service.
+
+72
+00:03:01.830 --> 00:03:03.210
+For example, for a database,
+
+73
+00:03:03.210 --> 00:03:07.320
+instead of just moving it from a server on premises to EC2,
+
+74
+00:03:07.320 --> 00:03:08.880
+you move it to RDS,
+
+75
+00:03:08.880 --> 00:03:11.790
+and RDS is going to give you a lot of benefits
+
+76
+00:03:11.790 --> 00:03:14.430
+around backups, around resiliency,
+
+77
+00:03:14.430 --> 00:03:16.920
+around high availability, and so on.
+
+78
+00:03:16.920 --> 00:03:18.630
+So your application hasn't changed,
+
+79
+00:03:18.630 --> 00:03:21.480
+but now you're using managed services.
+
+80
+00:03:21.480 --> 00:03:24.390
+Then we have repurchase for drop and shop.
+
+81
+00:03:24.390 --> 00:03:26.220
+So you move to a different product
+
+82
+00:03:26.220 --> 00:03:27.690
+while moving to the cloud.
+
+83
+00:03:27.690 --> 00:03:29.910
+For example, you want to move to a software
+
+84
+00:03:29.910 --> 00:03:31.950
+as a service platform, SaaS.
+
+85
+00:03:31.950 --> 00:03:34.620
+It's expensive in the short term, but very quick to deploy.
+
+86
+00:03:34.620 --> 00:03:36.150
+For example, you move your CRM
+
+87
+00:03:36.150 --> 00:03:39.150
+to the managed version on salesforce.com
+
+88
+00:03:39.150 --> 00:03:42.330
+or your HR to Workday or your CMS to Drupal.
+
+89
+00:03:42.330 --> 00:03:44.640
+So instead of having everything on-premises,
+
+90
+00:03:44.640 --> 00:03:47.040
+now you leverage SaaS platforms.
+
+91
+00:03:47.040 --> 00:03:50.460
+And finally, we have refactor and re-architect.
+
+92
+00:03:50.460 --> 00:03:52.950
+So here you want to move your application to the cloud,
+
+93
+00:03:52.950 --> 00:03:56.070
+but you are re-imagining how the application is going
+
+94
+00:03:56.070 --> 00:03:59.790
+to be architected using Cloud Native features.
+
+95
+00:03:59.790 --> 00:04:01.620
+So the reason you may want to do this is
+
+96
+00:04:01.620 --> 00:04:04.380
+because you actually want to use the cloud
+
+97
+00:04:04.380 --> 00:04:08.100
+to improve the scalability, the performance, security,
+
+98
+00:04:08.100 --> 00:04:10.350
+and agility of your application.
+
+99
+00:04:10.350 --> 00:04:14.190
+You may also want to break up your monolithic application
+
+100
+00:04:14.190 --> 00:04:16.230
+into microservices.
+
+101
+00:04:16.230 --> 00:04:18.450
+So this is where you're going to have the most amount
+
+102
+00:04:18.450 --> 00:04:21.180
+of effort, but usually the most amount of payoff
+
+103
+00:04:21.180 --> 00:04:24.870
+from a leveraging the cloud capabilities.
+
+104
+00:04:24.870 --> 00:04:27.090
+So for example, you move your application
+
+105
+00:04:27.090 --> 00:04:29.130
+to a serverless architecture,
+
+106
+00:04:29.130 --> 00:04:31.230
+or you're going to use Amazon S3
+
+107
+00:04:31.230 --> 00:04:33.360
+to store some data and so on.
+
+108
+00:04:33.360 --> 00:04:34.193
+So that's it.
+
+109
+00:04:34.193 --> 00:04:37.320
+I hope now the seven Rs in the cloud migration
+
+110
+00:04:37.320 --> 00:04:38.610
+strategy makes sense.
+
+111
+00:04:38.610 --> 00:04:41.883
+I hope you liked it, and I will see you in the next lecture.
+

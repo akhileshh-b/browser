@@ -1,0 +1,190 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:02.280
+<v Tutor>Okay, so now let's talk about the second way</v>
+
+2
+00:00:02.280 --> 00:00:05.280
+we can decouple our application using SNS.
+
+3
+00:00:05.280 --> 00:00:08.910
+So what if you want to send one message to many receivers?
+
+4
+00:00:08.910 --> 00:00:11.670
+We can go the route of direct integration.
+
+5
+00:00:11.670 --> 00:00:12.900
+For example, having a buying service
+
+6
+00:00:12.900 --> 00:00:14.820
+sending an email notification,
+
+7
+00:00:14.820 --> 00:00:16.410
+then talking to a fraud service,
+
+8
+00:00:16.410 --> 00:00:17.970
+talking to a shipping service,
+
+9
+00:00:17.970 --> 00:00:19.980
+and talking to the SQS Queue.
+
+10
+00:00:19.980 --> 00:00:21.210
+But that would be quite complicated
+
+11
+00:00:21.210 --> 00:00:24.240
+because we need to write four direct integrations.
+
+12
+00:00:24.240 --> 00:00:25.380
+Instead, we can use something
+
+13
+00:00:25.380 --> 00:00:27.780
+called a Pub/Sub type of integration
+
+14
+00:00:27.780 --> 00:00:29.670
+in which we have an SNS Topic.
+
+15
+00:00:29.670 --> 00:00:32.100
+And the buying service will be sending a message
+
+16
+00:00:32.100 --> 00:00:34.200
+into our SNS Topic,
+
+17
+00:00:34.200 --> 00:00:36.960
+and the topic automatically will be smart enough
+
+18
+00:00:36.960 --> 00:00:39.960
+to send a notification via email to the fraud service,
+
+19
+00:00:39.960 --> 00:00:43.320
+to the shipping service, and even to an SQS Queue.
+
+20
+00:00:43.320 --> 00:00:45.300
+So this is the premise of SNS.
+
+21
+00:00:45.300 --> 00:00:48.510
+SNS stands for Simple Notification Service,
+
+22
+00:00:48.510 --> 00:00:51.420
+and the event publishers will only send messages
+
+23
+00:00:51.420 --> 00:00:53.130
+to one SNS topic,
+
+24
+00:00:53.130 --> 00:00:56.190
+and you can have as many event subscribers as you want
+
+25
+00:00:56.190 --> 00:00:59.100
+to listen to the SNS topic notifications.
+
+26
+00:00:59.100 --> 00:01:02.250
+Each subscriber to the topic will get all the messages.
+
+27
+00:01:02.250 --> 00:01:03.810
+So this is different from SQS
+
+28
+00:01:03.810 --> 00:01:05.850
+where the consumers were sharing the messages.
+
+29
+00:01:05.850 --> 00:01:07.920
+In this example, each subscriber to the topic
+
+30
+00:01:07.920 --> 00:01:11.370
+will get all the messages sent to the SNS topic.
+
+31
+00:01:11.370 --> 00:01:13.290
+Each SNS topic can have
+
+32
+00:01:13.290 --> 00:01:16.290
+more than 12 million subscriptions per topic.
+
+33
+00:01:16.290 --> 00:01:20.130
+And also, we have a soft limit of 100,000 topic limits
+
+34
+00:01:20.130 --> 00:01:21.480
+for each account.
+
+35
+00:01:21.480 --> 00:01:23.430
+So SNS has many destinations.
+
+36
+00:01:23.430 --> 00:01:24.960
+It can publish to many subscribers.
+
+37
+00:01:24.960 --> 00:01:28.620
+And from the AWS target service from SNS,
+
+38
+00:01:28.620 --> 00:01:33.450
+we have Amazon SQS, Lambda, and Amazon Data Firehose.
+
+39
+00:01:33.450 --> 00:01:36.270
+But also we can send emails directly from SNS.
+
+40
+00:01:36.270 --> 00:01:38.940
+We can send SMS and mobile notifications.
+
+41
+00:01:38.940 --> 00:01:42.480
+And finally, we can send data directly into a HTTP
+
+42
+00:01:42.480 --> 00:01:44.610
+or HTTPS Endpoint.
+
+43
+00:01:44.610 --> 00:01:48.270
+So bottom line is, anytime in the exam you see notification,
+
+44
+00:01:48.270 --> 00:01:50.940
+publish subscribe, subscribers, et cetera, et cetera,
+
+45
+00:01:50.940 --> 00:01:53.550
+then think about Amazon SNS.
+
+46
+00:01:53.550 --> 00:01:55.290
+Okay, this is it for this lecture.
+
+47
+00:01:55.290 --> 00:01:58.290
+I hope you liked it, and I will see you in the next lecture.
+

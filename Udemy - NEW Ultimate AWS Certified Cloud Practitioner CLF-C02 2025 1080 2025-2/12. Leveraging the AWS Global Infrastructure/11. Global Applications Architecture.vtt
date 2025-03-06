@@ -1,0 +1,278 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:02.670
+<v Narrator>Okay, so we've seen the global services,</v>
+
+2
+00:00:02.670 --> 00:00:04.850
+but how do we have a global application?
+
+3
+00:00:04.850 --> 00:00:06.330
+Well, let's discuss architecture a little bit.
+
+4
+00:00:06.330 --> 00:00:09.850
+So if we have a single region, single AZ, it's very simple.
+
+5
+00:00:09.850 --> 00:00:12.810
+We have an EC2 instance in one easy in one region
+
+6
+00:00:12.810 --> 00:00:15.810
+that does not give us high availability, for sure.
+
+7
+00:00:15.810 --> 00:00:18.020
+This does not give us good global agency,
+
+8
+00:00:18.020 --> 00:00:20.290
+because if we access this institution
+
+9
+00:00:20.290 --> 00:00:21.730
+from a user that's very, very far away
+
+10
+00:00:21.730 --> 00:00:24.490
+from a region is going to get bad at latency.
+
+11
+00:00:24.490 --> 00:00:26.570
+And it's very, very simple to set up.
+
+12
+00:00:26.570 --> 00:00:28.900
+So very, very low difficulty.
+
+13
+00:00:28.900 --> 00:00:31.420
+Next, we have a single region, multi AZ.
+
+14
+00:00:31.420 --> 00:00:33.790
+So here we have two AZs within one region.
+
+15
+00:00:33.790 --> 00:00:36.090
+So we do have high availability,
+
+16
+00:00:36.090 --> 00:00:38.590
+but we do not have improvements for a global agency.
+
+17
+00:00:38.590 --> 00:00:40.510
+So again, the AZs are close to each other.
+
+18
+00:00:40.510 --> 00:00:42.900
+And so if we take a point in the well
+
+19
+00:00:42.900 --> 00:00:44.780
+that's far away from my AZs
+
+20
+00:00:44.780 --> 00:00:46.480
+then we're going to have high latency.
+
+21
+00:00:46.480 --> 00:00:48.210
+And the difficulty is a little bit increased,
+
+22
+00:00:48.210 --> 00:00:49.870
+but not that much.
+
+23
+00:00:49.870 --> 00:00:52.860
+Next we have a multi-region called active passive.
+
+24
+00:00:52.860 --> 00:00:55.270
+And remember that term so active passive,
+
+25
+00:00:55.270 --> 00:00:57.220
+it means that we have two regions.
+
+26
+00:00:57.220 --> 00:00:59.880
+Each region has one or multiple AZ
+
+27
+00:00:59.880 --> 00:01:03.670
+and in one region our EC2 instances are going to be active,
+
+28
+00:01:03.670 --> 00:01:05.670
+or our application is going to be active.
+
+29
+00:01:05.670 --> 00:01:06.760
+That means that our users,
+
+30
+00:01:06.760 --> 00:01:08.940
+wherever they are in the world can do reads
+
+31
+00:01:08.940 --> 00:01:12.680
+and writes to our EC2 instance in the active region.
+
+32
+00:01:12.680 --> 00:01:15.620
+And the other one EC2 is passive.
+
+33
+00:01:15.620 --> 00:01:17.070
+That means that there is data replication
+
+34
+00:01:17.070 --> 00:01:20.240
+between the active region and the passive region.
+
+35
+00:01:20.240 --> 00:01:23.560
+And possibly the users can do reads from the passive region,
+
+36
+00:01:23.560 --> 00:01:26.150
+but they can not do writes to the passive region.
+
+37
+00:01:26.150 --> 00:01:28.480
+That's why it's called passive, active passive.
+
+38
+00:01:28.480 --> 00:01:29.940
+And so with active passive,
+
+39
+00:01:29.940 --> 00:01:31.750
+well, if we have many regions around the world
+
+40
+00:01:31.750 --> 00:01:33.500
+and they're all passive, that means
+
+41
+00:01:33.500 --> 00:01:36.100
+that we are going to have improved read latency
+
+42
+00:01:36.100 --> 00:01:38.640
+because now we have our data replicated
+
+43
+00:01:38.640 --> 00:01:41.360
+across the world and with low latency,
+
+44
+00:01:41.360 --> 00:01:43.910
+but for writes well, all the writes still need to go
+
+45
+00:01:43.910 --> 00:01:45.530
+to the same central region.
+
+46
+00:01:45.530 --> 00:01:48.070
+So that means that the writes at a global level
+
+47
+00:01:48.070 --> 00:01:49.940
+still have the high latency.
+
+48
+00:01:49.940 --> 00:01:52.650
+And finally, well, it's definitely increased difficulty
+
+49
+00:01:52.650 --> 00:01:54.940
+because now we have multiple regions,
+
+50
+00:01:54.940 --> 00:01:56.320
+so that's active passive,
+
+51
+00:01:56.320 --> 00:01:58.400
+and finally we have active active.
+
+52
+00:01:58.400 --> 00:02:01.240
+And so this is where each EC2 instance
+
+53
+00:02:01.240 --> 00:02:03.630
+is able to take writes and reads,
+
+54
+00:02:03.630 --> 00:02:05.140
+and there is replication still happening
+
+55
+00:02:05.140 --> 00:02:06.370
+within these two instances.
+
+56
+00:02:06.370 --> 00:02:08.200
+So this improves the read latency,
+
+57
+00:02:08.200 --> 00:02:10.610
+the write latency at a global level, obviously.
+
+58
+00:02:10.610 --> 00:02:12.920
+And it's higher difficulty because now your application
+
+59
+00:02:12.920 --> 00:02:16.110
+has to do a lot of things in every single region
+
+60
+00:02:16.110 --> 00:02:17.410
+and is more difficult to set up.
+
+61
+00:02:17.410 --> 00:02:18.970
+But for example, a database
+
+62
+00:02:18.970 --> 00:02:21.610
+that is having an active active demo setup
+
+63
+00:02:21.610 --> 00:02:24.830
+is dynamoDB global tables as we've seen before.
+
+64
+00:02:24.830 --> 00:02:27.540
+Okay, so if you remember just what these means,
+
+65
+00:02:27.540 --> 00:02:30.060
+active active, active passive, multi-region, single region,
+
+66
+00:02:30.060 --> 00:02:31.390
+you should be good to go for the exam
+
+67
+00:02:31.390 --> 00:02:33.150
+to answer one question.
+
+68
+00:02:33.150 --> 00:02:34.200
+All right, that's it.
+
+69
+00:02:34.200 --> 00:02:35.950
+I will see you in the next lecture.
+

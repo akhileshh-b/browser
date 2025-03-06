@@ -1,0 +1,174 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.020
+<v Narrator>So now let's talk about</v>
+
+2
+00:00:01.020 --> 00:00:03.600
+the AWS Service Catalog.
+
+3
+00:00:03.600 --> 00:00:07.200
+So the users that are new to AWS, they have too many options
+
+4
+00:00:07.200 --> 00:00:09.150
+and they don't follow this course, for example
+
+5
+00:00:09.150 --> 00:00:10.350
+when they get started.
+
+6
+00:00:10.350 --> 00:00:12.750
+And so if you leave them the option
+
+7
+00:00:12.750 --> 00:00:15.060
+to do anything they want in AWS,
+
+8
+00:00:15.060 --> 00:00:16.591
+whatever they create may not be in line
+
+9
+00:00:16.591 --> 00:00:20.190
+with what the rest of your organization is doing.
+
+10
+00:00:20.190 --> 00:00:22.260
+And some users that just want to have access
+
+11
+00:00:22.260 --> 00:00:24.660
+to quick self-service portal
+
+12
+00:00:24.660 --> 00:00:27.900
+that allows them to launch a set of authorized products,
+
+13
+00:00:27.900 --> 00:00:30.240
+and these have to be predefined by admins.
+
+14
+00:00:30.240 --> 00:00:31.230
+So as you can see,
+
+15
+00:00:31.230 --> 00:00:34.080
+these could include virtual machines, databases,
+
+16
+00:00:34.080 --> 00:00:36.420
+storage options, and so on.
+
+17
+00:00:36.420 --> 00:00:39.300
+So to do so, to have this self-service portal,
+
+18
+00:00:39.300 --> 00:00:42.630
+you use the AWS Service Catalog.
+
+19
+00:00:42.630 --> 00:00:46.890
+So very simply, as an admin in AWS and Service Catalog,
+
+20
+00:00:46.890 --> 00:00:48.390
+you're going to create products.
+
+21
+00:00:48.390 --> 00:00:50.670
+And products are just CloudFormation templates
+
+22
+00:00:50.670 --> 00:00:52.350
+with the proper parameters.
+
+23
+00:00:52.350 --> 00:00:54.150
+And you can include them in a portfolio,
+
+24
+00:00:54.150 --> 00:00:56.790
+and a portfolio is a collection of products.
+
+25
+00:00:56.790 --> 00:00:58.800
+And then you define who has access
+
+26
+00:00:58.800 --> 00:01:02.310
+to launching what products within my portfolio.
+
+27
+00:01:02.310 --> 00:01:03.750
+And then as a user,
+
+28
+00:01:03.750 --> 00:01:07.100
+you log in to your portal on Service Catalog
+
+29
+00:01:07.100 --> 00:01:09.570
+and you have a quick list of all the products
+
+30
+00:01:09.570 --> 00:01:12.540
+that you can use because of your permissions.
+
+31
+00:01:12.540 --> 00:01:14.700
+And then the users can launch these products
+
+32
+00:01:14.700 --> 00:01:18.120
+and automatically they get provisioned by CloudFormation.
+
+33
+00:01:18.120 --> 00:01:18.953
+But we know
+
+34
+00:01:18.953 --> 00:01:22.440
+that they've been properly configured, properly tagged,
+
+35
+00:01:22.440 --> 00:01:24.090
+and that they respect the way
+
+36
+00:01:24.090 --> 00:01:26.100
+our organization is supposed to work.
+
+37
+00:01:26.100 --> 00:01:26.970
+So say for example,
+
+38
+00:01:26.970 --> 00:01:30.720
+that a user wants to have access to a quick RDS database
+
+39
+00:01:30.720 --> 00:01:32.700
+but doesn't know how to create one properly.
+
+40
+00:01:32.700 --> 00:01:34.740
+Then you could offer this as a service
+
+41
+00:01:34.740 --> 00:01:36.930
+from within the Service Catalog.
+
+42
+00:01:36.930 --> 00:01:39.330
+So hopefully that makes sense. I hope you liked it.
+
+43
+00:01:39.330 --> 00:01:41.373
+And I will see you in the next lecture.
+

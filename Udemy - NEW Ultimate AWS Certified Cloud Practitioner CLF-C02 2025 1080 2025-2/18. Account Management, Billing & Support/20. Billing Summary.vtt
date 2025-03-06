@@ -1,0 +1,138 @@
+WEBVTT
+
+1
+00:00:00.210 --> 00:00:01.620
+<v Instructor>So here is a quick summary</v>
+
+2
+00:00:01.620 --> 00:00:04.380
+on billing and custom tools in AWS.
+
+3
+00:00:04.380 --> 00:00:06.510
+So the first one is Compute Optimizer,
+
+4
+00:00:06.510 --> 00:00:08.520
+which allows you to get recommendation
+
+5
+00:00:08.520 --> 00:00:11.340
+on resource configurations in order to reduce cost.
+
+6
+00:00:11.340 --> 00:00:13.830
+The second one is the Pricing Calculator,
+
+7
+00:00:13.830 --> 00:00:15.720
+which is allowing you to estimate the cost
+
+8
+00:00:15.720 --> 00:00:17.790
+of services on AWS.
+
+9
+00:00:17.790 --> 00:00:19.830
+The Billing Dashboard gives you a high-level overview,
+
+10
+00:00:19.830 --> 00:00:23.910
+as well as a free tier dashboard to know where you stand
+
+11
+00:00:23.910 --> 00:00:25.680
+on your free tier usage.
+
+12
+00:00:25.680 --> 00:00:28.530
+Your Cost Allocation Tags allow you to tag resources
+
+13
+00:00:28.530 --> 00:00:32.580
+to create detailed reports with your own tags as a filter.
+
+14
+00:00:32.580 --> 00:00:34.140
+Cost and Usage Reports give you
+
+15
+00:00:34.140 --> 00:00:36.750
+the most comprehensive billing datasets.
+
+16
+00:00:36.750 --> 00:00:39.150
+Cost Explorer allows you to get your current usage
+
+17
+00:00:39.150 --> 00:00:41.700
+in a detailed manner as well as forecast usage,
+
+18
+00:00:41.700 --> 00:00:43.140
+months in advance.
+
+19
+00:00:43.140 --> 00:00:45.930
+And Billing Alarms in us-east-1, they live,
+
+20
+00:00:45.930 --> 00:00:47.160
+they allow you to track your overall
+
+21
+00:00:47.160 --> 00:00:48.480
+and per-service billing.
+
+22
+00:00:48.480 --> 00:00:51.000
+But if you want to get more advanced, you can use budgets,
+
+23
+00:00:51.000 --> 00:00:53.910
+which allows you to track usage, costs, reserve instances
+
+24
+00:00:53.910 --> 00:00:56.130
+and get alerts in real time.
+
+25
+00:00:56.130 --> 00:00:58.500
+We get savings plan and they're an easy way
+
+26
+00:00:58.500 --> 00:01:03.150
+for you to save on your bill based on long-term usage
+
+27
+00:01:03.150 --> 00:01:07.020
+of AWS by committing a specific dollar amount.
+
+28
+00:01:07.020 --> 00:01:10.410
+Cost Anomaly Detection helps you detect unusual spends
+
+29
+00:01:10.410 --> 00:01:11.728
+using machine learning
+
+30
+00:01:11.728 --> 00:01:14.640
+and Service Quotas helps you get notified
+
+31
+00:01:14.640 --> 00:01:17.460
+whenever you're reaching a service limit threshold
+
+32
+00:01:17.460 --> 00:01:20.733
+and increase these limits directly from this console.
+
+33
+00:01:21.720 --> 00:01:23.250
+Okay, this is it for this lecture.
+
+34
+00:01:23.250 --> 00:01:26.200
+I hope you liked it and I will see you in the next lecture.
+

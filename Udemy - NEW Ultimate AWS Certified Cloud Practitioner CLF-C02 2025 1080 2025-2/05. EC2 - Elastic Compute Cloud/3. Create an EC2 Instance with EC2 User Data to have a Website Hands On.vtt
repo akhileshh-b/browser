@@ -1,0 +1,1302 @@
+WEBVTT
+
+1
+00:00:00.120 --> 00:00:00.953
+<v Lecturer>Welcome.</v>
+
+2
+00:00:00.953 --> 00:00:02.070
+So in this lecture we are going
+
+3
+00:00:02.070 --> 00:00:05.430
+to launch our first EC2 instance running Amazon Linux.
+
+4
+00:00:05.430 --> 00:00:08.250
+So for this we'll be launching our first EC2 instance,
+
+5
+00:00:08.250 --> 00:00:10.260
+which is well a visual server
+
+6
+00:00:10.260 --> 00:00:12.180
+and we'll use the console for this.
+
+7
+00:00:12.180 --> 00:00:13.626
+We'll get a high level approach
+
+8
+00:00:13.626 --> 00:00:16.080
+to all the various parameters you have
+
+9
+00:00:16.080 --> 00:00:17.640
+when launching an EC2 instance,
+
+10
+00:00:17.640 --> 00:00:19.230
+and you'll see there are many,
+
+11
+00:00:19.230 --> 00:00:21.150
+but we'll learn the most important ones.
+
+12
+00:00:21.150 --> 00:00:23.677
+And then we will launch a web server directly
+
+13
+00:00:23.677 --> 00:00:27.951
+on the EC2 instance using a piece of code we will pass
+
+14
+00:00:27.951 --> 00:00:31.920
+to the EC2 instance that is called the user data.
+
+15
+00:00:31.920 --> 00:00:33.690
+Finally, we'll learn how to start, stop
+
+16
+00:00:33.690 --> 00:00:36.150
+and terminate our instance.
+
+17
+00:00:36.150 --> 00:00:39.000
+So let's get started and launch our first EC2 instance.
+
+18
+00:00:39.000 --> 00:00:39.990
+For this, I'm gonna go
+
+19
+00:00:39.990 --> 00:00:43.860
+into the EC2 Console, then I will click on Instances
+
+20
+00:00:43.860 --> 00:00:46.740
+and then click on Launch Instances.
+
+21
+00:00:46.740 --> 00:00:50.280
+So in there I'm able to launch my first EC2 instance
+
+22
+00:00:50.280 --> 00:00:53.430
+and to do so I need to add a name and tags.
+
+23
+00:00:53.430 --> 00:00:55.984
+So the name is going to be My First Instance
+
+24
+00:00:55.984 --> 00:00:58.800
+and that is an app that is the name tag.
+
+25
+00:00:58.800 --> 00:01:00.660
+And if you wanted to add additional tags
+
+26
+00:01:00.660 --> 00:01:02.700
+to tag your instance differently,
+
+27
+00:01:02.700 --> 00:01:04.710
+then you could click there, but you don't need
+
+28
+00:01:04.710 --> 00:01:06.450
+to click on this using just name
+
+29
+00:01:06.450 --> 00:01:09.630
+as My First Instance is good enough.
+
+30
+00:01:09.630 --> 00:01:13.380
+Next, you need to choose a base image for your EC2 instance.
+
+31
+00:01:13.380 --> 00:01:15.960
+This is the operating system of your instance.
+
+32
+00:01:15.960 --> 00:01:18.660
+As you can see, there's a full catalog that you can search
+
+33
+00:01:18.660 --> 00:01:20.790
+from, but we're going to use the ones
+
+34
+00:01:20.790 --> 00:01:23.160
+from the quick start that are very, very helpful.
+
+35
+00:01:23.160 --> 00:01:26.340
+And the one we'll be using is the Amazon Linux,
+
+36
+00:01:26.340 --> 00:01:28.470
+which is provided by AWS.
+
+37
+00:01:28.470 --> 00:01:32.430
+So in it I will choose the Amazon Linux 2 AMI.
+
+38
+00:01:32.430 --> 00:01:35.100
+And as you can see that one is free tier eligible.
+
+39
+00:01:35.100 --> 00:01:37.380
+So we'll just leave it as is.
+
+40
+00:01:37.380 --> 00:01:39.540
+So this gives me Amazon Linux 2
+
+41
+00:01:39.540 --> 00:01:43.590
+and the architecture I will choose is 64-bits x86.
+
+42
+00:01:43.590 --> 00:01:46.770
+So everything left pretty much as a default
+
+43
+00:01:46.770 --> 00:01:50.310
+and we'll see in this section and more
+
+44
+00:01:50.310 --> 00:01:53.190
+and the other ones, you can create your own AMIs
+
+45
+00:01:53.190 --> 00:01:55.110
+and you can found them in here, okay?
+
+46
+00:01:55.110 --> 00:01:57.300
+But currently we're just going to use the ones provided
+
+47
+00:01:57.300 --> 00:01:59.880
+by AWS as quick starts.
+
+48
+00:01:59.880 --> 00:02:02.430
+Next, we need to choose an instance type.
+
+49
+00:02:02.430 --> 00:02:06.480
+And so instance types are going to differ based
+
+50
+00:02:06.480 --> 00:02:08.310
+on the number of CPUs they have, the amount
+
+51
+00:02:08.310 --> 00:02:10.440
+of memory they have and how much they cost.
+
+52
+00:02:10.440 --> 00:02:13.290
+As you can see right now I have a t2.micro selected.
+
+53
+00:02:13.290 --> 00:02:16.050
+This one is free tier eligible, so it will be free
+
+54
+00:02:16.050 --> 00:02:18.750
+to launch one of them during an entire month
+
+55
+00:02:18.750 --> 00:02:19.710
+if we leave it running.
+
+56
+00:02:19.710 --> 00:02:21.300
+So this is what we'll be using.
+
+57
+00:02:21.300 --> 00:02:23.160
+But in here you could scroll down
+
+58
+00:02:23.160 --> 00:02:25.590
+and look at other types of instances.
+
+59
+00:02:25.590 --> 00:02:28.140
+For example, t1.micro is also free tier eligible,
+
+60
+00:02:28.140 --> 00:02:29.700
+but that's older generation.
+
+61
+00:02:29.700 --> 00:02:31.530
+And as you can see, you have a bunch
+
+62
+00:02:31.530 --> 00:02:33.930
+of instances right here available to you.
+
+63
+00:02:33.930 --> 00:02:35.010
+Some of them are going
+
+64
+00:02:35.010 --> 00:02:37.560
+to be free tier eligible, some of them will not.
+
+65
+00:02:37.560 --> 00:02:39.540
+And by default, the one
+
+66
+00:02:39.540 --> 00:02:42.090
+that's gonna be free tier eligible is a t2.micro.
+
+67
+00:02:42.090 --> 00:02:44.250
+So we'll be using that one a lot.
+
+68
+00:02:44.250 --> 00:02:45.083
+If you wanted
+
+69
+00:02:45.083 --> 00:02:46.890
+to compare the instance types, you would just click on
+
+70
+00:02:46.890 --> 00:02:51.210
+that link and it shows you all the type of instances in here
+
+71
+00:02:51.210 --> 00:02:53.490
+as well as how much memory they have and so on.
+
+72
+00:02:53.490 --> 00:02:56.490
+So right now we'll be using a t2.micro.
+
+73
+00:02:56.490 --> 00:03:00.570
+Okay next, a key pair to log into your instance.
+
+74
+00:03:00.570 --> 00:03:04.230
+So this is necessary if we use the SSH utility
+
+75
+00:03:04.230 --> 00:03:07.440
+to access our instance and we will be using the SSH utility
+
+76
+00:03:07.440 --> 00:03:08.340
+in this course.
+
+77
+00:03:08.340 --> 00:03:11.610
+Therefore, it is required for us to create a key pair.
+
+78
+00:03:11.610 --> 00:03:13.590
+So as we can see right now there is no key pair
+
+79
+00:03:13.590 --> 00:03:15.930
+and we could proceed without a key pair,
+
+80
+00:03:15.930 --> 00:03:17.520
+but for now we won't do this.
+
+81
+00:03:17.520 --> 00:03:20.100
+So let's go ahead and create a new key pair
+
+82
+00:03:20.100 --> 00:03:24.000
+and the name is going to be EC2 Tutorial.
+
+83
+00:03:24.000 --> 00:03:26.130
+Then you need to choose a key pair type.
+
+84
+00:03:26.130 --> 00:03:30.480
+So we'll be using the RSA encrypted, okay, this is good.
+
+85
+00:03:30.480 --> 00:03:32.670
+And then the key pair format.
+
+86
+00:03:32.670 --> 00:03:36.210
+So if you have Mac or Linux
+
+87
+00:03:36.210 --> 00:03:41.210
+or Windows 10, then you can use the .pem format.
+
+88
+00:03:41.760 --> 00:03:43.920
+If you have Windows less than version 10,
+
+89
+00:03:43.920 --> 00:03:45.480
+for example Windows 7
+
+90
+00:03:45.480 --> 00:03:48.810
+or Windows 8, then you can do our shortcut
+
+91
+00:03:48.810 --> 00:03:52.650
+and directly use a ppk, which is going to be used for PuTTY
+
+92
+00:03:52.650 --> 00:03:55.530
+and PuTTY is how you do SSH on windows 7
+
+93
+00:03:55.530 --> 00:03:56.910
+and Windows 8.
+
+94
+00:03:56.910 --> 00:03:59.370
+So remember anything else but Windows 7
+
+95
+00:03:59.370 --> 00:04:03.360
+and Windows 8, choose .ppm else use ppk.
+
+96
+00:04:03.360 --> 00:04:05.160
+Okay, I should be clear enough, I'm going
+
+97
+00:04:05.160 --> 00:04:07.020
+to create this key pair and it is downloaded
+
+98
+00:04:07.020 --> 00:04:08.550
+for me directly.
+
+99
+00:04:08.550 --> 00:04:10.800
+So now it is selected automatically here.
+
+100
+00:04:10.800 --> 00:04:13.440
+Next we have to go into network settings.
+
+101
+00:04:13.440 --> 00:04:15.510
+So for now, I will not touch anything.
+
+102
+00:04:15.510 --> 00:04:18.960
+My instance is going to get a public IP
+
+103
+00:04:18.960 --> 00:04:21.150
+and then we need to connect to our instance.
+
+104
+00:04:21.150 --> 00:04:22.500
+And so for this, there's going
+
+105
+00:04:22.500 --> 00:04:24.330
+to be a security group attached
+
+106
+00:04:24.330 --> 00:04:28.170
+to our instance, which is going to control the traffic from
+
+107
+00:04:28.170 --> 00:04:31.950
+and to our instance, and therefore we can add rules.
+
+108
+00:04:31.950 --> 00:04:34.830
+And the first security group created will be called
+
+109
+00:04:34.830 --> 00:04:35.760
+launch-wizard-1.
+
+110
+00:04:35.760 --> 00:04:37.650
+So created by the console directly
+
+111
+00:04:37.650 --> 00:04:39.630
+and we can define multiple rules.
+
+112
+00:04:39.630 --> 00:04:41.250
+So the first rule we want to have is
+
+113
+00:04:41.250 --> 00:04:44.550
+to allow SSH traffic from anywhere.
+
+114
+00:04:44.550 --> 00:04:47.430
+So we leave it as this and this will create a rule
+
+115
+00:04:47.430 --> 00:04:50.310
+in our security group to allow SSH traffic,
+
+116
+00:04:50.310 --> 00:04:54.420
+but we also want to allow HTTP traffic from the internet.
+
+117
+00:04:54.420 --> 00:04:56.610
+So we'll tick that box and this is
+
+118
+00:04:56.610 --> 00:04:58.950
+because we're going to launch a web server
+
+119
+00:04:58.950 --> 00:05:01.410
+on our EC2 instance, so we need it as well.
+
+120
+00:05:01.410 --> 00:05:03.480
+As we're now going to use HTTPS
+
+121
+00:05:03.480 --> 00:05:05.913
+for now, we don't need to tick the second box.
+
+122
+00:05:07.140 --> 00:05:08.130
+Let's configure the storage
+
+123
+00:05:08.130 --> 00:05:09.600
+so then we can configure the storage.
+
+124
+00:05:09.600 --> 00:05:14.220
+And as we can see we have eight gigabits gp2 root volume
+
+125
+00:05:14.220 --> 00:05:15.810
+that will leave it as is, okay?
+
+126
+00:05:15.810 --> 00:05:18.570
+Because in the free tier we can get up to 30 gigabytes
+
+127
+00:05:18.570 --> 00:05:20.940
+of EBS general purpose SSD storage.
+
+128
+00:05:20.940 --> 00:05:25.170
+So this is good. And we only have one volume necessary.
+
+129
+00:05:25.170 --> 00:05:27.660
+If you go into advanced, you could configure them
+
+130
+00:05:27.660 --> 00:05:30.180
+and see a little bit more information, okay?
+
+131
+00:05:30.180 --> 00:05:31.200
+And the one important thing
+
+132
+00:05:31.200 --> 00:05:34.320
+to note in here is the delete on termination.
+
+133
+00:05:34.320 --> 00:05:37.020
+By default, it is unable to yes, I just did advanced
+
+134
+00:05:37.020 --> 00:05:39.000
+to show you that one detail, okay?
+
+135
+00:05:39.000 --> 00:05:43.110
+That means that once we terminate our EC2 instance, then
+
+136
+00:05:43.110 --> 00:05:45.543
+that volume is also going to be deleted.
+
+137
+00:05:46.470 --> 00:05:48.720
+Okay, so we leave everything as is
+
+138
+00:05:48.720 --> 00:05:50.940
+and we'll be get back into the simple mode.
+
+139
+00:05:50.940 --> 00:05:51.990
+Okay?
+
+140
+00:05:51.990 --> 00:05:53.430
+Next, for advanced details,
+
+141
+00:05:53.430 --> 00:05:55.050
+this is where it gets interesting.
+
+142
+00:05:55.050 --> 00:05:57.960
+So I will skip spot, I will skip IAM instance profile.
+
+143
+00:05:57.960 --> 00:05:58.830
+Don't worry, I will go
+
+144
+00:05:58.830 --> 00:06:01.380
+over them once we need to explore them.
+
+145
+00:06:01.380 --> 00:06:03.600
+I will skip all of that. So let's scroll down.
+
+146
+00:06:03.600 --> 00:06:06.030
+Let's scroll down, let's scroll down all the way
+
+147
+00:06:06.030 --> 00:06:06.863
+to the bottom.
+
+148
+00:06:06.863 --> 00:06:09.240
+And at the bottom there is user data.
+
+149
+00:06:09.240 --> 00:06:12.240
+User data is when we pass a script.
+
+150
+00:06:12.240 --> 00:06:15.690
+So some comments to our EC2 instance
+
+151
+00:06:15.690 --> 00:06:18.990
+to execute on the first launch of our EC2 instance
+
+152
+00:06:18.990 --> 00:06:20.760
+and only the first launch.
+
+153
+00:06:20.760 --> 00:06:22.890
+And therefore on the first launch, we want
+
+154
+00:06:22.890 --> 00:06:25.410
+to be able to pass these command right here.
+
+155
+00:06:25.410 --> 00:06:27.810
+So for this, you go into your code, you go
+
+156
+00:06:27.810 --> 00:06:29.640
+to the EC2 fundamentals,
+
+157
+00:06:29.640 --> 00:06:34.640
+and then the EC2 user data set file, you copy entirely this,
+
+158
+00:06:35.640 --> 00:06:37.710
+so all of it.
+
+159
+00:06:37.710 --> 00:06:40.290
+And then you paste it here. So you paste everything.
+
+160
+00:06:40.290 --> 00:06:42.210
+And that means that this script is going
+
+161
+00:06:42.210 --> 00:06:45.600
+to be executed when the instance is first started
+
+162
+00:06:45.600 --> 00:06:46.800
+and only once, okay?
+
+163
+00:06:46.800 --> 00:06:49.020
+In the whole lifecycle of the instance.
+
+164
+00:06:49.020 --> 00:06:50.370
+And what it's going to do is that it's going
+
+165
+00:06:50.370 --> 00:06:54.690
+to update a few things, then install the HTTPD web server
+
+166
+00:06:54.690 --> 00:06:59.100
+on the machine and then write a file, an HTML file.
+
+167
+00:06:59.100 --> 00:07:00.930
+That will be our web server.
+
+168
+00:07:00.930 --> 00:07:03.510
+And so you don't need to know code or know these commands.
+
+169
+00:07:03.510 --> 00:07:04.923
+Okay?
+
+170
+00:07:04.923 --> 00:07:07.230
+This is provided to you to illustrate a few things
+
+171
+00:07:07.230 --> 00:07:08.883
+on this lecture.
+
+172
+00:07:09.840 --> 00:07:13.440
+So finally for summary, we want to start one instance.
+
+173
+00:07:13.440 --> 00:07:17.610
+This is great and we can review everything we have here.
+
+174
+00:07:17.610 --> 00:07:19.560
+It all looks good. We are very happy.
+
+175
+00:07:19.560 --> 00:07:24.150
+And as you can see in the free tier, we get a first year
+
+176
+00:07:24.150 --> 00:07:29.130
+of 750 hours of 2.micro, which is running it for one month.
+
+177
+00:07:29.130 --> 00:07:30.510
+So that's every month.
+
+178
+00:07:30.510 --> 00:07:32.550
+And if you don't have a t.2micro
+
+179
+00:07:32.550 --> 00:07:36.660
+in your region, then it's going to be a t3.micro, okay?
+
+180
+00:07:36.660 --> 00:07:41.340
+And then also we get 30 gigabytes of EBS storage and so on.
+
+181
+00:07:41.340 --> 00:07:44.640
+So let's launch this instance and the instance is going
+
+182
+00:07:44.640 --> 00:07:45.473
+to be launched.
+
+183
+00:07:45.473 --> 00:07:49.290
+Let's go to View all Instances, Refresh.
+
+184
+00:07:49.290 --> 00:07:51.930
+And now my instance is in pending state.
+
+185
+00:07:51.930 --> 00:07:54.150
+So it's gonna take about 10, 15 seconds
+
+186
+00:07:54.150 --> 00:07:55.860
+for the instance to come up.
+
+187
+00:07:55.860 --> 00:07:58.560
+And this is the whole power of the cloud.
+
+188
+00:07:58.560 --> 00:08:03.560
+Thanks to the cloud, I am able to create an instance or 100
+
+189
+00:08:03.600 --> 00:08:06.840
+of them very quickly in less than 10 seconds
+
+190
+00:08:06.840 --> 00:08:09.420
+without me owning any single server.
+
+191
+00:08:09.420 --> 00:08:11.280
+So that is extremely powerful
+
+192
+00:08:11.280 --> 00:08:14.520
+and we just scratched the surface of the power of the cloud,
+
+193
+00:08:14.520 --> 00:08:16.830
+obviously because the course is just getting started,
+
+194
+00:08:16.830 --> 00:08:19.740
+but you can get a feeling of the advances
+
+195
+00:08:19.740 --> 00:08:22.950
+and the speed we can have on the cloud thanks to this.
+
+196
+00:08:22.950 --> 00:08:25.920
+So as you can see now my instance is running
+
+197
+00:08:25.920 --> 00:08:29.790
+and right now I wanna show you a few things, okay?
+
+198
+00:08:29.790 --> 00:08:30.623
+The first one is
+
+199
+00:08:30.623 --> 00:08:33.300
+that the instance name is My First Instance,
+
+200
+00:08:33.300 --> 00:08:35.250
+and there's an instance ID which is just
+
+201
+00:08:35.250 --> 00:08:38.430
+a unique identifier for my instance.
+
+202
+00:08:38.430 --> 00:08:40.560
+There is a public IPv4 address.
+
+203
+00:08:40.560 --> 00:08:44.490
+This is what we're going to use to access our EC2 instance.
+
+204
+00:08:44.490 --> 00:08:47.439
+Or there is a private IPv4 address, which is how
+
+205
+00:08:47.439 --> 00:08:49.890
+to access that instance internally
+
+206
+00:08:49.890 --> 00:08:53.310
+on the AWS network, which is private.
+
+207
+00:08:53.310 --> 00:08:56.100
+The instance site is running and we get some information
+
+208
+00:08:56.100 --> 00:09:00.240
+around host name, private DNS, which instance that we have.
+
+209
+00:09:00.240 --> 00:09:03.630
+So t2.micro as well as if you scroll
+
+210
+00:09:03.630 --> 00:09:07.281
+down the AMI we're using, which is Amazon Linux 2,
+
+211
+00:09:07.281 --> 00:09:12.281
+and the key pair we're using, which is EC2 tutorial, okay?
+
+212
+00:09:13.396 --> 00:09:16.530
+So you can have a look at a few details in here.
+
+213
+00:09:16.530 --> 00:09:17.850
+You have more information.
+
+214
+00:09:17.850 --> 00:09:20.400
+For example, on security, we get some information
+
+215
+00:09:20.400 --> 00:09:22.410
+on the security group, which was created called
+
+216
+00:09:22.410 --> 00:09:25.200
+launch-wizard-1 with these inbound rules.
+
+217
+00:09:25.200 --> 00:09:27.810
+So port 22 accessible from everywhere
+
+218
+00:09:27.810 --> 00:09:29.850
+and port 80 accessible from everywhere.
+
+219
+00:09:29.850 --> 00:09:31.830
+So you should have something similar, okay?
+
+220
+00:09:31.830 --> 00:09:34.780
+If you don't start over because you probably missed a step.
+
+221
+00:09:35.760 --> 00:09:38.130
+And the rule allowing all communication
+
+222
+00:09:38.130 --> 00:09:41.580
+outwards, which allows the instance to access the internet.
+
+223
+00:09:41.580 --> 00:09:44.172
+For storage we saw that, yes, we created one volume
+
+224
+00:09:44.172 --> 00:09:46.653
+of eight gigabytes, so we're good to go.
+
+225
+00:09:47.850 --> 00:09:49.020
+So now let's have a look
+
+226
+00:09:49.020 --> 00:09:51.390
+at the web server running on my instance.
+
+227
+00:09:51.390 --> 00:09:55.320
+And for this you go on public IPv4 address, you copy this
+
+228
+00:09:55.320 --> 00:09:57.030
+or you click on Open Address.
+
+229
+00:09:57.030 --> 00:09:59.130
+And as you can see, it doesn't work.
+
+230
+00:09:59.130 --> 00:10:00.330
+Or if you click on it, copy
+
+231
+00:10:00.330 --> 00:10:03.630
+and then paste it, you press Enter, it's going to work.
+
+232
+00:10:03.630 --> 00:10:06.780
+So it depends on the web browsers you have and so on. Okay?
+
+233
+00:10:06.780 --> 00:10:08.555
+But the reason it doesn't work here is that
+
+234
+00:10:08.555 --> 00:10:10.980
+in the URL you need to make sure
+
+235
+00:10:10.980 --> 00:10:13.260
+that you're using the HTTP protocol,
+
+236
+00:10:13.260 --> 00:10:17.130
+so http:// and then the IP.
+
+237
+00:10:17.130 --> 00:10:20.040
+Because if you use HTTPS, this is not going to work.
+
+238
+00:10:20.040 --> 00:10:22.020
+It's going to give you an infinite loading screen
+
+239
+00:10:22.020 --> 00:10:23.370
+which was happening right here.
+
+240
+00:10:23.370 --> 00:10:28.370
+So please make sure to use http:// and then the IP address.
+
+241
+00:10:29.070 --> 00:10:30.720
+And you're going to get this screen.
+
+242
+00:10:30.720 --> 00:10:32.670
+And in programming, when you do something
+
+243
+00:10:32.670 --> 00:10:35.130
+for the first time, you usually say Hello World.
+
+244
+00:10:35.130 --> 00:10:37.290
+So this web server is saying,
+
+245
+00:10:37.290 --> 00:10:40.770
+Hello World from and this IP right here,
+
+246
+00:10:40.770 --> 00:10:43.200
+which is not the public IP, this IP right here,
+
+247
+00:10:43.200 --> 00:10:46.920
+172-31-33-135 actually corresponds
+
+248
+00:10:46.920 --> 00:10:49.110
+to the private IPv4 address.
+
+249
+00:10:49.110 --> 00:10:51.000
+So this is something that I program myself.
+
+250
+00:10:51.000 --> 00:10:53.670
+So we use the public IP address to access it,
+
+251
+00:10:53.670 --> 00:10:56.040
+but we have the private IP address in here
+
+252
+00:10:56.040 --> 00:10:58.020
+and we have the hello world.
+
+253
+00:10:58.020 --> 00:11:01.230
+And if you go too fast, you're going to get no messages.
+
+254
+00:11:01.230 --> 00:11:04.560
+So if you go too fast, just wait five minutes, get back
+
+255
+00:11:04.560 --> 00:11:07.560
+to it, refresh this page and you'll see it.
+
+256
+00:11:07.560 --> 00:11:10.680
+Okay, so cool, we have a web server running, this is great.
+
+257
+00:11:10.680 --> 00:11:12.090
+Now let's explore a few options.
+
+258
+00:11:12.090 --> 00:11:14.040
+So we have an EC2 instance and it's running,
+
+259
+00:11:14.040 --> 00:11:16.770
+but if we don't need it, we can go to instance states
+
+260
+00:11:16.770 --> 00:11:19.020
+and then click on Stop Instance.
+
+261
+00:11:19.020 --> 00:11:20.460
+And in the cloud you can start
+
+262
+00:11:20.460 --> 00:11:22.620
+and stop instances just as you wish.
+
+263
+00:11:22.620 --> 00:11:24.720
+And why would you stop an instance?
+
+264
+00:11:24.720 --> 00:11:27.390
+Well, the longer you leave it running, the more you're going
+
+265
+00:11:27.390 --> 00:11:28.770
+to pay of course.
+
+266
+00:11:28.770 --> 00:11:29.790
+But if you decide
+
+267
+00:11:29.790 --> 00:11:33.780
+to stop an instance, then AWS will not bill you for it.
+
+268
+00:11:33.780 --> 00:11:35.164
+The instance state is kept
+
+269
+00:11:35.164 --> 00:11:38.460
+because you have a volume attached to it,
+
+270
+00:11:38.460 --> 00:11:40.230
+but at least you're not paying for it.
+
+271
+00:11:40.230 --> 00:11:42.360
+So we can see right now, well the instance is
+
+272
+00:11:42.360 --> 00:11:43.926
+in a stopping state, and if we try
+
+273
+00:11:43.926 --> 00:11:46.620
+to refresh this page, it's going to,
+
+274
+00:11:46.620 --> 00:11:48.300
+of course it's not going to work
+
+275
+00:11:48.300 --> 00:11:51.600
+because well you don't have the server running anymore.
+
+276
+00:11:51.600 --> 00:11:53.010
+So you can see it gets
+
+277
+00:11:53.010 --> 00:11:55.470
+to some like infinite loading experience.
+
+278
+00:11:55.470 --> 00:11:56.303
+Okay?
+
+279
+00:11:56.303 --> 00:11:58.710
+So my instance is now stopped and if I wanted
+
+280
+00:11:58.710 --> 00:12:00.480
+to actually I could get rid of it.
+
+281
+00:12:00.480 --> 00:12:01.920
+And in the cloud it's very common
+
+282
+00:12:01.920 --> 00:12:04.680
+to start instances and then get rid of them.
+
+283
+00:12:04.680 --> 00:12:06.240
+We're very quickly just to try it out
+
+284
+00:12:06.240 --> 00:12:08.100
+because this is the cloud and we can do whatever we want.
+
+285
+00:12:08.100 --> 00:12:12.000
+So we can do in instance state and then terminate instance.
+
+286
+00:12:12.000 --> 00:12:14.940
+If we do so, we're going to get a warning message
+
+287
+00:12:14.940 --> 00:12:16.320
+and don't click on Terminate
+
+288
+00:12:16.320 --> 00:12:18.630
+because I want to keep this instance with me, okay?
+
+289
+00:12:18.630 --> 00:12:20.220
+But this is how we would get rid of it.
+
+290
+00:12:20.220 --> 00:12:22.830
+So I cancel this, but what I'm going to do now is I'm going
+
+291
+00:12:22.830 --> 00:12:24.240
+to start my instance again.
+
+292
+00:12:24.240 --> 00:12:27.900
+So I go to Instance State and then Start Instance.
+
+293
+00:12:27.900 --> 00:12:30.930
+And now as you can see, the state is pending,
+
+294
+00:12:30.930 --> 00:12:33.720
+so it is getting started and I just wait for it
+
+295
+00:12:33.720 --> 00:12:35.280
+to be started in the green state
+
+296
+00:12:35.280 --> 00:12:37.630
+and I will show you something very interesting.
+
+297
+00:12:38.550 --> 00:12:42.360
+Okay, so my instance is now running, and if I go here
+
+298
+00:12:42.360 --> 00:12:44.520
+and stop the refresh and try again to refresh,
+
+299
+00:12:44.520 --> 00:12:47.730
+as you can see, it still goes into an infinite loop.
+
+300
+00:12:47.730 --> 00:12:49.560
+Well, you may say while the server is running, Stefan.
+
+301
+00:12:49.560 --> 00:12:52.590
+So why is it not displaying the message now?
+
+302
+00:12:52.590 --> 00:12:53.423
+It is displaying here,
+
+303
+00:12:53.423 --> 00:12:54.990
+but like from the old one, of course.
+
+304
+00:12:54.990 --> 00:12:58.440
+So here the IP start with 54, right?
+
+305
+00:12:58.440 --> 00:13:01.470
+But here, if you click on here, now the public IP start
+
+306
+00:13:01.470 --> 00:13:03.270
+with 3.250.
+
+307
+00:13:03.270 --> 00:13:05.790
+So the public IP actually has changed.
+
+308
+00:13:05.790 --> 00:13:08.610
+So if you stop an instance and then you start it later
+
+309
+00:13:08.610 --> 00:13:13.020
+on, then AWS will maybe change its public IPv4.
+
+310
+00:13:13.020 --> 00:13:15.102
+So therefore you need
+
+311
+00:13:15.102 --> 00:13:17.670
+to copy the new IPv4, make sure to use HTP.
+
+312
+00:13:17.670 --> 00:13:20.970
+And voila, we have access back to our EC2 instance.
+
+313
+00:13:20.970 --> 00:13:24.420
+But one thing that has not changed is the private IPv4,
+
+314
+00:13:24.420 --> 00:13:26.940
+the private IP will always stay the same,
+
+315
+00:13:26.940 --> 00:13:29.250
+but the public IPv4 may change.
+
+316
+00:13:29.250 --> 00:13:31.860
+Okay? So well, so that's it for this hands-on.
+
+317
+00:13:31.860 --> 00:13:33.420
+We have seen quite a lot of things.
+
+318
+00:13:33.420 --> 00:13:35.190
+We've launched our first EC2 instance,
+
+319
+00:13:35.190 --> 00:13:36.150
+which is very exciting.
+
+320
+00:13:36.150 --> 00:13:38.370
+Our first web server in the cloud.
+
+321
+00:13:38.370 --> 00:13:40.410
+We've had to look at some of the power of the cloud.
+
+322
+00:13:40.410 --> 00:13:42.270
+You're just using some API calls
+
+323
+00:13:42.270 --> 00:13:44.880
+to stop an instance, start instance, and so on.
+
+324
+00:13:44.880 --> 00:13:46.980
+So I hope you liked it and I will see you
+
+325
+00:13:46.980 --> 00:13:47.980
+in the next lecture.
+

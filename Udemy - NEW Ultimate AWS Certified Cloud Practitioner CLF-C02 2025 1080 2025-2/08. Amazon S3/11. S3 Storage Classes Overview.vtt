@@ -1,0 +1,614 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:01.130
+<v Lecturer>Okay, so let's discuss</v>
+
+2
+00:00:01.130 --> 00:00:03.850
+different storage classes we have for Amazon S three.
+
+3
+00:00:03.850 --> 00:00:06.840
+The first one is Amazon S three Standard-General Purpose.
+
+4
+00:00:06.840 --> 00:00:09.300
+Then we have Amazon S three-Infrequent Access.
+
+5
+00:00:09.300 --> 00:00:12.120
+Then we have Amazon S three One Zone-Infrequent Access.
+
+6
+00:00:12.120 --> 00:00:14.480
+Then we have Glacier Instant Retrieval,
+
+7
+00:00:14.480 --> 00:00:18.120
+Glacier Flexible Retrieval, Glacier Deep Archive,
+
+8
+00:00:18.120 --> 00:00:21.030
+and then finally, the Amazon S three Intelligent Tiering.
+
+9
+00:00:21.030 --> 00:00:22.800
+So we'll learn about all these classes in depth
+
+10
+00:00:22.800 --> 00:00:26.120
+in this lecture, but you have to know them for the exam.
+
+11
+00:00:26.120 --> 00:00:29.140
+Then when you create an object in Amazon S three,
+
+12
+00:00:29.140 --> 00:00:30.710
+you can choose its class,
+
+13
+00:00:30.710 --> 00:00:33.440
+you can also modify its storage class manually,
+
+14
+00:00:33.440 --> 00:00:34.530
+or as we'll see as well,
+
+15
+00:00:34.530 --> 00:00:37.410
+you can use Amazon S3 Lifecycle configurations
+
+16
+00:00:37.410 --> 00:00:39.300
+to move objects automatically
+
+17
+00:00:39.300 --> 00:00:41.920
+between all these storage classes.
+
+18
+00:00:41.920 --> 00:00:43.460
+So first, before we go into the classes,
+
+19
+00:00:43.460 --> 00:00:47.470
+let's define the concept of durability and availability.
+
+20
+00:00:47.470 --> 00:00:50.400
+So durability represents how many times an object
+
+21
+00:00:50.400 --> 00:00:52.387
+is going to be lost by Amazon S three.
+
+22
+00:00:52.387 --> 00:00:55.440
+And so Amazon S three has a very high durability.
+
+23
+00:00:55.440 --> 00:00:56.330
+It's called 11 nines.
+
+24
+00:00:56.330 --> 00:00:59.490
+So nine nine point and then nine times nine percent.
+
+25
+00:00:59.490 --> 00:01:01.280
+And that means that on average,
+
+26
+00:01:01.280 --> 00:01:03.950
+if you store 10 million objects on Amazon S three,
+
+27
+00:01:03.950 --> 00:01:06.810
+you can expect to lose a single object
+
+28
+00:01:06.810 --> 00:01:08.420
+once every 10,000 years.
+
+29
+00:01:08.420 --> 00:01:10.110
+So it's quite durable.
+
+30
+00:01:10.110 --> 00:01:12.320
+And the durability is the same
+
+31
+00:01:12.320 --> 00:01:15.520
+for all storage classes in Amazon S three.
+
+32
+00:01:15.520 --> 00:01:20.140
+Availability represents how readily a service is.
+
+33
+00:01:20.140 --> 00:01:22.370
+And so this depends on the storage class.
+
+34
+00:01:22.370 --> 00:01:27.370
+For example, S three Standard has a 99.99% availability.
+
+35
+00:01:27.670 --> 00:01:30.510
+That means that about 53 minutes a year,
+
+36
+00:01:30.510 --> 00:01:32.330
+the service is not going to be available.
+
+37
+00:01:32.330 --> 00:01:34.380
+That means that you'll get some errors
+
+38
+00:01:34.380 --> 00:01:35.580
+when you deal with the service.
+
+39
+00:01:35.580 --> 00:01:37.270
+So you need to take that into account
+
+40
+00:01:37.270 --> 00:01:39.740
+when you develop your applications.
+
+41
+00:01:39.740 --> 00:01:40.573
+Okay.
+
+42
+00:01:40.573 --> 00:01:43.520
+So S3 standard has 99.99 availability.
+
+43
+00:01:43.520 --> 00:01:45.870
+It's going to be used for frequently accessed data.
+
+44
+00:01:45.870 --> 00:01:48.947
+This is the kind of storage you use by default,
+
+45
+00:01:48.947 --> 00:01:51.620
+and it has low latency and high throughputs.
+
+46
+00:01:51.620 --> 00:01:54.110
+It can sustain two concurrent facility failures
+
+47
+00:01:54.110 --> 00:01:57.370
+on the side of AWS and the use cases for it
+
+48
+00:01:57.370 --> 00:01:59.260
+is going to be big data analytics,
+
+49
+00:01:59.260 --> 00:02:00.640
+mobile and gaming application,
+
+50
+00:02:00.640 --> 00:02:02.563
+as well as content distribution.
+
+51
+00:02:03.700 --> 00:02:06.560
+Next, we have S three infrequent access.
+
+52
+00:02:06.560 --> 00:02:08.880
+So this is data that is going to be as the name indicates,
+
+53
+00:02:08.880 --> 00:02:10.080
+less frequently accessed,
+
+54
+00:02:10.080 --> 00:02:12.310
+but requires rapid access when needed.
+
+55
+00:02:12.310 --> 00:02:14.870
+It's going to be lower cost than S three Standard,
+
+56
+00:02:14.870 --> 00:02:17.430
+but you will have a cost on retrieval.
+
+57
+00:02:17.430 --> 00:02:22.180
+So the S three Standard-IA is 99.9% availability,
+
+58
+00:02:22.180 --> 00:02:23.580
+so a bit less available.
+
+59
+00:02:23.580 --> 00:02:26.340
+And the use case for it is going to be Disaster Recovery
+
+60
+00:02:26.340 --> 00:02:28.110
+and backups.
+
+61
+00:02:28.110 --> 00:02:32.540
+And Amazon S three One Zone-Infrequent access, One Zone-IA.
+
+62
+00:02:32.540 --> 00:02:37.070
+ESC has high durability, okay, within a single AZ only,
+
+63
+00:02:37.070 --> 00:02:38.550
+and the data is going to be lost
+
+64
+00:02:38.550 --> 00:02:41.050
+if the AZ is somewhat destroyed.
+
+65
+00:02:41.050 --> 00:02:42.800
+As well as durability, it's even lower.
+
+66
+00:02:42.800 --> 00:02:45.440
+So it's 99.5% availability.
+
+67
+00:02:45.440 --> 00:02:48.080
+And so the use cases of S three One Zone-IA
+
+68
+00:02:48.080 --> 00:02:50.870
+is to store secondary copy of backups
+
+69
+00:02:50.870 --> 00:02:53.963
+of maybe on-premises data, or data you can recreate.
+
+70
+00:02:55.270 --> 00:02:57.740
+Next we have the Glacier Storage Classes.
+
+71
+00:02:57.740 --> 00:03:00.850
+So Glacier is, as the name it gets very cold,
+
+72
+00:03:00.850 --> 00:03:02.870
+so it's low cost object storage
+
+73
+00:03:02.870 --> 00:03:05.070
+meant for archiving and backup.
+
+74
+00:03:05.070 --> 00:03:07.610
+And the pricing is that you're going to pay for the storage
+
+75
+00:03:07.610 --> 00:03:09.890
+plus pay for a retrieval cost.
+
+76
+00:03:09.890 --> 00:03:12.850
+In your three classes of storage within Glacier,
+
+77
+00:03:12.850 --> 00:03:16.100
+you have the Amazon S three Glacier Instant Retrieval.
+
+78
+00:03:16.100 --> 00:03:18.310
+And this gives you milliseconds retrieval
+
+79
+00:03:18.310 --> 00:03:19.460
+which is great for example,
+
+80
+00:03:19.460 --> 00:03:22.310
+for data that's accessed once a quarter,
+
+81
+00:03:22.310 --> 00:03:25.120
+and the minimum store duration is 90 days.
+
+82
+00:03:25.120 --> 00:03:26.790
+So this is backup,
+
+83
+00:03:26.790 --> 00:03:29.870
+but you need to access it within milliseconds.
+
+84
+00:03:29.870 --> 00:03:32.270
+Then we have the Glacier Flexible Retrieval.
+
+85
+00:03:32.270 --> 00:03:33.960
+It used to be called Amazon S three Glacier
+
+86
+00:03:33.960 --> 00:03:36.330
+but then they renamed things as they added more tier.
+
+87
+00:03:36.330 --> 00:03:38.950
+So the Amazon Glacier Flexible Retrieval
+
+88
+00:03:38.950 --> 00:03:40.720
+has three flexibility.
+
+89
+00:03:40.720 --> 00:03:43.270
+So you have expedited where you get the data back
+
+90
+00:03:43.270 --> 00:03:45.230
+between one and five minutes.
+
+91
+00:03:45.230 --> 00:03:46.850
+You have standard to get the data back
+
+92
+00:03:46.850 --> 00:03:50.150
+between three to five hours, or bulk, which is free,
+
+93
+00:03:50.150 --> 00:03:53.930
+where you get data back between five to 12 hours.
+
+94
+00:03:53.930 --> 00:03:57.230
+And the minimum storage duration as well is 90 days.
+
+95
+00:03:57.230 --> 00:04:00.170
+So here, instance means you retrieve data instantly
+
+96
+00:04:00.170 --> 00:04:01.750
+and flexible means that you're willing
+
+97
+00:04:01.750 --> 00:04:05.490
+to wait up to for example, 12 hours to retrieve your data.
+
+98
+00:04:05.490 --> 00:04:07.560
+And then we have Glacier Deep Archive
+
+99
+00:04:07.560 --> 00:04:09.550
+which is meant for long term storage.
+
+100
+00:04:09.550 --> 00:04:11.520
+So we have two tiers of retrieval as well.
+
+101
+00:04:11.520 --> 00:04:15.330
+We have Standard of 12 hours and Bulk of 48 hours.
+
+102
+00:04:15.330 --> 00:04:17.840
+So you may be ready to wait a lot of time
+
+103
+00:04:17.840 --> 00:04:18.673
+to retrieve data,
+
+104
+00:04:18.673 --> 00:04:20.700
+but it's going to give you the lowest cost,
+
+105
+00:04:20.700 --> 00:04:25.280
+and as well, the minimum storage duration is 180 days.
+
+106
+00:04:25.280 --> 00:04:27.480
+So as you know, that's a lot of storage classes
+
+107
+00:04:27.480 --> 00:04:30.260
+and there's one last called S three Intelligent- Tiering,
+
+108
+00:04:30.260 --> 00:04:32.410
+which is going to allow you to move objects
+
+109
+00:04:32.410 --> 00:04:35.540
+between excess tiers based on usage patterns.
+
+110
+00:04:35.540 --> 00:04:37.460
+And for this, you're going to incur a small
+
+111
+00:04:37.460 --> 00:04:40.560
+monthly monitoring fee, and auto tiering fee.
+
+112
+00:04:40.560 --> 00:04:42.060
+And there are no retrieval charges
+
+113
+00:04:42.060 --> 00:04:43.150
+in S three Intelligent- Tiering.
+
+114
+00:04:43.150 --> 00:04:46.130
+So there is the frequent access tier that's automatic
+
+115
+00:04:46.130 --> 00:04:47.370
+the default tier.
+
+116
+00:04:47.370 --> 00:04:49.570
+Then we have the Infrequent Access tier
+
+117
+00:04:49.570 --> 00:04:52.460
+for objects not accessed for example, for 30 days.
+
+118
+00:04:52.460 --> 00:04:55.350
+Then you have the Archive Instant Access tier,
+
+119
+00:04:55.350 --> 00:04:58.860
+automatic as well for objects not accessed over 90 days.
+
+120
+00:04:58.860 --> 00:05:02.010
+And then the Archive Access tier that's optional.
+
+121
+00:05:02.010 --> 00:05:04.800
+And you can configure it from 90 days to 700 plus days.
+
+122
+00:05:04.800 --> 00:05:07.000
+And then you have the Deep Archive Access tier
+
+123
+00:05:07.000 --> 00:05:09.710
+also optional, that you can configure for objects
+
+124
+00:05:09.710 --> 00:05:12.110
+that haven't been accessed between 180 days
+
+125
+00:05:12.110 --> 00:05:13.800
+to 700 plus days.
+
+126
+00:05:13.800 --> 00:05:14.830
+Okay.
+
+127
+00:05:14.830 --> 00:05:16.710
+So S three Intelligent-Tiering is really
+
+128
+00:05:16.710 --> 00:05:19.350
+to allow you to just sit back and relax
+
+129
+00:05:19.350 --> 00:05:22.630
+while S three moves objects for you.
+
+130
+00:05:22.630 --> 00:05:24.410
+So if you compare all the storage classes
+
+131
+00:05:24.410 --> 00:05:26.140
+you don't need to remember these numbers,
+
+132
+00:05:26.140 --> 00:05:28.420
+but it's just for you to make sense of what they are.
+
+133
+00:05:28.420 --> 00:05:31.160
+So you get durability of 11 nine's everywhere.
+
+134
+00:05:31.160 --> 00:05:34.630
+Then as availability goes down, the less zones you have,
+
+135
+00:05:34.630 --> 00:05:36.030
+of course.
+
+136
+00:05:36.030 --> 00:05:37.770
+It just shows you like for example
+
+137
+00:05:37.770 --> 00:05:39.570
+the minimum storage duration chart and so on.
+
+138
+00:05:39.570 --> 00:05:42.960
+So take some time to look at this diagram on your own.
+
+139
+00:05:42.960 --> 00:05:44.280
+You should understand it,
+
+140
+00:05:44.280 --> 00:05:46.850
+but you should not remember it for sure.
+
+141
+00:05:46.850 --> 00:05:49.290
+So if we look at some pricing, for example
+
+142
+00:05:49.290 --> 00:05:50.640
+in the us-east-one,
+
+143
+00:05:50.640 --> 00:05:52.270
+so this is the kind of pricing you would have
+
+144
+00:05:52.270 --> 00:05:53.930
+for all the storage classes.
+
+145
+00:05:53.930 --> 00:05:57.300
+And again, you're not supposed to remember everything.
+
+146
+00:05:57.300 --> 00:05:58.870
+But it's good for you to have a look at it
+
+147
+00:05:58.870 --> 00:06:00.700
+on your own time, just to make sure you understand.
+
+148
+00:06:00.700 --> 00:06:03.510
+Because if you understand what the classes name are,
+
+149
+00:06:03.510 --> 00:06:06.850
+then you should be able to make sense of these classes.
+
+150
+00:06:06.850 --> 00:06:07.720
+Okay?
+
+151
+00:06:07.720 --> 00:06:08.830
+So that's it for the lecture.
+
+152
+00:06:08.830 --> 00:06:09.760
+I hope you liked it.
+
+153
+00:06:09.760 --> 00:06:11.710
+And I will see you in the next lecture.
+

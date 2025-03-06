@@ -1,0 +1,114 @@
+WEBVTT
+
+1
+00:00:00.210 --> 00:00:03.900
+<v Instructor>So now let's talk about AWS Firewall Manager.</v>
+
+2
+00:00:03.900 --> 00:00:05.910
+So it's a service that's very simple.
+
+3
+00:00:05.910 --> 00:00:09.030
+It allows you to manage all the security rules
+
+4
+00:00:09.030 --> 00:00:12.630
+in all the accounts of your AWS Organization
+
+5
+00:00:12.630 --> 00:00:14.430
+in a central place.
+
+6
+00:00:14.430 --> 00:00:16.530
+So from an exam perspective, you're going
+
+7
+00:00:16.530 --> 00:00:20.820
+to usually get the question on VPC Security Groups.
+
+8
+00:00:20.820 --> 00:00:22.230
+So if you see a question
+
+9
+00:00:22.230 --> 00:00:25.020
+around managing your VPC Security Groups
+
+10
+00:00:25.020 --> 00:00:28.200
+across multiple accounts in an organization,
+
+11
+00:00:28.200 --> 00:00:31.710
+think no more than the AWS Firewall Manager.
+
+12
+00:00:31.710 --> 00:00:33.540
+Now, I want to tell you a bit more about it.
+
+13
+00:00:33.540 --> 00:00:36.360
+So on top of managing VPC Security Groups,
+
+14
+00:00:36.360 --> 00:00:40.800
+you can also manage WAF rules, AWS Shield Advanced rules,
+
+15
+00:00:40.800 --> 00:00:44.670
+as well as AWS Network Firewall and their other services.
+
+16
+00:00:44.670 --> 00:00:46.170
+But from an exam perspective,
+
+17
+00:00:46.170 --> 00:00:47.370
+I think the most important one
+
+18
+00:00:47.370 --> 00:00:49.860
+is going to be the Security Groups.
+
+19
+00:00:49.860 --> 00:00:53.730
+Now, whenever you apply these rules in Firewall Manager,
+
+20
+00:00:53.730 --> 00:00:54.960
+they're going to be applied
+
+21
+00:00:54.960 --> 00:00:58.380
+to all the current and future accounts
+
+22
+00:00:58.380 --> 00:01:00.150
+and for all the resources
+
+23
+00:01:00.150 --> 00:01:02.730
+as they are being created in these accounts,
+
+24
+00:01:02.730 --> 00:01:05.190
+really allowing you to have the certainty
+
+25
+00:01:05.190 --> 00:01:06.630
+that the rules are managed
+
+26
+00:01:06.630 --> 00:01:09.000
+across all accounts at any point of time.
+
+27
+00:01:09.000 --> 00:01:10.290
+All right, so that's it.
+
+28
+00:01:10.290 --> 00:01:13.443
+I hope you liked it, and I will see you in the next lecture.
+

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900306,"quiz_title":"EC2 Quiz","questions":[{"_class":"assessment","id":18795526,"assessment_type":"multiple-choice","prompt":{"question":"<p>Which EC2 Purchasing Option can provide the biggest discount, but is not suitable for critical jobs or databases?</p>","relatedLectureIds":["20055756"],"feedbacks":["Scheduled Instances are good when you have workloads that works 24/7 for 1 or 3 years.","Convertible Instances are good for long workloads with flexible instances.","Dedicated Hosts are good for companies with strong compliance needs or for software that have complicated licensing models.","Spot Instances are good for short workloads, but are less reliable."],"answers":["<p>Reserved Instances</p>","<p>Convertible Instances</p>","<p>Dedicated Hosts</p>","<p>Spot Instances</p>"]},"correct_response":["d"],"section":"","question_plain":"Which EC2 Purchasing Option can provide the biggest discount, but is not suitable for critical jobs or databases?","related_lectures":[{"_class":"lecture","id":20055756,"title":"EC2 Instance Purchasing Options","created":"2020-05-25T18:07:33Z","is_published":true,"asset":{"_class":"asset","id":40630540,"asset_type":"Video","title":"CCP_-_EC2_-_Instance_Purchasing_Options_v4.mp4","created":"2022-04-06T23:39:45Z"},"object_index":47,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055756"}]},{"_class":"assessment","id":18795544,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This is a distractor. We will see this service later in the course. NACL operates at the subnet level.","Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely","This is a distractor. We will see this service later in the course.","Security Groups operate at instance level and can control traffic."],"answers":["<p>Network Access Control List (NACL)</p>","<p>Identity and Management Access (IAM)</p>","<p>GuardDuty</p>","<p>Security Groups</p>"],"question":"<p>Which network security tool can you use to control traffic in and out of EC2 Instances?</p>","relatedLectureIds":["20055658"]},"correct_response":["d"],"section":"","question_plain":"Which network security tool can you use to control traffic in and out of EC2 Instances?","related_lectures":[{"_class":"lecture","id":20055658,"title":"Security Groups & Classic Ports Overview","created":"2020-05-25T18:05:16Z","is_published":true,"asset":{"_class":"asset","id":55144150,"asset_type":"Video","title":"CCP_-_EC2_-_Security_Groups_Overview_v4.mp4","created":"2024-03-07T10:15:38Z"},"object_index":38,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055658"}]},{"_class":"assessment","id":18795572,"assessment_type":"multiple-choice","prompt":{"feedbacks":["The customer is responsible for operating-system patches and updates on EC2 Instances, as well as data security on the instances, Security Groups rules, etc.","AWS is not responsible for patching EC2 Instances.","AWS is not responsible for patching EC2 Instances."],"answers":["<p>The customer</p>","<p>AWS</p>","<p>Both AWS&nbsp;and the customer</p>"],"question":"<p>Under the Shared Responsibility Model, who is responsible for operating-system patches and updates on EC2 Instances?</p>","relatedLectureIds":["20055758"]},"correct_response":["a"],"section":"","question_plain":"Under the Shared Responsibility Model, who is responsible for operating-system patches and updates on EC2 Instances?","related_lectures":[{"_class":"lecture","id":20055758,"title":"Shared Responsibility Model for EC2","created":"2020-05-25T18:07:49Z","is_published":true,"asset":{"_class":"asset","id":25156382,"asset_type":"Video","title":"CCP - EC2 - Shared Responsibility Model.mp4","created":"2020-06-02T08:14:01Z"},"object_index":49,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055758"}]},{"_class":"assessment","id":18795562,"assessment_type":"multiple-choice","prompt":{"feedbacks":["1 year or 3 years terms are available for EC2 Reserved Instances.","You cannot reserve EC2 Instances for 2 years, nor 4 years.","You can reserve EC2 Instances for 1 year, but not 6 months.","You must reserve the instance for either 1 year or 3 years, not any time in between."],"answers":["<p>1 or 3 years</p>","<p>2 or 4 years</p>","<p>6 months or 1 year</p>","<p>Anytime between 1 and 3 years.</p>"],"question":"<p>How long can you reserve an EC2 Reserved Instance?</p>","relatedLectureIds":["20055756"]},"correct_response":["a"],"section":"","question_plain":"How long can you reserve an EC2 Reserved Instance?","related_lectures":[{"_class":"lecture","id":20055756,"title":"EC2 Instance Purchasing Options","created":"2020-05-25T18:07:33Z","is_published":true,"asset":{"_class":"asset","id":40630540,"asset_type":"Video","title":"CCP_-_EC2_-_Instance_Purchasing_Options_v4.mp4","created":"2022-04-06T23:39:45Z"},"object_index":47,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055756"}]},{"_class":"assessment","id":28715454,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Compute Optimized EC2 instances are great for compute-intensive workloads requiring high performance processors, such as batch processing, media transcoding, high performance web servers, high performance computing, scientific modeling & machine learning, and dedicated gaming servers.","Storage Optimized EC2 instances are great for workloads requiring high, sequential read and write access to large data sets on local storage, but not for workloads requiring high computing capacity.","Memory Optimized EC2 instances are great for workloads requiring large data sets of memory, but not for workloads requiring high computing capacity.","General Purpose EC2 instances are great for a diversity of workloads requiring balance between compute, memory, and network, but not for workloads requiring high computing capacity."],"answers":["<p>Compute Optimized</p>","<p>Storage Optimized</p>","<p>Memory Optimized</p>","<p>General Purpose</p>"],"question":"<p>A company would like to deploy a high-performance computing (HPC) application on EC2. Which EC2 instance type should it choose?</p>","relatedLectureIds":["24682438"]},"correct_response":["a"],"section":"","question_plain":"A company would like to deploy a high-performance computing (HPC) application on EC2. Which EC2 instance type should it choose?","related_lectures":[{"_class":"lecture","id":24682438,"title":"EC2 Instance Types Basics","created":"2021-01-31T19:39:01Z","is_published":true,"asset":{"_class":"asset","id":54586720,"asset_type":"Video","title":"CCP_-_EC2_-_Instance_Types_Basics_v2.mp4","created":"2024-02-11T17:28:32Z"},"object_index":37,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682438"}]},{"_class":"assessment","id":18795514,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This is an EC2 Instance purchasing option for short workloads with up to 90% discount, but is less reliable.","This is an EC2 Instance purchasing option for long or scheduled workloads.","This is an EC2 Instance purchasing option for short workloads with predictable pricing.","This EC2 Instance purchasing option does not exist. "],"answers":["<p>Spot Instances</p>","<p>Reserved Instances</p>","<p>On-demand Instances</p>","<p>Connect Instances</p>"],"question":"<p>Which of the following is NOT&nbsp;an EC2&nbsp;Instance&nbsp;Purchasing Option?</p>","relatedLectureIds":["20055756"]},"correct_response":["d"],"section":"","question_plain":"Which of the following is NOT&nbsp;an EC2&nbsp;Instance&nbsp;Purchasing Option?","related_lectures":[{"_class":"lecture","id":20055756,"title":"EC2 Instance Purchasing Options","created":"2020-05-25T18:07:33Z","is_published":true,"asset":{"_class":"asset","id":40630540,"asset_type":"Video","title":"CCP_-_EC2_-_Instance_Purchasing_Options_v4.mp4","created":"2022-04-06T23:39:45Z"},"object_index":47,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055756"}]},{"_class":"assessment","id":18795520,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Reserved Instances are good for long workloads. You can reserve instances for 1 or 3 years.","Spot Instances are good for short workloads, but are less reliable.","On-demand Instances are good for short workloads with predictable pricing.","Convertible Instances are good for long workloads with flexible instances sizes."],"answers":["<p>Reserved Instances</p>","<p>Spot Instances</p>","<p>On-demand Instances</p>","<p>Convertible Instances</p>"],"question":"<p>Which EC2 Purchasing Option should you use for an application you plan on running on a server continuously for 1 year?</p>","relatedLectureIds":["20055756"]},"correct_response":["a"],"section":"","question_plain":"Which EC2 Purchasing Option should you use for an application you plan on running on a server continuously for 1 year?","related_lectures":[{"_class":"lecture","id":20055756,"title":"EC2 Instance Purchasing Options","created":"2020-05-25T18:07:33Z","is_published":true,"asset":{"_class":"asset","id":40630540,"asset_type":"Video","title":"CCP_-_EC2_-_Instance_Purchasing_Options_v4.mp4","created":"2022-04-06T23:39:45Z"},"object_index":47,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055756"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

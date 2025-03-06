@@ -1,0 +1,542 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:04.830
+<v Instructor>So I wanna talk about IPv4 charges in AWS.</v>
+
+2
+00:00:04.830 --> 00:00:08.400
+So since February 1st, 2024, there is now a charge
+
+3
+00:00:08.400 --> 00:00:11.640
+for all Public IPv4 created in your account
+
+4
+00:00:11.640 --> 00:00:14.280
+whether or not they are being used.
+
+5
+00:00:14.280 --> 00:00:19.260
+And so you have a $0.005 per hour
+
+6
+00:00:19.260 --> 00:00:24.260
+of Public IPv4, which is about 3.6 dollars per month
+
+7
+00:00:24.600 --> 00:00:28.050
+whenever you have a Public IPv4 in your account.
+
+8
+00:00:28.050 --> 00:00:29.760
+So you have a Public IPv4 for example,
+
+9
+00:00:29.760 --> 00:00:31.800
+when you create an EC2 instance.
+
+10
+00:00:31.800 --> 00:00:33.990
+Now for the EC2 service,
+
+11
+00:00:33.990 --> 00:00:37.470
+for new accounts in AWS you have a free tier of 12 month,
+
+12
+00:00:37.470 --> 00:00:40.590
+and in the first 12 months of your account,
+
+13
+00:00:40.590 --> 00:00:45.590
+you will have 750 hours of Public IPv4 per month.
+
+14
+00:00:46.830 --> 00:00:47.970
+That means that when you go over,
+
+15
+00:00:47.970 --> 00:00:49.774
+you're going to pay, of course,
+
+16
+00:00:49.774 --> 00:00:52.380
+and for any other service than EC2,
+
+17
+00:00:52.380 --> 00:00:55.350
+there is no free tier, and you're going to pay that charge.
+
+18
+00:00:55.350 --> 00:00:56.460
+So it's a bit annoying.
+
+19
+00:00:56.460 --> 00:00:58.500
+So let me just try to do a diagram to explain to you.
+
+20
+00:00:58.500 --> 00:01:02.820
+So when we create an EC2 instance, we try to connect to it,
+
+21
+00:01:02.820 --> 00:01:04.800
+and so we'll have a public IP.
+
+22
+00:01:04.800 --> 00:01:09.120
+And so this is free until 750 hours per month of usage,
+
+23
+00:01:09.120 --> 00:01:10.770
+which is about a month.
+
+24
+00:01:10.770 --> 00:01:12.750
+If you create a second EC2 instance
+
+25
+00:01:12.750 --> 00:01:16.440
+and you also create a public IP for that EC2 instance,
+
+26
+00:01:16.440 --> 00:01:19.200
+then again this goes towards the 750 hours per month.
+
+27
+00:01:19.200 --> 00:01:21.660
+So you can have three, four EC2 instances,
+
+28
+00:01:21.660 --> 00:01:24.450
+it doesn't matter, as long as together,
+
+29
+00:01:24.450 --> 00:01:28.380
+the public IP usage is less than 750 hours per month,
+
+30
+00:01:28.380 --> 00:01:29.213
+you're good to go.
+
+31
+00:01:29.213 --> 00:01:31.830
+But if you go over, and you have four Public IPv4
+
+32
+00:01:31.830 --> 00:01:33.090
+for example, at the same time,
+
+33
+00:01:33.090 --> 00:01:35.280
+then of course you're going to pay for all of them
+
+34
+00:01:35.280 --> 00:01:37.200
+after this free tier.
+
+35
+00:01:37.200 --> 00:01:41.130
+When we go later on and create load balancers, for example,
+
+36
+00:01:41.130 --> 00:01:45.810
+then you may have one Public IPv4 per AZ.
+
+37
+00:01:45.810 --> 00:01:47.790
+So if you launch a load balancer in three AZ,
+
+38
+00:01:47.790 --> 00:01:50.460
+you'll have three Public IPv4.
+
+39
+00:01:50.460 --> 00:01:51.810
+Here, there is no free tier,
+
+40
+00:01:51.810 --> 00:01:54.480
+and so you will have charges incurred
+
+41
+00:01:54.480 --> 00:01:56.340
+while using a load balancer.
+
+42
+00:01:56.340 --> 00:01:58.710
+So it's a good idea to, if you wanna create it,
+
+43
+00:01:58.710 --> 00:02:00.774
+know that you'll have charges,
+
+44
+00:02:00.774 --> 00:02:02.310
+and know that you won't delete it fast enough
+
+45
+00:02:02.310 --> 00:02:04.200
+after doing the hands-on.
+
+46
+00:02:04.200 --> 00:02:06.210
+For an Amazon RDS Database for example, again,
+
+47
+00:02:06.210 --> 00:02:08.340
+this is not the EC2 service.
+
+48
+00:02:08.340 --> 00:02:09.810
+So when you create a database
+
+49
+00:02:09.810 --> 00:02:12.750
+and you want to connect to it from your public computer,
+
+50
+00:02:12.750 --> 00:02:15.240
+you will create a public IPv4 address,
+
+51
+00:02:15.240 --> 00:02:16.140
+and there is no free tier,
+
+52
+00:02:16.140 --> 00:02:17.880
+so you will have charges around it.
+
+53
+00:02:17.880 --> 00:02:21.900
+So just be mindful that you will have charges
+
+54
+00:02:21.900 --> 00:02:22.733
+in this course.
+
+55
+00:02:22.733 --> 00:02:24.090
+I said you would not,
+
+56
+00:02:24.090 --> 00:02:25.680
+but this is unfortunately a big change,
+
+57
+00:02:25.680 --> 00:02:26.940
+and there's no way around it.
+
+58
+00:02:26.940 --> 00:02:29.760
+So if you want to use any other service than EC2
+
+59
+00:02:29.760 --> 00:02:31.470
+and connect to it publicly,
+
+60
+00:02:31.470 --> 00:02:34.350
+you will have IPv4 addresses,
+
+61
+00:02:34.350 --> 00:02:35.610
+and you will have charges for it.
+
+62
+00:02:35.610 --> 00:02:36.720
+So please make sure
+
+63
+00:02:36.720 --> 00:02:39.270
+to never leave things running for too long.
+
+64
+00:02:39.270 --> 00:02:41.490
+Now you may ask me, "What about IPv6?"
+
+65
+00:02:41.490 --> 00:02:44.610
+So yes, the whole idea behind these charges for AWS is
+
+66
+00:02:44.610 --> 00:02:48.000
+that they're trying to migrate everything to IPv6,
+
+67
+00:02:48.000 --> 00:02:52.350
+where it's a bit easier to have them at scale.
+
+68
+00:02:52.350 --> 00:02:55.590
+And so in this course, I would love to use IPv6,
+
+69
+00:02:55.590 --> 00:02:59.190
+but it turns out that many internet service providers
+
+70
+00:02:59.190 --> 00:03:02.640
+around the world do not support IPv6 yet.
+
+71
+00:03:02.640 --> 00:03:05.010
+And so this course will not work for some of you.
+
+72
+00:03:05.010 --> 00:03:08.220
+So usually, you can go to an address like this,
+
+73
+00:03:08.220 --> 00:03:10.260
+for example, test-ipv6.com
+
+74
+00:03:10.260 --> 00:03:12.870
+to see if IPv6 is working for you.
+
+75
+00:03:12.870 --> 00:03:15.150
+But unfortunately, because, I mean, I am fortunate
+
+76
+00:03:15.150 --> 00:03:17.760
+to have so many millions of students around the world,
+
+77
+00:03:17.760 --> 00:03:19.350
+but it won't work for all of you,
+
+78
+00:03:19.350 --> 00:03:22.350
+then I'm not going to change the course for that reason.
+
+79
+00:03:22.350 --> 00:03:24.690
+So if you use IPv6 in this course on your own
+
+80
+00:03:24.690 --> 00:03:27.510
+because you want to avoid this tiny charge,
+
+81
+00:03:27.510 --> 00:03:29.040
+then you're on your own.
+
+82
+00:03:29.040 --> 00:03:30.840
+But know that you'll have to create
+
+83
+00:03:30.840 --> 00:03:32.190
+your own security group rules.
+
+84
+00:03:32.190 --> 00:03:34.590
+You make sure you make your own networking decisions,
+
+85
+00:03:34.590 --> 00:03:35.423
+but it's possible.
+
+86
+00:03:35.423 --> 00:03:38.280
+And if you know about networking, you will figure this out.
+
+87
+00:03:38.280 --> 00:03:41.880
+But if you're new to cloud computing, AWS, IT,
+
+88
+00:03:41.880 --> 00:03:44.730
+or networking in general, then keep on going with IPv4
+
+89
+00:03:44.730 --> 00:03:48.033
+and be mindful that you will have charges for IPv4.
+
+90
+00:03:49.620 --> 00:03:52.380
+Now, if you have charges, you may want to troubleshoot them,
+
+91
+00:03:52.380 --> 00:03:55.410
+so you need to go to your bill to see your charges.
+
+92
+00:03:55.410 --> 00:03:56.520
+And then there's a service
+
+93
+00:03:56.520 --> 00:03:59.640
+called the AWS Public Insights service that can help you.
+
+94
+00:03:59.640 --> 00:04:03.180
+And there's also a nice article that I've linked right here
+
+95
+00:04:03.180 --> 00:04:05.940
+that is explaining how you can troubleshoot these charges
+
+96
+00:04:05.940 --> 00:04:06.990
+if you can't figure out
+
+97
+00:04:06.990 --> 00:04:09.750
+which service still has an IPv4 address in use
+
+98
+00:04:09.750 --> 00:04:12.000
+and how you're being charged.
+
+99
+00:04:12.000 --> 00:04:14.070
+So just remember that if you have any cost,
+
+100
+00:04:14.070 --> 00:04:18.540
+you go under billing and cost management in your account,
+
+101
+00:04:18.540 --> 00:04:21.573
+and then you go under bills on the left hand side,
+
+102
+00:04:22.890 --> 00:04:25.170
+and you will have a bill summary.
+
+103
+00:04:25.170 --> 00:04:27.510
+And here you can see your charges by service
+
+104
+00:04:27.510 --> 00:04:31.050
+and understand what is costing you any kind of money
+
+105
+00:04:31.050 --> 00:04:31.920
+by just drilling down.
+
+106
+00:04:31.920 --> 00:04:34.440
+So here on the right hand side, you would have an amount,
+
+107
+00:04:34.440 --> 00:04:36.390
+and then you can expand everything
+
+108
+00:04:36.390 --> 00:04:39.210
+and see what the amount equates to.
+
+109
+00:04:39.210 --> 00:04:41.820
+So if you have IPv4 charges,
+
+110
+00:04:41.820 --> 00:04:43.440
+they will appear right here,
+
+111
+00:04:43.440 --> 00:04:46.650
+and it's important for you to understand them.
+
+112
+00:04:46.650 --> 00:04:49.860
+Also, if you want to see your IP addresses,
+
+113
+00:04:49.860 --> 00:04:53.220
+you type IPAM, I-P-A-M in here,
+
+114
+00:04:53.220 --> 00:04:56.760
+and you go to Amazon VPC IP Address Manager,
+
+115
+00:04:56.760 --> 00:04:59.790
+which is a feature in the VPC console.
+
+116
+00:04:59.790 --> 00:05:04.500
+And this is how you can monitor all your IP addresses
+
+117
+00:05:04.500 --> 00:05:06.960
+in your account and get some information.
+
+118
+00:05:06.960 --> 00:05:10.560
+So you can go clear and click on Public IP Insights.
+
+119
+00:05:10.560 --> 00:05:13.440
+And here, you need to create an IPAM,
+
+120
+00:05:13.440 --> 00:05:16.380
+and we're saying yes to everything.
+
+121
+00:05:16.380 --> 00:05:18.360
+We can use it in the free tier
+
+122
+00:05:18.360 --> 00:05:23.360
+just to get the Public IPv4 usage in your organization.
+
+123
+00:05:23.460 --> 00:05:26.460
+And then you would go ahead, select the regions you wanted.
+
+124
+00:05:26.460 --> 00:05:28.590
+So, you can add all the regions,
+
+125
+00:05:28.590 --> 00:05:30.870
+and then click on Create IPAM.
+
+126
+00:05:30.870 --> 00:05:32.820
+And this will give you some insights
+
+127
+00:05:32.820 --> 00:05:34.650
+into your public IPs being used.
+
+128
+00:05:34.650 --> 00:05:35.790
+This is within the free tier.
+
+129
+00:05:35.790 --> 00:05:37.920
+Again, we're here under the free tier.
+
+130
+00:05:37.920 --> 00:05:39.810
+And so under Public IP Insights,
+
+131
+00:05:39.810 --> 00:05:43.380
+you would get some information around your public IPs
+
+132
+00:05:43.380 --> 00:05:46.050
+once information has been gathered on it.
+
+133
+00:05:46.050 --> 00:05:46.980
+So that's it for this lecture.
+
+134
+00:05:46.980 --> 00:05:48.120
+I hope you liked it.
+
+135
+00:05:48.120 --> 00:05:50.073
+And I will see you in the next lecture.
+

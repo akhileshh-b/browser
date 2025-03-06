@@ -1,0 +1,121 @@
+WEBVTT
+
+00:00:00.290 --> 00:00:03.270
+<v Instructor>Now let's talk about Amazon AppStream 2.0.</v>
+
+00:00:03.270 --> 00:00:06.460
+So it is a desktop application streaming service.
+
+00:00:06.460 --> 00:00:08.180
+So it's very different from Workspaces,
+
+00:00:08.180 --> 00:00:10.450
+and I'll give you the differences right after.
+
+00:00:10.450 --> 00:00:11.560
+But so the idea is that you want
+
+00:00:11.560 --> 00:00:14.000
+to stream an application to any computer
+
+00:00:14.000 --> 00:00:16.830
+without acquiring and provisioning infrastructure.
+
+00:00:16.830 --> 00:00:19.550
+And the application itself is going to be accessible
+
+00:00:19.550 --> 00:00:22.010
+and delivered from within a web browser.
+
+00:00:22.010 --> 00:00:24.150
+So here is a very concrete example.
+
+00:00:24.150 --> 00:00:26.570
+Say you want to have the Blender application
+
+00:00:26.570 --> 00:00:30.030
+to create the 3D models directly from within a web browser,
+
+00:00:30.030 --> 00:00:32.120
+you can with Amazon AppStream.
+
+00:00:32.120 --> 00:00:33.560
+So it is application-focused,
+
+00:00:33.560 --> 00:00:36.040
+and they're delivered through your web browser.
+
+00:00:36.040 --> 00:00:38.100
+But as you can see in the screen,
+
+00:00:38.100 --> 00:00:40.320
+you could also use Eclipse, or Firefox,
+
+00:00:40.320 --> 00:00:42.690
+or whatever, OpenOffice application directly
+
+00:00:42.690 --> 00:00:44.290
+from within your web browser.
+
+00:00:44.290 --> 00:00:46.670
+So how does that work versus WorkSpaces?
+
+00:00:46.670 --> 00:00:49.370
+Well, WorkSpaces is to give you a full VDI
+
+00:00:49.370 --> 00:00:51.890
+and a full Windows desktop or Linux desktop.
+
+00:00:51.890 --> 00:00:54.370
+So you can launch as many applications as you want
+
+00:00:54.370 --> 00:00:55.420
+within your desktop,
+
+00:00:55.420 --> 00:00:57.270
+and you have to connect directly
+
+00:00:57.270 --> 00:01:01.550
+using your remote desktop application, okay?
+
+00:01:01.550 --> 00:01:04.630
+The WorkSpaces are on demand, or they're always on.
+
+00:01:04.630 --> 00:01:06.470
+Whereas with AppStreams 2.0,
+
+00:01:06.470 --> 00:01:09.200
+you're going to stream a very specific desktop application
+
+00:01:09.200 --> 00:01:10.670
+directly into your web browser,
+
+00:01:10.670 --> 00:01:12.260
+so there is no need to connect
+
+00:01:12.260 --> 00:01:14.210
+to a virtual desktop in the cloud.
+
+00:01:14.210 --> 00:01:16.330
+And it works for any device that will have a web browser,
+
+00:01:16.330 --> 00:01:18.100
+so it has more compatibility.
+
+00:01:18.100 --> 00:01:20.210
+And you're allowed to configure an instance type
+
+00:01:20.210 --> 00:01:22.097
+per application. So for example, you were saying,
+
+00:01:22.097 --> 00:01:24.570
+"Hey, for this application, like Photoshop,
+
+00:01:24.570 --> 00:01:26.970
+I need more CPU, more RAM and more GPU."
+
+00:01:26.970 --> 00:01:29.460
+So, hopefully, they're different to you in your mind.
+
+00:01:29.460 --> 00:01:31.910
+So that's it, I will see you at the next lecture.

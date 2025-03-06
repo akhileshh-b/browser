@@ -1,0 +1,478 @@
+WEBVTT
+
+1
+00:00:00.330 --> 00:00:03.180
+<v Instructor>So let's go ahead and practice using AMX.</v>
+
+2
+00:00:03.180 --> 00:00:05.970
+For this, I'm going to launch an instance,
+
+3
+00:00:05.970 --> 00:00:09.380
+and I'm going to go into this new experience.
+
+4
+00:00:09.380 --> 00:00:11.140
+So I will scroll down.
+
+5
+00:00:11.140 --> 00:00:13.650
+We'll choose Amazon Linux 2.
+
+6
+00:00:13.650 --> 00:00:15.290
+I will scroll down again.
+
+7
+00:00:15.290 --> 00:00:16.420
+We'll use the G2 micro.
+
+8
+00:00:16.420 --> 00:00:19.300
+I will select the easy to draw as my key pair
+
+9
+00:00:19.300 --> 00:00:20.670
+but it doesn't really matter.
+
+10
+00:00:20.670 --> 00:00:22.070
+Then I will scroll down.
+
+11
+00:00:22.070 --> 00:00:24.600
+I would edit the network settings
+
+12
+00:00:24.600 --> 00:00:27.170
+and I will select an existing security group
+
+13
+00:00:27.170 --> 00:00:29.733
+being my launch wizard one from before.
+
+14
+00:00:30.700 --> 00:00:33.340
+Then we'll have the same storage and for advanced details,
+
+15
+00:00:33.340 --> 00:00:36.520
+I will scroll down and I will go for user data,
+
+16
+00:00:36.520 --> 00:00:39.280
+but this time you're going to copy everything,
+
+17
+00:00:39.280 --> 00:00:41.070
+but the last line.
+
+18
+00:00:41.070 --> 00:00:45.360
+So, in the first four lines, we actually install HTTPD
+
+19
+00:00:45.360 --> 00:00:47.140
+which is the Apache web server.
+
+20
+00:00:47.140 --> 00:00:49.650
+In the last line, we create an index file
+
+21
+00:00:49.650 --> 00:00:51.750
+but right now we don't want to create an index file
+
+22
+00:00:51.750 --> 00:00:55.852
+want to do everything but that to create an AMI out of it.
+
+23
+00:00:55.852 --> 00:00:57.860
+So we just copy everything.
+
+24
+00:00:57.860 --> 00:01:01.940
+Remember, the last line is the system CTL command.
+
+25
+00:01:01.940 --> 00:01:04.163
+And then we launch our instance.
+
+26
+00:01:05.370 --> 00:01:07.760
+So our instance is launched and what's going to happen is
+
+27
+00:01:07.760 --> 00:01:11.480
+that the instance is going to launch that's right here.
+
+28
+00:01:11.480 --> 00:01:13.270
+And then it's going to run
+
+29
+00:01:13.270 --> 00:01:15.583
+through the EC two, using the script
+
+30
+00:01:15.583 --> 00:01:19.330
+and it's going to install the Apache web server.
+
+31
+00:01:19.330 --> 00:01:20.870
+So if I'm too quick
+
+32
+00:01:20.870 --> 00:01:24.890
+and I try to open right now, this public IPV four
+
+33
+00:01:24.890 --> 00:01:27.420
+and try to enter into it, as you can see, it doesn't work.
+
+34
+00:01:27.420 --> 00:01:30.580
+I'll get a connection, error, refused and so on.
+
+35
+00:01:30.580 --> 00:01:33.200
+I need to make sure I'm also using the HTTP protocol,
+
+36
+00:01:33.200 --> 00:01:35.910
+of course, but it, it just won't work, right?
+
+37
+00:01:35.910 --> 00:01:38.430
+Because you need to give it a bit of time.
+
+38
+00:01:38.430 --> 00:01:41.210
+Even if it says 'running', you need to give it time
+
+39
+00:01:41.210 --> 00:01:45.830
+for the EC two user data script to run for the first time.
+
+40
+00:01:45.830 --> 00:01:47.030
+So this might take a minute.
+
+41
+00:01:47.030 --> 00:01:48.070
+This might take two minutes.
+
+42
+00:01:48.070 --> 00:01:51.580
+Okay. But don't be in a rush, just wait for it to be done.
+
+43
+00:01:51.580 --> 00:01:53.660
+And then at some point when you refresh
+
+44
+00:01:53.660 --> 00:01:54.730
+you will see the screen.
+
+45
+00:01:54.730 --> 00:01:56.230
+So let me pause the video.
+
+46
+00:01:56.230 --> 00:01:59.720
+And it took about two minutes, but now I have my test page
+
+47
+00:01:59.720 --> 00:02:03.310
+and this is the basic page from the Apache web server.
+
+48
+00:02:03.310 --> 00:02:05.510
+And therefore we are good to go.
+
+49
+00:02:05.510 --> 00:02:07.280
+So what we're going to do out of it is we're going to
+
+50
+00:02:07.280 --> 00:02:10.900
+create an AMI because we want to just save the state
+
+51
+00:02:10.900 --> 00:02:13.210
+of our EC two instance and reuse that.
+
+52
+00:02:13.210 --> 00:02:17.010
+So I right click and I will do image and templates
+
+53
+00:02:17.010 --> 00:02:19.320
+and then I will create an image.
+
+54
+00:02:19.320 --> 00:02:22.370
+So we'll call this one 'demo image'
+
+55
+00:02:22.370 --> 00:02:24.270
+and we're going to create our own AMI.
+
+56
+00:02:25.210 --> 00:02:27.470
+And then we have these settings right here.
+
+57
+00:02:27.470 --> 00:02:29.600
+We'll just leave it as is.
+
+58
+00:02:29.600 --> 00:02:32.210
+Go here and click on create image.
+
+59
+00:02:32.210 --> 00:02:33.530
+So now what's going to happen is that
+
+60
+00:02:33.530 --> 00:02:35.180
+an AMI is going to be created.
+
+61
+00:02:35.180 --> 00:02:38.660
+So if I go to the left-hand side and click on AMI's,
+
+62
+00:02:38.660 --> 00:02:42.830
+as we can see here, my demo AMI is registered.
+
+63
+00:02:42.830 --> 00:02:44.930
+And right now the status is pending
+
+64
+00:02:44.930 --> 00:02:47.020
+because it is being created.
+
+65
+00:02:47.020 --> 00:02:49.765
+So what I need to do is to be a little bit patient and
+
+66
+00:02:49.765 --> 00:02:52.950
+for it to go into the created state.
+
+67
+00:02:52.950 --> 00:02:56.320
+So my Amazon AMI is now created.
+
+68
+00:02:56.320 --> 00:02:58.710
+And what I can do now is I can launch instances
+
+69
+00:02:58.710 --> 00:03:01.090
+from this AMI by clicking here.
+
+70
+00:03:01.090 --> 00:03:03.410
+Or if you are in the instance creation page,
+
+71
+00:03:03.410 --> 00:03:04.763
+we can launch instances.
+
+72
+00:03:05.680 --> 00:03:08.128
+And this one is called 'From AMI'.
+
+73
+00:03:08.128 --> 00:03:10.220
+And in here in the quick start
+
+74
+00:03:10.220 --> 00:03:11.790
+we get access to the ones we know
+
+75
+00:03:11.790 --> 00:03:14.110
+but you can also go into the 'my AMI's tab'.
+
+76
+00:03:14.110 --> 00:03:16.791
+Okay. And you have the ones owned by me
+
+77
+00:03:16.791 --> 00:03:19.250
+and you can choose the demo image that you just created
+
+78
+00:03:19.250 --> 00:03:20.430
+from before.
+
+79
+00:03:20.430 --> 00:03:22.850
+So in that case, you scroll down, you select
+
+80
+00:03:22.850 --> 00:03:25.560
+to key pair or not, just up to you.
+
+81
+00:03:25.560 --> 00:03:26.530
+Network settings, again,
+
+82
+00:03:26.530 --> 00:03:29.870
+we edit them and we just select the existing launchers
+
+83
+00:03:29.870 --> 00:03:31.693
+in one security group.
+
+84
+00:03:32.960 --> 00:03:35.450
+And what I'm going to do is that in the advanced,
+
+85
+00:03:35.450 --> 00:03:39.050
+at the very bottom, I'm going to enter some user data.
+
+86
+00:03:39.050 --> 00:03:41.660
+So I copy the first three lines, okay.
+
+87
+00:03:41.660 --> 00:03:43.680
+Which are starting with the hash.
+
+88
+00:03:43.680 --> 00:03:47.880
+And then the last line, which is the echo on the new line.
+
+89
+00:03:47.880 --> 00:03:51.125
+And so what we do is that we only just write a new file.
+
+90
+00:03:51.125 --> 00:03:53.950
+So we don't need to reinstall HTTPD
+
+91
+00:03:53.950 --> 00:03:56.890
+because this AMI already contains HTTPD
+
+92
+00:03:56.890 --> 00:04:00.293
+which is why we will speed up in the boot up time.
+
+93
+00:04:00.293 --> 00:04:02.580
+This is why you would create an AMI.
+
+94
+00:04:02.580 --> 00:04:06.760
+So we launch an instance and now the instance is launched.
+
+95
+00:04:06.760 --> 00:04:08.530
+So I can just click on it.
+
+96
+00:04:08.530 --> 00:04:09.497
+This is the one from the AMI.
+
+97
+00:04:09.497 --> 00:04:13.123
+I need to wait for it to be fully created.
+
+98
+00:04:14.250 --> 00:04:16.720
+My instance from my AMI is now running.
+
+99
+00:04:16.720 --> 00:04:19.010
+I take the public IP address
+
+100
+00:04:19.010 --> 00:04:21.820
+and then I see the 'Hello World' from this.
+
+101
+00:04:21.820 --> 00:04:23.580
+And as you can see, this was much quicker
+
+102
+00:04:23.580 --> 00:04:26.940
+because we didn't have to install HTTPD again.
+
+103
+00:04:26.940 --> 00:04:28.640
+So this is the whole power of AMI's.
+
+104
+00:04:28.640 --> 00:04:30.820
+And you can imagine, well, it could be just more than that.
+
+105
+00:04:30.820 --> 00:04:32.710
+It could be security software,
+
+106
+00:04:32.710 --> 00:04:34.840
+a lot of prerequisite software, and so on,
+
+107
+00:04:34.840 --> 00:04:36.350
+you install it, it maybe it takes two,
+
+108
+00:04:36.350 --> 00:04:37.560
+three minutes to do it.
+
+109
+00:04:37.560 --> 00:04:39.440
+Then you package it as an AMI,
+
+110
+00:04:39.440 --> 00:04:41.350
+and then you just start from the AMI,
+
+111
+00:04:41.350 --> 00:04:44.090
+maybe do some end customization at the end
+
+112
+00:04:44.090 --> 00:04:46.430
+but you have a much faster boot-up.
+
+113
+00:04:46.430 --> 00:04:47.650
+And you're good to go.
+
+114
+00:04:47.650 --> 00:04:49.010
+So that's it for this demo.
+
+115
+00:04:49.010 --> 00:04:50.400
+Now to get back from this
+
+116
+00:04:50.400 --> 00:04:53.970
+what you do is that you take your two instances
+
+117
+00:04:53.970 --> 00:04:55.795
+and you can terminate them.
+
+118
+00:04:55.795 --> 00:04:57.110
+And that's it.
+
+119
+00:04:57.110 --> 00:04:58.860
+I will see you in the next lecture.
+

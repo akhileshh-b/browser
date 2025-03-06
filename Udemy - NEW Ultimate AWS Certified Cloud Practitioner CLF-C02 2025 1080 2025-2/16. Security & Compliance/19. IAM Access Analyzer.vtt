@@ -1,0 +1,362 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.080
+<v ->So now let's discuss IAM Access Analyzer,</v>
+
+2
+00:00:03.080 --> 00:00:06.240
+and this is a service within the IAM console that is used
+
+3
+00:00:06.240 --> 00:00:07.770
+to find out which resources
+
+4
+00:00:07.770 --> 00:00:09.440
+are going to be shared externally.
+
+5
+00:00:09.440 --> 00:00:12.080
+So S3 buckets, IAM Roles, KMS Keys,
+
+6
+00:00:12.080 --> 00:00:14.100
+Lambda Functions and Layers, SQS Queues
+
+7
+00:00:14.100 --> 00:00:16.520
+and Secrets Manager Secrets.
+
+8
+00:00:16.520 --> 00:00:18.550
+So, the idea is that some of these obviously
+
+9
+00:00:18.550 --> 00:00:20.500
+can have resource policies attached with them
+
+10
+00:00:20.500 --> 00:00:22.550
+or they can be shared with other accounts.
+
+11
+00:00:22.550 --> 00:00:25.140
+But sometimes you forget about sharing these items
+
+12
+00:00:25.140 --> 00:00:27.540
+and it can be a security risk for your company
+
+13
+00:00:27.540 --> 00:00:30.410
+because some of the app may be accessible
+
+14
+00:00:30.410 --> 00:00:32.130
+by external sources.
+
+15
+00:00:32.130 --> 00:00:34.520
+And so you define a zone of trust,
+
+16
+00:00:34.520 --> 00:00:37.240
+which is going to correspond to your alias accounts
+
+17
+00:00:37.240 --> 00:00:39.570
+or your entire alias organization,
+
+18
+00:00:39.570 --> 00:00:42.530
+and then anything outside your zone of trust that has access
+
+19
+00:00:42.530 --> 00:00:45.300
+to the resources said above
+
+20
+00:00:45.300 --> 00:00:47.660
+are going to be reported as findings.
+
+21
+00:00:47.660 --> 00:00:49.470
+So for example, we have an S3 buckets,
+
+22
+00:00:49.470 --> 00:00:52.790
+we can share it with a specific role, a user, an account,
+
+23
+00:00:52.790 --> 00:00:55.740
+an external client by IP or VPC endpoint.
+
+24
+00:00:55.740 --> 00:00:58.350
+But if we define the zone of trust to be our accounts
+
+25
+00:00:58.350 --> 00:01:00.900
+and only the role of the user and the VPC endpoints
+
+26
+00:01:00.900 --> 00:01:02.370
+are within our accounts,
+
+27
+00:01:02.370 --> 00:01:05.440
+then the accounts and the external clients
+
+28
+00:01:05.440 --> 00:01:08.300
+are going to be flagged as a finding.
+
+29
+00:01:08.300 --> 00:01:10.480
+And you can look at it within the consultant to take action
+
+30
+00:01:10.480 --> 00:01:12.330
+if you think this is a security risk.
+
+31
+00:01:13.420 --> 00:01:15.330
+So in the IAM console, on the left hand side,
+
+32
+00:01:15.330 --> 00:01:18.390
+you have access analyzer and here you can create
+
+33
+00:01:18.390 --> 00:01:19.880
+your first analyzer.
+
+34
+00:01:19.880 --> 00:01:21.640
+So you name it, console analyzer.
+
+35
+00:01:21.640 --> 00:01:23.630
+This is free by the way to enable.
+
+36
+00:01:23.630 --> 00:01:24.600
+The zone of trust
+
+37
+00:01:24.600 --> 00:01:27.300
+is going to be the current account right now.
+
+38
+00:01:27.300 --> 00:01:30.040
+And the findings are going to be reported
+
+39
+00:01:30.040 --> 00:01:31.720
+outside of your zone of trust.
+
+40
+00:01:31.720 --> 00:01:34.290
+You can add tags to the analyzer but we don't need to.
+
+41
+00:01:34.290 --> 00:01:36.690
+And then I'm going to create the analyzer.
+
+42
+00:01:36.690 --> 00:01:38.630
+This is going to create a service linked role
+
+43
+00:01:38.630 --> 00:01:40.330
+which is going to allow the analyzer
+
+44
+00:01:40.330 --> 00:01:42.513
+to interact with resources on our behalf.
+
+45
+00:01:44.500 --> 00:01:46.823
+So my scan has not completed and as you can see,
+
+46
+00:01:46.823 --> 00:01:49.520
+I have three active findings right now in my accounts.
+
+47
+00:01:49.520 --> 00:01:52.620
+So one SQS queue and two S3 buckets are shared
+
+48
+00:01:52.620 --> 00:01:54.940
+with all principals.
+
+49
+00:01:54.940 --> 00:01:58.090
+So this one is shared through a bucket policy
+
+50
+00:01:58.090 --> 00:02:01.320
+and this one doesn't say how, and this is write access
+
+51
+00:02:01.320 --> 00:02:02.620
+and this is read access.
+
+52
+00:02:02.620 --> 00:02:03.810
+So it's very interesting.
+
+53
+00:02:03.810 --> 00:02:06.140
+For example, let's consider this SQS queue
+
+54
+00:02:06.140 --> 00:02:07.998
+called a demo S3 notification.
+
+55
+00:02:07.998 --> 00:02:10.090
+So we can click here to have a link
+
+56
+00:02:10.090 --> 00:02:13.650
+directly into the resource and then go here
+
+57
+00:02:13.650 --> 00:02:16.010
+and then go to access policy.
+
+58
+00:02:16.010 --> 00:02:19.810
+And as you can see, I allow anyone to send a message
+
+59
+00:02:19.810 --> 00:02:23.780
+and anyone could be anyone from an external accounts.
+
+60
+00:02:23.780 --> 00:02:25.150
+So this is not good, right?
+
+61
+00:02:25.150 --> 00:02:28.270
+So what I should do then is have a look at this
+
+62
+00:02:28.270 --> 00:02:31.720
+and make sure that this is either the intended access
+
+63
+00:02:31.720 --> 00:02:35.400
+of my queue so I can archive it or a not intended access.
+
+64
+00:02:35.400 --> 00:02:38.940
+And then I go to the SQS console, I fixed this policy,
+
+65
+00:02:38.940 --> 00:02:42.430
+and then I rescan. So I'm going to edit this.
+
+66
+00:02:42.430 --> 00:02:43.830
+And I don't like this policy,
+
+67
+00:02:43.830 --> 00:02:47.040
+so I'm going to just remove this policy overall,
+
+68
+00:02:47.040 --> 00:02:48.780
+because I don't want to allow anyone
+
+69
+00:02:48.780 --> 00:02:50.890
+to send a message into my SQS queue.
+
+70
+00:02:50.890 --> 00:02:55.093
+I will click on save and now I will do a rescan.
+
+71
+00:02:56.640 --> 00:02:57.970
+And now the status is resolved
+
+72
+00:02:57.970 --> 00:03:00.160
+because the access is no longer allowed.
+
+73
+00:03:00.160 --> 00:03:02.670
+So if I go back to my findings now only have two findings.
+
+74
+00:03:02.670 --> 00:03:04.590
+And here as well, I have two findings
+
+75
+00:03:04.590 --> 00:03:07.900
+related to my S3 buckets being public.
+
+76
+00:03:07.900 --> 00:03:09.910
+And so maybe this is an intended access
+
+77
+00:03:09.910 --> 00:03:12.633
+in which case I will archive this buckets.
+
+78
+00:03:13.470 --> 00:03:15.960
+And then If I go back to my findings,
+
+79
+00:03:15.960 --> 00:03:18.730
+it will be into the archived column.
+
+80
+00:03:18.730 --> 00:03:21.080
+We see we have the other one from the resolve column
+
+81
+00:03:21.080 --> 00:03:22.930
+and we can still look at the active ones.
+
+82
+00:03:22.930 --> 00:03:26.620
+And then finally, if you wanted to always archive
+
+83
+00:03:26.620 --> 00:03:28.460
+these kind of S3 public buckets,
+
+84
+00:03:28.460 --> 00:03:29.700
+you can go into archive rules
+
+85
+00:03:29.700 --> 00:03:31.450
+and you can create your own rule
+
+86
+00:03:31.450 --> 00:03:35.225
+to automatically say which criteria
+
+87
+00:03:35.225 --> 00:03:38.490
+should make a finding irrelevance. Okay.
+
+88
+00:03:38.490 --> 00:03:39.670
+If you want it to.
+
+89
+00:03:39.670 --> 00:03:42.240
+So that's it for this lecture. I hope you liked it.
+
+90
+00:03:42.240 --> 00:03:44.190
+And I will see you in the next lecture.
+

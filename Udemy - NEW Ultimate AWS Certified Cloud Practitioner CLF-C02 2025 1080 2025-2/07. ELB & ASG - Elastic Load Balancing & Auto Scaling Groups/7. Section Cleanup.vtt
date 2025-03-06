@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.910
+<v Instructor>So, we are going to clean up our instances</v>
+
+2
+00:00:02.910 --> 00:00:06.000
+and so on, but if you try to go in instances
+
+3
+00:00:06.000 --> 00:00:08.880
+and actually terminate these two instances,
+
+4
+00:00:08.880 --> 00:00:11.550
+this will not work, because if you do so,
+
+5
+00:00:11.550 --> 00:00:14.460
+then the auto-scaling group will recreate them.
+
+6
+00:00:14.460 --> 00:00:16.980
+So, the strategy here is to actually go
+
+7
+00:00:16.980 --> 00:00:18.960
+under the auto-scaling group,
+
+8
+00:00:18.960 --> 00:00:21.870
+and we're going to delete the auto-scaling group altogether,
+
+9
+00:00:21.870 --> 00:00:25.263
+so just type 'Delete' in here to confirm the deletion of it,
+
+10
+00:00:26.280 --> 00:00:28.800
+and then the next thing we have to delete
+
+11
+00:00:28.800 --> 00:00:30.750
+is the low balancer,
+
+12
+00:00:30.750 --> 00:00:35.340
+so find your application balancer action and then delete.
+
+13
+00:00:35.340 --> 00:00:39.300
+Confirm to agree and you're good to go and finally,
+
+14
+00:00:39.300 --> 00:00:40.530
+you may be wondering, well,
+
+15
+00:00:40.530 --> 00:00:42.540
+should I delete my target group?
+
+16
+00:00:42.540 --> 00:00:43.440
+Well, we don't have to
+
+17
+00:00:43.440 --> 00:00:45.750
+because the target group don't cost you any money
+
+18
+00:00:45.750 --> 00:00:47.400
+and the target group is going to be empty
+
+19
+00:00:47.400 --> 00:00:50.130
+because we have deleted the auto-scaling group
+
+20
+00:00:50.130 --> 00:00:52.800
+and we have deleted the low balancer.
+
+21
+00:00:52.800 --> 00:00:53.633
+That's it.
+
+22
+00:00:53.633 --> 00:00:55.890
+When the ASG is going to be gone,
+
+23
+00:00:55.890 --> 00:00:59.190
+then your EC2 instances, that's your ASG managers,
+
+24
+00:00:59.190 --> 00:01:02.370
+will also be gone, so, you'll be fully clean.
+
+25
+00:01:02.370 --> 00:01:03.203
+So, that's it.
+
+26
+00:01:03.203 --> 00:01:05.430
+We will remain within the free tier for this course.
+
+27
+00:01:05.430 --> 00:01:08.403
+I hope you liked it and I will see you in the next lecture.
+

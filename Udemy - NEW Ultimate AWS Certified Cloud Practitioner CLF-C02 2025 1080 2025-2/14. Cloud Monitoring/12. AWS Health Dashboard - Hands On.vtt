@@ -1,0 +1,242 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:02.010
+<v Instructor>So here I am in my console.</v>
+
+2
+00:00:02.010 --> 00:00:03.420
+And to get to the Health dashboard,
+
+3
+00:00:03.420 --> 00:00:05.640
+you can just click on this bell right here
+
+4
+00:00:05.640 --> 00:00:07.320
+and click on Event Log.
+
+5
+00:00:07.320 --> 00:00:09.840
+This will take you straight into your Health dashboards.
+
+6
+00:00:09.840 --> 00:00:12.450
+So first things first, let's look at Service Health.
+
+7
+00:00:12.450 --> 00:00:14.790
+So if you click on Service History,
+
+8
+00:00:14.790 --> 00:00:17.070
+this is going to give you the Service Health
+
+9
+00:00:17.070 --> 00:00:22.070
+of all the services in AWS by region, by day.
+
+10
+00:00:22.440 --> 00:00:24.900
+So you can see, for example, for North America,
+
+11
+00:00:24.900 --> 00:00:27.480
+we can look at Amazon EventBridge Scheduler
+
+12
+00:00:27.480 --> 00:00:28.740
+and see that today it was fine,
+
+13
+00:00:28.740 --> 00:00:30.360
+and yesterday was fine, and so on.
+
+14
+00:00:30.360 --> 00:00:32.460
+And you can scroll down and look at all the services,
+
+15
+00:00:32.460 --> 00:00:35.010
+and you can see that AWS is quite stable.
+
+16
+00:00:35.010 --> 00:00:37.080
+So you can find a specific service
+
+17
+00:00:37.080 --> 00:00:40.380
+or a specific region you want to drill into.
+
+18
+00:00:40.380 --> 00:00:42.900
+On top of it, in case you have open issues,
+
+19
+00:00:42.900 --> 00:00:44.430
+you will see them right here,
+
+20
+00:00:44.430 --> 00:00:47.700
+confirming the fact that maybe you are experiencing an issue
+
+21
+00:00:47.700 --> 00:00:50.670
+with a service and so are other customers.
+
+22
+00:00:50.670 --> 00:00:53.280
+But this is just general information.
+
+23
+00:00:53.280 --> 00:00:54.762
+For your Account Health,
+
+24
+00:00:54.762 --> 00:00:56.550
+for the issues that are relevant to you,
+
+25
+00:00:56.550 --> 00:00:59.580
+you will find them in here in the Open and Recent Issues.
+
+26
+00:00:59.580 --> 00:01:00.480
+So when you have one,
+
+27
+00:01:00.480 --> 00:01:02.070
+you'll see the bell will have a little icon.
+
+28
+00:01:02.070 --> 00:01:02.903
+Right now there's none,
+
+29
+00:01:02.903 --> 00:01:04.980
+because there is no open issues,
+
+30
+00:01:04.980 --> 00:01:07.890
+no schedule changes, and no other notifications.
+
+31
+00:01:07.890 --> 00:01:10.650
+But in case you have one, you'll see a bell here.
+
+32
+00:01:10.650 --> 00:01:12.630
+And this is going to give you the issues
+
+33
+00:01:12.630 --> 00:01:14.400
+that are impacting you right now.
+
+34
+00:01:14.400 --> 00:01:17.490
+For this tab, and for this tab, the Schedule Changes,
+
+35
+00:01:17.490 --> 00:01:18.390
+for example, they're gonna do
+
+36
+00:01:18.390 --> 00:01:20.160
+some maintenance on EBS volumes,
+
+37
+00:01:20.160 --> 00:01:23.580
+and that will impact you or other notifications.
+
+38
+00:01:23.580 --> 00:01:25.650
+And if you go into the Event Log,
+
+39
+00:01:25.650 --> 00:01:27.390
+you will find actually issues
+
+40
+00:01:27.390 --> 00:01:31.320
+that were opened and closed, and where,
+
+41
+00:01:31.320 --> 00:01:33.690
+the start time, and the last update time.
+
+42
+00:01:33.690 --> 00:01:36.600
+And these issues are received only applied to me,
+
+43
+00:01:36.600 --> 00:01:39.840
+because I was using underlying services.
+
+44
+00:01:39.840 --> 00:01:42.630
+So if I look at this Operational Issues for EC2,
+
+45
+00:01:42.630 --> 00:01:45.660
+you can click on it, you can view when it got started,
+
+46
+00:01:45.660 --> 00:01:47.100
+the fact it got resolved,
+
+47
+00:01:47.100 --> 00:01:50.070
+the description, and how it impacted me.
+
+48
+00:01:50.070 --> 00:01:53.010
+And on top of it, you could click on Affected Resources
+
+49
+00:01:53.010 --> 00:01:56.910
+to see the resources that were affected by this issue.
+
+50
+00:01:56.910 --> 00:01:57.990
+So, hopefully, you see the difference
+
+51
+00:01:57.990 --> 00:02:01.260
+between the Service Health and the Account Health.
+
+52
+00:02:01.260 --> 00:02:04.080
+And, finally, we have the Organization Health,
+
+53
+00:02:04.080 --> 00:02:05.130
+where you can configure it
+
+54
+00:02:05.130 --> 00:02:07.500
+to get organization-wide visibility
+
+55
+00:02:07.500 --> 00:02:10.380
+into the health of all your accounts.
+
+56
+00:02:10.380 --> 00:02:12.750
+And if you wanted to have automations,
+
+57
+00:02:12.750 --> 00:02:14.190
+you can integrate health
+
+58
+00:02:14.190 --> 00:02:17.070
+with Amazon EventBridge, for example.
+
+59
+00:02:17.070 --> 00:02:20.100
+Okay, so that's it for this lecture, I hope you liked it.
+
+60
+00:02:20.100 --> 00:02:22.053
+And I will see you in the next lecture.
+

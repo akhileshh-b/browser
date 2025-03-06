@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:01.650
+<v Instructor>So, just a quick lecture</v>
+
+2
+00:00:01.650 --> 00:00:05.130
+on IAM Access Analyzer for Amazon S3,
+
+3
+00:00:05.130 --> 00:00:06.240
+which is something that can come up
+
+4
+00:00:06.240 --> 00:00:07.770
+in the exam in one question.
+
+5
+00:00:07.770 --> 00:00:08.820
+So, what is this?
+
+6
+00:00:08.820 --> 00:00:11.070
+Well, this is a monitoring feature
+
+7
+00:00:11.070 --> 00:00:13.770
+for your Amazon S3 buckets to ensure
+
+8
+00:00:13.770 --> 00:00:16.590
+that only the intended people have access
+
+9
+00:00:16.590 --> 00:00:18.360
+to your S3 buckets.
+
+10
+00:00:18.360 --> 00:00:19.380
+So, how does that work?
+
+11
+00:00:19.380 --> 00:00:22.868
+Well, it's going to analyze your Bucket Policies,
+
+12
+00:00:22.868 --> 00:00:25.800
+your S3 ACLs, your S3 Access Point Policies,
+
+13
+00:00:25.800 --> 00:00:28.410
+and so on, and is going to surface to you
+
+14
+00:00:28.410 --> 00:00:31.001
+which buckets are going to be publicly accessible,
+
+15
+00:00:31.001 --> 00:00:32.640
+which buckets have been shared
+
+16
+00:00:32.640 --> 00:00:35.310
+with other AWS accounts and so on.
+
+17
+00:00:35.310 --> 00:00:38.520
+And the idea is that you can review this and say, okay,
+
+18
+00:00:38.520 --> 00:00:42.870
+this is normal, this is expected, or this looks a bit
+
+19
+00:00:42.870 --> 00:00:45.205
+as a security issue because I did not intend
+
+20
+00:00:45.205 --> 00:00:47.310
+to share this bucket with these people,
+
+21
+00:00:47.310 --> 00:00:49.320
+and therefore, you can take action.
+
+22
+00:00:49.320 --> 00:00:52.440
+And this is powered by IAM Access Analyzer,
+
+23
+00:00:52.440 --> 00:00:55.260
+which allows you to find out resources in your account
+
+24
+00:00:55.260 --> 00:00:57.870
+that are shared with other entities.
+
+25
+00:00:57.870 --> 00:00:59.100
+So, I hope that makes sense.
+
+26
+00:00:59.100 --> 00:01:00.300
+I hope you like this lecture
+
+27
+00:01:00.300 --> 00:01:02.433
+and I will see you in the next lecture.
+

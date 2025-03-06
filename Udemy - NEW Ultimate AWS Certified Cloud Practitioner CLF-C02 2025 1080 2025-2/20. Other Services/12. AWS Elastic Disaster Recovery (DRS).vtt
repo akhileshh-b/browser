@@ -1,0 +1,174 @@
+WEBVTT
+
+1
+00:00:00.080 --> 00:00:01.890
+<v Narrator>Hi, and welcome to AWS</v>
+
+2
+00:00:01.890 --> 00:00:03.965
+Elastic Disaster Recovery, or DRS.
+
+3
+00:00:03.965 --> 00:00:07.470
+This service used to be named Cloud Endure Disaster Recovery
+
+4
+00:00:07.470 --> 00:00:09.160
+because it was acquired by AWS
+
+5
+00:00:09.160 --> 00:00:12.600
+but then it's been renamed as a proper AWS service.
+
+6
+00:00:12.600 --> 00:00:16.310
+So elastic disaster recovery, DRS, allows you to quickly
+
+7
+00:00:16.310 --> 00:00:19.240
+and easily recover your physical, virtual,
+
+8
+00:00:19.240 --> 00:00:20.450
+and cloud based servers
+
+9
+00:00:20.450 --> 00:00:23.530
+into AWS, to do, well, disaster recovery.
+
+10
+00:00:23.530 --> 00:00:24.363
+So for example,
+
+11
+00:00:24.363 --> 00:00:26.860
+say you wanted to protect your most critical databases.
+
+12
+00:00:26.860 --> 00:00:29.415
+That includes Oracle, MySQL, SQL server,
+
+13
+00:00:29.415 --> 00:00:32.020
+your enterprise apps, such as SAP
+
+14
+00:00:32.020 --> 00:00:33.192
+or you want to protect your data
+
+15
+00:00:33.192 --> 00:00:35.340
+in case someone's performs an attack
+
+16
+00:00:35.340 --> 00:00:37.092
+and tries to get a ransom out of it.
+
+17
+00:00:37.092 --> 00:00:38.190
+Well, for this
+
+18
+00:00:38.190 --> 00:00:40.717
+you're going to do continuous block level replication
+
+19
+00:00:40.717 --> 00:00:43.574
+of your servers from your corporate data center
+
+20
+00:00:43.574 --> 00:00:47.709
+into the cloud, using the elastic disaster recovery service.
+
+21
+00:00:47.709 --> 00:00:50.810
+So your operating systems, your apps, your database,
+
+22
+00:00:50.810 --> 00:00:53.410
+all of them write to disk and what's going to happen is
+
+23
+00:00:53.410 --> 00:00:57.330
+that thanks to an AWS replication agent that is present
+
+24
+00:00:57.330 --> 00:00:58.411
+on your corporate data center
+
+25
+00:00:58.411 --> 00:01:00.750
+then you're going to get continuous replication
+
+26
+00:01:00.750 --> 00:01:04.617
+of these disks into a staging environment in AWS
+
+27
+00:01:04.617 --> 00:01:08.770
+with low cost in EC2 instances and EBS volumes.
+
+28
+00:01:08.770 --> 00:01:12.410
+And then in case a disaster strikes your data center
+
+29
+00:01:12.410 --> 00:01:14.370
+and you need to perform digital recovery,
+
+30
+00:01:14.370 --> 00:01:16.350
+then you can fell over within minutes from
+
+31
+00:01:16.350 --> 00:01:19.090
+staging to production by creating bigger
+
+32
+00:01:19.090 --> 00:01:21.800
+EC2 instances, better EBS volumes,
+
+33
+00:01:21.800 --> 00:01:25.996
+and you have performed effectively your disaster recovery.
+
+34
+00:01:25.996 --> 00:01:28.490
+And then when your incorporated sensor
+
+35
+00:01:28.490 --> 00:01:31.520
+or anywhere else really is back online
+
+36
+00:01:31.520 --> 00:01:33.339
+you can perform what's called a failback
+
+37
+00:01:33.339 --> 00:01:36.440
+which is that the system falls back
+
+38
+00:01:36.440 --> 00:01:40.060
+into your incorporated sensor and you're operating normally.
+
+39
+00:01:40.060 --> 00:01:40.893
+Okay?
+
+40
+00:01:40.893 --> 00:01:43.370
+So that's it, elastic disaster recovery is a service
+
+41
+00:01:43.370 --> 00:01:45.471
+that allows you to do better disaster recovery.
+
+42
+00:01:45.471 --> 00:01:46.770
+I hope you liked it.
+
+43
+00:01:46.770 --> 00:01:48.720
+And I will see you in the next lecture.
+

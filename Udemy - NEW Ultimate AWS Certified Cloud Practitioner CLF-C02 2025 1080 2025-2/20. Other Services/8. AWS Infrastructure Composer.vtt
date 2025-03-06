@@ -1,0 +1,294 @@
+WEBVTT
+
+1
+00:00:00.120 --> 00:00:01.272
+<v Instructor>So now let's talk about</v>
+
+2
+00:00:01.272 --> 00:00:03.630
+AWS Infrastructure Composer.
+
+3
+00:00:03.630 --> 00:00:05.580
+So it's a way for you to visually design
+
+4
+00:00:05.580 --> 00:00:09.180
+and build serverless applications very quickly on AWS.
+
+5
+00:00:09.180 --> 00:00:11.460
+It looks like this, but we'll go in the console very soon
+
+6
+00:00:11.460 --> 00:00:12.990
+to show you how it works.
+
+7
+00:00:12.990 --> 00:00:15.930
+And so the idea is that, thanks to a drag and drop tool,
+
+8
+00:00:15.930 --> 00:00:18.750
+you're going to be able to create infrastructure as code
+
+9
+00:00:18.750 --> 00:00:21.360
+very quickly without being an expert.
+
+10
+00:00:21.360 --> 00:00:22.680
+And you're going to be able to configure
+
+11
+00:00:22.680 --> 00:00:26.430
+how your resources are interacting with each other.
+
+12
+00:00:26.430 --> 00:00:29.400
+And as a result, it will generate infrastructure as code
+
+13
+00:00:29.400 --> 00:00:32.940
+so that that is compatible with CloudFormation.
+
+14
+00:00:32.940 --> 00:00:35.460
+Also, you have the way to do the opposite,
+
+15
+00:00:35.460 --> 00:00:38.790
+which is to have CloudFormation or SAM templates
+
+16
+00:00:38.790 --> 00:00:42.930
+and actually import them into AWS Infrastructure Composer
+
+17
+00:00:42.930 --> 00:00:44.280
+and visualize them.
+
+18
+00:00:44.280 --> 00:00:47.220
+So let's go in the console now to practice a little bit.
+
+19
+00:00:47.220 --> 00:00:51.030
+Okay, so here I am in the Infrastructure Composer console,
+
+20
+00:00:51.030 --> 00:00:54.810
+and I'm going to just Open Demo to show you how this works.
+
+21
+00:00:54.810 --> 00:00:55.710
+So here we are,
+
+22
+00:00:55.710 --> 00:00:59.970
+we have access to a list of things.
+
+23
+00:00:59.970 --> 00:01:03.210
+So we have an API gateway with five routes,
+
+24
+00:01:03.210 --> 00:01:07.320
+and each of these route are connected to our Compute layer,
+
+25
+00:01:07.320 --> 00:01:09.900
+which is five Lambda functions,
+
+26
+00:01:09.900 --> 00:01:12.780
+and finally we have a DynamoDB table.
+
+27
+00:01:12.780 --> 00:01:15.060
+This is very cool because we can visually see
+
+28
+00:01:15.060 --> 00:01:15.960
+what is happening.
+
+29
+00:01:15.960 --> 00:01:18.780
+So we know that whenever someone does a POST item,
+
+30
+00:01:18.780 --> 00:01:21.120
+it will be connected to this Lambda function
+
+31
+00:01:21.120 --> 00:01:22.920
+named CreateItem.
+
+32
+00:01:22.920 --> 00:01:25.770
+So we can explore the details of all these things.
+
+33
+00:01:25.770 --> 00:01:27.270
+So if you click on Details here,
+
+34
+00:01:27.270 --> 00:01:29.460
+you get the actual resource properties
+
+35
+00:01:29.460 --> 00:01:31.140
+of your Lambda function.
+
+36
+00:01:31.140 --> 00:01:33.990
+And we can see the type of package, the runtime,
+
+37
+00:01:33.990 --> 00:01:35.640
+the architecture, et cetera, et cetera.
+
+38
+00:01:35.640 --> 00:01:38.340
+And you can modify all of these things.
+
+39
+00:01:38.340 --> 00:01:40.800
+You can also, for example, set up permissions here
+
+40
+00:01:40.800 --> 00:01:43.890
+that allow it to write to DynamoDB.
+
+41
+00:01:43.890 --> 00:01:45.540
+Because here in our DynamoDB table,
+
+42
+00:01:45.540 --> 00:01:48.090
+again, we have the details of it
+
+43
+00:01:48.090 --> 00:01:49.710
+and we can see the logical ID,
+
+44
+00:01:49.710 --> 00:01:51.330
+the partition key, et cetera, et cetera.
+
+45
+00:01:51.330 --> 00:01:53.940
+So we can configure everything we want.
+
+46
+00:01:53.940 --> 00:01:56.130
+We can also very quickly, for example,
+
+47
+00:01:56.130 --> 00:01:57.420
+create our own function.
+
+48
+00:01:57.420 --> 00:02:02.420
+So under Resources, I'm going to just go for Kinesis Stream
+
+49
+00:02:02.610 --> 00:02:04.650
+and we have a Kinesis Stream right here,
+
+50
+00:02:04.650 --> 00:02:06.903
+and then I want a Lambda function.
+
+51
+00:02:08.100 --> 00:02:09.120
+And I want my Lambda function
+
+52
+00:02:09.120 --> 00:02:10.290
+to read from my Kinesis Stream
+
+53
+00:02:10.290 --> 00:02:12.600
+so I will just connect these two things
+
+54
+00:02:12.600 --> 00:02:14.130
+and it is as simple as that.
+
+55
+00:02:14.130 --> 00:02:17.550
+And here, you can just modify the stream if you want it to,
+
+56
+00:02:17.550 --> 00:02:20.910
+the configuration, as well as the Lambda function.
+
+57
+00:02:20.910 --> 00:02:23.250
+But not only you have enhanced components,
+
+58
+00:02:23.250 --> 00:02:25.950
+which are serverless-specific components,
+
+59
+00:02:25.950 --> 00:02:29.940
+but you also have any kind of standard IaC resources.
+
+60
+00:02:29.940 --> 00:02:31.740
+So you can look for whatever you want.
+
+61
+00:02:31.740 --> 00:02:33.570
+For example, you want an Amplify app,
+
+62
+00:02:33.570 --> 00:02:34.920
+you just drag and drop it.
+
+63
+00:02:34.920 --> 00:02:37.500
+And here you can configure everything you need to know
+
+64
+00:02:37.500 --> 00:02:40.650
+for that specific resource.
+
+65
+00:02:40.650 --> 00:02:43.350
+And then finally, if you go under Templates here,
+
+66
+00:02:43.350 --> 00:02:45.660
+you have the output template of CloudFormation
+
+67
+00:02:45.660 --> 00:02:48.180
+of what is represented on your canvas.
+
+68
+00:02:48.180 --> 00:02:50.730
+And you can select YAML or JSON,
+
+69
+00:02:50.730 --> 00:02:53.040
+and copy and paste this into CloudFormation
+
+70
+00:02:53.040 --> 00:02:55.020
+or save it for later purposes.
+
+71
+00:02:55.020 --> 00:02:57.360
+So this is a super handy tool that I love
+
+72
+00:02:57.360 --> 00:02:59.100
+and I hope that you like it as well.
+
+73
+00:02:59.100 --> 00:03:01.950
+All right, that's it. I will see you in the next lecture.
+

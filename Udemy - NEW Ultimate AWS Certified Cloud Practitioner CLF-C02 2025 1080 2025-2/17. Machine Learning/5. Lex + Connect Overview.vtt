@@ -1,0 +1,198 @@
+WEBVTT
+
+1
+00:00:00.360 --> 00:00:03.480
+<v Instructor>So now let's discuss Amazon Lex and Connect.</v>
+
+2
+00:00:03.480 --> 00:00:06.624
+So Amazon Lex is the same technology that powers
+
+3
+00:00:06.624 --> 00:00:09.570
+the Alexa devices by Amazon.
+
+4
+00:00:09.570 --> 00:00:12.690
+And if you don't know Alexa, Alexa is like a little device
+
+5
+00:00:12.690 --> 00:00:13.807
+that you have in your home and you say,
+
+6
+00:00:13.807 --> 00:00:15.900
+"Alexa, what's the weather like tomorrow?"
+
+7
+00:00:15.900 --> 00:00:18.150
+And it will reply, "The weather is good,
+
+8
+00:00:18.150 --> 00:00:20.303
+it'll be 24 degrees and it'll be sunny."
+
+9
+00:00:20.303 --> 00:00:22.535
+So, the idea is that with Amazon Lex,
+
+10
+00:00:22.535 --> 00:00:26.430
+you get automatic speech recognition, so ASR,
+
+11
+00:00:26.430 --> 00:00:27.870
+that allows you to convert speech,
+
+12
+00:00:27.870 --> 00:00:30.570
+so spoken words, into text.
+
+13
+00:00:30.570 --> 00:00:31.770
+There's also a very good thing
+
+14
+00:00:31.770 --> 00:00:35.520
+because Lex understands the intent of text, callers
+
+15
+00:00:35.520 --> 00:00:37.590
+by doing natural language understanding,
+
+16
+00:00:37.590 --> 00:00:39.510
+so it understands sentences.
+
+17
+00:00:39.510 --> 00:00:41.160
+And Amazon Lex is a technology
+
+18
+00:00:41.160 --> 00:00:44.940
+that will help you build chatbots or call center bots.
+
+19
+00:00:44.940 --> 00:00:46.320
+And talking about call centers,
+
+20
+00:00:46.320 --> 00:00:47.700
+how do we build a call center?
+
+21
+00:00:47.700 --> 00:00:49.530
+We have Amazon Connect.
+
+22
+00:00:49.530 --> 00:00:51.619
+So Amazon Connect is a visual contact center
+
+23
+00:00:51.619 --> 00:00:54.900
+that allows you to receive calls, create contact flows,
+
+24
+00:00:54.900 --> 00:00:56.490
+and it's all cloud-based.
+
+25
+00:00:56.490 --> 00:00:58.695
+And it can integrate with other customer
+
+26
+00:00:58.695 --> 00:01:01.332
+relationship system, management systems, so CRMs
+
+27
+00:01:01.332 --> 00:01:03.510
+or AWS services.
+
+28
+00:01:03.510 --> 00:01:05.903
+And the cool thing about Amazon Connect versus traditional
+
+29
+00:01:05.903 --> 00:01:08.460
+offering is that there is no upfront payment.
+
+30
+00:01:08.460 --> 00:01:09.632
+It's about 80% cheaper
+
+31
+00:01:09.632 --> 00:01:12.750
+than traditional contact center solutions.
+
+32
+00:01:12.750 --> 00:01:16.500
+So the whole flow of building a smart contact center is
+
+33
+00:01:16.500 --> 00:01:18.180
+that you will have, for example,
+
+34
+00:01:18.180 --> 00:01:20.910
+a phone call to schedule an appointment that is made
+
+35
+00:01:20.910 --> 00:01:23.520
+into a number that is defined by Amazon Connect.
+
+36
+00:01:23.520 --> 00:01:25.170
+So they call Amazon Connect.
+
+37
+00:01:25.170 --> 00:01:28.980
+Lex is streaming all the information from this call
+
+38
+00:01:28.980 --> 00:01:31.593
+and understand the intent of the phone call,
+
+39
+00:01:31.593 --> 00:01:35.220
+and therefore, it will invoke the right lender function.
+
+40
+00:01:35.220 --> 00:01:36.840
+And that lender function, for example,
+
+41
+00:01:36.840 --> 00:01:38.707
+can be very smart and say, "Hey, someone has said
+
+42
+00:01:38.707 --> 00:01:42.060
+to schedule a meeting tomorrow with Tom at 3:00 PM."
+
+43
+00:01:42.060 --> 00:01:44.616
+Okay, I will go into my CRM and schedule that meeting
+
+44
+00:01:44.616 --> 00:01:46.860
+by writing some code.
+
+45
+00:01:46.860 --> 00:01:48.870
+So this is the whole idea behind Lex and Connect.
+
+46
+00:01:48.870 --> 00:01:50.550
+So remember Lex is for ASR
+
+47
+00:01:50.550 --> 00:01:52.830
+and Connect is for contact centers.
+
+48
+00:01:52.830 --> 00:01:53.663
+So that's it.
+
+49
+00:01:53.663 --> 00:01:56.213
+I hope you liked it and I will see you in the next lecture.
+

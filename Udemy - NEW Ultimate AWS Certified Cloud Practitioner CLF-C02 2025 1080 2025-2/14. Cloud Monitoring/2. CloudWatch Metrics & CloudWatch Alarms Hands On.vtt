@@ -1,0 +1,734 @@
+WEBVTT
+
+1
+00:00:00.510 --> 00:00:03.243
+<v ->Okay, so let's go into CloudWatch.</v>
+
+2
+00:00:04.130 --> 00:00:07.033
+And we're going to look at first CloudWatch metrics.
+
+3
+00:00:08.210 --> 00:00:10.120
+So let's go onto the right hand side, onto metrics,
+
+4
+00:00:10.120 --> 00:00:13.060
+All metrics, and here we have some information
+
+5
+00:00:13.060 --> 00:00:15.490
+and we can try the new interface. Okay.
+
+6
+00:00:15.490 --> 00:00:18.030
+So, here we have some information around all the metrics
+
+7
+00:00:18.030 --> 00:00:19.860
+that we have created in this course, and you may have
+
+8
+00:00:19.860 --> 00:00:22.830
+a different screen, but as you can see, lots of services.
+
+9
+00:00:22.830 --> 00:00:26.020
+We're already publishing some metrics into CloudWatch,
+
+10
+00:00:26.020 --> 00:00:27.200
+which is pretty cool.
+
+11
+00:00:27.200 --> 00:00:30.110
+So for example, I can click on the SQS, Queue Metrics,
+
+12
+00:00:30.110 --> 00:00:32.610
+and look at this demo SQS queue.
+
+13
+00:00:32.610 --> 00:00:35.390
+And, we can see that the number of messages received
+
+14
+00:00:35.390 --> 00:00:37.730
+has like, one data point right here.
+
+15
+00:00:37.730 --> 00:00:41.090
+If I look for example, at number of messages deleted,
+
+16
+00:00:41.090 --> 00:00:42.220
+it doesn't show anything.
+
+17
+00:00:42.220 --> 00:00:45.680
+Number of sessions sent, here's one, and then we can have,
+
+18
+00:00:45.680 --> 00:00:47.980
+for example, Number of Empty Received and so on.
+
+19
+00:00:47.980 --> 00:00:50.550
+So you can get a lot of information for SQS.
+
+20
+00:00:50.550 --> 00:00:53.610
+But, let's have a look for example for EC2 instances.
+
+21
+00:00:53.610 --> 00:00:56.500
+So let's go into EC2, Per-instance Metric,
+
+22
+00:00:56.500 --> 00:01:00.400
+and then we can look at the CPU utilization of my instance,
+
+23
+00:01:00.400 --> 00:01:02.700
+and I've just launched an instance before, so again,
+
+24
+00:01:02.700 --> 00:01:04.670
+it will show you some metrics.
+
+25
+00:01:04.670 --> 00:01:07.450
+So you need to, you know, have it (stutters)
+
+26
+00:01:07.450 --> 00:01:08.870
+running for a longer period of time
+
+27
+00:01:08.870 --> 00:01:10.480
+to get some information out of it.
+
+28
+00:01:10.480 --> 00:01:13.850
+But at least it shows you that within the dashboard
+
+29
+00:01:13.850 --> 00:01:16.210
+of culture metrics, you can get a lot of information
+
+30
+00:01:16.210 --> 00:01:19.340
+for a lot of different services, okay?
+
+31
+00:01:19.340 --> 00:01:22.460
+Next, what we want to do is to create an alarm.
+
+32
+00:01:22.460 --> 00:01:24.660
+So let's go through the process of creating an alarm.
+
+33
+00:01:24.660 --> 00:01:28.440
+So, let's go to All alarms and create an alarm.
+
+34
+00:01:28.440 --> 00:01:30.950
+We need to first select a metric, so let's find
+
+35
+00:01:30.950 --> 00:01:34.770
+that CPU utilization metric for our EC2 instance,
+
+36
+00:01:34.770 --> 00:01:36.440
+we'll select it.
+
+37
+00:01:36.440 --> 00:01:39.280
+And, then, we can say whether we want, we want to consider
+
+38
+00:01:39.280 --> 00:01:40.980
+the average, the sum, the maximum zone,
+
+39
+00:01:40.980 --> 00:01:42.820
+so we have different settings for this alarm.
+
+40
+00:01:42.820 --> 00:01:45.100
+We'll keep it very simple, exhibit for the average
+
+41
+00:01:45.100 --> 00:01:47.410
+over the five minute period,
+
+42
+00:01:47.410 --> 00:01:50.980
+and while saying, hey, if the CPU utilization
+
+43
+00:01:50.980 --> 00:01:54.980
+is greater than 80%, okay, then please
+
+44
+00:01:54.980 --> 00:01:57.520
+treat this as a alarm.
+
+45
+00:01:57.520 --> 00:01:59.530
+But you could say Alarm, OK, or Insufficient data,
+
+46
+00:01:59.530 --> 00:02:01.220
+but we'll say it's an alarm.
+
+47
+00:02:01.220 --> 00:02:04.530
+In which case, well, you need to send a notification
+
+48
+00:02:04.530 --> 00:02:07.230
+in to a new topic of SNS called
+
+49
+00:02:07.230 --> 00:02:09.460
+the Default_CloudWatch_Alarms_Topic,
+
+50
+00:02:09.460 --> 00:02:13.370
+and then the recipient will be stephan@example.com.
+
+51
+00:02:13.370 --> 00:02:14.870
+Let's create this topic.
+
+52
+00:02:14.870 --> 00:02:18.660
+And now, any time the Cloudwatch alarm is going to go
+
+53
+00:02:18.660 --> 00:02:21.410
+into the alarm state, it's going to send an email
+
+54
+00:02:21.410 --> 00:02:23.490
+into this SNS- sorry,
+
+55
+00:02:23.490 --> 00:02:25.460
+a notification to this SNS topic,
+
+56
+00:02:25.460 --> 00:02:30.330
+which will in turn, send an email to stephanie@example.com.
+
+57
+00:02:30.330 --> 00:02:32.390
+So this is pretty cool, cause we have notifications,
+
+58
+00:02:32.390 --> 00:02:34.050
+but also we have other options to set up
+
+59
+00:02:34.050 --> 00:02:35.720
+Auto Scaling actions, EC2 actions,
+
+60
+00:02:35.720 --> 00:02:36.830
+or Systems Manager actions.
+
+61
+00:02:36.830 --> 00:02:38.710
+But again, to keep things very simple,
+
+62
+00:02:38.710 --> 00:02:41.300
+let's just consider only the notification.
+
+63
+00:02:41.300 --> 00:02:42.320
+Click on Next.
+
+64
+00:02:42.320 --> 00:02:45.250
+Then, this one is my DemoAlarm.
+
+65
+00:02:45.250 --> 00:02:46.250
+Click on Next.
+
+66
+00:02:46.250 --> 00:02:47.380
+And then as you can see,
+
+67
+00:02:47.380 --> 00:02:50.410
+this is the alarm threshold, the red line,
+
+68
+00:02:50.410 --> 00:02:52.410
+and the blue dot is the actual value,
+
+69
+00:02:52.410 --> 00:02:55.883
+so as we can see we're, far below the actual threshold.
+
+70
+00:02:57.080 --> 00:02:59.280
+So let's click on Create alarm and here we go,
+
+71
+00:02:59.280 --> 00:03:02.150
+I have created my first alarm.
+
+72
+00:03:02.150 --> 00:03:03.530
+There's another way you can create an alarm,
+
+73
+00:03:03.530 --> 00:03:07.760
+it's directly from within the EC2 console for EC2 instances.
+
+74
+00:03:07.760 --> 00:03:09.820
+So I am in my EC2 console,
+
+75
+00:03:09.820 --> 00:03:11.330
+and this is the instance I created from before,
+
+76
+00:03:11.330 --> 00:03:14.700
+so just a very simple instance with no configuration.
+
+77
+00:03:14.700 --> 00:03:17.120
+Okay. And I just launched it.
+
+78
+00:03:17.120 --> 00:03:19.890
+And if you go first under the Monitoring tab, here.
+
+79
+00:03:19.890 --> 00:03:22.340
+As we can see, we have some information around
+
+80
+00:03:22.340 --> 00:03:25.650
+all the monitoring of our EC2 instance,
+
+81
+00:03:25.650 --> 00:03:29.620
+So we get CPU utilization, status checks, and so on.
+
+82
+00:03:29.620 --> 00:03:31.840
+So lots of information right here.
+
+83
+00:03:31.840 --> 00:03:34.860
+And, what we can do here, is that we can add an alarm
+
+84
+00:03:34.860 --> 00:03:36.380
+to our EC2 instance.
+
+85
+00:03:36.380 --> 00:03:39.330
+So to do so, you scroll to the right hand side
+
+86
+00:03:39.330 --> 00:03:41.140
+and there is an alarm status,
+
+87
+00:03:41.140 --> 00:03:42.840
+and you can click on this plus button right here
+
+88
+00:03:42.840 --> 00:03:44.420
+to create an alarm.
+
+89
+00:03:44.420 --> 00:03:47.450
+So here we manage CloudWatch alarms for our EC2 instance.
+
+90
+00:03:47.450 --> 00:03:50.150
+We're going to create an alarm for it.
+
+91
+00:03:50.150 --> 00:03:51.960
+And then we're going to say, hey,
+
+92
+00:03:51.960 --> 00:03:54.910
+the alarm notification should go to this topic
+
+93
+00:03:54.910 --> 00:03:56.440
+that we've created from before.
+
+94
+00:03:56.440 --> 00:03:58.550
+And, then there should be an alarm action.
+
+95
+00:03:58.550 --> 00:04:00.110
+And, the alarm action is going to be
+
+96
+00:04:00.110 --> 00:04:01.940
+recover my EC2 instance.
+
+97
+00:04:01.940 --> 00:04:02.773
+So we're going to say, hey,
+
+98
+00:04:02.773 --> 00:04:06.330
+I want to recover my EC2 instance, when,
+
+99
+00:04:06.330 --> 00:04:08.590
+and then you do say the data to sample.
+
+100
+00:04:08.590 --> 00:04:11.490
+So we'll choose Status check failed: either.
+
+101
+00:04:11.490 --> 00:04:13.990
+So when either status check is failing,
+
+102
+00:04:13.990 --> 00:04:16.290
+please recover my EC2 instance.
+
+103
+00:04:16.290 --> 00:04:17.800
+So this is a very handy way
+
+104
+00:04:17.800 --> 00:04:19.500
+to create an alarm for CloudWatch.
+
+105
+00:04:20.680 --> 00:04:22.253
+And then, click on Create.
+
+106
+00:04:26.880 --> 00:04:27.713
+And this is not working,
+
+107
+00:04:27.713 --> 00:04:30.920
+because we need to choose (stutters)
+
+108
+00:04:30.920 --> 00:04:32.820
+Systems check failed for the metrics.
+
+109
+00:04:32.820 --> 00:04:35.230
+So, always good to be wrong sometimes.
+
+110
+00:04:35.230 --> 00:04:40.090
+So, Status check failed: system, and Create, and here we go.
+
+111
+00:04:40.090 --> 00:04:42.670
+Now I have created a CloudWatch alarm on my instance.
+
+112
+00:04:42.670 --> 00:04:45.670
+So now we have two alarms for my CloudWatch instance,
+
+113
+00:04:45.670 --> 00:04:47.510
+uh, for my EC2 instance.
+
+114
+00:04:47.510 --> 00:04:50.460
+Great. And we can create a third alarm if you wanted to,
+
+115
+00:04:50.460 --> 00:04:53.460
+For example, we're saying, hey, if, then,
+
+116
+00:04:53.460 --> 00:04:55.330
+so we can notify to the same topic
+
+117
+00:04:55.330 --> 00:04:58.580
+and we're going to add an alarm action to reboot this time.
+
+118
+00:04:58.580 --> 00:05:02.630
+And we'll say, hey, if the CPU utilization is greater
+
+119
+00:05:02.630 --> 00:05:07.500
+than 95% for three consecutive periods of five minutes,
+
+120
+00:05:07.500 --> 00:05:09.990
+then we're assuming that's, hey, I think
+
+121
+00:05:09.990 --> 00:05:14.200
+our EC2 two instance is stuck on a CPU solution loop.
+
+122
+00:05:14.200 --> 00:05:15.980
+Therefore, please reboot it.
+
+123
+00:05:15.980 --> 00:05:17.420
+So this is just a use case.
+
+124
+00:05:17.420 --> 00:05:19.270
+So as we can see we are far below,
+
+125
+00:05:19.270 --> 00:05:20.370
+and we can create this alarm.
+
+126
+00:05:20.370 --> 00:05:22.720
+And again, now we have three alarms
+
+127
+00:05:22.720 --> 00:05:24.960
+attached to our EC2 instance,
+
+128
+00:05:24.960 --> 00:05:26.870
+which is quite good.
+
+129
+00:05:26.870 --> 00:05:29.850
+Okay, and if you go back into the Cloudwatch console,
+
+130
+00:05:29.850 --> 00:05:31.720
+as you can see, and refresh this page,
+
+131
+00:05:31.720 --> 00:05:33.870
+now we have three alarms.
+
+132
+00:05:33.870 --> 00:05:35.420
+So there's another kind of alarm
+
+133
+00:05:35.420 --> 00:05:37.470
+that we can not create in all the regions.
+
+134
+00:05:37.470 --> 00:05:40.230
+You can actually create it in only one region.
+
+135
+00:05:40.230 --> 00:05:41.970
+And this region is us-east-1
+
+136
+00:05:41.970 --> 00:05:43.320
+because it is a billing alarm.
+
+137
+00:05:43.320 --> 00:05:45.160
+So as you can see on the left hand side right now,
+
+138
+00:05:45.160 --> 00:05:46.900
+there is no billing alarm.
+
+139
+00:05:46.900 --> 00:05:49.070
+To make billing alarm appear here,
+
+140
+00:05:49.070 --> 00:05:50.760
+you click on the region selection
+
+141
+00:05:50.760 --> 00:05:52.833
+and go into us-east-1.
+
+142
+00:05:55.000 --> 00:05:56.373
+So going into us-east-1,
+
+143
+00:05:57.250 --> 00:06:00.150
+as you can see on the left hand side now, there is billing.
+
+144
+00:06:00.150 --> 00:06:02.120
+And, now we can create a billing alarm,
+
+145
+00:06:02.120 --> 00:06:05.650
+which is to alarm us based on the billing
+
+146
+00:06:05.650 --> 00:06:07.630
+for specific services.
+
+147
+00:06:07.630 --> 00:06:10.290
+So, we're going to create an alarm.
+
+148
+00:06:10.290 --> 00:06:12.110
+And then when you specify a metric,
+
+149
+00:06:12.110 --> 00:06:15.037
+so there's going to be estimated charges of USD.
+
+150
+00:06:15.890 --> 00:06:18.560
+And in here you can say, okay, if my charters
+
+151
+00:06:18.560 --> 00:06:22.900
+are greater than eight USD, then go into an alarm state
+
+152
+00:06:22.900 --> 00:06:26.460
+and then, send a notification into a new topic,
+
+153
+00:06:26.460 --> 00:06:27.763
+so we'll call this one-
+
+154
+00:06:28.630 --> 00:06:31.000
+this one is the default topic for billing,
+
+155
+00:06:31.000 --> 00:06:33.110
+and then against it's stephan@example.com.
+
+156
+00:06:33.110 --> 00:06:35.320
+So we need to recreate an SNS topic
+
+157
+00:06:35.320 --> 00:06:37.280
+because we are in another region.
+
+158
+00:06:37.280 --> 00:06:39.190
+And obviously, every resources in the database
+
+159
+00:06:39.190 --> 00:06:41.490
+is scoped by region. Okay.
+
+160
+00:06:41.490 --> 00:06:43.950
+Almost every resources.
+
+161
+00:06:43.950 --> 00:06:47.313
+So we need to create this topic, here we go,
+
+162
+00:06:48.300 --> 00:06:52.130
+and click on Next and then DemoBillingAlarm.
+
+163
+00:06:53.390 --> 00:06:54.810
+Click on Next.
+
+164
+00:06:54.810 --> 00:06:55.643
+And we're good to go.
+
+165
+00:06:55.643 --> 00:06:57.220
+So again, just to show you that billing data
+
+166
+00:06:57.220 --> 00:06:58.920
+is only available in us-east-1,
+
+167
+00:06:58.920 --> 00:07:02.000
+and this could come up in the exam, okay.
+
+168
+00:07:02.000 --> 00:07:04.350
+So as we can see with alarms and metrics,
+
+169
+00:07:04.350 --> 00:07:08.800
+we can do a lot of automation in AWS, which is quite handy.
+
+170
+00:07:08.800 --> 00:07:10.550
+So just to finish with this hands-on,
+
+171
+00:07:10.550 --> 00:07:12.550
+we just need to clean up what we have.
+
+172
+00:07:12.550 --> 00:07:15.840
+So let's clean up this alarm right here, the billing alarm.
+
+173
+00:07:15.840 --> 00:07:17.930
+And then please make sure to go back
+
+174
+00:07:17.930 --> 00:07:20.270
+to the region where you were working from before.
+
+175
+00:07:20.270 --> 00:07:22.003
+So for me, this is Ireland.
+
+176
+00:07:23.994 --> 00:07:27.960
+And what I'm going to do is delete all my alarms,
+
+177
+00:07:27.960 --> 00:07:31.110
+so I'm going to delete my three alarms right here.
+
+178
+00:07:31.110 --> 00:07:32.533
+So Actions, Delete.
+
+179
+00:07:33.370 --> 00:07:36.300
+And then I'm going to also go into my EC2 instance
+
+180
+00:07:36.300 --> 00:07:37.670
+and terminate it.
+
+181
+00:07:37.670 --> 00:07:38.900
+So that's it for this hands-on.
+
+182
+00:07:38.900 --> 00:07:39.880
+I hope you liked it.
+
+183
+00:07:39.880 --> 00:07:41.830
+And I will see you in the next lecture.
+

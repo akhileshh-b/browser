@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00:00.500 --> 00:00:02.410
+<v Instructor>Hi, so I just won't talk to you</v>
+
+00:00:02.410 --> 00:00:04.830
+about the UI changes that you may see
+
+00:00:04.830 --> 00:00:07.460
+between my videos and AWS.
+
+00:00:07.460 --> 00:00:08.810
+So just to explain things to you,
+
+00:00:08.810 --> 00:00:12.930
+AWS is doing a huge transition of their interface
+
+00:00:12.930 --> 00:00:14.990
+to a new guidelines for design.
+
+00:00:14.990 --> 00:00:17.860
+And so in that regards, sometimes the UI will look new
+
+00:00:17.860 --> 00:00:19.920
+and this is what I call a new type of UI
+
+00:00:19.920 --> 00:00:22.190
+and it looks like pretty square and so on,
+
+00:00:22.190 --> 00:00:24.410
+but sometimes you will have the old kind of UIs,
+
+00:00:24.410 --> 00:00:25.690
+which looks like this.
+
+00:00:25.690 --> 00:00:28.741
+And so AWS is doing a transition for all their services,
+
+00:00:28.741 --> 00:00:32.770
+of all their UIs and it's not all at the same time.
+
+00:00:32.770 --> 00:00:35.210
+It happens over one year or two years
+
+00:00:35.210 --> 00:00:36.484
+and it's still happening today.
+
+00:00:36.484 --> 00:00:38.821
+So my goal is obviously to have videos
+
+00:00:38.821 --> 00:00:42.980
+as updated as possible, but it is literally impossible
+
+00:00:42.980 --> 00:00:44.140
+to keep up with all the changes
+
+00:00:44.140 --> 00:00:45.530
+until they're done with them.
+
+00:00:45.530 --> 00:00:48.750
+So what I'm doing is that I try my best to keep my videos
+
+00:00:48.750 --> 00:00:50.648
+up to date if they are breaking changes,
+
+00:00:50.648 --> 00:00:52.974
+but if I believe that the changes are minor enough
+
+00:00:52.974 --> 00:00:55.311
+that you can find your way around the console,
+
+00:00:55.311 --> 00:00:58.860
+I will not update the video just yet, but trust me,
+
+00:00:58.860 --> 00:01:00.850
+I do listen to feedback
+
+00:01:00.850 --> 00:01:02.840
+and whenever a video is outdated,
+
+00:01:02.840 --> 00:01:04.450
+I will go ahead and update it.
+
+00:01:04.450 --> 00:01:05.283
+Okay.
+
+00:01:05.283 --> 00:01:07.650
+Another thing you can do is that if you really are lost,
+
+00:01:07.650 --> 00:01:10.590
+you can switch a toggle in most of the services
+
+00:01:10.590 --> 00:01:14.170
+that have a new experience and switch back to the old UI.
+
+00:01:14.170 --> 00:01:16.280
+If you do switch back to the old UI like here
+
+00:01:16.280 --> 00:01:18.398
+as you can see, you will see the old UI sometimes
+
+00:01:18.398 --> 00:01:21.590
+like you see in my videos, but really I just wanted
+
+00:01:21.590 --> 00:01:23.600
+to give you a little warning just to explain to you
+
+00:01:23.600 --> 00:01:24.750
+the course is not outdated.
+
+00:01:24.750 --> 00:01:27.470
+It is my passion and my duty to make sure
+
+00:01:27.470 --> 00:01:29.870
+that you pass your exam and learn a lot in this course
+
+00:01:29.870 --> 00:01:33.330
+and so trust me, I am monitoring every single day
+
+00:01:33.330 --> 00:01:35.900
+for updates and changes that are breaking my course
+
+00:01:35.900 --> 00:01:37.040
+and if they do break my course,
+
+00:01:37.040 --> 00:01:39.270
+I promise that I will update my videos, but please, please,
+
+00:01:39.270 --> 00:01:40.990
+please forgive me in advance
+
+00:01:40.990 --> 00:01:44.460
+if the video doesn't look as updated as the UI in AWS,
+
+00:01:44.460 --> 00:01:46.070
+it is very difficult right now
+
+00:01:46.070 --> 00:01:47.350
+to keep up with their changes.
+
+00:01:47.350 --> 00:01:50.250
+So thank you so much and I wish you a very happy learning.

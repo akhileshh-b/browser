@@ -1,0 +1,614 @@
+WEBVTT
+
+1
+00:00:00.036 --> 00:00:03.930
+<v ->So now let's talk about the ecosystem around AWS.</v>
+
+2
+00:00:03.930 --> 00:00:05.100
+So there are lots of free resources
+
+3
+00:00:05.100 --> 00:00:06.390
+you can use online to learn.
+
+4
+00:00:06.390 --> 00:00:08.550
+For example, there is the blog of AWS,
+
+5
+00:00:08.550 --> 00:00:11.220
+which is very helpful to get new feature release,
+
+6
+00:00:11.220 --> 00:00:12.720
+as well as in-depth article
+
+7
+00:00:12.720 --> 00:00:15.090
+around how to do a specific use case.
+
+8
+00:00:15.090 --> 00:00:17.520
+The community forums are also a great way to engage
+
+9
+00:00:17.520 --> 00:00:19.230
+with other builders.
+
+10
+00:00:19.230 --> 00:00:21.690
+There is the white paper and guide section,
+
+11
+00:00:21.690 --> 00:00:23.520
+which is very helpful to learn in depth
+
+12
+00:00:23.520 --> 00:00:26.190
+around a specific area of AWS.
+
+13
+00:00:26.190 --> 00:00:27.870
+And then you have the solutions library,
+
+14
+00:00:27.870 --> 00:00:29.640
+which is to be called Quick Starts,
+
+15
+00:00:29.640 --> 00:00:33.178
+which gives you vetted technology solutions for the cloud.
+
+16
+00:00:33.178 --> 00:00:36.630
+For example, if you want to implement live streaming on AWS,
+
+17
+00:00:36.630 --> 00:00:38.190
+you would just find it on the solutions website.
+
+18
+00:00:38.190 --> 00:00:39.360
+So let me show you.
+
+19
+00:00:39.360 --> 00:00:42.180
+So here I am on this Solutions Library website.
+
+20
+00:00:42.180 --> 00:00:43.980
+And as you can see, I can scroll down
+
+21
+00:00:43.980 --> 00:00:45.600
+and look at popular solutions
+
+22
+00:00:45.600 --> 00:00:46.800
+and I will just take the first one,
+
+23
+00:00:46.800 --> 00:00:48.420
+but you can take whichever you want,
+
+24
+00:00:48.420 --> 00:00:50.430
+which is live streaming on AWS.
+
+25
+00:00:50.430 --> 00:00:54.180
+And we scroll down, we see what is the solution,
+
+26
+00:00:54.180 --> 00:00:55.740
+what are the pros and cons.
+
+27
+00:00:55.740 --> 00:00:57.780
+Then we have an architecture diagram
+
+28
+00:00:57.780 --> 00:00:59.310
+on this one and that one,
+
+29
+00:00:59.310 --> 00:01:01.110
+so we can choose the one we want.
+
+30
+00:01:01.110 --> 00:01:03.720
+And then if you wanted to implement it, you can for example,
+
+31
+00:01:03.720 --> 00:01:06.540
+click here to launch it in the console.
+
+32
+00:01:06.540 --> 00:01:09.210
+And this takes you directly into CloudFormation
+
+33
+00:01:09.210 --> 00:01:11.160
+to actually go ahead and create this stack
+
+34
+00:01:11.160 --> 00:01:13.140
+based on the specific URL.
+
+35
+00:01:13.140 --> 00:01:15.450
+So it just a very good way to get started easily
+
+36
+00:01:15.450 --> 00:01:17.190
+with some architectures and some solutions
+
+37
+00:01:17.190 --> 00:01:20.820
+that are going to be very scalable and vetted by AWS.
+
+38
+00:01:20.820 --> 00:01:23.220
+So all of these free resources are available
+
+39
+00:01:23.220 --> 00:01:24.810
+to you at no cost.
+
+40
+00:01:24.810 --> 00:01:27.150
+But then there is support by AWS.
+
+41
+00:01:27.150 --> 00:01:29.070
+So we've seen different level of supports.
+
+42
+00:01:29.070 --> 00:01:31.860
+So on developer, we get business hour email
+
+43
+00:01:31.860 --> 00:01:34.140
+and access to cloud support associates.
+
+44
+00:01:34.140 --> 00:01:36.240
+We get general guidance of less than 24 hours
+
+45
+00:01:36.240 --> 00:01:38.910
+and system impaired of less than 12 hours.
+
+46
+00:01:38.910 --> 00:01:41.310
+If we are in the business subscription,
+
+47
+00:01:41.310 --> 00:01:44.400
+then we're going to get 24/7 phone supports,
+
+48
+00:01:44.400 --> 00:01:47.190
+email and chat access to cloud support engineers,
+
+49
+00:01:47.190 --> 00:01:48.265
+so one level up.
+
+50
+00:01:48.265 --> 00:01:50.580
+In case your production system is down,
+
+51
+00:01:50.580 --> 00:01:52.170
+you get ,sorry for impaired,
+
+52
+00:01:52.170 --> 00:01:53.515
+you get less than four hours.
+
+53
+00:01:53.515 --> 00:01:55.050
+And for production system down,
+
+54
+00:01:55.050 --> 00:01:57.630
+you get less than one hour of reply time.
+
+55
+00:01:57.630 --> 00:02:00.390
+And for enterprise, which is the most expensive tier,
+
+56
+00:02:00.390 --> 00:02:01.350
+you get access to
+
+57
+00:02:01.350 --> 00:02:04.230
+a dedicated technical account manager or TAM.
+
+58
+00:02:04.230 --> 00:02:06.630
+You get concierge support team to help you with billing
+
+59
+00:02:06.630 --> 00:02:08.001
+and account best practices.
+
+60
+00:02:08.001 --> 00:02:10.800
+And in case your business system is down,
+
+61
+00:02:10.800 --> 00:02:12.660
+then it's going to be less than 15 minutes
+
+62
+00:02:12.660 --> 00:02:16.620
+before you get a reply from the support of AWS,
+
+63
+00:02:16.620 --> 00:02:17.453
+which is very handy.
+
+64
+00:02:17.453 --> 00:02:19.890
+So again, remember the different levels of support
+
+65
+00:02:19.890 --> 00:02:21.870
+as part of the ecosystem.
+
+66
+00:02:21.870 --> 00:02:23.640
+Okay, next we have the Marketplace.
+
+67
+00:02:23.640 --> 00:02:26.970
+So I just talked about it briefly in the EC2 section,
+
+68
+00:02:26.970 --> 00:02:28.800
+but it is going to be a digital catalog
+
+69
+00:02:28.800 --> 00:02:30.420
+with thousands of software listing
+
+70
+00:02:30.420 --> 00:02:33.600
+from independent software vendors, which are third party.
+
+71
+00:02:33.600 --> 00:02:35.370
+For example, on the Marketplace,
+
+72
+00:02:35.370 --> 00:02:37.620
+you can buy a custom AMI for someone
+
+73
+00:02:37.620 --> 00:02:40.560
+that was customized with some OS, some firewalls
+
+74
+00:02:40.560 --> 00:02:42.300
+or some technical solutions.
+
+75
+00:02:42.300 --> 00:02:44.040
+You can also buy CloudFormation templates
+
+76
+00:02:44.040 --> 00:02:45.840
+that are going to be production ready.
+
+77
+00:02:45.840 --> 00:02:46.980
+You could buy software
+
+78
+00:02:46.980 --> 00:02:49.770
+as a service directly from the Marketplace.
+
+79
+00:02:49.770 --> 00:02:51.240
+You can buy containers,
+
+80
+00:02:51.240 --> 00:02:53.430
+and if you buy through the Marketplace,
+
+81
+00:02:53.430 --> 00:02:57.090
+the advantage that it goes directly into your bill of AWS,
+
+82
+00:02:57.090 --> 00:02:59.760
+so it's only to source a new vendor.
+
+83
+00:02:59.760 --> 00:03:02.760
+Then you can sell your own solutions on the Marketplace
+
+84
+00:03:02.760 --> 00:03:05.430
+if you want to become a marketplace seller.
+
+85
+00:03:05.430 --> 00:03:07.770
+So as we can see, a Marketplace can be very easy,
+
+86
+00:03:07.770 --> 00:03:09.810
+and we've seen it in the beginning of the course
+
+87
+00:03:09.810 --> 00:03:11.670
+regarding the AMIs.
+
+88
+00:03:11.670 --> 00:03:14.250
+Next, we have training from AWS.
+
+89
+00:03:14.250 --> 00:03:16.260
+So we have two sorts of training given directly
+
+90
+00:03:16.260 --> 00:03:19.200
+by AWS that can be digital, so online,
+
+91
+00:03:19.200 --> 00:03:22.770
+or classroom training with in-person or virtual.
+
+92
+00:03:22.770 --> 00:03:24.180
+There's also private training
+
+93
+00:03:24.180 --> 00:03:25.920
+if you want to organize a training session
+
+94
+00:03:25.920 --> 00:03:27.450
+for your organization.
+
+95
+00:03:27.450 --> 00:03:29.310
+And then there is dedicated training
+
+96
+00:03:29.310 --> 00:03:32.460
+and certification program for the US government,
+
+97
+00:03:32.460 --> 00:03:35.550
+and a training and certification program for the enterprise.
+
+98
+00:03:35.550 --> 00:03:37.830
+So that's for the training that AWS can give you.
+
+99
+00:03:37.830 --> 00:03:42.270
+Then we have AWS Academy to help universities teach AWS,
+
+100
+00:03:42.270 --> 00:03:44.314
+so that people when they get their university degree,
+
+101
+00:03:44.314 --> 00:03:46.440
+they also know how to use the cloud.
+
+102
+00:03:46.440 --> 00:03:49.680
+And then obviously not sponsored training by AWS,
+
+103
+00:03:49.680 --> 00:03:52.050
+but you get your obviously favorite teacher online,
+
+104
+00:03:52.050 --> 00:03:54.390
+that is me, teaching you about certifications
+
+105
+00:03:54.390 --> 00:03:56.250
+and more on AWS.
+
+106
+00:03:56.250 --> 00:03:58.080
+Okay, so this is for the options
+
+107
+00:03:58.080 --> 00:03:59.550
+of training that you can get.
+
+108
+00:03:59.550 --> 00:04:01.680
+Then you're going to get professional services
+
+109
+00:04:01.680 --> 00:04:03.030
+and the partner network.
+
+110
+00:04:03.030 --> 00:04:04.350
+So there is a team called
+
+111
+00:04:04.350 --> 00:04:06.840
+the AWS Professional Services Organization.
+
+112
+00:04:06.840 --> 00:04:10.260
+It's a global team of expert that can help you with AWS.
+
+113
+00:04:10.260 --> 00:04:11.760
+They will work alongside your team,
+
+114
+00:04:11.760 --> 00:04:14.070
+so your people handling AWS
+
+115
+00:04:14.070 --> 00:04:16.560
+and a chosen member of the APN.
+
+116
+00:04:16.560 --> 00:04:20.130
+APN stands for AWS Partner Network.
+
+117
+00:04:20.130 --> 00:04:21.960
+It's a network of people
+
+118
+00:04:21.960 --> 00:04:25.140
+that AWS knows are good with the cloud.
+
+119
+00:04:25.140 --> 00:04:26.910
+So we have the technology partners,
+
+120
+00:04:26.910 --> 00:04:28.223
+so the APN technology partners
+
+121
+00:04:28.223 --> 00:04:32.640
+that will be providing hardware connectivity and software.
+
+122
+00:04:32.640 --> 00:04:36.510
+So they will be more helping you on the infrastructure side,
+
+123
+00:04:36.510 --> 00:04:39.600
+whereas the consulting partners on APN
+
+124
+00:04:39.600 --> 00:04:41.460
+are going to be professional services firm
+
+125
+00:04:41.460 --> 00:04:44.103
+that will help you build on AWS.
+
+126
+00:04:44.970 --> 00:04:47.580
+Next, we have the APN training partners
+
+127
+00:04:47.580 --> 00:04:49.260
+who can help you learn AWS.
+
+128
+00:04:49.260 --> 00:04:50.340
+They will be training partners
+
+129
+00:04:50.340 --> 00:04:52.950
+that will be able to deliver the AWS training
+
+130
+00:04:52.950 --> 00:04:55.140
+that I've told users this from the slide before.
+
+131
+00:04:55.140 --> 00:04:57.210
+And then we have the Competency Program,
+
+132
+00:04:57.210 --> 00:04:59.160
+which are given to the APN partners
+
+133
+00:04:59.160 --> 00:05:01.200
+who have demonstrated technical proficiency
+
+134
+00:05:01.200 --> 00:05:05.820
+and proven customer success in specialized solution areas.
+
+135
+00:05:05.820 --> 00:05:09.000
+And then finally, one last thing, the Navigate Program
+
+136
+00:05:09.000 --> 00:05:11.520
+to help partners become better partners
+
+137
+00:05:11.520 --> 00:05:12.930
+to train the partners.
+
+138
+00:05:12.930 --> 00:05:17.160
+So I know this is a very long lecture on the AWS ecosystem,
+
+139
+00:05:17.160 --> 00:05:19.170
+but at the exam you'll get one
+
+140
+00:05:19.170 --> 00:05:22.080
+or two questions on finding the right service
+
+141
+00:05:22.080 --> 00:05:25.290
+or the right tool for the ecosystem.
+
+142
+00:05:25.290 --> 00:05:27.060
+And so for you, it's really, really important
+
+143
+00:05:27.060 --> 00:05:28.920
+to remember all the things I just said.
+
+144
+00:05:28.920 --> 00:05:30.180
+Thankfully, it makes sense.
+
+145
+00:05:30.180 --> 00:05:32.880
+The names are most likely going to be obvious,
+
+146
+00:05:32.880 --> 00:05:34.980
+once you know and once you've seen them once.
+
+147
+00:05:34.980 --> 00:05:37.170
+So I would recommend just trying to memorize those.
+
+148
+00:05:37.170 --> 00:05:39.510
+We're going to help you with a quiz in this sections.
+
+149
+00:05:39.510 --> 00:05:41.250
+But again, feel free to revisit this lecture
+
+150
+00:05:41.250 --> 00:05:43.979
+before your exam to give yourself a small refresher.
+
+151
+00:05:43.979 --> 00:05:45.030
+So that's it.
+
+152
+00:05:45.030 --> 00:05:45.863
+I hope you liked it,
+
+153
+00:05:45.863 --> 00:05:47.790
+and I will see you in the next lecture.
+

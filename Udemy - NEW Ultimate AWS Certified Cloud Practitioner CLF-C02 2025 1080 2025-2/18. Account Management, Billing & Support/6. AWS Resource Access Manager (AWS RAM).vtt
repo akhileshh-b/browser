@@ -1,0 +1,130 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:01.080
+<v Instructor>So now let's talk</v>
+
+2
+00:00:01.080 --> 00:00:06.080
+about the AWS Resource Access Manager Service or AWS RAM.
+
+3
+00:00:06.270 --> 00:00:10.290
+So, the idea is that you can share with other AWS accounts,
+
+4
+00:00:10.290 --> 00:00:13.050
+resources that are owned by your accounts,
+
+5
+00:00:13.050 --> 00:00:14.310
+and this can be any other accounts
+
+6
+00:00:14.310 --> 00:00:16.650
+or accounts within your organization.
+
+7
+00:00:16.650 --> 00:00:19.980
+This allows you to avoid resource duplication
+
+8
+00:00:19.980 --> 00:00:23.487
+and the supported resources include Aurora databases,
+
+9
+00:00:23.487 --> 00:00:27.420
+VPC Subnets, Transit Gateway, and a lot of other resources.
+
+10
+00:00:27.420 --> 00:00:29.812
+Now, you don't remember these resources in particular,
+
+11
+00:00:29.812 --> 00:00:32.539
+but just the idea behind RAM service.
+
+12
+00:00:32.539 --> 00:00:35.400
+So, let's say we have a cloud accounts
+
+13
+00:00:35.400 --> 00:00:38.370
+and we have a VPC within the cloud accounts
+
+14
+00:00:38.370 --> 00:00:40.710
+and within the VPC, there are private subnets.
+
+15
+00:00:40.710 --> 00:00:44.250
+Now, we can actually share this VPC with other accounts,
+
+16
+00:00:44.250 --> 00:00:46.410
+such as Account one and Account two
+
+17
+00:00:46.410 --> 00:00:48.540
+which are different accounts, still have access
+
+18
+00:00:48.540 --> 00:00:51.030
+to the same VPC and the same subnets.
+
+19
+00:00:51.030 --> 00:00:53.250
+The result of this is that, for example,
+
+20
+00:00:53.250 --> 00:00:56.340
+if an account decides to create EC2 instances
+
+21
+00:00:56.340 --> 00:01:00.000
+and the load balancer within your VPC Account two,
+
+22
+00:01:00.000 --> 00:01:01.553
+with their own EC2 instances,
+
+23
+00:01:01.553 --> 00:01:04.560
+can access directly from the network,
+
+24
+00:01:04.560 --> 00:01:07.020
+for example an Amazon RDS database,
+
+25
+00:01:07.020 --> 00:01:09.540
+or your application load balancer.
+
+26
+00:01:09.540 --> 00:01:12.320
+So, the idea here is that because we've shared our VPC,
+
+27
+00:01:12.320 --> 00:01:14.301
+all the resources within the VPC
+
+28
+00:01:14.301 --> 00:01:17.100
+are going to be able to connect with each other
+
+29
+00:01:17.100 --> 00:01:18.270
+from a network perspective,
+
+30
+00:01:18.270 --> 00:01:20.812
+which is going to simplify our deployments.
+
+31
+00:01:20.812 --> 00:01:22.290
+So, that's it for this lecture.
+
+32
+00:01:22.290 --> 00:01:25.413
+I hope you liked it, and I will see you in the next lecture.
+

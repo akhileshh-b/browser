@@ -1,0 +1,686 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:00.833
+<v Stephane>All right.</v>
+
+2
+00:00:00.833 --> 00:00:03.750
+So now we're going to add SSH into our EC2 Instance
+
+3
+00:00:03.750 --> 00:00:06.030
+using our Linux or our Mac computer.
+
+4
+00:00:06.030 --> 00:00:08.860
+And you may say, what the hell is SSH?
+
+5
+00:00:08.860 --> 00:00:10.700
+What are you talking about Stephane?
+
+6
+00:00:10.700 --> 00:00:13.600
+Well, SSH is one of the most important function
+
+7
+00:00:13.600 --> 00:00:15.210
+when you deal with Amazon Cloud.
+
+8
+00:00:15.210 --> 00:00:16.350
+It basically allows you
+
+9
+00:00:16.350 --> 00:00:19.030
+to control a remote machine or server,
+
+10
+00:00:19.030 --> 00:00:21.810
+all using your terminal or your command line.
+
+11
+00:00:21.810 --> 00:00:23.860
+So how does that look like with the diagram?
+
+12
+00:00:23.860 --> 00:00:25.340
+Well, we have our EC2 machine,
+
+13
+00:00:25.340 --> 00:00:27.640
+and we launched Amazon Linux 2 on it
+
+14
+00:00:27.640 --> 00:00:29.960
+and our machine has a public IP.
+
+15
+00:00:29.960 --> 00:00:31.630
+Now we want to access that machine.
+
+16
+00:00:31.630 --> 00:00:33.260
+And so for this, I don't know if you remember
+
+17
+00:00:33.260 --> 00:00:34.950
+but we have a security group
+
+18
+00:00:34.950 --> 00:00:38.420
+and on it we allowed the Port 22 of SSH.
+
+19
+00:00:38.420 --> 00:00:40.980
+So what's going to happen is at our computer,
+
+20
+00:00:40.980 --> 00:00:44.140
+so my laptop for you, for me, or whatever for you,
+
+21
+00:00:44.140 --> 00:00:46.160
+then we'll access over the web.
+
+22
+00:00:46.160 --> 00:00:47.880
+Through that Port 22,
+
+23
+00:00:47.880 --> 00:00:50.140
+it will access the EC2 machine.
+
+24
+00:00:50.140 --> 00:00:52.580
+Basically, our command line interface is going to be
+
+25
+00:00:52.580 --> 00:00:55.660
+just as if we were inside that machine.
+
+26
+00:00:55.660 --> 00:00:57.610
+So let's get started.
+
+27
+00:00:57.610 --> 00:00:58.443
+Okay.
+
+28
+00:00:58.443 --> 00:01:00.790
+So we are going to SSH into our instance.
+
+29
+00:01:00.790 --> 00:01:03.250
+So remember that PEM file you've downloaded
+
+30
+00:01:03.250 --> 00:01:05.360
+called EC2 Tutorial.pem?
+
+31
+00:01:05.360 --> 00:01:08.298
+Please make sure to remove the space in it
+
+32
+00:01:08.298 --> 00:01:11.460
+if you have a space, even if you have a PPK file.
+
+33
+00:01:11.460 --> 00:01:13.890
+Please rename it and remove the space from it.
+
+34
+00:01:13.890 --> 00:01:18.290
+So EC2Tutorial.pem is removed for me.
+
+35
+00:01:18.290 --> 00:01:21.860
+And then, you go ahead and place it in a directory you like.
+
+36
+00:01:21.860 --> 00:01:24.500
+So for me, I took my file and I pasted it,
+
+37
+00:01:24.500 --> 00:01:29.290
+and I placed it in a folder called aws-course. Okay?
+
+38
+00:01:29.290 --> 00:01:33.230
+So this is the first step to making sure you are ready.
+
+39
+00:01:33.230 --> 00:01:36.270
+So next, what I'm going to do is that I am going to go
+
+40
+00:01:36.270 --> 00:01:40.670
+in my EC2 instance overview page
+
+41
+00:01:40.670 --> 00:01:42.410
+and find my first instance.
+
+42
+00:01:42.410 --> 00:01:44.100
+So here we have my first instance
+
+43
+00:01:44.100 --> 00:01:45.580
+and we're going to SSH into it.
+
+44
+00:01:45.580 --> 00:01:48.350
+So we're going to open a remote terminal into it.
+
+45
+00:01:48.350 --> 00:01:52.360
+And for this, I need to get the public IPv4 address,
+
+46
+00:01:52.360 --> 00:01:55.260
+so I can copy this, and I will use it later.
+
+47
+00:01:55.260 --> 00:01:56.900
+The other thing I need to do
+
+48
+00:01:56.900 --> 00:01:58.920
+is to look at the security of my instance.
+
+49
+00:01:58.920 --> 00:02:01.250
+So again, if you did everything with me,
+
+50
+00:02:01.250 --> 00:02:04.730
+then your security groups have this rule in it
+
+51
+00:02:04.730 --> 00:02:07.730
+called Port 22 which is the SSH port
+
+52
+00:02:07.730 --> 00:02:10.860
+from anywhere by 0.0.0.0/0. Okay?
+
+53
+00:02:10.860 --> 00:02:13.160
+So if you have that rule, then you're good to go.
+
+54
+00:02:13.160 --> 00:02:15.320
+If not, please click on the security group
+
+55
+00:02:15.320 --> 00:02:17.750
+and add the missing rule.
+
+56
+00:02:17.750 --> 00:02:20.290
+Next, I need to try to do an SSH.
+
+57
+00:02:20.290 --> 00:02:24.853
+So first of all, ssh ec2-user@
+
+58
+00:02:26.490 --> 00:02:27.930
+and then the IP you have.
+
+59
+00:02:27.930 --> 00:02:31.500
+So the reason we do ssh ec2-user
+
+60
+00:02:31.500 --> 00:02:34.240
+is because the Amazon Linux 2 AMI
+
+61
+00:02:34.240 --> 00:02:36.870
+has one user already set up for us
+
+62
+00:02:36.870 --> 00:02:40.670
+and that user is named ec2-user.
+
+63
+00:02:40.670 --> 00:02:41.700
+Then we have at,
+
+64
+00:02:41.700 --> 00:02:44.120
+to say that we want to access that user
+
+65
+00:02:44.120 --> 00:02:45.680
+on the specific server.
+
+66
+00:02:45.680 --> 00:02:47.890
+And then, we have the IP right here.
+
+67
+00:02:47.890 --> 00:02:51.050
+This is the public IP of our EC2 instance.
+
+68
+00:02:51.050 --> 00:02:51.883
+So we try this.
+
+69
+00:02:51.883 --> 00:02:55.180
+So we do SSH and then we're going to get
+
+70
+00:02:55.180 --> 00:02:57.300
+a too many authentication failure.
+
+71
+00:02:57.300 --> 00:03:00.110
+So that means that we don't authenticate
+
+72
+00:03:00.110 --> 00:03:01.070
+into our EC2 instances.
+
+73
+00:03:01.070 --> 00:03:02.220
+Well, that makes sense
+
+74
+00:03:02.220 --> 00:03:04.370
+because we haven't specified the key
+
+75
+00:03:04.370 --> 00:03:06.940
+that we downloaded from before yet. Okay?
+
+76
+00:03:06.940 --> 00:03:08.480
+You may get another kind of error
+
+77
+00:03:08.480 --> 00:03:10.370
+but right now this is the one I get.
+
+78
+00:03:10.370 --> 00:03:11.550
+So for this,
+
+79
+00:03:11.550 --> 00:03:14.070
+we need to reference the file we just downloaded
+
+80
+00:03:14.070 --> 00:03:17.610
+called EC2Tutorial.pem into our command.
+
+81
+00:03:17.610 --> 00:03:19.530
+So make sure again, there is no space.
+
+82
+00:03:19.530 --> 00:03:22.080
+And then, you need to make sure your terminal
+
+83
+00:03:22.080 --> 00:03:25.390
+is exactly where your file is.
+
+84
+00:03:25.390 --> 00:03:28.716
+So if I do ls right here to list the files in my folder
+
+85
+00:03:28.716 --> 00:03:30.360
+and I'm sorry if this is too advanced for you
+
+86
+00:03:30.360 --> 00:03:32.800
+but I have to cover the grounds for everyone.
+
+87
+00:03:32.800 --> 00:03:34.870
+So if I do ls, as you see right now,
+
+88
+00:03:34.870 --> 00:03:37.260
+it says EC2Tutorial.pem
+
+89
+00:03:37.260 --> 00:03:39.680
+that's because I placed my command line
+
+90
+00:03:39.680 --> 00:03:42.670
+in the correct directory on my computer.
+
+91
+00:03:42.670 --> 00:03:43.503
+Okay.
+
+92
+00:03:43.503 --> 00:03:46.360
+So for this, if you were not in the correct directory,
+
+93
+00:03:46.360 --> 00:03:50.740
+for example if I was line level up, so I do cd ..,
+
+94
+00:03:50.740 --> 00:03:52.430
+which puts me one level up,
+
+95
+00:03:52.430 --> 00:03:53.570
+then I do ls.
+
+96
+00:03:53.570 --> 00:03:56.890
+Of course, I don't see my EC2Tutorial.pem.
+
+97
+00:03:56.890 --> 00:03:58.190
+Okay?
+
+98
+00:03:58.190 --> 00:04:01.750
+So to do so, what you can do is just check where you are.
+
+99
+00:04:01.750 --> 00:04:04.380
+So pwd is where you are.
+
+100
+00:04:04.380 --> 00:04:06.610
+So, I'm in user stephanemaarek
+
+101
+00:04:06.610 --> 00:04:11.290
+and I know that I placed my folder aws-course
+
+102
+00:04:11.290 --> 00:04:12.450
+within my home.
+
+103
+00:04:12.450 --> 00:04:17.010
+So right under user stephanemareek, there is aws-course.
+
+104
+00:04:17.010 --> 00:04:21.440
+So for this, then I know that I can do ls or ll
+
+105
+00:04:21.440 --> 00:04:24.160
+just to confirm that my folder exists.
+
+106
+00:04:24.160 --> 00:04:29.030
+As you can see right here is my aws-course folder,
+
+107
+00:04:29.030 --> 00:04:30.500
+so this is good.
+
+108
+00:04:30.500 --> 00:04:35.287
+So what I do is I will do cd and then aws-course
+
+109
+00:04:36.270 --> 00:04:39.830
+which now puts me in the directory of my aws-course.
+
+110
+00:04:39.830 --> 00:04:42.610
+So if I do pwd, I am in the correct directory.
+
+111
+00:04:42.610 --> 00:04:46.990
+And if I do ls, I can see my EC2Tutorial.pem file.
+
+112
+00:04:46.990 --> 00:04:48.190
+The reason we have to do this is that
+
+113
+00:04:48.190 --> 00:04:49.630
+because now in the next command.
+
+114
+00:04:49.630 --> 00:04:50.697
+So the SSH command,
+
+115
+00:04:50.697 --> 00:04:55.697
+you do ssh -i then you specify the EC2Tutorial.pem file
+
+116
+00:04:56.630 --> 00:04:57.740
+and that will not work
+
+117
+00:04:57.740 --> 00:04:59.141
+if you're not in the correct directory.
+
+118
+00:04:59.141 --> 00:05:00.613
+So please make sure to get there
+
+119
+00:05:00.613 --> 00:05:03.610
+and if you're missing the bit of the Linux here,
+
+120
+00:05:03.610 --> 00:05:05.420
+please try to go online,
+
+121
+00:05:05.420 --> 00:05:07.590
+but I should be good with what I showed you.
+
+122
+00:05:07.590 --> 00:05:09.710
+And then, ec2-user@
+
+123
+00:05:09.710 --> 00:05:13.630
+and we reference the public IP of our instance.
+
+124
+00:05:13.630 --> 00:05:18.260
+So this one right here, we reference it.
+
+125
+00:05:18.260 --> 00:05:19.510
+Press enter,
+
+126
+00:05:19.510 --> 00:05:22.490
+and now we get another kind of error
+
+127
+00:05:22.490 --> 00:05:25.240
+which is saying that we have an unprotected key file
+
+128
+00:05:25.240 --> 00:05:28.490
+and we need to change the permissions for it.
+
+129
+00:05:28.490 --> 00:05:31.730
+So for that reason, we'll have to enter another command
+
+130
+00:05:31.730 --> 00:05:33.822
+and that command is chmod.
+
+131
+00:05:33.822 --> 00:05:38.260
+So chmod 0400, and then we pass in the file itself
+
+132
+00:05:38.260 --> 00:05:40.530
+so EC2Tutorial.pem.
+
+133
+00:05:40.530 --> 00:05:41.840
+So I clear my screen
+
+134
+00:05:41.840 --> 00:05:44.680
+and then I'm going to try the exact same command as before.
+
+135
+00:05:44.680 --> 00:05:49.030
+So I press enter and I am logged into my machine.
+
+136
+00:05:49.030 --> 00:05:50.660
+So you may have seen a screen
+
+137
+00:05:50.660 --> 00:05:52.800
+where they prompt you for yes/no
+
+138
+00:05:52.800 --> 00:05:54.562
+to trust the instance as well,
+
+139
+00:05:54.562 --> 00:05:57.620
+just enter yes if you do get that screen.
+
+140
+00:05:57.620 --> 00:05:58.453
+So as you can see,
+
+141
+00:05:58.453 --> 00:06:01.890
+now I have done the SSH into my instance
+
+142
+00:06:01.890 --> 00:06:04.598
+and now it says ec2-use at this IP,
+
+143
+00:06:04.598 --> 00:06:07.460
+which means that now all the commands are issued
+
+144
+00:06:07.460 --> 00:06:09.090
+are going to be issued directly
+
+145
+00:06:09.090 --> 00:06:12.450
+from the Amazon Linux 2 AMI EC2 instance
+
+146
+00:06:12.450 --> 00:06:14.450
+that I've just launched from before.
+
+147
+00:06:14.450 --> 00:06:15.570
+So let's try a few commands.
+
+148
+00:06:15.570 --> 00:06:17.180
+For example, if you do whoami
+
+149
+00:06:17.180 --> 00:06:18.600
+then it says ec2-user
+
+150
+00:06:18.600 --> 00:06:20.850
+or I can ping google.com
+
+151
+00:06:20.850 --> 00:06:23.530
+and we see the google.com is responding to our pings.
+
+152
+00:06:23.530 --> 00:06:25.676
+So we can launch some commands directly
+
+153
+00:06:25.676 --> 00:06:28.100
+from the Amazon Linux 2 AMI,
+
+154
+00:06:28.100 --> 00:06:30.660
+and I did control C to stop that command,
+
+155
+00:06:30.660 --> 00:06:34.130
+Now to exit the instance itself, you can either type exit
+
+156
+00:06:34.130 --> 00:06:35.250
+and I think this should work,
+
+157
+00:06:35.250 --> 00:06:38.129
+or you do control G and then you will close the connection
+
+158
+00:06:38.129 --> 00:06:39.960
+into the EC2 instance.
+
+159
+00:06:39.960 --> 00:06:41.850
+And if you ever want to get back into it
+
+160
+00:06:41.850 --> 00:06:43.420
+remember this command,
+
+161
+00:06:43.420 --> 00:06:46.300
+ssh -I EC2Tutorial.pem
+
+162
+00:06:46.300 --> 00:06:48.450
+if you are in the correct directory.
+
+163
+00:06:48.450 --> 00:06:49.820
+Please make sure to do so.
+
+164
+00:06:49.820 --> 00:06:51.640
+As well as ec2-user@
+
+165
+00:06:51.640 --> 00:06:54.120
+and then the public IP of your instance.
+
+166
+00:06:54.120 --> 00:06:56.870
+Remember that if you stop and then start your instance
+
+167
+00:06:56.870 --> 00:06:58.250
+then the public IP can change.
+
+168
+00:06:58.250 --> 00:07:00.750
+So make sure to change that part as well.
+
+169
+00:07:00.750 --> 00:07:01.583
+All right.
+
+170
+00:07:01.583 --> 00:07:02.416
+So that's it for this lecture.
+
+171
+00:07:02.416 --> 00:07:05.370
+I hope you liked it, and I will see you in the next lecture.
+

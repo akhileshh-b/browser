@@ -1,0 +1,470 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.120
+<v Instructor>So now let's talk about Amazon S3-Security.</v>
+
+2
+00:00:03.120 --> 00:00:04.530
+The first part is User-Based.
+
+3
+00:00:04.530 --> 00:00:07.800
+So as a user you can have IAM policies that you
+
+4
+00:00:07.800 --> 00:00:10.050
+and this IAM policy is going to authorize
+
+5
+00:00:10.050 --> 00:00:14.490
+which API calls should be allowed for a specific IAM user.
+
+6
+00:00:14.490 --> 00:00:16.950
+You can also have Resource-Based Security.
+
+7
+00:00:16.950 --> 00:00:18.180
+So this is new.
+
+8
+00:00:18.180 --> 00:00:21.720
+We can use what's called S3 Bucket policies
+
+9
+00:00:21.720 --> 00:00:23.400
+and there are bucket wide rules
+
+10
+00:00:23.400 --> 00:00:26.040
+that you can assign directly from the S3 console.
+
+11
+00:00:26.040 --> 00:00:29.190
+And this will allow, for example, a specific user to come in
+
+12
+00:00:29.190 --> 00:00:31.110
+or allow a user from another account,
+
+13
+00:00:31.110 --> 00:00:32.520
+this is called cross-account
+
+14
+00:00:32.520 --> 00:00:34.380
+to access your S3 Buckets.
+
+15
+00:00:34.380 --> 00:00:36.900
+This is also how we'll make our S3 Buckets public
+
+16
+00:00:36.900 --> 00:00:38.850
+as I will show you in a minute.
+
+17
+00:00:38.850 --> 00:00:42.090
+Next, you have the Object Access Control List or ACL,
+
+18
+00:00:42.090 --> 00:00:45.150
+they're finer grain security and they can be disabled.
+
+19
+00:00:45.150 --> 00:00:46.230
+And if you need to go
+
+20
+00:00:46.230 --> 00:00:48.900
+at the Bucket level, you can have Buckets ACL
+
+21
+00:00:48.900 --> 00:00:51.690
+which is way less common also can be disabled.
+
+22
+00:00:51.690 --> 00:00:54.390
+And the most common way now to do security
+
+23
+00:00:54.390 --> 00:00:58.080
+on an Amazon S3 Bucket is to use Bucket policies.
+
+24
+00:00:58.080 --> 00:01:00.840
+So in which situation can an IAM principle
+
+25
+00:01:00.840 --> 00:01:02.730
+can access an S3 object?
+
+26
+00:01:02.730 --> 00:01:06.210
+Well, if the IAM permissions allow it
+
+27
+00:01:06.210 --> 00:01:09.000
+or if the resource policies allows it
+
+28
+00:01:09.000 --> 00:01:12.450
+and that there is no explicit deny in the action,
+
+29
+00:01:12.450 --> 00:01:15.300
+then the IAM principle can access the S3 object
+
+30
+00:01:15.300 --> 00:01:17.580
+on the specified API call.
+
+31
+00:01:17.580 --> 00:01:20.760
+So we'll have a look at these use cases in a minute.
+
+32
+00:01:20.760 --> 00:01:24.030
+Finally, another way to do security on Amazon S3
+
+33
+00:01:24.030 --> 00:01:27.093
+is to encrypt the objects using encryption keys.
+
+34
+00:01:27.930 --> 00:01:31.320
+So what does S3 Bucket policy actually look like?
+
+35
+00:01:31.320 --> 00:01:34.770
+Because this is the focus of S3-Security for us.
+
+36
+00:01:34.770 --> 00:01:38.640
+So they are JSON based policies and they look like this.
+
+37
+00:01:38.640 --> 00:01:42.450
+So this is JSON documents and it's quite easy to read.
+
+38
+00:01:42.450 --> 00:01:44.700
+So the first thing is that you have a resource block
+
+39
+00:01:44.700 --> 00:01:47.460
+and the resource tells the policy
+
+40
+00:01:47.460 --> 00:01:50.730
+what buckets and object this policy applies on.
+
+41
+00:01:50.730 --> 00:01:53.430
+And in here we can see that this applies to every object
+
+42
+00:01:53.430 --> 00:01:54.870
+within the example Bucket,
+
+43
+00:01:54.870 --> 00:01:57.060
+this is what the star is for.
+
+44
+00:01:57.060 --> 00:01:58.260
+Next we have the effect.
+
+45
+00:01:58.260 --> 00:02:01.140
+So Allow or Deny, and what do we Allow or Deny?
+
+46
+00:02:01.140 --> 00:02:02.880
+Well, we Deny actions.
+
+47
+00:02:02.880 --> 00:02:06.030
+So we have a set of APIs we can either Allow or Deny
+
+48
+00:02:06.030 --> 00:02:10.490
+and in this example, the action we Allow is GetObject.
+
+49
+00:02:10.490 --> 00:02:13.740
+So this allows anyone thanks to the principle,
+
+50
+00:02:13.740 --> 00:02:15.930
+the principle presents the account or the user
+
+51
+00:02:15.930 --> 00:02:18.090
+to apply the policy to so principle is star.
+
+52
+00:02:18.090 --> 00:02:22.458
+So, here we allow anyone with a star to GetObject,
+
+53
+00:02:22.458 --> 00:02:26.190
+so to retrieve an object from my example Bucket
+
+54
+00:02:26.190 --> 00:02:28.620
+with a start, that means any object within it.
+
+55
+00:02:28.620 --> 00:02:32.940
+So therefore this S3 Bucket, is setting public reads
+
+56
+00:02:32.940 --> 00:02:36.060
+on all objects inside my Buckets.
+
+57
+00:02:36.060 --> 00:02:38.130
+So we can use an S3 Bucket policy
+
+58
+00:02:38.130 --> 00:02:39.900
+to grant public access to the Bucket
+
+59
+00:02:39.900 --> 00:02:41.880
+as the one shown on the right hand side
+
+60
+00:02:41.880 --> 00:02:44.280
+or to force objects to be encrypted at upload
+
+61
+00:02:44.280 --> 00:02:47.370
+or to grant access to another account.
+
+62
+00:02:47.370 --> 00:02:49.050
+So let's have a look at the situation.
+
+63
+00:02:49.050 --> 00:02:52.380
+So here is a Bucket Policy for Public Access.
+
+64
+00:02:52.380 --> 00:02:55.260
+So we have a user, it's on the worldwide web
+
+65
+00:02:55.260 --> 00:02:56.940
+it's a website visitor
+
+66
+00:02:56.940 --> 00:02:59.550
+and he wants to access files within our S3 Buckets.
+
+67
+00:02:59.550 --> 00:03:01.710
+So we'll attach an S3 Bucket policy
+
+68
+00:03:01.710 --> 00:03:03.180
+that allows public access.
+
+69
+00:03:03.180 --> 00:03:05.820
+This is the one you've seen in the previous slide.
+
+70
+00:03:05.820 --> 00:03:09.210
+And once this Bucket policy is attached to the S3 Bucket
+
+71
+00:03:09.210 --> 00:03:11.520
+then we can access any objects within it.
+
+72
+00:03:11.520 --> 00:03:13.650
+That's what we'll see in the hands-on.
+
+73
+00:03:13.650 --> 00:03:14.610
+But another way to do it
+
+74
+00:03:14.610 --> 00:03:16.980
+is that if you have a user within your account,
+
+75
+00:03:16.980 --> 00:03:18.390
+so it's an IAM user
+
+76
+00:03:18.390 --> 00:03:21.030
+and that user wants to access Amazon S3,
+
+77
+00:03:21.030 --> 00:03:23.700
+then we can assign IAM permissions
+
+78
+00:03:23.700 --> 00:03:26.190
+to that user through a policy.
+
+79
+00:03:26.190 --> 00:03:28.440
+And therefore because the policy allows access
+
+80
+00:03:28.440 --> 00:03:29.700
+to the S3 Buckets
+
+81
+00:03:29.700 --> 00:03:32.373
+then the user can access our S3 Buckets right now.
+
+82
+00:03:33.210 --> 00:03:35.940
+If we have an EC2 instance and want to give access
+
+83
+00:03:35.940 --> 00:03:39.030
+from the EC2 instance into the S3 Buckets,
+
+84
+00:03:39.030 --> 00:03:42.030
+we've seen that IAM users are not appropriate.
+
+85
+00:03:42.030 --> 00:03:44.370
+We need to use IAM roles instead.
+
+86
+00:03:44.370 --> 00:03:46.980
+So we create an EC2 instance role
+
+87
+00:03:46.980 --> 00:03:49.440
+with the correct IAM permissions
+
+88
+00:03:49.440 --> 00:03:51.690
+and that EC2 instance will be able to access
+
+89
+00:03:51.690 --> 00:03:53.970
+the Amazon S3 Buckets.
+
+90
+00:03:53.970 --> 00:03:54.803
+More advanced,
+
+91
+00:03:54.803 --> 00:03:57.090
+if we want to allow Cross-Account Access,
+
+92
+00:03:57.090 --> 00:03:59.010
+then we must use the Bucket Policy.
+
+93
+00:03:59.010 --> 00:04:02.430
+So we have an IAM user in another AWS account
+
+94
+00:04:02.430 --> 00:04:04.380
+and we create an S3 Bucket policy
+
+95
+00:04:04.380 --> 00:04:08.460
+that allows Cross-Account Access for that specific IAM user
+
+96
+00:04:08.460 --> 00:04:11.070
+and therefore the IAM user will be able to make API calls
+
+97
+00:04:11.070 --> 00:04:12.663
+into our S3 Buckets.
+
+98
+00:04:13.680 --> 00:04:15.510
+Other security settings you need to know about
+
+99
+00:04:15.510 --> 00:04:18.210
+is that there is the Bucket settings
+
+100
+00:04:18.210 --> 00:04:20.190
+for Block Public Access.
+
+101
+00:04:20.190 --> 00:04:23.910
+So this is what we set to own when we created the Buckets
+
+102
+00:04:23.910 --> 00:04:26.430
+and these settings were invented by AWS
+
+103
+00:04:26.430 --> 00:04:30.960
+as a extra layer of security to prevent company data leaks.
+
+104
+00:04:30.960 --> 00:04:34.230
+So even though you would set an S3 Bucket policy
+
+105
+00:04:34.230 --> 00:04:36.120
+that would make it public,
+
+106
+00:04:36.120 --> 00:04:38.280
+if these settings are enabled,
+
+107
+00:04:38.280 --> 00:04:39.990
+the Bucket will never be public.
+
+108
+00:04:39.990 --> 00:04:41.880
+So this is to prevent data leaks.
+
+109
+00:04:41.880 --> 00:04:44.700
+So if you know that your Bucket should never be public,
+
+110
+00:04:44.700 --> 00:04:46.620
+then leave these settings on
+
+111
+00:04:46.620 --> 00:04:48.360
+and you have this level of security
+
+112
+00:04:48.360 --> 00:04:52.140
+against people who would set the wrong S3 Bucket policy.
+
+113
+00:04:52.140 --> 00:04:53.430
+And if you know that none
+
+114
+00:04:53.430 --> 00:04:56.580
+of your S3 Buckets ever should be public,
+
+115
+00:04:56.580 --> 00:04:59.280
+then you can set this at the account level.
+
+116
+00:04:59.280 --> 00:05:01.320
+Okay, so that's it for S3-Security.
+
+117
+00:05:01.320 --> 00:05:03.370
+Now let's go in the hands-on to practice.
+

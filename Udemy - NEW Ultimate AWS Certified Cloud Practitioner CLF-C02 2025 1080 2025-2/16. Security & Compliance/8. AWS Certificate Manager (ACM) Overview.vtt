@@ -1,0 +1,146 @@
+WEBVTT
+
+1
+00:00:00.760 --> 00:00:01.763
+<v Instructor>Now let's talk about</v>
+
+2
+00:00:01.763 --> 00:00:04.710
+AWS certificate manager or ACM,
+
+3
+00:00:04.710 --> 00:00:07.700
+which is a service to easily provision, manage
+
+4
+00:00:07.700 --> 00:00:11.150
+and deploy SSL or TLS certificates.
+
+5
+00:00:11.150 --> 00:00:12.410
+What do you use the certificates for?
+
+6
+00:00:12.410 --> 00:00:14.680
+Well it's to provide in-fight encryptions
+
+7
+00:00:14.680 --> 00:00:18.170
+for your websites by providing an HTTPS endpoints.
+
+8
+00:00:18.170 --> 00:00:19.090
+So let's take an example.
+
+9
+00:00:19.090 --> 00:00:21.110
+We have our application load balancer
+
+10
+00:00:21.110 --> 00:00:24.240
+and it is connected in the backend through HTTP
+
+11
+00:00:24.240 --> 00:00:26.770
+to an auto scaling group with our EC2 instances.
+
+12
+00:00:26.770 --> 00:00:30.220
+But we want our end users to have HTTPS exposed
+
+13
+00:00:30.220 --> 00:00:31.960
+on our application of answer.
+
+14
+00:00:31.960 --> 00:00:34.720
+So to do so we're going to use ACM.
+
+15
+00:00:34.720 --> 00:00:37.170
+And ACM once it's connected to our domain
+
+16
+00:00:37.170 --> 00:00:39.100
+is going to be allowing us to provision
+
+17
+00:00:39.100 --> 00:00:41.720
+and maintain these TLS certificates.
+
+18
+00:00:41.720 --> 00:00:44.310
+They will be loaded onto our application load balancer
+
+19
+00:00:44.310 --> 00:00:47.130
+and then automatically the load balancer will be able to
+
+20
+00:00:47.130 --> 00:00:51.210
+offer HTTPS as an end point for our clients,
+
+21
+00:00:51.210 --> 00:00:53.240
+which allows us to get in-flight encryption
+
+22
+00:00:53.240 --> 00:00:54.760
+over the public web.
+
+23
+00:00:54.760 --> 00:00:59.050
+So ACM supports both public and private TLS certificates
+
+24
+00:00:59.050 --> 00:01:02.110
+and it is free of charge for public TLS certificates.
+
+25
+00:01:02.110 --> 00:01:03.340
+There's also a very nice feature
+
+26
+00:01:03.340 --> 00:01:05.760
+which is automatic TLS certificate renewal
+
+27
+00:01:05.760 --> 00:01:07.890
+which is very helpful, I use it all the time.
+
+28
+00:01:07.890 --> 00:01:09.550
+And it has integration, that means
+
+29
+00:01:09.550 --> 00:01:12.750
+that it loads the TLS certificates on different services.
+
+30
+00:01:12.750 --> 00:01:14.910
+It could be your elastic load balancer,
+
+31
+00:01:14.910 --> 00:01:16.350
+your CloudFront distributions
+
+32
+00:01:16.350 --> 00:01:19.600
+or your API is on API gateway, for example, okay?
+
+33
+00:01:19.600 --> 00:01:21.970
+So anytime you see what service can help us do
+
+34
+00:01:21.970 --> 00:01:24.720
+in-flight encryption and generates these certificates
+
+35
+00:01:24.720 --> 00:01:26.960
+then think ACM, that's it.
+
+36
+00:01:26.960 --> 00:01:28.710
+I will see you in the next lecture.
+

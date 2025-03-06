@@ -1,0 +1,234 @@
+WEBVTT
+
+1
+00:00:00.210 --> 00:00:03.210
+<v Instructor>So we've learned a lot about the VPC</v>
+
+2
+00:00:03.210 --> 00:00:06.120
+so let's just try to remember all of it.
+
+3
+00:00:06.120 --> 00:00:09.180
+So VPC stands for virtual private cloud,
+
+4
+00:00:09.180 --> 00:00:11.610
+and within a VPC you have subnets.
+
+5
+00:00:11.610 --> 00:00:15.270
+A subnet is tied to a specific availability zone
+
+6
+00:00:15.270 --> 00:00:19.800
+and it represents a network partition from within your VPC.
+
+7
+00:00:19.800 --> 00:00:22.740
+If you wanted to have internet access at the VPC level,
+
+8
+00:00:22.740 --> 00:00:25.980
+you will need to create an Internet Gateway.
+
+9
+00:00:25.980 --> 00:00:28.920
+But if your instances are private instances
+
+10
+00:00:28.920 --> 00:00:31.260
+and private subnets, then instead, you will need
+
+11
+00:00:31.260 --> 00:00:34.110
+to use a NAT gateway, which is managed
+
+12
+00:00:34.110 --> 00:00:37.830
+or NAT instances that you manage to give internet access
+
+13
+00:00:37.830 --> 00:00:39.690
+to your private subnets.
+
+14
+00:00:39.690 --> 00:00:42.870
+To have a firewall that's going to be stateless,
+
+15
+00:00:42.870 --> 00:00:46.410
+you need to have a NACL or network ACL,
+
+16
+00:00:46.410 --> 00:00:48.210
+which is going to represent subnet rules
+
+17
+00:00:48.210 --> 00:00:50.850
+for inbound and outbound traffic.
+
+18
+00:00:50.850 --> 00:00:52.770
+If you wanted to have stateful rules,
+
+19
+00:00:52.770 --> 00:00:56.010
+you can use security groups and they operate
+
+20
+00:00:56.010 --> 00:00:59.550
+at the EC2 instance level or the ENI level.
+
+21
+00:00:59.550 --> 00:01:02.070
+If you wanted to connect two VPC together
+
+22
+00:01:02.070 --> 00:01:05.010
+and they have non-overlapping IP ranges,
+
+23
+00:01:05.010 --> 00:01:08.520
+you can use VPC peering and it's a non-transitive thing.
+
+24
+00:01:08.520 --> 00:01:12.840
+So if VPC A is connected to B and then B to C,
+
+25
+00:01:12.840 --> 00:01:15.540
+it's not necessary and it won't happen.
+
+26
+00:01:15.540 --> 00:01:18.270
+A cannot communicate with C.
+
+27
+00:01:18.270 --> 00:01:20.190
+We have also learned about elastic IPs,
+
+28
+00:01:20.190 --> 00:01:22.410
+which are fixed public IPv4
+
+29
+00:01:22.410 --> 00:01:26.370
+that will have an ongoing cost if you're not using them.
+
+30
+00:01:26.370 --> 00:01:28.740
+Okay, next with VPC endpoints.
+
+31
+00:01:28.740 --> 00:01:33.510
+And that's to provide private access to any AWS service
+
+32
+00:01:33.510 --> 00:01:35.280
+within your VPC.
+
+33
+00:01:35.280 --> 00:01:38.220
+And if you wanted to establish a connection,
+
+34
+00:01:38.220 --> 00:01:41.310
+a private connection to a third-party service
+
+35
+00:01:41.310 --> 00:01:45.420
+in a third-party VPC, you could use PrivateLink.
+
+36
+00:01:45.420 --> 00:01:47.880
+If you wanted to have access to your network traffic logs,
+
+37
+00:01:47.880 --> 00:01:50.160
+you could use the VPC Flow Logs.
+
+38
+00:01:50.160 --> 00:01:52.650
+Now, in terms of private connectivity,
+
+39
+00:01:52.650 --> 00:01:55.301
+if you wanted to connect your on-premises data center
+
+40
+00:01:55.301 --> 00:02:00.180
+to AWS, you would have to set up a site-to-site VPN
+
+41
+00:02:00.180 --> 00:02:01.890
+over the public internet.
+
+42
+00:02:01.890 --> 00:02:03.540
+And then if you wanted to connect
+
+43
+00:02:03.540 --> 00:02:05.850
+your own personal computer directly
+
+44
+00:02:05.850 --> 00:02:08.880
+into your VPC, you could use client VPN
+
+45
+00:02:08.880 --> 00:02:13.380
+to establish an OpenVPN connection directly into your VPC.
+
+46
+00:02:13.380 --> 00:02:17.730
+Now, if you wanted to establish a very private connection
+
+47
+00:02:17.730 --> 00:02:21.870
+and direct within AWS and your data center,
+
+48
+00:02:21.870 --> 00:02:24.060
+you would use Direct Connect.
+
+49
+00:02:24.060 --> 00:02:26.820
+And if you want to connect everything together,
+
+50
+00:02:26.820 --> 00:02:30.210
+including thousands of VPC on-premises network,
+
+51
+00:02:30.210 --> 00:02:34.530
+site-to-site VPN, Direct Connect, and so on,
+
+52
+00:02:34.530 --> 00:02:37.110
+then you would use a Transit Gateway.
+
+53
+00:02:37.110 --> 00:02:38.760
+So hopefully all of this makes sense.
+
+54
+00:02:38.760 --> 00:02:41.010
+I know VPC has a lot of information
+
+55
+00:02:41.010 --> 00:02:44.580
+but the exam will ask you to choose the correct sub-service
+
+56
+00:02:44.580 --> 00:02:45.900
+within your VPC.
+
+57
+00:02:45.900 --> 00:02:47.190
+So I hope you liked it
+
+58
+00:02:47.190 --> 00:02:49.140
+and I will see you in the next lecture.
+

@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.470
+<v Narrator>As always, it's good to see</v>
+
+00:00:01.470 --> 00:00:04.050
+what is the shared responsibility model for Amazon S3.
+
+00:00:04.050 --> 00:00:05.950
+So AWS is going to be responsible
+
+00:00:05.950 --> 00:00:07.800
+for all the infrastructure.
+
+00:00:07.800 --> 00:00:10.200
+That includes all the things specific to S3
+
+00:00:10.200 --> 00:00:12.520
+so that their ability, availability,
+
+00:00:12.520 --> 00:00:14.290
+the fact that it can actually sustain
+
+00:00:14.290 --> 00:00:16.850
+current losses of two facilities.
+
+00:00:16.850 --> 00:00:19.990
+As well as, I will see their own internal configuration
+
+00:00:19.990 --> 00:00:21.980
+and vulnerability analysis.
+
+00:00:21.980 --> 00:00:23.630
+And their own compliance validation
+
+00:00:23.630 --> 00:00:25.800
+internally within their infrastructure.
+
+00:00:25.800 --> 00:00:27.960
+And you as a user of Amazon S3,
+
+00:00:27.960 --> 00:00:30.640
+you're supposed to set up correctly S3 Versioning
+
+00:00:30.640 --> 00:00:33.380
+to make sure you set up the right S3 Bucket Policy
+
+00:00:33.380 --> 00:00:36.150
+so that the data is protected within your buckets.
+
+00:00:36.150 --> 00:00:37.960
+You need to make sure that if you want verification
+
+00:00:37.960 --> 00:00:39.300
+you set it up yourself.
+
+00:00:39.300 --> 00:00:41.290
+Logging and monitoring is optional
+
+00:00:41.290 --> 00:00:43.240
+so you have to enable it yourself.
+
+00:00:43.240 --> 00:00:45.966
+Making sure that you are using the most optimal
+
+00:00:45.966 --> 00:00:48.890
+cost storage cloud that is going to be
+
+00:00:48.890 --> 00:00:51.690
+the most cost friendly is also your responsibility.
+
+00:00:51.690 --> 00:00:54.000
+And finally, if you wanted to encrypt your data
+
+00:00:54.000 --> 00:00:55.530
+onto your Amazon S3 bucket,
+
+00:00:55.530 --> 00:00:57.470
+that is up to you as well, okay?
+
+00:00:57.470 --> 00:00:59.350
+So here we can really see what is the difference
+
+00:00:59.350 --> 00:01:01.018
+between the responsibility of
+
+00:01:01.018 --> 00:01:05.180
+AWS and yourself in this Amazon S3 service.
+
+00:01:05.180 --> 00:01:06.030
+All right, that's it.
+
+00:01:06.030 --> 00:01:07.780
+I will see you in the next lecture.

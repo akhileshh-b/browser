@@ -1,0 +1,118 @@
+WEBVTT
+
+00:00:00.070 --> 00:00:01.110
+<v Instructor>Okay, so let's proceed</v>
+
+00:00:01.110 --> 00:00:03.800
+with installing the AWS CLI on Linux.
+
+00:00:03.800 --> 00:00:07.290
+So for this I just google it, and I will choose installing
+
+00:00:07.290 --> 00:00:09.600
+the AWS CLI Version 2 on Linux because
+
+00:00:09.600 --> 00:00:11.210
+this is the latest one,
+
+00:00:11.210 --> 00:00:12.670
+and I'm going to scroll down.
+
+00:00:12.670 --> 00:00:15.430
+And to install the CLI it goes installing.
+
+00:00:15.430 --> 00:00:17.560
+We just have to run these three commands.
+
+00:00:17.560 --> 00:00:20.170
+So the first one is to get a Zip file.
+
+00:00:20.170 --> 00:00:23.370
+So I copy this, go into a terminal,
+
+00:00:23.370 --> 00:00:26.290
+and then I will paste it.
+
+00:00:26.290 --> 00:00:27.410
+And here we go.
+
+00:00:27.410 --> 00:00:30.420
+So this has been pasted, and it is downloading currently
+
+00:00:30.420 --> 00:00:31.760
+the installer.
+
+00:00:31.760 --> 00:00:34.330
+The next thing we have to do is to unzip it.
+
+00:00:34.330 --> 00:00:36.920
+So I copy this command and paste it,
+
+00:00:36.920 --> 00:00:39.160
+and this will unzip my installer.
+
+00:00:39.160 --> 00:00:40.110
+Great.
+
+00:00:40.110 --> 00:00:43.290
+And the last thing is to run the installer as root,
+
+00:00:43.290 --> 00:00:46.470
+so I'll do sudo and then install.
+
+00:00:46.470 --> 00:00:48.180
+This should prompt me for my password,
+
+00:00:48.180 --> 00:00:50.370
+which I enter right now,
+
+00:00:50.370 --> 00:00:52.568
+and then the installation proceed.
+
+00:00:52.568 --> 00:00:54.537
+Now it says you can run,
+
+00:00:54.537 --> 00:00:57.560
+"user/local/bin/AWS minus minus version,"
+
+00:00:57.560 --> 00:01:01.490
+or very simply, "AWS minus minus version"
+
+00:01:01.490 --> 00:01:04.340
+if your user local bin is in your path,
+
+00:01:04.340 --> 00:01:05.400
+and there we go.
+
+00:01:05.400 --> 00:01:07.640
+The AWS CLI has been installed as you can see.
+
+00:01:07.640 --> 00:01:10.182
+It says AWS CLI/2.
+
+00:01:10.182 --> 00:01:11.940
+and then you are getting a different version based on
+
+00:01:11.940 --> 00:01:12.842
+when you do this.
+
+00:01:12.842 --> 00:01:15.259
+And then you get Python and Linux and Botocore,
+
+00:01:15.259 --> 00:01:16.330
+so you are good to go.
+
+00:01:16.330 --> 00:01:19.372
+When this works we can run any command on the AWS CLI
+
+00:01:19.372 --> 00:01:22.480
+and you can go ahead, with the rest of the lectures.
+
+00:01:22.480 --> 00:01:25.650
+If you got ant issues please read this
+
+00:01:25.650 --> 00:01:28.270
+and it will tell you what's going on and that it,
+
+00:01:28.270 --> 00:01:30.020
+I will see you in the next lecture.

@@ -1,0 +1,73 @@
+WEBVTT
+
+00:00:00.350 --> 00:00:02.640
+<v Instructor>Now let's talk about Amazon QuickSight.</v>
+
+00:00:02.640 --> 00:00:04.860
+So it's a serverless, machine learning-powered
+
+00:00:04.860 --> 00:00:06.030
+business intelligence service
+
+00:00:06.030 --> 00:00:08.200
+to create interactive dashboards.
+
+00:00:08.200 --> 00:00:10.470
+So behind this very complicated tagline,
+
+00:00:10.470 --> 00:00:12.850
+all you have to remember is that Amazon QuickSight
+
+00:00:12.850 --> 00:00:15.720
+allows you to create dashboards on your databases
+
+00:00:15.720 --> 00:00:17.850
+so we can visually represent your data
+
+00:00:17.850 --> 00:00:19.180
+and show your business users
+
+00:00:19.180 --> 00:00:21.120
+the insights they're looking for, okay.
+
+00:00:21.120 --> 00:00:22.290
+So QuickSight allows you to create
+
+00:00:22.290 --> 00:00:25.430
+all these kind of cool graphs, charts, and so on.
+
+00:00:25.430 --> 00:00:27.560
+So it's fast, it's automatically scalable.
+
+00:00:27.560 --> 00:00:29.570
+It's embeddable and there's per-session pricing,
+
+00:00:29.570 --> 00:00:31.430
+so you don't have to provision any servers.
+
+00:00:31.430 --> 00:00:33.490
+The use cases are business analytics,
+
+00:00:33.490 --> 00:00:36.920
+building visualizations, performing ad-hoc analysis,
+
+00:00:36.920 --> 00:00:39.380
+get business insights using data.
+
+00:00:39.380 --> 00:00:41.590
+And in terms of integrations, there are so many,
+
+00:00:41.590 --> 00:00:43.460
+but, for example, QuickSight can run on top
+
+00:00:43.460 --> 00:00:46.190
+of your RDS database, it can run on top of Aurora,
+
+00:00:46.190 --> 00:00:49.960
+Athena, Redshift, Amazon S3, and so on.
+
+00:00:49.960 --> 00:00:54.520
+So QuickSight is your go-to tool for DI in AWS.
+
+00:00:54.520 --> 00:00:56.820
+That's it. I will see you in the next lecture.

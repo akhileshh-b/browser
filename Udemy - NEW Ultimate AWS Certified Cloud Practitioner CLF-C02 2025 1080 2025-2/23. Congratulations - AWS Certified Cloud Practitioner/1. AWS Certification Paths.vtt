@@ -1,0 +1,690 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:01.230
+<v Presenter>So, congratulations,</v>
+
+2
+00:00:01.230 --> 00:00:03.930
+you are about to attempt an AWS certification,
+
+3
+00:00:03.930 --> 00:00:06.060
+but there is so much more on your journey.
+
+4
+00:00:06.060 --> 00:00:08.970
+So AWS is made of foundational certifications,
+
+5
+00:00:08.970 --> 00:00:10.740
+associate level certifications,
+
+6
+00:00:10.740 --> 00:00:12.120
+professional level certifications,
+
+7
+00:00:12.120 --> 00:00:15.390
+as well as specialty level certifications.
+
+8
+00:00:15.390 --> 00:00:18.000
+And based on the type of role you want to have,
+
+9
+00:00:18.000 --> 00:00:20.160
+they recommend different paths.
+
+10
+00:00:20.160 --> 00:00:23.070
+So all these paths can be found in a document on the URL
+
+11
+00:00:23.070 --> 00:00:25.560
+that have linked below in the bottom-right corner.
+
+12
+00:00:25.560 --> 00:00:26.940
+So we have the architecture path.
+
+13
+00:00:26.940 --> 00:00:29.130
+So if you wanna become a solutions architect,
+
+14
+00:00:29.130 --> 00:00:30.570
+for example, to design, develop,
+
+15
+00:00:30.570 --> 00:00:32.760
+and manage cloud infrastructure and assets,
+
+16
+00:00:32.760 --> 00:00:34.320
+you need to do these certifications.
+
+17
+00:00:34.320 --> 00:00:37.170
+So if you already know about the cloud and in IT,
+
+18
+00:00:37.170 --> 00:00:38.430
+no need to do Cloud Practitioner,
+
+19
+00:00:38.430 --> 00:00:40.020
+but I still think it's a good one.
+
+20
+00:00:40.020 --> 00:00:42.780
+And then if you want to leverage AI, they recommend
+
+21
+00:00:42.780 --> 00:00:45.630
+the AI Practitioner Foundational Certification.
+
+22
+00:00:45.630 --> 00:00:47.850
+Then you move on to Solution Architecture Associate,
+
+23
+00:00:47.850 --> 00:00:49.560
+Solutions Architect Professional.
+
+24
+00:00:49.560 --> 00:00:51.060
+And if you want to dive deep,
+
+25
+00:00:51.060 --> 00:00:54.060
+the Security Specialty would be really recommended.
+
+26
+00:00:54.060 --> 00:00:56.760
+If you're more into application architecture,
+
+27
+00:00:56.760 --> 00:00:59.490
+so this is around the user interface, the middleware,
+
+28
+00:00:59.490 --> 00:01:01.410
+the infrastructure, and so on,
+
+29
+00:01:01.410 --> 00:01:03.930
+then they recommend to have the same as before,
+
+30
+00:01:03.930 --> 00:01:06.330
+but you add the Developer Associates
+
+31
+00:01:06.330 --> 00:01:08.820
+and then you go into DevOps Engineer Professional.
+
+32
+00:01:08.820 --> 00:01:10.560
+And then if you wanted to dive deep,
+
+33
+00:01:10.560 --> 00:01:13.320
+the Solutions Architect Professional certification.
+
+34
+00:01:13.320 --> 00:01:14.580
+So if you're into operations,
+
+35
+00:01:14.580 --> 00:01:16.080
+you can be a systems administrator
+
+36
+00:01:16.080 --> 00:01:18.090
+and your role is to install, upgrade,
+
+37
+00:01:18.090 --> 00:01:20.400
+and maintain computer components and software
+
+38
+00:01:20.400 --> 00:01:22.650
+and to integrate automation processes.
+
+39
+00:01:22.650 --> 00:01:24.300
+In which case, Cloud Practitioner
+
+40
+00:01:24.300 --> 00:01:27.150
+followed by SysOps Administrator Associate is a good one.
+
+41
+00:01:27.150 --> 00:01:30.750
+And to do a deeper dive, DevOps Engineer Professional.
+
+42
+00:01:30.750 --> 00:01:33.030
+If you're a cloud engineer and your role is to implement
+
+43
+00:01:33.030 --> 00:01:36.030
+and operate an organization network computing infrastructure
+
+44
+00:01:36.030 --> 00:01:38.910
+and implement security systems to maintain data safety,
+
+45
+00:01:38.910 --> 00:01:41.280
+then you have Cloud Practitioner Foundational,
+
+46
+00:01:41.280 --> 00:01:44.460
+SysOps Administrator Associate, Security Specialty,
+
+47
+00:01:44.460 --> 00:01:46.860
+and for a deep dive, DevOps Engineer Professional
+
+48
+00:01:46.860 --> 00:01:49.260
+and Advanced Networking Specialty.
+
+49
+00:01:49.260 --> 00:01:50.093
+If you're into DevOps,
+
+50
+00:01:50.093 --> 00:01:51.900
+for example, you can be a test engineer,
+
+51
+00:01:51.900 --> 00:01:54.960
+your role is to embed testing and quality best practices
+
+52
+00:01:54.960 --> 00:01:57.030
+for software development from design to release
+
+53
+00:01:57.030 --> 00:01:58.890
+throughout the product lifecycle.
+
+54
+00:01:58.890 --> 00:02:01.950
+In which case, we have Cloud Practitioner, then Developer,
+
+55
+00:02:01.950 --> 00:02:03.750
+and then DevOps Engineer.
+
+56
+00:02:03.750 --> 00:02:06.060
+If you're a cloud DevOps engineer,
+
+57
+00:02:06.060 --> 00:02:08.100
+then your role is to design, deploy,
+
+58
+00:02:08.100 --> 00:02:10.140
+and operate large-scale global hybrid
+
+59
+00:02:10.140 --> 00:02:11.490
+cloud computing environments
+
+60
+00:02:11.490 --> 00:02:14.790
+and to advocate for end-to-end automated CI/CD pipelines.
+
+61
+00:02:14.790 --> 00:02:16.140
+So in that case, you would go
+
+62
+00:02:16.140 --> 00:02:19.500
+from Cloud Practitioner Foundational to Developer Associate
+
+63
+00:02:19.500 --> 00:02:22.170
+and then optionally, do SysOps Administrator.
+
+64
+00:02:22.170 --> 00:02:24.540
+And then if you are into machine learning,
+
+65
+00:02:24.540 --> 00:02:26.250
+then doing the Machine Learning Engineer Associate
+
+66
+00:02:26.250 --> 00:02:27.510
+could be a very good one.
+
+67
+00:02:27.510 --> 00:02:28.950
+And finally, for a deep dive,
+
+68
+00:02:28.950 --> 00:02:31.590
+the DevOps Engineer Professional Certification.
+
+69
+00:02:31.590 --> 00:02:33.840
+If you're a DevSecOps engineer,
+
+70
+00:02:33.840 --> 00:02:36.780
+so your role is to accelerate enterprise cloud adoption
+
+71
+00:02:36.780 --> 00:02:37.920
+while enabling rapid
+
+72
+00:02:37.920 --> 00:02:41.730
+and stable delivery capabilities using CI/CD principles,
+
+73
+00:02:41.730 --> 00:02:43.680
+methodology, and technology.
+
+74
+00:02:43.680 --> 00:02:45.360
+Then it is recommended for you to start
+
+75
+00:02:45.360 --> 00:02:46.410
+with Cloud Practitioner,
+
+76
+00:02:46.410 --> 00:02:48.510
+then SysOps Administrator Associates,
+
+77
+00:02:48.510 --> 00:02:49.800
+Machine Learning Associate
+
+78
+00:02:49.800 --> 00:02:52.470
+if you are working with AI and ML projects,
+
+79
+00:02:52.470 --> 00:02:56.160
+DevOps engineer, and finally, Security Specialty.
+
+80
+00:02:56.160 --> 00:02:58.260
+If you are into the security space,
+
+81
+00:02:58.260 --> 00:03:00.330
+you can be a cloud security engineer
+
+82
+00:03:00.330 --> 00:03:03.630
+and your role is to design computer security architecture
+
+83
+00:03:03.630 --> 00:03:06.120
+and develop detailed cyber security designs.
+
+84
+00:03:06.120 --> 00:03:08.190
+Then you develop, execute a new track performance
+
+85
+00:03:08.190 --> 00:03:11.070
+of your security systems to protect information.
+
+86
+00:03:11.070 --> 00:03:12.420
+So Cloud Practitioner Foundational
+
+87
+00:03:12.420 --> 00:03:13.770
+is a good one to start with.
+
+88
+00:03:13.770 --> 00:03:16.380
+If you're working with AI and ML systems,
+
+89
+00:03:16.380 --> 00:03:19.080
+AI Practitioner Foundational is also a very good one.
+
+90
+00:03:19.080 --> 00:03:20.460
+Then we have SysOps Administrator,
+
+91
+00:03:20.460 --> 00:03:22.350
+and finally, Security Specialty.
+
+92
+00:03:22.350 --> 00:03:25.050
+And for a deeper dive, DevOps Engineer Professional
+
+93
+00:03:25.050 --> 00:03:28.770
+and Advanced Networking Specialty is a good idea as well.
+
+94
+00:03:28.770 --> 00:03:30.960
+If you're a cloud security architect,
+
+95
+00:03:30.960 --> 00:03:31.860
+then your role is to design
+
+96
+00:03:31.860 --> 00:03:34.110
+and implement enterprise cloud solutions,
+
+97
+00:03:34.110 --> 00:03:36.000
+applying governance to identify, communicate,
+
+98
+00:03:36.000 --> 00:03:38.160
+and minimize business and technical risks.
+
+99
+00:03:38.160 --> 00:03:40.140
+In that case, you have Cloud Practitioner,
+
+100
+00:03:40.140 --> 00:03:42.120
+then AI Practitioner Foundational,
+
+101
+00:03:42.120 --> 00:03:43.320
+then Solution Architect Associate,
+
+102
+00:03:43.320 --> 00:03:45.120
+and then Security Specialty.
+
+103
+00:03:45.120 --> 00:03:46.320
+And you can do a deeper dive
+
+104
+00:03:46.320 --> 00:03:48.720
+on Solution Architect Professional.
+
+105
+00:03:48.720 --> 00:03:50.580
+If you're into development and networking.
+
+106
+00:03:50.580 --> 00:03:52.080
+So for development, you go
+
+107
+00:03:52.080 --> 00:03:54.360
+and you as a software development engineer,
+
+108
+00:03:54.360 --> 00:03:56.160
+you develop and you will maintain software
+
+109
+00:03:56.160 --> 00:03:58.080
+across platforms and devices,
+
+110
+00:03:58.080 --> 00:04:00.870
+so Cloud Practitioner, AI Practitioner Foundational,
+
+111
+00:04:00.870 --> 00:04:03.330
+Developer Associate and then DevOps Engineer.
+
+112
+00:04:03.330 --> 00:04:05.490
+And if you're just into networking,
+
+113
+00:04:05.490 --> 00:04:06.570
+then as a network engineer,
+
+114
+00:04:06.570 --> 00:04:09.180
+you need to design your LANs and your WANs,
+
+115
+00:04:09.180 --> 00:04:11.820
+so you have the Cloud Practitioner Foundational,
+
+116
+00:04:11.820 --> 00:04:13.260
+Solutions Architect Associate,
+
+117
+00:04:13.260 --> 00:04:15.120
+Advanced Networking Specialty,
+
+118
+00:04:15.120 --> 00:04:17.970
+and for a deeper dive, Security Specialty.
+
+119
+00:04:17.970 --> 00:04:19.830
+If you are in the data analytics space,
+
+120
+00:04:19.830 --> 00:04:21.690
+you can be a cloud data engineer
+
+121
+00:04:21.690 --> 00:04:23.190
+to do the automation of collection
+
+122
+00:04:23.190 --> 00:04:25.680
+and processing of structure or semi-structured data,
+
+123
+00:04:25.680 --> 00:04:27.690
+and you can monitor the data pipeline performance,
+
+124
+00:04:27.690 --> 00:04:29.430
+in which case, Cloud Practitioner,
+
+125
+00:04:29.430 --> 00:04:30.780
+then Solutions Architect Associate,
+
+126
+00:04:30.780 --> 00:04:33.180
+then Data Engineer is your way to go.
+
+127
+00:04:33.180 --> 00:04:35.850
+And for a deeper dive, you can do Security Specialty.
+
+128
+00:04:35.850 --> 00:04:37.770
+And if you're working on AI and ML project,
+
+129
+00:04:37.770 --> 00:04:40.170
+Machine Learning Engineer Associates.
+
+130
+00:04:40.170 --> 00:04:41.850
+If you are in AI or in machine learning,
+
+131
+00:04:41.850 --> 00:04:43.290
+you can be a machine learning engineer
+
+132
+00:04:43.290 --> 00:04:45.030
+and your role is to research, build,
+
+133
+00:04:45.030 --> 00:04:47.100
+and design artificial intelligence systems
+
+134
+00:04:47.100 --> 00:04:49.140
+that will automate predictive models
+
+135
+00:04:49.140 --> 00:04:52.110
+and design machine learning systems, models, and schemes.
+
+136
+00:04:52.110 --> 00:04:53.640
+So here, you can do Cloud Practitioner
+
+137
+00:04:53.640 --> 00:04:56.640
+and then AI Practitioner Foundational, Solution Associate,
+
+138
+00:04:56.640 --> 00:04:58.770
+and then Machine Learning Engineer Associate.
+
+139
+00:04:58.770 --> 00:04:59.850
+And then for deeper dive,
+
+140
+00:04:59.850 --> 00:05:03.060
+Data Engineer Associate and Machine Learning Specialty.
+
+141
+00:05:03.060 --> 00:05:04.680
+Then if you're a prompt engineer,
+
+142
+00:05:04.680 --> 00:05:07.770
+your goal is to design, test, and refine text prompts
+
+143
+00:05:07.770 --> 00:05:10.560
+to optimize the performance of an AI language model.
+
+144
+00:05:10.560 --> 00:05:12.360
+So here, we're talking about Cloud Practitioner
+
+145
+00:05:12.360 --> 00:05:15.540
+and very important AI Practitioner Foundational.
+
+146
+00:05:15.540 --> 00:05:17.490
+Then we have Machine Learning Engineer Associate.
+
+147
+00:05:17.490 --> 00:05:18.420
+And then finally,
+
+148
+00:05:18.420 --> 00:05:20.940
+Machine Learning Specialty for a deep dive.
+
+149
+00:05:20.940 --> 00:05:22.740
+If you're a machine learning ops engineer,
+
+150
+00:05:22.740 --> 00:05:23.940
+you're more on the operation side,
+
+151
+00:05:23.940 --> 00:05:25.410
+so this is where you maintain
+
+152
+00:05:25.410 --> 00:05:27.420
+the platform and infrastructure.
+
+153
+00:05:27.420 --> 00:05:29.220
+So you're going to be around Cloud Practitioner,
+
+154
+00:05:29.220 --> 00:05:30.750
+AI Practitioner of course,
+
+155
+00:05:30.750 --> 00:05:32.160
+and then Solutions Architect Associate
+
+156
+00:05:32.160 --> 00:05:33.780
+and Machine Learning Associate,
+
+157
+00:05:33.780 --> 00:05:37.710
+and for a deeper dive, Data Engineer and DevOps Engineer.
+
+158
+00:05:37.710 --> 00:05:40.380
+And if you are a data scientist, your role is to develop
+
+159
+00:05:40.380 --> 00:05:42.390
+and maintain AI and machine learning models
+
+160
+00:05:42.390 --> 00:05:43.860
+to solve business problems.
+
+161
+00:05:43.860 --> 00:05:45.450
+And you train and fine tune these models
+
+162
+00:05:45.450 --> 00:05:47.610
+to evaluate their performance.
+
+163
+00:05:47.610 --> 00:05:48.630
+And so therefore,
+
+164
+00:05:48.630 --> 00:05:50.610
+you should do Cloud Practitioner Foundational,
+
+165
+00:05:50.610 --> 00:05:52.440
+AI Practitioner Foundational,
+
+166
+00:05:52.440 --> 00:05:54.120
+then Solution Architect Associates,
+
+167
+00:05:54.120 --> 00:05:56.010
+Machine Learning Engineer Associates,
+
+168
+00:05:56.010 --> 00:05:57.990
+and then Machine Learning Specialty.
+
+169
+00:05:57.990 --> 00:05:59.190
+And you'll be good to go.
+
+170
+00:05:59.190 --> 00:06:00.720
+So that's it for your learning journey
+
+171
+00:06:00.720 --> 00:06:02.280
+on AWS certifications.
+
+172
+00:06:02.280 --> 00:06:05.463
+I hope you liked it and I will see you in the next lecture.
+

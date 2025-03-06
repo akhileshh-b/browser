@@ -1,0 +1,403 @@
+WEBVTT
+
+00:00:00.670 --> 00:00:03.520
+<v Instructor>Now let's talk about databases and AWS.</v>
+
+00:00:03.520 --> 00:00:05.900
+And first I want to give you an introduction
+
+00:00:05.900 --> 00:00:07.590
+as to what is a database
+
+00:00:07.590 --> 00:00:11.110
+and the different types of databases we have today.
+
+00:00:11.110 --> 00:00:13.070
+So when you are storing data on disk,
+
+00:00:13.070 --> 00:00:16.830
+would it be on an EBS drive, an EBS volume,
+
+00:00:16.830 --> 00:00:20.280
+an EC2 Instance Store, Amazon S3, you have your limits.
+
+00:00:20.280 --> 00:00:23.160
+If you want to store data in the structure way,
+
+00:00:23.160 --> 00:00:25.900
+you may want to store it in a database.
+
+00:00:25.900 --> 00:00:28.030
+And this structure is going to allow you
+
+00:00:28.030 --> 00:00:30.580
+to build indexes and to efficiently query
+
+00:00:30.580 --> 00:00:32.540
+or search through the data.
+
+00:00:32.540 --> 00:00:35.840
+So well we have with EFS EBS, EC2 Instance Store
+
+00:00:35.840 --> 00:00:39.270
+and Amazon S3, we can do per files operations
+
+00:00:39.270 --> 00:00:42.150
+with databases, it's going to be a lot more structured.
+
+00:00:42.150 --> 00:00:46.240
+We can even define relationships between your datasets.
+
+00:00:46.240 --> 00:00:48.040
+So these databases nowadays,
+
+00:00:48.040 --> 00:00:50.120
+they're all optimized for a purpose
+
+00:00:50.120 --> 00:00:51.730
+and they will come with different features,
+
+00:00:51.730 --> 00:00:53.040
+shapes and constraints.
+
+00:00:53.040 --> 00:00:55.570
+From an exam perspective, it's up to you to understand
+
+00:00:55.570 --> 00:00:57.720
+which database is going to fit best
+
+00:00:57.720 --> 00:01:00.400
+at the use case given to you by the question.
+
+00:01:00.400 --> 00:01:03.050
+So the first kind of database that has been very common
+
+00:01:03.050 --> 00:01:04.800
+and it's still a very common today,
+
+00:01:04.800 --> 00:01:07.130
+is called the relational databases.
+
+00:01:07.130 --> 00:01:10.320
+So if you used Excel before, you know, Excel spreadsheets,
+
+00:01:10.320 --> 00:01:12.600
+this is just the same as Excel spreadsheets,
+
+00:01:12.600 --> 00:01:14.770
+but do you have links between each table.
+
+00:01:14.770 --> 00:01:16.760
+So for example, we have the students table,
+
+00:01:16.760 --> 00:01:18.640
+and as we can see, we have four columns
+
+00:01:18.640 --> 00:01:20.780
+and there's a student ID, department ID,
+
+00:01:20.780 --> 00:01:23.200
+a name and an email and then for example,
+
+00:01:23.200 --> 00:01:24.650
+you would have a second spreadsheet
+
+00:01:24.650 --> 00:01:26.180
+called the department spreadsheets
+
+00:01:26.180 --> 00:01:29.640
+with text the department ID and as more information.
+
+00:01:29.640 --> 00:01:32.090
+And the idea is that's in a relational database,
+
+00:01:32.090 --> 00:01:35.580
+you are defining a relation between the department ID,
+
+00:01:35.580 --> 00:01:38.130
+the second column in the students table,
+
+00:01:38.130 --> 00:01:41.280
+into the first column of the departments table.
+
+00:01:41.280 --> 00:01:42.880
+And you can even define more relations,
+
+00:01:42.880 --> 00:01:45.720
+for example, you can define a subject's stable
+
+00:01:45.720 --> 00:01:48.480
+and link the table of the students
+
+00:01:48.480 --> 00:01:51.290
+to the subjects by defining another relation.
+
+00:01:51.290 --> 00:01:54.010
+This is why it's called a relational database.
+
+00:01:54.010 --> 00:01:56.070
+Now in relational databases,
+
+00:01:56.070 --> 00:01:57.920
+the particularity clarity is that you can use
+
+00:01:57.920 --> 00:02:01.750
+the SQL language to perform queries or lookups.
+
+00:02:01.750 --> 00:02:05.103
+So these, whenever you hear SQL think relational databases.
+
+00:02:06.100 --> 00:02:10.860
+Next, we have NoSQL Databases, NoSQL means non-SQL,
+
+00:02:10.860 --> 00:02:13.600
+which means non relational databases.
+
+00:02:13.600 --> 00:02:17.550
+So NoSQL are in more modern kind of databases.
+
+00:02:17.550 --> 00:02:19.630
+They're built for a specific purpose
+
+00:02:19.630 --> 00:02:21.780
+with a specific data model in mind
+
+00:02:21.780 --> 00:02:25.210
+and have a flexible schema for building modern application.
+
+00:02:25.210 --> 00:02:28.560
+The schema is basically the shape of the data.
+
+00:02:28.560 --> 00:02:30.540
+So the benefits of using a NoSQL database
+
+00:02:30.540 --> 00:02:31.880
+is that you have more flexibility.
+
+00:02:31.880 --> 00:02:35.030
+It's easier to make the data model evolve,
+
+00:02:35.030 --> 00:02:37.870
+it's scalable, so it's designed to scale out
+
+00:02:37.870 --> 00:02:39.380
+by adding distributed servers.
+
+00:02:39.380 --> 00:02:42.370
+So, the example from before the relational database,
+
+00:02:42.370 --> 00:02:44.600
+it's not easy to add servers to scale it,
+
+00:02:44.600 --> 00:02:48.450
+so you have to scale up by doing some vertical scaling,
+
+00:02:48.450 --> 00:02:52.000
+but with no sequel databases, you can do horizontal scaling.
+
+00:02:52.000 --> 00:02:53.080
+It's also high performance,
+
+00:02:53.080 --> 00:02:55.080
+it's optimized for a specific data model.
+
+00:02:55.080 --> 00:02:56.040
+It's highly functional,
+
+00:02:56.040 --> 00:02:58.340
+the types are optimized for the model.
+
+00:02:58.340 --> 00:03:01.780
+And finally, some examples of NoSQL databases
+
+00:03:01.780 --> 00:03:03.630
+are going to be key-value databases,
+
+00:03:03.630 --> 00:03:07.370
+document, graph, in-memory or a search databases.
+
+00:03:07.370 --> 00:03:10.170
+We will be seeing those in this section.
+
+00:03:10.170 --> 00:03:13.010
+So, for example, in the NoSQL database,
+
+00:03:13.010 --> 00:03:15.260
+you can have the data in JSON format.
+
+00:03:15.260 --> 00:03:18.250
+So JSON stands for JavaScript Object Notation,
+
+00:03:18.250 --> 00:03:19.083
+and we've seen it before
+
+00:03:19.083 --> 00:03:20.900
+this is the same language we've been using
+
+00:03:20.900 --> 00:03:22.980
+when we defined our IAM policies,
+
+00:03:22.980 --> 00:03:26.020
+and this is what a JSON document looked like.
+
+00:03:26.020 --> 00:03:28.480
+As we can see, this does not look at all
+
+00:03:28.480 --> 00:03:30.380
+like an Excel documents.
+
+00:03:30.380 --> 00:03:33.700
+So JSON is a very common way to describe data
+
+00:03:33.700 --> 00:03:34.840
+and as we can see in here,
+
+00:03:34.840 --> 00:03:37.290
+we have different sub nesting of the data.
+
+00:03:37.290 --> 00:03:40.200
+We have different fields, different name, different types.
+
+00:03:40.200 --> 00:03:42.150
+And so, it is a very common way
+
+00:03:42.150 --> 00:03:45.100
+to muddle data in a NoSQL model.
+
+00:03:45.100 --> 00:03:46.690
+The data can be nested, for example,
+
+00:03:46.690 --> 00:03:48.850
+if you look at address right here,
+
+00:03:48.850 --> 00:03:51.500
+it is nested within the higher object elements.
+
+00:03:51.500 --> 00:03:54.730
+So address and types are going to be nested.
+
+00:03:54.730 --> 00:03:56.040
+The fields can change over time.
+
+00:03:56.040 --> 00:04:00.170
+So it's up to us to add a new field into our JSON documents
+
+00:04:00.170 --> 00:04:02.270
+and their support for arrays, for example,
+
+00:04:02.270 --> 00:04:05.060
+John who is 30, has three different cars,
+
+00:04:05.060 --> 00:04:09.040
+Ford, BMW, and Fiat, he's a lucky man.
+
+00:04:09.040 --> 00:04:11.840
+Okay, so databases, as you can see get a different forms
+
+00:04:11.840 --> 00:04:14.320
+and we'll be seeing them in details in the section.
+
+00:04:14.320 --> 00:04:16.470
+So just some words around databases
+
+00:04:16.470 --> 00:04:19.370
+and the shared responsibility model on AWS.
+
+00:04:19.370 --> 00:04:23.680
+So AWS will offer to manage different databases for us.
+
+00:04:23.680 --> 00:04:25.810
+So these are the offering we'll see
+
+00:04:25.810 --> 00:04:28.130
+and the benefits of using a managed database,
+
+00:04:28.130 --> 00:04:30.850
+is that it's very quick to provision.
+
+00:04:30.850 --> 00:04:32.170
+Usually a database will have,
+
+00:04:32.170 --> 00:04:34.930
+high availability in mind when designing it.
+
+00:04:34.930 --> 00:04:36.680
+And if you wanna scale your database,
+
+00:04:36.680 --> 00:04:40.530
+you can do vertical and horizontal scaling pretty easily.
+
+00:04:40.530 --> 00:04:42.690
+They will also include some utilities
+
+00:04:42.690 --> 00:04:45.640
+to do automated backup and restore of your databases
+
+00:04:45.640 --> 00:04:47.870
+as well as operations and upgrades.
+
+00:04:47.870 --> 00:04:50.600
+And if you need to patch the operating system
+
+00:04:50.600 --> 00:04:52.760
+of the underlying instance,
+
+00:04:52.760 --> 00:04:55.230
+actually it's not your responsibility anymore.
+
+00:04:55.230 --> 00:04:57.210
+It's AWS's responsibility.
+
+00:04:57.210 --> 00:05:00.290
+So AWS will be responsible for the entire database
+
+00:05:00.290 --> 00:05:02.100
+in terms of patching.
+
+00:05:02.100 --> 00:05:03.720
+The monitoring and alerting as well
+
+00:05:03.720 --> 00:05:05.200
+are going to be integrated.
+
+00:05:05.200 --> 00:05:07.600
+And so this is why using a managed database
+
+00:05:07.600 --> 00:05:12.090
+on AWS is very, very important and very beneficial.
+
+00:05:12.090 --> 00:05:14.380
+So, you are obviously able
+
+00:05:14.380 --> 00:05:18.550
+to run your own database technology on an EC2 instance,
+
+00:05:18.550 --> 00:05:21.380
+but if you do so, you need to handle yourself,
+
+00:05:21.380 --> 00:05:25.170
+all the things associated with resiliency, backup, patching,
+
+00:05:25.170 --> 00:05:28.420
+high availability, fault tolerance, and scaling.
+
+00:05:28.420 --> 00:05:31.650
+So this is why in this case, using a managed database
+
+00:05:31.650 --> 00:05:33.160
+is going to be a lifesaver
+
+00:05:33.160 --> 00:05:35.440
+for so many of our use cases, okay?
+
+00:05:35.440 --> 00:05:36.273
+So in this section,
+
+00:05:36.273 --> 00:05:39.230
+we'll have a look at all the managed databases from AWS
+
+00:05:39.230 --> 00:05:41.100
+and which use cases they fit.
+
+00:05:41.100 --> 00:05:42.950
+So we'll see you in the next lecture.

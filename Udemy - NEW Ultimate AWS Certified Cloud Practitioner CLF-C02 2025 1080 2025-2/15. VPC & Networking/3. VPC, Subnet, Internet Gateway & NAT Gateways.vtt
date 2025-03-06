@@ -1,0 +1,766 @@
+WEBVTT
+
+00:00:00.157 --> 00:00:01.630
+<v ->(Instructor) So let's start by understanding</v>
+
+00:00:01.630 --> 00:00:03.160
+what a VPC is.
+
+00:00:03.160 --> 00:00:05.880
+So VPC is a Virtual Private Cloud.
+
+00:00:05.880 --> 00:00:07.800
+And is a private network for you
+
+00:00:07.800 --> 00:00:09.870
+to deploy your resources in, for example,
+
+00:00:09.870 --> 00:00:11.490
+your EC2 instances,
+
+00:00:11.490 --> 00:00:14.110
+a VPC is linked to a specific region.
+
+00:00:14.110 --> 00:00:15.927
+So if you have multiple regions in AWS
+
+00:00:15.927 --> 00:00:17.830
+and you have multiple VPC.
+
+00:00:17.830 --> 00:00:18.730
+So here's an example.
+
+00:00:18.730 --> 00:00:21.140
+Here's my VPC that I've created.
+
+00:00:21.140 --> 00:00:22.540
+And within the VPC,
+
+00:00:22.540 --> 00:00:23.760
+we can have subnets.
+
+00:00:23.760 --> 00:00:26.150
+And a subnet is going to be a part of the VPC.
+
+00:00:26.150 --> 00:00:28.100
+So partition of your network.
+
+00:00:28.100 --> 00:00:29.440
+And that is going to be associated
+
+00:00:29.440 --> 00:00:30.890
+with an availability zone.
+
+00:00:30.890 --> 00:00:33.300
+So here's an example we have an AZ A.
+
+00:00:33.300 --> 00:00:35.770
+And within an AZ we're going to have First of all,
+
+00:00:35.770 --> 00:00:37.230
+a public subnet.
+
+00:00:37.230 --> 00:00:40.330
+So this public subnet is special because it is a subnet
+
+00:00:40.330 --> 00:00:42.200
+that is accessible from the internet.
+
+00:00:42.200 --> 00:00:44.910
+As you can see on the diagram on the right hand side,
+
+00:00:44.910 --> 00:00:48.010
+the public subnet has direct connectivity to the Internet,
+
+00:00:48.010 --> 00:00:51.930
+and the internet can directly reach our public subnets.
+
+00:00:51.930 --> 00:00:53.960
+Also, we can have a private subnet
+
+00:00:53.960 --> 00:00:57.080
+and a private subnet is a subnet that is not accessible
+
+00:00:57.080 --> 00:00:58.460
+from the internet.
+
+00:00:58.460 --> 00:01:00.020
+We'll see how we can define a public subnet
+
+00:01:00.020 --> 00:01:02.310
+and a private subnet later on.
+
+00:01:02.310 --> 00:01:04.500
+So to define access to the internet
+
+00:01:04.500 --> 00:01:06.143
+and access between the subnets so
+
+00:01:06.143 --> 00:01:08.310
+that the resources can communicate,
+
+00:01:08.310 --> 00:01:10.490
+we need to use Route Tables.
+
+00:01:10.490 --> 00:01:11.323
+So the question is,
+
+00:01:11.323 --> 00:01:13.030
+what do you put in a public subnet?
+
+00:01:13.030 --> 00:01:15.700
+Well, when we did create our EC2 instances,
+
+00:01:15.700 --> 00:01:18.510
+we created them in a public subnet.
+
+00:01:18.510 --> 00:01:19.600
+But in a public subnet,
+
+00:01:19.600 --> 00:01:20.433
+you can also put,
+
+00:01:20.433 --> 00:01:22.760
+for example, a load balancer.
+
+00:01:22.760 --> 00:01:24.060
+And in a private subnet,
+
+00:01:24.060 --> 00:01:24.960
+which we don't have,
+
+00:01:24.960 --> 00:01:26.560
+when we have a default VPC,
+
+00:01:26.560 --> 00:01:28.000
+you could place your databases,
+
+00:01:28.000 --> 00:01:28.833
+for example,
+
+00:01:28.833 --> 00:01:30.450
+because they don't need access to the internet
+
+00:01:30.450 --> 00:01:32.910
+and therefore they're going to be more secure.
+
+00:01:32.910 --> 00:01:34.810
+So if we look at a VPC,
+
+00:01:34.810 --> 00:01:36.050
+a more complete one,
+
+00:01:36.050 --> 00:01:38.660
+we have the cloud of AWS, we have regions
+
+00:01:38.660 --> 00:01:40.660
+within the region will have a VPC.
+
+00:01:40.660 --> 00:01:42.930
+And the VPC will have what's called a CIDR Range,
+
+00:01:42.930 --> 00:01:44.910
+which is a range of IP addresses
+
+00:01:44.910 --> 00:01:46.800
+that is allowed within your VPC.
+
+00:01:46.800 --> 00:01:49.440
+And then the VPC can go across two
+
+00:01:49.440 --> 00:01:50.273
+or three availability zones.
+
+00:01:50.273 --> 00:01:53.980
+So we have AZ1 that contains a public subnet,
+
+00:01:53.980 --> 00:01:56.080
+and the private subnet and AZ2
+
+00:01:56.080 --> 00:01:59.700
+which contains also a public subnet and a private subnet.
+
+00:01:59.700 --> 00:02:03.570
+So in this example we have two AZ, one VPC, four subnets.
+
+00:02:03.570 --> 00:02:06.350
+Two of them are public and two of them are private.
+
+00:02:06.350 --> 00:02:08.580
+And we can launch EC2 instances.
+
+00:02:08.580 --> 00:02:11.040
+In each of these subnets.
+
+00:02:11.040 --> 00:02:13.020
+Finally, how do we define access to
+
+00:02:13.020 --> 00:02:14.620
+the internet for these subnets?
+
+00:02:14.620 --> 00:02:17.110
+Well, if we look at the same example as before,
+
+00:02:17.110 --> 00:02:20.700
+say we had an EC2 instance in a public subnet,
+
+00:02:20.700 --> 00:02:23.110
+for it to be able to access the internet,
+
+00:02:23.110 --> 00:02:25.780
+we need to create what's called an Internet Gateway.
+
+00:02:25.780 --> 00:02:29.020
+And this Internet Gateway will help our VPC instances
+
+00:02:29.020 --> 00:02:31.170
+to connect directly to the internet.
+
+00:02:31.170 --> 00:02:34.290
+So the VPC will be having an Internet Gateway.
+
+00:02:34.290 --> 00:02:36.850
+And then the public subnet will have a route
+
+00:02:36.850 --> 00:02:40.460
+to the Internet Gateway to be able to access the internet.
+
+00:02:40.460 --> 00:02:41.540
+So fairly simple,
+
+00:02:41.540 --> 00:02:43.517
+as soon as we have a Internet Gateway
+
+00:02:43.517 --> 00:02:45.840
+and a route to the Internet Gateway that makes
+
+00:02:45.840 --> 00:02:47.363
+the subnet a public subnet.
+
+00:02:48.240 --> 00:02:50.840
+Now if you have an instance in a private subnet,
+
+00:02:50.840 --> 00:02:53.370
+it is not going to be accessible from the internet.
+
+00:02:53.370 --> 00:02:55.920
+But you may want to give it access to the internet
+
+00:02:55.920 --> 00:02:58.720
+For example, to get updates for your operating system
+
+00:02:58.720 --> 00:03:00.280
+or to download files.
+
+00:03:00.280 --> 00:03:01.113
+So for this,
+
+00:03:01.113 --> 00:03:02.750
+we can create what's called a NAT Gateway,
+
+00:03:02.750 --> 00:03:04.340
+which is managed by AWS,
+
+00:03:04.340 --> 00:03:05.340
+or in that instance,
+
+00:03:05.340 --> 00:03:06.470
+which is self managed.
+
+00:03:06.470 --> 00:03:09.590
+And that will allow your instances in your private subnets
+
+00:03:09.590 --> 00:03:12.570
+to access the internet while remaining private.
+
+00:03:12.570 --> 00:03:15.440
+So concretely, we create a NAT Gateway
+
+00:03:15.440 --> 00:03:17.730
+or Nat instance in our public subnet.
+
+00:03:17.730 --> 00:03:18.880
+And we create a route
+
+00:03:18.880 --> 00:03:21.790
+from the private subnets to the NAT Gateway,
+
+00:03:21.790 --> 00:03:23.683
+and from the NAT Gateway to the Internet Gateway.
+
+00:03:24.544 --> 00:03:26.680
+And this will allow your private subnets
+
+00:03:26.680 --> 00:03:28.860
+to get internet connectivity.
+
+00:03:28.860 --> 00:03:29.810
+So that's it for the theory,
+
+00:03:29.810 --> 00:03:32.010
+now I will just show you in the console what's
+
+00:03:32.010 --> 00:03:34.770
+the default VPC and what is created for us.
+
+00:03:34.770 --> 00:03:37.070
+So let's go in the Console of the VPC.
+
+00:03:37.070 --> 00:03:38.810
+So I'll type in VPC.
+
+00:03:38.810 --> 00:03:40.130
+And as was mentioned,
+
+00:03:40.130 --> 00:03:41.661
+when we did create our account,
+
+00:03:41.661 --> 00:03:44.420
+there was a default VPC created for us.
+
+00:03:44.420 --> 00:03:45.380
+So this is what we observe
+
+00:03:45.380 --> 00:03:48.260
+from here we have one VPC, three subnets,
+
+00:03:48.260 --> 00:03:50.710
+one Route Table and one Internet Gateway.
+
+00:03:50.710 --> 00:03:53.080
+So first, let's have a look at the VPC.
+
+00:03:53.080 --> 00:03:54.500
+So if we look at the VPC,
+
+00:03:54.500 --> 00:03:57.720
+we can see that this VPC is available
+
+00:03:57.720 --> 00:04:00.130
+and we get the CIDR which corresponds to the IP
+
+00:04:00.130 --> 00:04:02.060
+range of that VPC.
+
+00:04:02.060 --> 00:04:03.520
+So if you want to know what this means,
+
+00:04:03.520 --> 00:04:06.100
+you go to CIDR.XYZ,
+
+00:04:06.100 --> 00:04:07.420
+which is a website.
+
+00:04:07.420 --> 00:04:09.420
+And on this website you're going to enter
+
+00:04:09.420 --> 00:04:11.630
+the CIDR you see here so 172
+
+00:04:13.140 --> 00:04:15.910
+dot and then we have 31 00 16
+
+00:04:15.910 --> 00:04:19.040
+so 31, zero, zero
+
+00:04:19.040 --> 00:04:20.440
+and then 16
+
+00:04:20.440 --> 00:04:22.120
+and this shows you the kind
+
+00:04:22.120 --> 00:04:24.470
+of addresses range we're going to get.
+
+00:04:24.470 --> 00:04:26.430
+So the first IP
+
+00:04:26.430 --> 00:04:29.600
+is 172 point 31.01
+
+00:04:29.600 --> 00:04:32.790
+and the last IP is 172 point 31
+
+00:04:32.790 --> 00:04:36.250
+point 255 point 254.
+
+00:04:36.250 --> 00:04:41.250
+And we get about 65,000 IP in this entire range.
+
+00:04:41.880 --> 00:04:44.930
+So this is why when we've been creating EC2 instances
+
+00:04:44.930 --> 00:04:46.770
+in our default VPC,
+
+00:04:46.770 --> 00:04:50.990
+the private IP where within the range shown below,
+
+00:04:50.990 --> 00:04:53.760
+okay, great. So we have our VPC.
+
+00:04:53.760 --> 00:04:54.593
+And so far, it's good.
+
+00:04:54.593 --> 00:04:55.610
+We have one CIDR block,
+
+00:04:55.610 --> 00:04:57.410
+we could add more if you wanted to.
+
+00:04:57.410 --> 00:04:59.970
+Next we want to look at the subnets.
+
+00:04:59.970 --> 00:05:00.803
+So for this,
+
+00:05:00.803 --> 00:05:01.636
+we go to subnets.
+
+00:05:01.636 --> 00:05:03.140
+And we open this as a new tab.
+
+00:05:03.140 --> 00:05:05.610
+And we can see that three subnets are created
+
+00:05:05.610 --> 00:05:07.810
+for us in our VPC.
+
+00:05:07.810 --> 00:05:10.980
+So each subnet correspond to a specific availability zone.
+
+00:05:10.980 --> 00:05:11.980
+So for example,
+
+00:05:11.980 --> 00:05:15.030
+this subnet right here is for eu-West-1a,
+
+00:05:15.030 --> 00:05:17.510
+this subnet right here is for eu-West-1b.
+
+00:05:17.510 --> 00:05:20.320
+And this right here for eu-West-1c.
+
+00:05:20.320 --> 00:05:21.790
+And within each subnet,
+
+00:05:21.790 --> 00:05:24.280
+we get a different IPv4 CIDR.
+
+00:05:24.280 --> 00:05:25.540
+So if we look at this one
+
+00:05:25.540 --> 00:05:28.650
+for example, for eu-West-1a, it is the same as before,
+
+00:05:28.650 --> 00:05:30.040
+but slash 20.
+
+00:05:30.040 --> 00:05:33.620
+So if we go to this website and do slash 20,
+
+00:05:33.620 --> 00:05:37.560
+we can see what is the first IP and what is the last IP.
+
+00:05:37.560 --> 00:05:38.450
+And then again,
+
+00:05:38.450 --> 00:05:40.760
+this is a subset of everything we had from before.
+
+00:05:40.760 --> 00:05:43.210
+So if we go back into our VPC,
+
+00:05:43.210 --> 00:05:44.720
+our subnets excuse me,
+
+00:05:44.720 --> 00:05:47.910
+and then look at this CIDR right here.
+
+00:05:47.910 --> 00:05:50.480
+So this is a new CIDR's, point 16.0.
+
+00:05:50.480 --> 00:05:52.900
+So copy this and paste it and shows you again,
+
+00:05:52.900 --> 00:05:55.040
+the first IP and the last IP.
+
+00:05:55.040 --> 00:05:57.160
+So we can have multiple subnets their partitions
+
+00:05:57.160 --> 00:06:00.450
+within our VPC and each subnet in this example
+
+00:06:00.450 --> 00:06:03.400
+Has 4091 available IPv4.
+
+00:06:03.400 --> 00:06:04.770
+So if we launch an EC2 instance,
+
+00:06:04.770 --> 00:06:05.890
+within a subnet,
+
+00:06:05.890 --> 00:06:07.400
+an ipv4 will be used.
+
+00:06:07.400 --> 00:06:08.693
+Okay. So we have three subnets,
+
+00:06:08.693 --> 00:06:11.040
+corresponding to three AZ.
+
+00:06:11.040 --> 00:06:13.160
+And so when we went into the EC2 Console,
+
+00:06:13.160 --> 00:06:14.710
+I will show you this right now,
+
+00:06:14.710 --> 00:06:16.100
+when we went to the EC2 Console,
+
+00:06:16.100 --> 00:06:17.470
+and we launched an instance,
+
+00:06:17.470 --> 00:06:18.630
+we're going to do it again,
+
+00:06:18.630 --> 00:06:19.810
+launch an instance,
+
+00:06:19.810 --> 00:06:21.850
+we had to choose the AMI type,
+
+00:06:21.850 --> 00:06:24.120
+we had to choose the instance size
+
+00:06:24.120 --> 00:06:27.010
+and then we had to choose the instance details.
+
+00:06:27.010 --> 00:06:29.740
+The network was associated to the default VPC.
+
+00:06:29.740 --> 00:06:30.870
+And for the subnets,
+
+00:06:30.870 --> 00:06:32.860
+you have to choose the CIDR you want it to be in.
+
+00:06:32.860 --> 00:06:34.920
+And these subnets correspond to AZ
+
+00:06:34.920 --> 00:06:35.933
+and they correspond to the subnets
+
+00:06:35.933 --> 00:06:37.580
+that we created right here.
+
+00:06:37.580 --> 00:06:38.413
+So as an example,
+
+00:06:38.413 --> 00:06:41.380
+if I create an instance in eu-West-1a,
+
+00:06:41.380 --> 00:06:43.580
+so I'm going to create that instance,
+
+00:06:43.580 --> 00:06:44.830
+do review and then launch
+
+00:06:46.197 --> 00:06:48.650
+and then acknowledges our instance
+
+00:06:48.650 --> 00:06:50.300
+is getting created automatically.
+
+00:06:51.360 --> 00:06:52.400
+And if we look at
+
+00:06:52.400 --> 00:06:56.930
+the private IP 172 point 31.6 point 131
+
+00:06:56.930 --> 00:06:59.650
+this IP, is within the CIDR Range.
+
+00:06:59.650 --> 00:07:02.450
+That has been defined, right here.
+
+00:07:02.450 --> 00:07:03.490
+Okay, this is good.
+
+00:07:03.490 --> 00:07:05.120
+So we understand better how it works.
+
+00:07:05.120 --> 00:07:07.640
+And because this is a public subnet,
+
+00:07:07.640 --> 00:07:09.600
+then this is why we were able to connect
+
+00:07:09.600 --> 00:07:10.920
+to our EC2 instance,
+
+00:07:10.920 --> 00:07:13.170
+and this is why our EC2 instance was able
+
+00:07:13.170 --> 00:07:14.260
+to be used as a web server
+
+00:07:14.260 --> 00:07:17.040
+and also, install different packages.
+
+00:07:17.040 --> 00:07:18.090
+Okay, so this is good.
+
+00:07:18.090 --> 00:07:19.170
+We understand better now
+
+00:07:19.170 --> 00:07:20.930
+what goes on behind the scenes.
+
+00:07:20.930 --> 00:07:23.140
+So next, what I told you about was
+
+00:07:23.140 --> 00:07:24.800
+the Internet Gateway.
+
+00:07:24.800 --> 00:07:27.750
+So the Internet Gateway here has been created already.
+
+00:07:27.750 --> 00:07:29.267
+And it's attached to one VPC
+
+00:07:29.267 --> 00:07:31.670
+so VPC can only have one Internet Gateway.
+
+00:07:31.670 --> 00:07:34.900
+And this is what allows my EC2 instances in here
+
+00:07:34.900 --> 00:07:36.530
+to get internet access.
+
+00:07:36.530 --> 00:07:38.190
+If I do remove the Internet Gateway,
+
+00:07:38.190 --> 00:07:39.023
+if I detach it,
+
+00:07:39.023 --> 00:07:39.870
+I won't do it,
+
+00:07:39.870 --> 00:07:41.060
+then I'm not going to be able
+
+00:07:41.060 --> 00:07:43.640
+to access my EC2 instance anymore.
+
+00:07:43.640 --> 00:07:46.210
+And for the Internet Gateway to be used,
+
+00:07:46.210 --> 00:07:47.830
+it needs to be used by a Route Table.
+
+00:07:47.830 --> 00:07:49.610
+So if I go back to my subnetS
+
+00:07:49.610 --> 00:07:52.720
+and click on any of these subnets and go to the Route Table,
+
+00:07:52.720 --> 00:07:56.070
+I can see there is a Route Table associated with it.
+
+00:07:56.070 --> 00:07:57.800
+If I click on this Route Table,
+
+00:07:57.800 --> 00:08:00.680
+this road table contains a Route in here
+
+00:08:00.680 --> 00:08:03.900
+That says that if you're going within this CIDR,
+
+00:08:03.900 --> 00:08:05.970
+you stay within your local VPC.
+
+00:08:05.970 --> 00:08:07.780
+But if you're going anywhere else,
+
+00:08:07.780 --> 00:08:09.810
+then please use the Internet Gateway.
+
+00:08:09.810 --> 00:08:11.690
+This is a link to the Internet Gateway.
+
+00:08:11.690 --> 00:08:14.400
+Well, this means that our instance has a Route
+
+00:08:14.400 --> 00:08:17.190
+and within our subnets to the Internet Gateway,
+
+00:08:17.190 --> 00:08:18.970
+and therefore it is a public subnet
+
+00:08:18.970 --> 00:08:21.470
+and the EC2 instance can access the internet.
+
+00:08:21.470 --> 00:08:22.420
+As I mentioned,
+
+00:08:22.420 --> 00:08:24.480
+we don't have any private subnet in this example,
+
+00:08:24.480 --> 00:08:26.300
+because it is a default VPC.
+
+00:08:26.300 --> 00:08:28.060
+But if you wanted to as an exercise,
+
+00:08:28.060 --> 00:08:29.150
+you could create a subnets.
+
+00:08:29.150 --> 00:08:30.220
+It's more complicated,
+
+00:08:30.220 --> 00:08:32.150
+I do this in my other courses.
+
+00:08:32.150 --> 00:08:34.170
+And then you will need to also define
+
+00:08:34.170 --> 00:08:36.120
+a specific Route Table.
+
+00:08:36.120 --> 00:08:37.980
+Okay, finally, we are not using them
+
+00:08:39.737 --> 00:08:41.430
+because we don't have any private subnets.
+
+00:08:41.430 --> 00:08:43.480
+But you could create a NAT Gateway,
+
+00:08:43.480 --> 00:08:46.030
+and the NAT Gateway would be associated with a subnet
+
+00:08:46.030 --> 00:08:49.130
+and would allow your instances in your private subnets
+
+00:08:49.130 --> 00:08:50.570
+to access the internet.
+
+00:08:50.570 --> 00:08:51.432
+And this is more advanced.
+
+00:08:51.432 --> 00:08:53.290
+You just need to know what it is at a high level.
+
+00:08:53.290 --> 00:08:54.970
+Finally to clean up but do not forget
+
+00:08:54.970 --> 00:08:56.470
+to take your instance right click
+
+00:08:56.470 --> 00:08:59.700
+and terminate it to leave it clean after yourself.
+
+00:08:59.700 --> 00:09:02.000
+That's it, I will see you in the next lecture.

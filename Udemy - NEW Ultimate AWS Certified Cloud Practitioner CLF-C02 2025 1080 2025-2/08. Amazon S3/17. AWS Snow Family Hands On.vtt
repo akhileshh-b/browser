@@ -1,0 +1,250 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:04.350
+<v Instructor>So let's have a look at the AWS Snow family.</v>
+
+2
+00:00:04.350 --> 00:00:06.540
+So we're going to order a Snow family device,
+
+3
+00:00:06.540 --> 00:00:08.730
+or at least go through the process of ordering one
+
+4
+00:00:08.730 --> 00:00:10.593
+to see what are the options.
+
+5
+00:00:12.810 --> 00:00:14.610
+So first we have a job name.
+
+6
+00:00:14.610 --> 00:00:19.140
+So this is my import job, and then you choose a job title.
+
+7
+00:00:19.140 --> 00:00:21.420
+So do you want to import into Amazon S3.
+
+8
+00:00:21.420 --> 00:00:23.310
+It's going to be a very good use case.
+
+9
+00:00:23.310 --> 00:00:26.280
+So Amazon will ship a Snowball device to you
+
+10
+00:00:26.280 --> 00:00:28.620
+and then you send it back to AWS.
+
+11
+00:00:28.620 --> 00:00:29.610
+Or do you want to export,
+
+12
+00:00:29.610 --> 00:00:32.340
+in which case you export data from Amazon S3
+
+13
+00:00:32.340 --> 00:00:34.440
+and it gets loaded into the Snowball device
+
+14
+00:00:34.440 --> 00:00:35.790
+and then you receive it.
+
+15
+00:00:35.790 --> 00:00:37.650
+Or if you want to just do edge computing,
+
+16
+00:00:37.650 --> 00:00:40.230
+you do local compute and storage only.
+
+17
+00:00:40.230 --> 00:00:42.543
+So let's do import from Amazon S3.
+
+18
+00:00:44.100 --> 00:00:47.910
+And then we have Snow devices, so we can choose two of them.
+
+19
+00:00:47.910 --> 00:00:51.240
+We can choose this one, the Snowball Edge Storage
+
+20
+00:00:51.240 --> 00:00:53.490
+optimized with 210 terabytes,
+
+21
+00:00:53.490 --> 00:00:55.830
+or the compute optimized device.
+
+22
+00:00:55.830 --> 00:00:58.560
+Obviously over time, some of these devices may change,
+
+23
+00:00:58.560 --> 00:00:59.393
+but don't worry.
+
+24
+00:00:59.393 --> 00:01:01.800
+I just wanna show the idea behind Snow family,
+
+25
+00:01:01.800 --> 00:01:02.730
+so don't worry.
+
+26
+00:01:02.730 --> 00:01:04.325
+As you can see,
+
+27
+00:01:04.325 --> 00:01:06.960
+a lot of devices previously have been discontinued.
+
+28
+00:01:06.960 --> 00:01:09.000
+So these are the two options I have right now,
+
+29
+00:01:09.000 --> 00:01:10.380
+but from an exam perspective,
+
+30
+00:01:10.380 --> 00:01:12.150
+this should be more than enough for you to know.
+
+31
+00:01:12.150 --> 00:01:14.880
+Alright, so next, you choose the pricing option.
+
+32
+00:01:14.880 --> 00:01:16.860
+So on-demand per day pricing,
+
+33
+00:01:16.860 --> 00:01:19.050
+the storage transfer, so S3 data transfer,
+
+34
+00:01:19.050 --> 00:01:20.430
+and then the buckets
+
+35
+00:01:20.430 --> 00:01:22.500
+that you want to transfer data back into,
+
+36
+00:01:22.500 --> 00:01:23.600
+for example, this one.
+
+37
+00:01:24.450 --> 00:01:28.140
+And then no features and options, and then security.
+
+38
+00:01:28.140 --> 00:01:30.003
+So how do you encrypt your data?
+
+39
+00:01:30.990 --> 00:01:33.030
+How do you access service types?
+
+40
+00:01:33.030 --> 00:01:34.980
+So you need to choose a service role.
+
+41
+00:01:34.980 --> 00:01:37.710
+And this service role will have access to Amazon S3
+
+42
+00:01:37.710 --> 00:01:40.410
+to allow to create this ServiceLink role
+
+43
+00:01:40.410 --> 00:01:42.420
+and make sure that our Snow device
+
+44
+00:01:42.420 --> 00:01:45.180
+has the right to write to our S3 buckets.
+
+45
+00:01:45.180 --> 00:01:46.320
+And then the shipping address,
+
+46
+00:01:46.320 --> 00:01:48.690
+so where you want the snow device to be shipped to,
+
+47
+00:01:48.690 --> 00:01:50.400
+because you're going to receive it,
+
+48
+00:01:50.400 --> 00:01:51.600
+and then the shipping speed
+
+49
+00:01:51.600 --> 00:01:54.000
+is a one-day shipping or two day shipping,
+
+50
+00:01:54.000 --> 00:01:56.520
+and then notifications to see your job status.
+
+51
+00:01:56.520 --> 00:01:57.353
+And then when you're done,
+
+52
+00:01:57.353 --> 00:01:59.010
+you have the job summary, and that's it.
+
+53
+00:01:59.010 --> 00:02:02.280
+You will receive a Snowball Edge device
+
+54
+00:02:02.280 --> 00:02:03.960
+and you have to load your data onto it
+
+55
+00:02:03.960 --> 00:02:06.000
+and then send it back to AWS
+
+56
+00:02:06.000 --> 00:02:07.950
+thanks to the shipping label that's included.
+
+57
+00:02:07.950 --> 00:02:08.783
+And that's it.
+
+58
+00:02:08.783 --> 00:02:10.530
+You've seen how the Snow family works.
+
+59
+00:02:10.530 --> 00:02:11.730
+Obviously we're not going to order one,
+
+60
+00:02:11.730 --> 00:02:13.695
+because that would be way too complicated,
+
+61
+00:02:13.695 --> 00:02:14.940
+but I hope you liked it,
+
+62
+00:02:14.940 --> 00:02:16.893
+and I will see you in the next lecture.
+

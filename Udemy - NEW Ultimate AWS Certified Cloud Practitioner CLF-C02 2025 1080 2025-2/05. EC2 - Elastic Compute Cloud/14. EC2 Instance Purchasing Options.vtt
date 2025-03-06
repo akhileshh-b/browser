@@ -1,0 +1,1002 @@
+WEBVTT
+
+1
+00:00:00.470 --> 00:00:02.160
+<v Instructor>Hi, and welcome to this lecture</v>
+
+2
+00:00:02.160 --> 00:00:05.150
+on EC2 Instances Purchasing Options.
+
+3
+00:00:05.150 --> 00:00:08.640
+So we've been using so far, on-demand EC2 instances.
+
+4
+00:00:08.640 --> 00:00:11.190
+They allow us to run instances on demands,
+
+5
+00:00:11.190 --> 00:00:13.230
+that means they're good for short workloads,
+
+6
+00:00:13.230 --> 00:00:14.370
+we get predictable pricing,
+
+7
+00:00:14.370 --> 00:00:16.560
+and we're going to pay by the second.
+
+8
+00:00:16.560 --> 00:00:18.630
+But if you have different kind of workloads,
+
+9
+00:00:18.630 --> 00:00:21.450
+you can optimize your discounts and your pricing
+
+10
+00:00:21.450 --> 00:00:23.750
+by specifying it to AWS.
+
+11
+00:00:23.750 --> 00:00:26.160
+For example, you can use reserved instances
+
+12
+00:00:26.160 --> 00:00:29.030
+and you have one year or three years term,
+
+13
+00:00:29.030 --> 00:00:30.890
+and they're meant for long workloads.
+
+14
+00:00:30.890 --> 00:00:32.370
+So if you know you're going to run a database
+
+15
+00:00:32.370 --> 00:00:35.550
+for a long time, then a reserved instance is great.
+
+16
+00:00:35.550 --> 00:00:37.870
+And if you want to have a flexible instance type,
+
+17
+00:00:37.870 --> 00:00:39.520
+so for example, you want to change
+
+18
+00:00:39.520 --> 00:00:41.180
+the instance type over time,
+
+19
+00:00:41.180 --> 00:00:44.030
+then convertible reserved instances are for you.
+
+20
+00:00:44.030 --> 00:00:45.620
+And by the way, don't worry,
+
+21
+00:00:45.620 --> 00:00:48.800
+I'm going to do a deep dive in all of those over time.
+
+22
+00:00:48.800 --> 00:00:50.800
+Okay, next we have savings plan
+
+23
+00:00:50.800 --> 00:00:53.870
+and savings plan are one and three years term,
+
+24
+00:00:53.870 --> 00:00:54.770
+and they're more modern
+
+25
+00:00:54.770 --> 00:00:58.790
+because instead of committing to a specific instance type,
+
+26
+00:00:58.790 --> 00:01:02.000
+you commit to a specific amount of usage in dollars,
+
+27
+00:01:02.000 --> 00:01:04.520
+and there again, for long workloads.
+
+28
+00:01:04.520 --> 00:01:06.140
+Spot instances instead are meant
+
+29
+00:01:06.140 --> 00:01:07.750
+for very short workloads,
+
+30
+00:01:07.750 --> 00:01:09.180
+they're very, very cheap,
+
+31
+00:01:09.180 --> 00:01:11.950
+but at any time you can lose these instances
+
+32
+00:01:11.950 --> 00:01:14.540
+and that makes them less reliable.
+
+33
+00:01:14.540 --> 00:01:17.350
+Dedicated host allows you to book an entire physical server
+
+34
+00:01:17.350 --> 00:01:19.100
+and control instance placements.
+
+35
+00:01:19.100 --> 00:01:21.210
+And dedicated instances means that
+
+36
+00:01:21.210 --> 00:01:23.600
+no other customers will share your hardware.
+
+37
+00:01:23.600 --> 00:01:26.780
+Finally, capacity reservations allow you to reserve capacity
+
+38
+00:01:26.780 --> 00:01:29.413
+in a specific AZ for any duration.
+
+39
+00:01:30.370 --> 00:01:32.210
+Now let's look at EC2 on-demand.
+
+40
+00:01:32.210 --> 00:01:33.420
+So you're going to pay for what you use.
+
+41
+00:01:33.420 --> 00:01:35.870
+So that means that if you're using Linux or Windows,
+
+42
+00:01:35.870 --> 00:01:39.140
+you're going to be getting a billing per second
+
+43
+00:01:39.140 --> 00:01:40.180
+after the first minute,
+
+44
+00:01:40.180 --> 00:01:42.260
+or for all the other operating systems,
+
+45
+00:01:42.260 --> 00:01:44.240
+you're going to get a billing per hour.
+
+46
+00:01:44.240 --> 00:01:46.460
+It has the highest cost but no upfront payments
+
+47
+00:01:46.460 --> 00:01:48.490
+and no long-term commitments.
+
+48
+00:01:48.490 --> 00:01:51.770
+That means it's definitely recommended for a short-term
+
+49
+00:01:51.770 --> 00:01:53.510
+and uninterrupted workload
+
+50
+00:01:53.510 --> 00:01:56.360
+where you cannot predict how the application will behave.
+
+51
+00:01:57.380 --> 00:01:58.480
+Now for reserved instances,
+
+52
+00:01:58.480 --> 00:02:01.150
+and by the way, the numbers I show you can change over time,
+
+53
+00:02:01.150 --> 00:02:03.200
+so I will not update this video every time,
+
+54
+00:02:03.200 --> 00:02:05.930
+but it gives you an idea of what the numbers can be.
+
+55
+00:02:05.930 --> 00:02:09.740
+So the reserved instances give you a 72% discounts
+
+56
+00:02:09.740 --> 00:02:11.290
+compared to on-demand.
+
+57
+00:02:11.290 --> 00:02:14.220
+And you reserve a specific instance attributes.
+
+58
+00:02:14.220 --> 00:02:16.820
+For example, the instance type, the region,
+
+59
+00:02:16.820 --> 00:02:19.070
+the tenancy, and the OS.
+
+60
+00:02:19.070 --> 00:02:22.290
+You specify a reservation period one year or three years,
+
+61
+00:02:22.290 --> 00:02:24.120
+to get even more discounts,
+
+62
+00:02:24.120 --> 00:02:25.940
+and whether or not you wanna pay upfront,
+
+63
+00:02:25.940 --> 00:02:28.630
+partially upfront, or not upfront.
+
+64
+00:02:28.630 --> 00:02:30.670
+And all upfront of course gives you
+
+65
+00:02:30.670 --> 00:02:33.020
+the maximum amount of discounts.
+
+66
+00:02:33.020 --> 00:02:34.340
+In terms of the scope,
+
+67
+00:02:34.340 --> 00:02:35.920
+do you want the scope to be
+
+68
+00:02:35.920 --> 00:02:38.170
+into a specific region or a zone?
+
+69
+00:02:38.170 --> 00:02:41.210
+That means reserve capacity in a specific AZ.
+
+70
+00:02:41.210 --> 00:02:43.500
+And so you would use reserved instances
+
+71
+00:02:43.500 --> 00:02:46.820
+for the steady-state usage applications,
+
+72
+00:02:46.820 --> 00:02:48.490
+think for example, for a database.
+
+73
+00:02:48.490 --> 00:02:51.330
+And you can buy or sell your reserved instances
+
+74
+00:02:51.330 --> 00:02:54.390
+in a marketplace if you don't need them anymore.
+
+75
+00:02:54.390 --> 00:02:57.890
+And there is a specific kind of reserved instances
+
+76
+00:02:57.890 --> 00:03:00.050
+called the convertible reserved instance,
+
+77
+00:03:00.050 --> 00:03:02.710
+which is allowing you to change the instance type,
+
+78
+00:03:02.710 --> 00:03:05.000
+the instance family, the operating system,
+
+79
+00:03:05.000 --> 00:03:06.740
+the scope and the tenancy.
+
+80
+00:03:06.740 --> 00:03:08.730
+And because you have more flexibility,
+
+81
+00:03:08.730 --> 00:03:09.900
+well you get a bit less discounts
+
+82
+00:03:09.900 --> 00:03:13.150
+you get up to 66% discounts.
+
+83
+00:03:13.150 --> 00:03:14.820
+So that's for reserved instances.
+
+84
+00:03:14.820 --> 00:03:17.400
+And now you have the EC2 savings plans
+
+85
+00:03:17.400 --> 00:03:19.470
+which is to allow you to get a discount
+
+86
+00:03:19.470 --> 00:03:20.620
+based on long-term usage,
+
+87
+00:03:20.620 --> 00:03:24.530
+which is the same 70% as reserved instances.
+
+88
+00:03:24.530 --> 00:03:26.317
+But instead, you're going to say,
+
+89
+00:03:26.317 --> 00:03:30.997
+"I want to spend $10 per hour for the next 1, 2, 3 years."
+
+90
+00:03:31.870 --> 00:03:34.290
+And any usage beyond the savings plan
+
+91
+00:03:34.290 --> 00:03:37.160
+is going to be billed at the on-demand price.
+
+92
+00:03:37.160 --> 00:03:38.250
+So with savings plans,
+
+93
+00:03:38.250 --> 00:03:41.080
+you're locked to a specific instance family and region.
+
+94
+00:03:41.080 --> 00:03:42.047
+For example, you say,
+
+95
+00:03:42.047 --> 00:03:46.670
+"I want to have M5 type of instance family in us-east-1."
+
+96
+00:03:46.670 --> 00:03:49.260
+But you're flexible across the instance size.
+
+97
+00:03:49.260 --> 00:03:52.810
+So you can have m5.xlarge, m5.2xlarge and so on.
+
+98
+00:03:52.810 --> 00:03:53.820
+The OS, so you can switch
+
+99
+00:03:53.820 --> 00:03:56.010
+between Linux and Windows and so on.
+
+100
+00:03:56.010 --> 00:03:57.590
+And the tenancy, you can switch
+
+101
+00:03:57.590 --> 00:03:59.823
+between host, dedicated and default.
+
+102
+00:04:00.710 --> 00:04:02.020
+Now, for spot instances,
+
+103
+00:04:02.020 --> 00:04:04.130
+they have the most aggressive discounts,
+
+104
+00:04:04.130 --> 00:04:07.520
+so up to 90% discounts compared to on-demand,
+
+105
+00:04:07.520 --> 00:04:10.810
+but they are instances you can lose at any point of time
+
+106
+00:04:10.810 --> 00:04:12.400
+because you define a max price
+
+107
+00:04:12.400 --> 00:04:14.650
+you're willing to pay for your spot instances.
+
+108
+00:04:14.650 --> 00:04:16.490
+And if the spot price goes over it,
+
+109
+00:04:16.490 --> 00:04:18.490
+then you're going to lose it.
+
+110
+00:04:18.490 --> 00:04:21.450
+So they're the most cost-efficient instances in AWS
+
+111
+00:04:21.450 --> 00:04:22.820
+and they're going to be very helpful
+
+112
+00:04:22.820 --> 00:04:26.360
+if you have a workload that is resilient to failure.
+
+113
+00:04:26.360 --> 00:04:27.200
+So what could they be?
+
+114
+00:04:27.200 --> 00:04:29.660
+Well, it could be batch jobs, data analysis,
+
+115
+00:04:29.660 --> 00:04:33.140
+image processing, any kind of distributed workloads,
+
+116
+00:04:33.140 --> 00:04:36.180
+or workloads that have a flexible start and end time.
+
+117
+00:04:36.180 --> 00:04:39.450
+They are not suited for critical jobs or databases
+
+118
+00:04:39.450 --> 00:04:41.930
+and the exam will test you on that.
+
+119
+00:04:41.930 --> 00:04:43.180
+Next we have dedicated hosts.
+
+120
+00:04:43.180 --> 00:04:45.280
+So you get an actual physical server
+
+121
+00:04:45.280 --> 00:04:47.440
+with EC2 instances capacity
+
+122
+00:04:47.440 --> 00:04:49.760
+fully dedicated to your use case.
+
+123
+00:04:49.760 --> 00:04:51.840
+And you want to have dedicated hosts
+
+124
+00:04:51.840 --> 00:04:55.580
+in the use case of, you have compliance requirements
+
+125
+00:04:55.580 --> 00:04:57.630
+or you need to use your existing
+
+126
+00:04:57.630 --> 00:05:01.300
+server-bound software licenses that has billing
+
+127
+00:05:01.300 --> 00:05:06.300
+based on a per-socket, per-core, per VM software licenses.
+
+128
+00:05:06.510 --> 00:05:07.890
+This is in these kind of use cases
+
+129
+00:05:07.890 --> 00:05:09.780
+that you need to access the physical server
+
+130
+00:05:09.780 --> 00:05:11.590
+and get a dedicated host.
+
+131
+00:05:11.590 --> 00:05:13.387
+So for dedicated hosts, you get on-demand,
+
+132
+00:05:13.387 --> 00:05:15.040
+and you're gonna pay per second,
+
+133
+00:05:15.040 --> 00:05:18.640
+or you can reserve them for one or three years.
+
+134
+00:05:18.640 --> 00:05:20.470
+They're the most expensive option of AWS
+
+135
+00:05:20.470 --> 00:05:23.640
+because you actually reserve a physical server.
+
+136
+00:05:23.640 --> 00:05:27.110
+And so again, a use case is when you have
+
+137
+00:05:27.110 --> 00:05:30.330
+a software that comes with a licensing model
+
+138
+00:05:30.330 --> 00:05:32.440
+that is bring your own license.
+
+139
+00:05:32.440 --> 00:05:35.660
+Or if you have a company that has strong regulatory
+
+140
+00:05:35.660 --> 00:05:36.823
+or compliance needs.
+
+141
+00:05:38.090 --> 00:05:40.340
+We also have dedicated instances,
+
+142
+00:05:40.340 --> 00:05:42.000
+and there are instances that runs on hardware
+
+143
+00:05:42.000 --> 00:05:43.030
+that's dedicated to you,
+
+144
+00:05:43.030 --> 00:05:45.410
+which is different from the physical server.
+
+145
+00:05:45.410 --> 00:05:48.270
+But you may share the hardware with other instances
+
+146
+00:05:48.270 --> 00:05:49.720
+in the same accounts
+
+147
+00:05:49.720 --> 00:05:52.210
+and you have no control over instance placements.
+
+148
+00:05:52.210 --> 00:05:55.070
+So there's a difference between dedicated instances
+
+149
+00:05:55.070 --> 00:05:57.060
+and hosts, that is here.
+
+150
+00:05:57.060 --> 00:06:00.040
+At the exam, honestly, it doesn't trick you
+
+151
+00:06:00.040 --> 00:06:01.530
+into one or the other,
+
+152
+00:06:01.530 --> 00:06:04.150
+but remember that dedicated instances
+
+153
+00:06:04.150 --> 00:06:08.200
+mean that you have your own instance on your own hardware,
+
+154
+00:06:08.200 --> 00:06:09.510
+whereas dedicated host,
+
+155
+00:06:09.510 --> 00:06:12.990
+you get access to the physical server itself
+
+156
+00:06:12.990 --> 00:06:16.393
+and it gives you visibility into the lower level hardware.
+
+157
+00:06:17.290 --> 00:06:20.110
+Next, we have capacity reservations for EC2.
+
+158
+00:06:20.110 --> 00:06:22.480
+So you can reserve on-demand instances
+
+159
+00:06:22.480 --> 00:06:25.480
+in a specific AZ for any duration.
+
+160
+00:06:25.480 --> 00:06:27.190
+And then you get access to that capacity
+
+161
+00:06:27.190 --> 00:06:28.460
+whenever you need it.
+
+162
+00:06:28.460 --> 00:06:31.970
+You have no time commitment so you can reserve capacity
+
+163
+00:06:31.970 --> 00:06:34.110
+or cancel your reservation at any time.
+
+164
+00:06:34.110 --> 00:06:35.560
+And no billing discounts.
+
+165
+00:06:35.560 --> 00:06:38.610
+The only purpose is to reserve capacity.
+
+166
+00:06:38.610 --> 00:06:41.350
+So if you want to get billing discounts,
+
+167
+00:06:41.350 --> 00:06:44.390
+you need to combine it with regional reserved instances
+
+168
+00:06:44.390 --> 00:06:46.320
+or your savings plan.
+
+169
+00:06:46.320 --> 00:06:48.400
+And you're charged at the on-demand rates,
+
+170
+00:06:48.400 --> 00:06:50.730
+whether or not you run instances.
+
+171
+00:06:50.730 --> 00:06:52.310
+So that means that your reserved capacity,
+
+172
+00:06:52.310 --> 00:06:54.070
+you're going to be billed for it,
+
+173
+00:06:54.070 --> 00:06:56.290
+and you know for sure that if you want to launch instances
+
+174
+00:06:56.290 --> 00:06:57.730
+they're going to be available,
+
+175
+00:06:57.730 --> 00:06:59.180
+but if you don't launch them,
+
+176
+00:06:59.180 --> 00:07:01.080
+you're still going to get charged.
+
+177
+00:07:01.080 --> 00:07:02.020
+So they're very suitable
+
+178
+00:07:02.020 --> 00:07:04.850
+for short-term uninterrupted workloads
+
+179
+00:07:04.850 --> 00:07:06.500
+that need to be in a specific AZ.
+
+180
+00:07:07.530 --> 00:07:10.090
+So it gets difficult to understand
+
+181
+00:07:10.090 --> 00:07:11.740
+which purchasing option is right for me,
+
+182
+00:07:11.740 --> 00:07:14.090
+especially if you are a beginner.
+
+183
+00:07:14.090 --> 00:07:16.850
+But let me give you a summary.
+
+184
+00:07:16.850 --> 00:07:18.320
+The first one is on-demand.
+
+185
+00:07:18.320 --> 00:07:21.530
+So we'll take a resort as an analogy.
+
+186
+00:07:21.530 --> 00:07:22.920
+And with on-demand,
+
+187
+00:07:22.920 --> 00:07:25.680
+you have a resort and you come in whenever you like
+
+188
+00:07:25.680 --> 00:07:28.500
+and whenever you like, you pay the full price.
+
+189
+00:07:28.500 --> 00:07:30.500
+For reserved, well, you like to plan ahead
+
+190
+00:07:30.500 --> 00:07:32.450
+and you know you're going to stay a very long time
+
+191
+00:07:32.450 --> 00:07:35.370
+in your resort, one, two, three years,
+
+192
+00:07:35.370 --> 00:07:37.290
+and then you're going to get a good discount
+
+193
+00:07:37.290 --> 00:07:39.800
+because we know you're going to stay long time.
+
+194
+00:07:39.800 --> 00:07:41.077
+Savings plan is saying,
+
+195
+00:07:41.077 --> 00:07:43.790
+"Hey, I know for sure that in my resort
+
+196
+00:07:43.790 --> 00:07:46.160
+I'm going to spend a specific amount.
+
+197
+00:07:46.160 --> 00:07:49.640
+So I'm going to spend maybe $300 per month
+
+198
+00:07:49.640 --> 00:07:51.810
+every month for the next 12 months."
+
+199
+00:07:51.810 --> 00:07:54.960
+And therefore, you may wanna change the room type over time.
+
+200
+00:07:54.960 --> 00:07:57.240
+So king, suite, sea view, and so on.
+
+201
+00:07:57.240 --> 00:07:58.237
+But the savings plan is saying,
+
+202
+00:07:58.237 --> 00:08:00.020
+"Hey, you're to commit
+
+203
+00:08:00.020 --> 00:08:02.660
+to a specific spending in your hotel."
+
+204
+00:08:02.660 --> 00:08:05.020
+Spot instances are whenever
+
+205
+00:08:05.020 --> 00:08:07.250
+the hotel runs very last-minute discounts
+
+206
+00:08:07.250 --> 00:08:10.350
+because they have empty rooms and they wanna attract people.
+
+207
+00:08:10.350 --> 00:08:11.840
+So they get empty rooms
+
+208
+00:08:11.840 --> 00:08:14.470
+and people bid on getting this empty room.
+
+209
+00:08:14.470 --> 00:08:16.650
+And so you get very, very discounts.
+
+210
+00:08:16.650 --> 00:08:18.330
+But in this specific resort,
+
+211
+00:08:18.330 --> 00:08:20.660
+well, you can get kicked out of at any time
+
+212
+00:08:20.660 --> 00:08:22.690
+if someone is willing to pay more
+
+213
+00:08:22.690 --> 00:08:24.800
+for your room than what you did.
+
+214
+00:08:24.800 --> 00:08:27.650
+But I don't wanna stay in such a resort.
+
+215
+00:08:27.650 --> 00:08:28.657
+Dedicated host is saying,
+
+216
+00:08:28.657 --> 00:08:32.880
+"Hey, I want to book the entire building of the resort."
+
+217
+00:08:32.880 --> 00:08:35.810
+So you get your own hardware, your own resort.
+
+218
+00:08:35.810 --> 00:08:37.727
+And then capacity reservation is saying,
+
+219
+00:08:37.727 --> 00:08:39.220
+"I'm going to book a room,
+
+220
+00:08:39.220 --> 00:08:41.200
+I'm not even sure if I don't stay in,
+
+221
+00:08:41.200 --> 00:08:44.070
+but I know that if I want to stay in, I will have it."
+
+222
+00:08:44.070 --> 00:08:45.620
+And you will pay full price
+
+223
+00:08:45.620 --> 00:08:47.643
+for booking that room nonetheless.
+
+224
+00:08:48.620 --> 00:08:49.930
+In terms of price comparison,
+
+225
+00:08:49.930 --> 00:08:51.740
+I've just put together this table to give you
+
+226
+00:08:51.740 --> 00:08:53.830
+one example at one point of time.
+
+227
+00:08:53.830 --> 00:08:56.260
+So I took an m4.large in us-east-1,
+
+228
+00:08:56.260 --> 00:08:58.420
+and the on-demand price is 10 cents,
+
+229
+00:08:58.420 --> 00:09:00.610
+but then the spot price is going to be up to,
+
+230
+00:09:00.610 --> 00:09:03.480
+for example, 61% off in my example.
+
+231
+00:09:03.480 --> 00:09:05.600
+Then if you want to reserve your instance,
+
+232
+00:09:05.600 --> 00:09:07.710
+as you can see, you have different pricing.
+
+233
+00:09:07.710 --> 00:09:10.610
+If you wanted to have for one year, for three years,
+
+234
+00:09:10.610 --> 00:09:13.200
+and pay no upfront or all upfront.
+
+235
+00:09:13.200 --> 00:09:15.020
+Same for the EC2 savings plan
+
+236
+00:09:15.020 --> 00:09:18.930
+we see that it is the same as a reserved instance discounts.
+
+237
+00:09:18.930 --> 00:09:22.010
+We also get reserved convertible instances
+
+238
+00:09:22.010 --> 00:09:23.180
+and we have dedicated host,
+
+239
+00:09:23.180 --> 00:09:24.830
+which is at the on-demand price.
+
+240
+00:09:24.830 --> 00:09:27.670
+The dedicated host reservation which is up to 70% off
+
+241
+00:09:27.670 --> 00:09:29.370
+because you reserve your host.
+
+242
+00:09:29.370 --> 00:09:32.800
+And capacity reservation again at the on-demand price.
+
+243
+00:09:32.800 --> 00:09:35.110
+So the exam will ask you to just know
+
+244
+00:09:35.110 --> 00:09:37.350
+which type of instance is the right one
+
+245
+00:09:37.350 --> 00:09:38.500
+based on your workloads.
+
+246
+00:09:38.500 --> 00:09:41.400
+And by now, you should have some good hints,
+
+247
+00:09:41.400 --> 00:09:44.170
+and don't worry, we will practice this over time.
+
+248
+00:09:44.170 --> 00:09:45.760
+All right, that's it for this lecture,
+
+249
+00:09:45.760 --> 00:09:46.760
+I hope you liked it.
+
+250
+00:09:46.760 --> 00:09:48.710
+And I will see you in the next lecture.
+

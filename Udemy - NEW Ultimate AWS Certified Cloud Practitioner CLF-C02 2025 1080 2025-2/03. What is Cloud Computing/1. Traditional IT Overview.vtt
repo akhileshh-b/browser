@@ -1,0 +1,460 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.330
+<v Instructor>Welcome to the first section of this course</v>
+
+00:00:02.330 --> 00:00:04.400
+in which I will introduce you the Cloud
+
+00:00:04.400 --> 00:00:05.830
+and the Cloud Computing.
+
+00:00:05.830 --> 00:00:07.800
+So this section is not going to be hands-on,
+
+00:00:07.800 --> 00:00:09.470
+it's just some theory and some slight,
+
+00:00:09.470 --> 00:00:12.120
+but hopefully it will put some context into
+
+00:00:12.120 --> 00:00:14.900
+why the Cloud is useful and how it works.
+
+00:00:14.900 --> 00:00:17.060
+So let's go back to the very basics.
+
+00:00:17.060 --> 00:00:18.630
+How do websites work?
+
+00:00:18.630 --> 00:00:21.120
+Well we have a server hosted somewhere,
+
+00:00:21.120 --> 00:00:22.930
+and we, as a web browser,
+
+00:00:22.930 --> 00:00:27.110
+want to get access to that server to visualize a websites.
+
+00:00:27.110 --> 00:00:30.520
+What we are going to do as a client is use a network.
+
+00:00:30.520 --> 00:00:33.780
+A network between ourselves and the server,
+
+00:00:33.780 --> 00:00:36.660
+and the client will find the network and will use network
+
+00:00:36.660 --> 00:00:40.570
+to route the packets, the data into the server,
+
+00:00:40.570 --> 00:00:42.470
+then the server will reply to us,
+
+00:00:42.470 --> 00:00:45.550
+and we will get the response, and we can view a website.
+
+00:00:45.550 --> 00:00:47.100
+Obviously that is very simplified,
+
+00:00:47.100 --> 00:00:48.630
+but that gives you an idea.
+
+00:00:48.630 --> 00:00:50.600
+Now for the clients to find the server
+
+00:00:50.600 --> 00:00:52.510
+and the server to find the clients,
+
+00:00:52.510 --> 00:00:54.860
+you need to have IP addresses.
+
+00:00:54.860 --> 00:00:57.250
+So a clients have IP addresses
+
+00:00:57.250 --> 00:01:00.280
+and a server also have an IP address.
+
+00:01:00.280 --> 00:01:02.950
+And so the idea is that when you use an IP address,
+
+00:01:02.950 --> 00:01:05.690
+you can send a request to wherever you want
+
+00:01:05.690 --> 00:01:07.040
+to the server you want,
+
+00:01:07.040 --> 00:01:10.310
+and the server can know how to find you back.
+
+00:01:10.310 --> 00:01:12.920
+This is very similar to when you are
+
+00:01:12.920 --> 00:01:14.930
+writing some letters to your friend.
+
+00:01:14.930 --> 00:01:16.790
+For example, you would write a letter,
+
+00:01:16.790 --> 00:01:20.050
+and that would be your data, and you would be the client,
+
+00:01:20.050 --> 00:01:23.050
+then when you send the letter you put it in your mailbox,
+
+00:01:23.050 --> 00:01:26.720
+and then the network will be the network of the post office,
+
+00:01:26.720 --> 00:01:28.430
+then the post office will use network
+
+00:01:28.430 --> 00:01:30.810
+and the address you put on the letter
+
+00:01:30.810 --> 00:01:34.430
+to route your letter to the destination,
+
+00:01:34.430 --> 00:01:36.460
+which is, in this case, the server,
+
+00:01:36.460 --> 00:01:39.580
+and then if your correspondent wants to reply you back,
+
+00:01:39.580 --> 00:01:42.670
+they can use the address you put on the back of the envelope
+
+00:01:42.670 --> 00:01:44.180
+to write you back, and again,
+
+00:01:44.180 --> 00:01:47.910
+use the same network to get the letter back to you.
+
+00:01:47.910 --> 00:01:52.850
+So servers are just like the network of your mail.
+
+00:01:52.850 --> 00:01:55.360
+Hopefully that's a good analogy.
+
+00:01:55.360 --> 00:01:57.710
+So what is in a server?
+
+00:01:57.710 --> 00:02:00.840
+Well a server is going to contain a CPU,
+
+00:02:00.840 --> 00:02:03.600
+and a CPU is a little piece
+
+00:02:03.600 --> 00:02:05.910
+that will be doing some computations,
+
+00:02:05.910 --> 00:02:07.170
+it will be very helpful
+
+00:02:07.170 --> 00:02:09.660
+to do some calculations and find results,
+
+00:02:09.660 --> 00:02:13.510
+and then, your server also needs RAM, or memory.
+
+00:02:13.510 --> 00:02:15.810
+This is going to be very, very fast memory,
+
+00:02:15.810 --> 00:02:18.200
+which will allow us to store information
+
+00:02:18.200 --> 00:02:19.930
+and retrieve it very quickly.
+
+00:02:19.930 --> 00:02:24.930
+So when we have a CPU and a memory bar, what do we get?
+
+00:02:24.930 --> 00:02:26.810
+Well we get a brain.
+
+00:02:26.810 --> 00:02:28.180
+Think of your brain.
+
+00:02:28.180 --> 00:02:32.170
+When you are thinking, you are actually making computations,
+
+00:02:32.170 --> 00:02:34.640
+very complicated ones, but they are computations,
+
+00:02:34.640 --> 00:02:37.040
+but then you need to retain some information,
+
+00:02:37.040 --> 00:02:39.220
+and again, we have memories
+
+00:02:39.220 --> 00:02:41.420
+and these memories are in our brain,
+
+00:02:41.420 --> 00:02:45.090
+so if we think of the CPU and the RAM together,
+
+00:02:45.090 --> 00:02:47.350
+they sort of look like a brain.
+
+00:02:47.350 --> 00:02:48.730
+Now we also need to have
+
+00:02:48.730 --> 00:02:51.270
+some more long-term storage of data.
+
+00:02:51.270 --> 00:02:53.380
+Obviously it's still in our brain as humans,
+
+00:02:53.380 --> 00:02:55.470
+but in computers, we have included
+
+00:02:55.470 --> 00:02:59.420
+some special storage to store data, for example, files,
+
+00:02:59.420 --> 00:03:01.440
+and then if we want to store the data
+
+00:03:01.440 --> 00:03:04.517
+in a more structured way, we're going to use a database,
+
+00:03:04.517 --> 00:03:08.080
+and a database is going to be data formatted in a way
+
+00:03:08.080 --> 00:03:10.780
+that we can easily search it and query it.
+
+00:03:10.780 --> 00:03:12.070
+Finally in the server,
+
+00:03:12.070 --> 00:03:14.300
+we're also going to have some networking aspect.
+
+00:03:14.300 --> 00:03:17.770
+So there's going to be the routers, switch, DNS servers,
+
+00:03:17.770 --> 00:03:19.280
+and don't worry, all these terms,
+
+00:03:19.280 --> 00:03:21.840
+we'll be seeing them later on in this course.
+
+00:03:21.840 --> 00:03:26.140
+So in the server, we an aspect of compute, memory, storage,
+
+00:03:26.140 --> 00:03:28.300
+maybe your server sometimes is a database,
+
+00:03:28.300 --> 00:03:30.260
+and we have a networking aspect.
+
+00:03:30.260 --> 00:03:32.670
+All these things are gonna super important going forward
+
+00:03:32.670 --> 00:03:35.340
+because the cloud is going to be giving these things
+
+00:03:35.340 --> 00:03:37.390
+for us on demand.
+
+00:03:37.390 --> 00:03:39.160
+So if we just want to define
+
+00:03:39.160 --> 00:03:41.830
+a little bit of IT terminology before we get started,
+
+00:03:41.830 --> 00:03:45.260
+the network is a bunch of cables, routers, and servers
+
+00:03:45.260 --> 00:03:47.720
+that are going to be connected with each other,
+
+00:03:47.720 --> 00:03:50.160
+and the router is a specific device
+
+00:03:50.160 --> 00:03:51.970
+that will forward the data packets
+
+00:03:51.970 --> 00:03:54.940
+between computer in the networks, and they will know
+
+00:03:54.940 --> 00:03:56.980
+where to send your packets on the internet,
+
+00:03:56.980 --> 00:04:00.120
+just like your post delivery service.
+
+00:04:00.120 --> 00:04:02.720
+Now when we have a packet and it arrives as a destination,
+
+00:04:02.720 --> 00:04:04.800
+there's a switch, and the switch
+
+00:04:04.800 --> 00:04:08.700
+will send the packet to the correct clients on your network.
+
+00:04:08.700 --> 00:04:11.610
+So if we put all these things together, it looks like this.
+
+00:04:11.610 --> 00:04:14.450
+Our client will send the data to a router,
+
+00:04:14.450 --> 00:04:17.640
+the router will find it's way all the way to a switch,
+
+00:04:17.640 --> 00:04:20.010
+and the switch will know to which computer
+
+00:04:20.010 --> 00:04:22.810
+in your network to send the data to.
+
+00:04:22.810 --> 00:04:25.270
+So why do I introduce all these things?
+
+00:04:25.270 --> 00:04:28.100
+Well, let's go back to traditional IT.
+
+00:04:28.100 --> 00:04:31.990
+When people used to start websites or companies before,
+
+00:04:31.990 --> 00:04:35.270
+they used to do it in their home or their garage,
+
+00:04:35.270 --> 00:04:37.780
+and so they would literally go to the store,
+
+00:04:37.780 --> 00:04:41.130
+buy a server, and they put the server in their home.
+
+00:04:41.130 --> 00:04:42.230
+You may have seen TV shows,
+
+00:04:42.230 --> 00:04:45.230
+you may have read some documentation on the internet
+
+00:04:45.230 --> 00:04:47.150
+that describes on how Google was made.
+
+00:04:47.150 --> 00:04:50.550
+You know, Google was started in a garage.
+
+00:04:50.550 --> 00:04:53.540
+Now, as your website grows, you need to add
+
+00:04:53.540 --> 00:04:55.840
+more and more servers to serve that demand,
+
+00:04:55.840 --> 00:04:59.810
+and so your home starts to be filled with servers.
+
+00:04:59.810 --> 00:05:02.070
+So this bad right, but your company is getting bigger,
+
+00:05:02.070 --> 00:05:03.450
+you're generating some money,
+
+00:05:03.450 --> 00:05:06.010
+so you're going to move to your own office,
+
+00:05:06.010 --> 00:05:08.890
+and you decide to allocate a special room
+
+00:05:08.890 --> 00:05:11.740
+which is going to be called a data center.
+
+00:05:11.740 --> 00:05:14.840
+In a data center, you're going to have, again, your servers,
+
+00:05:14.840 --> 00:05:16.450
+and you're going to be able to scale them
+
+00:05:16.450 --> 00:05:19.690
+by adding and purchasing more and more servers.
+
+00:05:19.690 --> 00:05:22.470
+Now this worked, and this worked for so many years,
+
+00:05:22.470 --> 00:05:25.470
+but there are a few problems with this approach.
+
+00:05:25.470 --> 00:05:27.760
+Number one is that when you have a data center
+
+00:05:27.760 --> 00:05:30.710
+or your own home, you're going to have to pay your rent,
+
+00:05:30.710 --> 00:05:33.400
+then you're going to have to add power supply,
+
+00:05:33.400 --> 00:05:34.820
+cooling, and maintenance
+
+00:05:34.820 --> 00:05:36.670
+because it does require some electricity
+
+00:05:36.670 --> 00:05:39.500
+to run your servers, it does require some cooling
+
+00:05:39.500 --> 00:05:41.090
+because the servers do get hot,
+
+00:05:41.090 --> 00:05:42.530
+and sometimes they break down,
+
+00:05:42.530 --> 00:05:44.390
+so you need someone to do the maintenance.
+
+00:05:44.390 --> 00:05:48.120
+On top of it, if you want to add or replace servers,
+
+00:05:48.120 --> 00:05:50.830
+it will take a lot of time because you have to order them,
+
+00:05:50.830 --> 00:05:53.560
+and then you have to hook them up in your center.
+
+00:05:53.560 --> 00:05:55.010
+Scaling is limited.
+
+00:05:55.010 --> 00:05:57.140
+If tomorrow you're getting 10 times bigger,
+
+00:05:57.140 --> 00:05:59.350
+you're going to need 10 times more servers,
+
+00:05:59.350 --> 00:06:02.680
+but you may not have the time or the space to do so.
+
+00:06:02.680 --> 00:06:04.940
+You also need to hire a team
+
+00:06:04.940 --> 00:06:06.710
+that is going to be there all the time,
+
+00:06:06.710 --> 00:06:09.100
+24/7 to monitor the infrastructure
+
+00:06:09.100 --> 00:06:10.750
+in case something goes wrong.
+
+00:06:10.750 --> 00:06:12.510
+And what if there is a disaster,
+
+00:06:12.510 --> 00:06:14.210
+what if there is an earthquake,
+
+00:06:14.210 --> 00:06:17.070
+what if there's a power shutdown, or even a fire?
+
+00:06:17.070 --> 00:06:18.430
+That would be bad, right?
+
+00:06:18.430 --> 00:06:21.500
+So can we externalize all this?
+
+00:06:21.500 --> 00:06:25.160
+And the answer is yes, and that will be the cloud.
+
+00:06:25.160 --> 00:06:26.830
+So I will see you in the next lecture
+
+00:06:26.830 --> 00:06:29.080
+to discuss a little bit more about the cloud.

@@ -1,0 +1,94 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:02.370
+<v ->So you might have one question</v>
+
+2
+00:00:02.370 --> 00:00:04.710
+on S3 encryption at the exam,
+
+3
+00:00:04.710 --> 00:00:07.740
+so here is a high level review of what that means.
+
+4
+00:00:07.740 --> 00:00:10.230
+The first one is server-side encryption,
+
+5
+00:00:10.230 --> 00:00:12.930
+so it is by default whenever you create a bucket
+
+6
+00:00:12.930 --> 00:00:16.050
+or whenever you upload an object, it will be encrypted.
+
+7
+00:00:16.050 --> 00:00:17.250
+What is server-side encryption?
+
+8
+00:00:17.250 --> 00:00:21.270
+Well, the user uploads an object into Amazon S3,
+
+9
+00:00:21.270 --> 00:00:23.790
+and then that object when it arrives in the bucket
+
+10
+00:00:23.790 --> 00:00:28.790
+is going to be encrypted by Amazon S3 for security purposes.
+
+11
+00:00:28.830 --> 00:00:32.640
+The idea is that the server is doing the encryption,
+
+12
+00:00:32.640 --> 00:00:35.640
+and therefore we call this server-side encryption.
+
+13
+00:00:35.640 --> 00:00:38.340
+On the opposite, we have client-side encryption.
+
+14
+00:00:38.340 --> 00:00:41.250
+This is when the user will actually take the file,
+
+15
+00:00:41.250 --> 00:00:43.530
+will encrypt it before uploading it,
+
+16
+00:00:43.530 --> 00:00:45.420
+so the lock is done by the user,
+
+17
+00:00:45.420 --> 00:00:47.130
+and then put it in the bucket.
+
+18
+00:00:47.130 --> 00:00:49.770
+And that's called client-side encryption.
+
+19
+00:00:49.770 --> 00:00:52.830
+And both models exist in AWS,
+
+20
+00:00:52.830 --> 00:00:54.090
+but by default you should know
+
+21
+00:00:54.090 --> 00:00:56.760
+that server-side encryption is always on.
+
+22
+00:00:56.760 --> 00:00:57.750
+All right, that's it.
+
+23
+00:00:57.750 --> 00:01:00.700
+I hope you liked it and I will see you in the next lecture.
+

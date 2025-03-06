@@ -1,0 +1,206 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:01.810
+<v Instructor>So this is a little bit of a weird lecture,</v>
+
+2
+00:00:01.810 --> 00:00:03.717
+but it's about right sizing in AWS
+
+3
+00:00:03.717 --> 00:00:06.140
+and the exam may ask you one question about it.
+
+4
+00:00:06.140 --> 00:00:08.170
+So the idea is that because you have so many
+
+5
+00:00:08.170 --> 00:00:10.190
+instance types to choose in the cloud,
+
+6
+00:00:10.190 --> 00:00:12.620
+choosing the most powerful one is not the best choice,
+
+7
+00:00:12.620 --> 00:00:13.740
+because the cloud is elastic
+
+8
+00:00:13.740 --> 00:00:16.360
+and you can change the instance type whenever you want.
+
+9
+00:00:16.360 --> 00:00:18.710
+So right sizing is a process of matching
+
+10
+00:00:18.710 --> 00:00:21.030
+the instance type and size to your workload performance
+
+11
+00:00:21.030 --> 00:00:23.540
+and capacity requirements at the lowest possible cost.
+
+12
+00:00:23.540 --> 00:00:25.670
+Making sure the size is right.
+
+13
+00:00:25.670 --> 00:00:26.503
+Because why?
+
+14
+00:00:26.503 --> 00:00:28.230
+In the cloud well, you can scale up easily.
+
+15
+00:00:28.230 --> 00:00:31.850
+So always start small to find the right size.
+
+16
+00:00:31.850 --> 00:00:35.160
+It's also the process of continuously looking at
+
+17
+00:00:35.160 --> 00:00:36.545
+all your deployed instances.
+
+18
+00:00:36.545 --> 00:00:39.200
+And for example, looking at their metrics to identify
+
+19
+00:00:39.200 --> 00:00:41.650
+which are the opportunities to eliminate
+
+20
+00:00:41.650 --> 00:00:44.030
+or downsize without compromising on quality,
+
+21
+00:00:44.030 --> 00:00:45.970
+on capacity, performance and so on,
+
+22
+00:00:45.970 --> 00:00:48.630
+which will in turn, results in lower cost.
+
+23
+00:00:48.630 --> 00:00:50.200
+So it's super important to right size
+
+24
+00:00:50.200 --> 00:00:53.680
+in two moments in your cloud journey.
+
+25
+00:00:53.680 --> 00:00:55.500
+Number one, before you do a cloud migration,
+
+26
+00:00:55.500 --> 00:00:57.580
+because it is very common for a company
+
+27
+00:00:57.580 --> 00:00:59.220
+to just migrate to the cloud,
+
+28
+00:00:59.220 --> 00:01:02.380
+puts everything with biggest instance size and forget it.
+
+29
+00:01:02.380 --> 00:01:03.750
+This is not the best way.
+
+30
+00:01:03.750 --> 00:01:06.410
+Please right size before you do cloud migration.
+
+31
+00:01:06.410 --> 00:01:08.599 line:15% 
+And then once you've done the climate migration,
+
+32
+00:01:08.599 --> 00:01:10.460 line:15% 
+you need to do it continuously.
+
+33
+00:01:10.460 --> 00:01:11.480 line:15% 
+Maybe once a month,
+
+34
+00:01:11.480 --> 00:01:13.000 line:15% 
+because requirements change over time
+
+35
+00:01:13.000 --> 00:01:14.310 line:15% 
+and it's important to see if you need to
+
+36
+00:01:14.310 --> 00:01:16.330 line:15% 
+right size up or right-size down.
+
+37
+00:01:16.330 --> 00:01:17.163 line:15% 
+Okay?
+
+38
+00:01:17.163 --> 00:01:19.210 line:15% 
+So there's some tools that can help you right size.
+
+39
+00:01:19.210 --> 00:01:20.043 line:15% 
+For example,
+
+40
+00:01:20.043 --> 00:01:22.340 line:15% 
+CloudWatch, Cost Explorer, Trusted Advisor,
+
+41
+00:01:22.340 --> 00:01:24.330 line:15% 
+and other third-party tools that can help.
+
+42
+00:01:24.330 --> 00:01:25.163 line:15% 
+Okay?
+
+43
+00:01:25.163 --> 00:01:26.395
+So right sizing is very important.
+
+44
+00:01:26.395 --> 00:01:30.820
+The thing is you need to always scale up over time,
+
+45
+00:01:30.820 --> 00:01:31.950
+so start small.
+
+46
+00:01:31.950 --> 00:01:34.573
+And number two, you right size just before a cloud migration
+
+47
+00:01:34.573 --> 00:01:37.000
+and also continuously in the cloud.
+
+48
+00:01:37.000 --> 00:01:37.833
+That's it.
+
+49
+00:01:37.833 --> 00:01:38.700
+That's all you need to know for the exam.
+
+50
+00:01:38.700 --> 00:01:39.533
+I hope you liked it.
+
+51
+00:01:39.533 --> 00:01:41.350
+And I will see you in the next lecture.
+

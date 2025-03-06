@@ -1,0 +1,738 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.890
+<v Instructor>Now let's look at the history</v>
+
+2
+00:00:01.890 --> 00:00:03.990
+of the AWS Cloud.
+
+3
+00:00:03.990 --> 00:00:08.190
+It was launched in 2002 internally at amazon.com
+
+4
+00:00:08.190 --> 00:00:10.140
+because they realized that the IT departments
+
+5
+00:00:10.140 --> 00:00:12.360
+could be externalized.
+
+6
+00:00:12.360 --> 00:00:15.000
+Their Amazon infrastructure was one of their core strengths
+
+7
+00:00:15.000 --> 00:00:15.967
+and they said, you know what?
+
+8
+00:00:15.967 --> 00:00:19.650
+"Maybe we can do IT for someone else, for other people."
+
+9
+00:00:19.650 --> 00:00:22.200
+So they launched their first offering publicly,
+
+10
+00:00:22.200 --> 00:00:24.620
+which was SQS in 2004.
+
+11
+00:00:24.620 --> 00:00:26.880
+In 2006, they expanded their offering
+
+12
+00:00:26.880 --> 00:00:31.880
+and they relaunched with the availability of SQS S3 and EC2.
+
+13
+00:00:31.890 --> 00:00:34.920
+Don't worry, we'll see all these services in this course.
+
+14
+00:00:34.920 --> 00:00:36.367
+Then they expanded and said, you know what?
+
+15
+00:00:36.367 --> 00:00:38.520
+"We don't have to be just in America.
+
+16
+00:00:38.520 --> 00:00:39.870
+We could be in Europe."
+
+17
+00:00:39.870 --> 00:00:43.710
+And then fast forward to today, we have so many applications
+
+18
+00:00:43.710 --> 00:00:46.350
+that used to run, or are still running on AWS,
+
+19
+00:00:46.350 --> 00:00:50.700
+such as Dropbox, Netflix, Airbnb, or even the NASA.
+
+20
+00:00:50.700 --> 00:00:53.850
+Now let's look at where AWS is today.
+
+21
+00:00:53.850 --> 00:00:57.690
+If you look at the Magic Quadrant from Gartner,
+
+22
+00:00:57.690 --> 00:01:01.140
+you can see that AWS is a leader,
+
+23
+00:01:01.140 --> 00:01:03.573
+and it has been the case for many, many years.
+
+24
+00:01:04.560 --> 00:01:08.820
+AWS now has $90 billion in revenue as of 2023,
+
+25
+00:01:10.350 --> 00:01:15.240
+and it accounts for about 31% of the market in Q1 2024,
+
+26
+00:01:15.240 --> 00:01:18.750
+with Microsoft being second with 25%.
+
+27
+00:01:18.750 --> 00:01:21.900
+It's been a pioneer and a leader of the market
+
+28
+00:01:21.900 --> 00:01:24.690
+for 13th consecutive years,
+
+29
+00:01:24.690 --> 00:01:26.610
+and it has over 1 million active users.
+
+30
+00:01:26.610 --> 00:01:28.860
+So, learning AWS really sets you up
+
+31
+00:01:28.860 --> 00:01:31.110
+for success in the cloud world.
+
+32
+00:01:31.110 --> 00:01:32.730
+What can you build on AWS?
+
+33
+00:01:32.730 --> 00:01:34.761
+Well, pretty much everything.
+
+34
+00:01:34.761 --> 00:01:36.960
+AWS will enable you to build sophisticated
+
+35
+00:01:36.960 --> 00:01:38.580
+and scalable applications,
+
+36
+00:01:38.580 --> 00:01:41.910
+and they are applicable to a diverse set of industries.
+
+37
+00:01:41.910 --> 00:01:44.910
+Every company has a use case for the cloud.
+
+38
+00:01:44.910 --> 00:01:47.820
+Netflix, McDonald's, 21st Century Fox, Activision,
+
+39
+00:01:47.820 --> 00:01:49.350
+they're all using the cloud.
+
+40
+00:01:49.350 --> 00:01:50.940
+And use cases can include
+
+41
+00:01:50.940 --> 00:01:53.130
+just transferring your enterprise IT,
+
+42
+00:01:53.130 --> 00:01:55.770
+or using the cloud as a backup and storage,
+
+43
+00:01:55.770 --> 00:01:57.840
+or doing some big data analytics.
+
+44
+00:01:57.840 --> 00:01:59.910
+You can also host a website,
+
+45
+00:01:59.910 --> 00:02:01.800
+or create a backend for your mobile
+
+46
+00:02:01.800 --> 00:02:03.720
+and your social applications,
+
+47
+00:02:03.720 --> 00:02:05.910
+or you can have your entire gaming servers
+
+48
+00:02:05.910 --> 00:02:07.170
+running on the cloud.
+
+49
+00:02:07.170 --> 00:02:09.900
+The applications are endless.
+
+50
+00:02:09.900 --> 00:02:12.300
+Now, AWS is global,
+
+51
+00:02:12.300 --> 00:02:15.270
+and this is where we are going to learn a bit more specifics
+
+52
+00:02:15.270 --> 00:02:16.680
+about how it works.
+
+53
+00:02:16.680 --> 00:02:20.070
+We have AWS regions, we have availability zones,
+
+54
+00:02:20.070 --> 00:02:23.160
+data centers, edge locations, and points of presence.
+
+55
+00:02:23.160 --> 00:02:27.030
+And all of these can be represented on the map right here.
+
+56
+00:02:27.030 --> 00:02:30.210
+Let's go on this website to have a quick look at it.
+
+57
+00:02:30.210 --> 00:02:31.320
+This is a cool map,
+
+58
+00:02:31.320 --> 00:02:35.010
+because on this website we can see how AWS is global.
+
+59
+00:02:35.010 --> 00:02:37.410
+If I click on it, I can scroll the world
+
+60
+00:02:37.410 --> 00:02:39.090
+and see what is happening.
+
+61
+00:02:39.090 --> 00:02:41.610
+We can see that AWS has multiple regions,
+
+62
+00:02:41.610 --> 00:02:44.640
+and they're in orange and they're all around the world.
+
+63
+00:02:44.640 --> 00:02:48.960
+For example, Paris, in Spain, in Ohio, in Sao Paulo,
+
+64
+00:02:48.960 --> 00:02:51.844
+Cape Town, Mumbai, and everywhere else.
+
+65
+00:02:51.844 --> 00:02:55.980
+AWS truly is a global service.
+
+66
+00:02:55.980 --> 00:02:59.160
+On top of it, each region are going to be connected
+
+67
+00:02:59.160 --> 00:03:00.180
+through the network.
+
+68
+00:03:00.180 --> 00:03:02.400
+These are the network reconnecting the regions,
+
+69
+00:03:02.400 --> 00:03:04.680
+and this is a private network of AWS.
+
+70
+00:03:04.680 --> 00:03:07.650
+And then within each region, for example,
+
+71
+00:03:07.650 --> 00:03:11.100
+if I really scroll into the Cape Town region,
+
+72
+00:03:11.100 --> 00:03:13.380
+we can see that we have blue dots,
+
+73
+00:03:13.380 --> 00:03:15.660
+and each blue dots will be availability zones
+
+74
+00:03:15.660 --> 00:03:18.060
+that will be describing in the next slide.
+
+75
+00:03:18.060 --> 00:03:20.250
+As we can see, what I want to get you out of this
+
+76
+00:03:20.250 --> 00:03:21.990
+is that AWS truly is global,
+
+77
+00:03:21.990 --> 00:03:25.560
+and we can leverage the infrastructure of a cloud provider
+
+78
+00:03:25.560 --> 00:03:28.380
+to make ourselves, or application global.
+
+79
+00:03:28.380 --> 00:03:31.740
+The first important concept in AWS are regions.
+
+80
+00:03:31.740 --> 00:03:34.470
+Regions are all around the world, and we saw it on the map
+
+81
+00:03:34.470 --> 00:03:36.870
+from before the regions have a name.
+
+82
+00:03:36.870 --> 00:03:40.350
+It could be US-east-1, EU-West-3,
+
+83
+00:03:40.350 --> 00:03:43.080
+and we can see the mapping of the name of the region
+
+84
+00:03:43.080 --> 00:03:47.220
+to their code on the console that we'll see in a minute.
+
+85
+00:03:47.220 --> 00:03:49.290
+Now, a region, what is in its truly...
+
+86
+00:03:49.290 --> 00:03:51.780
+Well, it's going to be a cluster of data centers.
+
+87
+00:03:51.780 --> 00:03:54.090
+Many different data centers look at it in near,
+
+88
+00:03:54.090 --> 00:03:58.170
+for example, Ohio, or Singapore, or Sydney, or Tokyo.
+
+89
+00:03:58.170 --> 00:04:00.000
+When we use AWS services,
+
+90
+00:04:00.000 --> 00:04:02.850
+most services are going to be linked in scope
+
+91
+00:04:02.850 --> 00:04:04.350
+to a specific region.
+
+92
+00:04:04.350 --> 00:04:07.170
+That means that if we use a service in one region
+
+93
+00:04:07.170 --> 00:04:09.060
+and we try to use it in another region,
+
+94
+00:04:09.060 --> 00:04:12.540
+it will be like a new time of using the service.
+
+95
+00:04:12.540 --> 00:04:14.550
+Now, a question that may come up in the exam
+
+96
+00:04:14.550 --> 00:04:17.190
+is how do you choose an AWS region?
+
+97
+00:04:17.190 --> 00:04:19.230
+Say you're launching a new application,
+
+98
+00:04:19.230 --> 00:04:20.430
+where should you do it?
+
+99
+00:04:20.430 --> 00:04:22.920
+Should you do it in America, in Europe,
+
+100
+00:04:22.920 --> 00:04:25.560
+in South America, or in Australia?
+
+101
+00:04:25.560 --> 00:04:27.960
+Well, the answer is of course, it depends.
+
+102
+00:04:27.960 --> 00:04:31.170
+But let's look at some factors that may impact your choice
+
+103
+00:04:31.170 --> 00:04:32.820
+of an AWS region.
+
+104
+00:04:32.820 --> 00:04:34.560
+The first one is compliance.
+
+105
+00:04:34.560 --> 00:04:38.040
+Sometimes governments want the data to be local
+
+106
+00:04:38.040 --> 00:04:40.410
+to the country you're deploying the application in.
+
+107
+00:04:40.410 --> 00:04:42.360
+For example, France,
+
+108
+00:04:42.360 --> 00:04:44.460
+data in France may have to stay in France,
+
+109
+00:04:44.460 --> 00:04:46.950
+and therefore you should launch your application
+
+110
+00:04:46.950 --> 00:04:48.033
+in the French region.
+
+111
+00:04:48.960 --> 00:04:51.930
+Then there is also a concept of latency.
+
+112
+00:04:51.930 --> 00:04:54.510
+If most of your users are going to be in America,
+
+113
+00:04:54.510 --> 00:04:57.300
+it makes a lot of sense to deploy your application
+
+114
+00:04:57.300 --> 00:04:58.830
+in America close to your users,
+
+115
+00:04:58.830 --> 00:05:01.260
+because they will have a reduced latency.
+
+116
+00:05:01.260 --> 00:05:02.940
+If you deploy your application in Australia,
+
+117
+00:05:02.940 --> 00:05:04.830
+and your users are in America,
+
+118
+00:05:04.830 --> 00:05:07.920
+they will have a lot of lag using your application.
+
+119
+00:05:07.920 --> 00:05:12.090
+Then also, not all regions have all services, okay?
+
+120
+00:05:12.090 --> 00:05:14.490
+Some regions do not have services,
+
+121
+00:05:14.490 --> 00:05:16.860
+and so obviously if you're leveraging a service
+
+122
+00:05:16.860 --> 00:05:18.630
+with your application, you need to make sure
+
+123
+00:05:18.630 --> 00:05:21.360
+that the region you're deploying into is available,
+
+124
+00:05:21.360 --> 00:05:24.030
+and does have that service.
+
+125
+00:05:24.030 --> 00:05:26.280
+And finally, pricing.
+
+126
+00:05:26.280 --> 00:05:29.040
+Pricing does vary from region to region,
+
+127
+00:05:29.040 --> 00:05:30.867
+and you need to consult the appli...
+
+128
+00:05:30.867 --> 00:05:33.240
+The services pricing pages to see
+
+129
+00:05:33.240 --> 00:05:35.400
+what the differences are between the regions.
+
+130
+00:05:35.400 --> 00:05:37.320
+But this could be obviously a factor
+
+131
+00:05:37.320 --> 00:05:39.030
+that could impact your deployment
+
+132
+00:05:39.030 --> 00:05:41.403
+of an application into a specific region.
+
+133
+00:05:42.540 --> 00:05:44.220
+Now, availability zones are
+
+134
+00:05:44.220 --> 00:05:47.250
+what actually are going into the region.
+
+135
+00:05:47.250 --> 00:05:49.350
+Each region will have many availability zones,
+
+136
+00:05:49.350 --> 00:05:52.680
+usually three, the minimum is three, and the max is six,
+
+137
+00:05:52.680 --> 00:05:55.170
+but really the usual is three.
+
+138
+00:05:55.170 --> 00:05:57.810
+So let's take the Sydney region as an example.
+
+139
+00:05:57.810 --> 00:06:01.110
+The Sydney region code is ap-southeast-2.
+
+140
+00:06:01.110 --> 00:06:04.140
+We have two have three availability zones in Sydney,
+
+141
+00:06:04.140 --> 00:06:07.350
+ap-southeast-2A, ap-southeast-2B,
+
+142
+00:06:07.350 --> 00:06:09.690
+and ap-southeast-2C.
+
+143
+00:06:09.690 --> 00:06:13.980
+Now, each of these availability zones are going to be one
+
+144
+00:06:13.980 --> 00:06:16.080
+or more discrete data centers
+
+145
+00:06:16.080 --> 00:06:19.710
+that will have redundant power networking and connectivity.
+
+146
+00:06:19.710 --> 00:06:22.050
+That means that in southeast-2A,
+
+147
+00:06:22.050 --> 00:06:24.480
+I can have two data centers maybe as well,
+
+148
+00:06:24.480 --> 00:06:26.430
+2 and 2B, and 2 and 2C.
+
+149
+00:06:26.430 --> 00:06:28.050
+But it could be one, it could be three, it could be four.
+
+150
+00:06:28.050 --> 00:06:30.240
+We don't really know, it always doesn't tell us that.
+
+151
+00:06:30.240 --> 00:06:34.080
+But what we know is that these availability zones
+
+152
+00:06:34.080 --> 00:06:35.820
+are separate from each other
+
+153
+00:06:35.820 --> 00:06:38.430
+so that they will be isolated from disasters.
+
+154
+00:06:38.430 --> 00:06:41.460
+If something happens to ap-southeast-2A,
+
+155
+00:06:41.460 --> 00:06:44.940
+we know that it is designed not to cascade
+
+156
+00:06:44.940 --> 00:06:48.390
+into ap-southeast-2B, or ap-southeast-2C.
+
+157
+00:06:48.390 --> 00:06:50.400
+They're really isolated from disasters.
+
+158
+00:06:50.400 --> 00:06:53.520
+And then these data centers, these availability zones,
+
+159
+00:06:53.520 --> 00:06:56.130
+they are connected with high bandwidth,
+
+160
+00:06:56.130 --> 00:06:59.370
+ultra-low latency networking, and therefore,
+
+161
+00:06:59.370 --> 00:07:01.350
+altogether being linked together,
+
+162
+00:07:01.350 --> 00:07:03.810
+it will form a region.
+
+163
+00:07:03.810 --> 00:07:07.770
+Okay, next, the only thing we need to know about AWS
+
+164
+00:07:07.770 --> 00:07:09.270
+for the global infrastructure
+
+165
+00:07:09.270 --> 00:07:11.970
+is the points of presence or edge locations.
+
+166
+00:07:11.970 --> 00:07:14.370
+We will see them in details in the global section
+
+167
+00:07:14.370 --> 00:07:15.900
+of this course, but you should know
+
+168
+00:07:15.900 --> 00:07:19.680
+that AWS has more than 400 points of presence in 90 cities,
+
+169
+00:07:19.680 --> 00:07:21.540
+across 40 countries.
+
+170
+00:07:21.540 --> 00:07:23.880
+And this will be very helpful when we deliver content
+
+171
+00:07:23.880 --> 00:07:26.790
+to the end users with the lowest latency possible.
+
+172
+00:07:26.790 --> 00:07:29.280
+And this is what you see on this map.
+
+173
+00:07:29.280 --> 00:07:30.810
+Now, again, I'm going quickly over this
+
+174
+00:07:30.810 --> 00:07:32.400
+because we'll see this at the...
+
+175
+00:07:32.400 --> 00:07:34.500
+About the middle of this course.
+
+176
+00:07:34.500 --> 00:07:36.660
+Now how about we just play around
+
+177
+00:07:36.660 --> 00:07:38.820
+and do a tour of the consult?
+
+178
+00:07:38.820 --> 00:07:42.360
+We'll see that AWS has global services such as IAM,
+
+179
+00:07:42.360 --> 00:07:45.270
+Route 53, CloudFront and WAF,
+
+180
+00:07:45.270 --> 00:07:47.790
+but we'll see that also, most AWS services
+
+181
+00:07:47.790 --> 00:07:51.210
+are going to be region scoped, such as Amazon EC2,
+
+182
+00:07:51.210 --> 00:07:54.450
+Elastic Beanstalk, Lambda, and Rekognition.
+
+183
+00:07:54.450 --> 00:07:58.320
+Finally, to know if a service is available in your region,
+
+184
+00:07:58.320 --> 00:08:01.073
+there is a region table you should check out right here.
+

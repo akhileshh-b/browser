@@ -1,0 +1,410 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.340
+<v Instructor>The fourth pillar in the Well-Architecture</v>
+
+2
+00:00:02.340 --> 00:00:04.800
+Framework is the performance efficiency.
+
+3
+00:00:04.800 --> 00:00:05.633
+So what is it?
+
+4
+00:00:05.633 --> 00:00:07.840
+It includes the ability to use computing resources
+
+5
+00:00:07.840 --> 00:00:10.890
+efficiently to meet system requirements, and to maintain
+
+6
+00:00:10.890 --> 00:00:14.620
+that efficiency as demand changes and technologies evolve.
+
+7
+00:00:14.620 --> 00:00:15.580
+So it's all about adapting
+
+8
+00:00:15.580 --> 00:00:17.250
+and providing the best performance.
+
+9
+00:00:17.250 --> 00:00:18.960
+The design principles are simple.
+
+10
+00:00:18.960 --> 00:00:22.030
+First, you need to use advanced technologies, okay?
+
+11
+00:00:22.030 --> 00:00:24.480
+You need to democratize them, and basically,
+
+12
+00:00:24.480 --> 00:00:27.320
+as the services become available, maybe they can be helpful
+
+13
+00:00:27.320 --> 00:00:29.740
+for your product developments so track them.
+
+14
+00:00:29.740 --> 00:00:31.910
+You need to be able to go global in minutes
+
+15
+00:00:31.910 --> 00:00:33.880
+so if you need to deploy in multiple regions
+
+16
+00:00:33.880 --> 00:00:36.180
+it shouldn't last days, it should last minutes.
+
+17
+00:00:36.180 --> 00:00:37.780
+Maybe using cloud formation.
+
+18
+00:00:37.780 --> 00:00:39.170
+Use serverless infrastructure.
+
+19
+00:00:39.170 --> 00:00:41.100
+So that's the golden state.
+
+20
+00:00:41.100 --> 00:00:43.210
+So that means you don't manage any servers,
+
+21
+00:00:43.210 --> 00:00:46.130
+and everything scales for you, which is really awesome.
+
+22
+00:00:46.130 --> 00:00:47.900
+Experiment more often.
+
+23
+00:00:47.900 --> 00:00:50.830
+Maybe you have something working really well today,
+
+24
+00:00:50.830 --> 00:00:53.840
+but you think it won't scale to 10 times the load.
+
+25
+00:00:53.840 --> 00:00:56.750
+Experiment maybe try serverless architectures.
+
+26
+00:00:56.750 --> 00:00:57.950
+See if that works for you.
+
+27
+00:00:57.950 --> 00:00:59.430
+Basically, give it a go.
+
+28
+00:00:59.430 --> 00:01:00.900
+And mechanical sympathy.
+
+29
+00:01:00.900 --> 00:01:03.440
+So be aware of all the AWS services,
+
+30
+00:01:03.440 --> 00:01:05.290
+and that's really, really hard.
+
+31
+00:01:05.290 --> 00:01:07.720
+I mean, doing this course is a right way of doing it.
+
+32
+00:01:07.720 --> 00:01:10.110
+Reading some blogs is also the right way of doing it.
+
+33
+00:01:10.110 --> 00:01:11.920
+Even for me, it's really hard to track
+
+34
+00:01:11.920 --> 00:01:13.920
+of everything of AWS services,
+
+35
+00:01:13.920 --> 00:01:16.000
+but you still need to be on top of the game.
+
+36
+00:01:16.000 --> 00:01:18.020
+Because when new changes have to happen,
+
+37
+00:01:18.020 --> 00:01:19.500
+they can really change dramatically,
+
+38
+00:01:19.500 --> 00:01:21.320
+your solution architecture.
+
+39
+00:01:21.320 --> 00:01:24.120
+So for AWS services for performance efficiency,
+
+40
+00:01:24.120 --> 00:01:29.010
+well, selections, so Auto Scaling, Lamda, EBS, S3, RDS
+
+41
+00:01:29.010 --> 00:01:30.550
+so you have so many choices
+
+42
+00:01:30.550 --> 00:01:33.240
+of technology that scale a little different patterns.
+
+43
+00:01:33.240 --> 00:01:35.030
+So choose the right one for you.
+
+44
+00:01:35.030 --> 00:01:37.427
+Definitely, for example, Lamda needs to serverless,
+
+45
+00:01:37.427 --> 00:01:40.400
+Auto Scaling is going to be for more EC2,
+
+46
+00:01:40.400 --> 00:01:42.250
+EBS is when you know you need to have a disc,
+
+47
+00:01:42.250 --> 00:01:44.190
+but you can sort of manage performance
+
+48
+00:01:44.190 --> 00:01:46.310
+over time using GB2 or I01.
+
+49
+00:01:46.310 --> 00:01:48.510
+S3 if you want to scale globally,
+
+50
+00:01:48.510 --> 00:01:51.290
+RDS, maybe you wanna use it to provision a database
+
+51
+00:01:51.290 --> 00:01:52.680
+and maybe you want to migrate to Aurora.
+
+52
+00:01:52.680 --> 00:01:55.520
+So you have a lot of things to select from.
+
+53
+00:01:55.520 --> 00:01:57.570
+Review, so how do we review our performance?
+
+54
+00:01:57.570 --> 00:02:00.160
+Well, the cloud formation, making sure we get
+
+55
+00:02:00.160 --> 00:02:02.910
+exactly what we need before we create it.
+
+56
+00:02:02.910 --> 00:02:04.480
+And how do we keep updated
+
+57
+00:02:04.480 --> 00:02:06.140
+on all this performance improvements?
+
+58
+00:02:06.140 --> 00:02:08.750
+Then the AWS News Blog is also a really good one,
+
+59
+00:02:08.750 --> 00:02:11.860
+and that's a tricky one, yes, but do read the AWS News.
+
+60
+00:02:11.860 --> 00:02:13.860
+I do read them once in a while, once a week,
+
+61
+00:02:13.860 --> 00:02:16.570
+and really keep myself updated on what's coming up.
+
+62
+00:02:16.570 --> 00:02:17.440
+Monitoring.
+
+63
+00:02:17.440 --> 00:02:19.270
+So how do we know we are performing
+
+64
+00:02:19.270 --> 00:02:21.210
+really well and as expected?
+
+65
+00:02:21.210 --> 00:02:24.030
+Then CloudWatch with CloudWatch Alarms, CloudWatch metrics.
+
+66
+00:02:24.030 --> 00:02:26.350
+All these things CloudWatch dashboards can help you
+
+67
+00:02:26.350 --> 00:02:28.200
+understand better how things work.
+
+68
+00:02:28.200 --> 00:02:30.390
+AWS Lamda, as well.
+
+69
+00:02:30.390 --> 00:02:32.170
+Making sure that you don't throttle,
+
+70
+00:02:32.170 --> 00:02:34.320
+that your application Lambda function runs
+
+71
+00:02:34.320 --> 00:02:36.660
+in a minimal time, all that kind of stuff,
+
+72
+00:02:36.660 --> 00:02:37.720
+And tradeoffs.
+
+73
+00:02:37.720 --> 00:02:39.760
+So how do we make sure that we are doing
+
+74
+00:02:39.760 --> 00:02:41.100
+the right performance decision?
+
+75
+00:02:41.100 --> 00:02:43.730
+So RDS maybe versus Aurora.
+
+76
+00:02:43.730 --> 00:02:46.470
+ElastiCache if you want to improve real performance,
+
+77
+00:02:46.470 --> 00:02:47.670
+maybe using Snowball.
+
+78
+00:02:47.670 --> 00:02:51.190
+So Snowball, for example, will give us a lot of data
+
+79
+00:02:51.190 --> 00:02:53.550
+moving very fast, but it will take maybe a week
+
+80
+00:02:53.550 --> 00:02:54.610
+for the data to arrive.
+
+81
+00:02:54.610 --> 00:02:56.690
+So the tradeoff is, do we want the data right away
+
+82
+00:02:56.690 --> 00:02:59.230
+in the cloud and use all our network capacity
+
+83
+00:02:59.230 --> 00:03:02.150
+or do we wanna move that data through a track
+
+84
+00:03:02.150 --> 00:03:03.520
+and get this in a week from now.
+
+85
+00:03:03.520 --> 00:03:04.670
+So always Tradeoffs, right?
+
+86
+00:03:04.670 --> 00:03:06.830
+With ElastiCache, always a Tradeoff as well.
+
+87
+00:03:06.830 --> 00:03:09.480
+Do I want to have possibly outdated,
+
+88
+00:03:09.480 --> 00:03:12.160
+stale data in a cache but really improve performance?
+
+89
+00:03:12.160 --> 00:03:14.643
+Or do I wanna get the latest and not use ElastiCache?
+
+90
+00:03:14.643 --> 00:03:16.220
+CloudFront same thing.
+
+91
+00:03:16.220 --> 00:03:18.500
+It does cache stuff around the edges.
+
+92
+00:03:18.500 --> 00:03:21.650
+So if you use CloudFront, yes, you go global in minutes,
+
+93
+00:03:21.650 --> 00:03:24.130
+but you have the possibility of everything being cached
+
+94
+00:03:24.130 --> 00:03:26.490
+for one day on people's laptops.
+
+95
+00:03:26.490 --> 00:03:28.380
+So when you release an update to your websites,
+
+96
+00:03:28.380 --> 00:03:31.320
+maybe it will take time for people to get the new stuff.
+
+97
+00:03:31.320 --> 00:03:33.100
+So think about all these things.
+
+98
+00:03:33.100 --> 00:03:35.370
+Really, it's important, but overall performance
+
+99
+00:03:35.370 --> 00:03:38.660
+should be really in the middle of your thought process
+
+100
+00:03:38.660 --> 00:03:40.370
+as you do Solution Architecture.
+
+101
+00:03:40.370 --> 00:03:41.203
+Okay, that's it.
+
+102
+00:03:41.203 --> 00:03:42.730
+I will see you in the next lecture.
+

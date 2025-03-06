@@ -1,0 +1,130 @@
+WEBVTT
+
+00:00:00.090 --> 00:00:01.740
+<v Instructor>So we have to talk about</v>
+
+00:00:01.740 --> 00:00:03.660
+the last component of IAM,
+
+00:00:03.660 --> 00:00:05.400
+which is called IAM Roles.
+
+00:00:05.400 --> 00:00:07.850
+So some AWS services that we'll be launching
+
+00:00:07.850 --> 00:00:10.500
+throughout this course will need to perform actions
+
+00:00:10.500 --> 00:00:13.950
+on our behalf, on our account, okay?
+
+00:00:13.950 --> 00:00:15.710
+And for this to do these actions,
+
+00:00:15.710 --> 00:00:16.543
+they're just like users,
+
+00:00:16.543 --> 00:00:18.620
+they will need some kind of permissions.
+
+00:00:18.620 --> 00:00:21.710
+So we need to assign permissions to AWS services
+
+00:00:21.710 --> 00:00:22.543
+and to do so,
+
+00:00:22.543 --> 00:00:25.030
+we're going to create what's called an IAM Role.
+
+00:00:25.030 --> 00:00:28.360
+So these IAM role will be just like a user,
+
+00:00:28.360 --> 00:00:32.310
+but they are intended to be used not by physical people,
+
+00:00:32.310 --> 00:00:35.720
+but instead they will be used by AWS services.
+
+00:00:35.720 --> 00:00:36.553
+So what does that mean?
+
+00:00:36.553 --> 00:00:37.620
+It's a bit confusing.
+
+00:00:37.620 --> 00:00:38.720
+So for example,
+
+00:00:38.720 --> 00:00:40.950
+we are going to create throughout this course,
+
+00:00:40.950 --> 00:00:42.710
+an EC2 Instance.
+
+00:00:42.710 --> 00:00:45.640
+An EC2 Instance is just like a virtual server,
+
+00:00:45.640 --> 00:00:48.080
+and we'll see this in the next section.
+
+00:00:48.080 --> 00:00:50.480
+But so this EC2 Instance may want to
+
+00:00:50.480 --> 00:00:53.870
+perform some actions on AWS and to do so,
+
+00:00:53.870 --> 00:00:57.250
+we need to give permissions to our EC2 Instance.
+
+00:00:57.250 --> 00:01:00.130
+To do so, we're going to create an IAM Role and together
+
+00:01:00.130 --> 00:01:02.110
+they're going to make one entity.
+
+00:01:02.110 --> 00:01:05.190
+And together, once the EC2 Instance is trying
+
+00:01:05.190 --> 00:01:08.650
+to access some information from AWS,
+
+00:01:08.650 --> 00:01:10.560
+then it will use the IAM Role.
+
+00:01:10.560 --> 00:01:14.090
+And if the permission assigned to the IAM Role is correct,
+
+00:01:14.090 --> 00:01:16.010
+then we're going to get access to the call
+
+00:01:16.010 --> 00:01:17.410
+we're trying to make.
+
+00:01:17.410 --> 00:01:19.260
+So some common roles include
+
+00:01:19.260 --> 00:01:21.870
+what I just showed you, EC2 Instance roles,
+
+00:01:21.870 --> 00:01:24.640
+but also other things that perform actions against AWS
+
+00:01:24.640 --> 00:01:25.600
+we'll see in this course.
+
+00:01:25.600 --> 00:01:28.560
+For example, Lambda Function Roles or CloudFormation.
+
+00:01:28.560 --> 00:01:30.530
+So I know this is a high level of review.
+
+00:01:30.530 --> 00:01:32.420
+In the next lecture we'll be creating a role,
+
+00:01:32.420 --> 00:01:35.570
+but we won't be using it yet until the next section,
+
+00:01:35.570 --> 00:01:37.100
+but let's go ahead and create a role.
+
+00:01:37.100 --> 00:01:38.850
+I will see you in the next lecture.

@@ -1,0 +1,118 @@
+WEBVTT
+
+1
+00:00:00.360 --> 00:00:03.210
+<v ->Now let's talk about AWS AppSync.</v>
+
+2
+00:00:03.210 --> 00:00:06.990
+So the idea with AppSync is to build a backend
+
+3
+00:00:06.990 --> 00:00:09.570
+for your mobile and web application.
+
+4
+00:00:09.570 --> 00:00:12.990
+So to store and synchronize data in real time.
+
+5
+00:00:12.990 --> 00:00:16.110
+For this AppSync actually leverages a technology
+
+6
+00:00:16.110 --> 00:00:18.810
+from Facebook called GraphQL,
+
+7
+00:00:18.810 --> 00:00:21.870
+and usually the exam, if you see GraphQL,
+
+8
+00:00:21.870 --> 00:00:26.580
+it will hint heavily for you to use AWS AppSync.
+
+9
+00:00:26.580 --> 00:00:28.140
+So thanks to GraphQL,
+
+10
+00:00:28.140 --> 00:00:30.210
+the client code for your APIs
+
+11
+00:00:30.210 --> 00:00:32.400
+can be generated automatically.
+
+12
+00:00:32.400 --> 00:00:35.580
+And on top of it, to build this GraphQL backend,
+
+13
+00:00:35.580 --> 00:00:36.840
+thanks to AppSync,
+
+14
+00:00:36.840 --> 00:00:40.530
+you will have integration with DynamoDB and Lambda.
+
+15
+00:00:40.530 --> 00:00:42.960
+It also gives you, thanks to GraphQL again,
+
+16
+00:00:42.960 --> 00:00:44.040
+real time subscription
+
+17
+00:00:44.040 --> 00:00:46.410
+so you can get updates of data for your web
+
+18
+00:00:46.410 --> 00:00:48.450
+and mobile applications in real time
+
+19
+00:00:48.450 --> 00:00:53.010
+and also offline data synchronization if you ever need.
+
+20
+00:00:53.010 --> 00:00:54.990
+There's also built in security.
+
+21
+00:00:54.990 --> 00:00:57.240
+And then we'll see in the next lecture
+
+22
+00:00:57.240 --> 00:01:00.960
+that there is a framework called AWS Amplify
+
+23
+00:01:00.960 --> 00:01:02.970
+that can leverage AppSync in the background
+
+24
+00:01:02.970 --> 00:01:05.130
+if you wanted to build a GraphQL backend
+
+25
+00:01:05.130 --> 00:01:06.750
+with Amplify as well.
+
+26
+00:01:06.750 --> 00:01:08.430
+So that's it for this lecture just remember,
+
+27
+00:01:08.430 --> 00:01:10.890
+AppSync (indistinct) storing data
+
+28
+00:01:10.890 --> 00:01:13.950
+for your mobile and web applications using GraphQL.
+
+29
+00:01:13.950 --> 00:01:16.950
+I hope you liked it, and I will see you in the next lecture.
+

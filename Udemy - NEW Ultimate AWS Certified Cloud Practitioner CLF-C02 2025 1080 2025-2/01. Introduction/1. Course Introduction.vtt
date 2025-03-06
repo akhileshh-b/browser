@@ -1,0 +1,474 @@
+WEBVTT
+
+1
+00:00:00.010 --> 00:00:01.140
+<v Stephane>Hello and welcome</v>
+
+2
+00:00:01.140 --> 00:00:04.110
+to the AWS Certified Cloud Practitioner course.
+
+3
+00:00:04.110 --> 00:00:07.080
+My name is Stephane Maarek and I will be your instructor.
+
+4
+00:00:07.080 --> 00:00:09.000
+So we are starting in five minutes,
+
+5
+00:00:09.000 --> 00:00:11.670
+but please try to pay attention to this lecture.
+
+6
+00:00:11.670 --> 00:00:14.850
+So we are going to prepare for the Cloud Practitioner exam.
+
+7
+00:00:14.850 --> 00:00:18.120
+The exam code is CLF-C02.
+
+8
+00:00:18.120 --> 00:00:19.796
+It is a challenging certification
+
+9
+00:00:19.796 --> 00:00:22.680
+so this course is going to be long and interesting
+
+10
+00:00:22.680 --> 00:00:25.410
+and it is good if you have some basic IT knowledge,
+
+11
+00:00:25.410 --> 00:00:27.780
+but don't worry if you don't come from an IT background
+
+12
+00:00:27.780 --> 00:00:30.540
+I will explain everything for you as well.
+
+13
+00:00:30.540 --> 00:00:32.700
+In this course, we're going to learn a lot.
+
+14
+00:00:32.700 --> 00:00:35.775
+We will cover over 40 AWS services
+
+15
+00:00:35.775 --> 00:00:39.597
+out of the 200 plus that exists in AWS.
+
+16
+00:00:39.597 --> 00:00:43.680
+If you are a beginner in IT and AWS, do not worry.
+
+17
+00:00:43.680 --> 00:00:44.820
+You are welcome to this course
+
+18
+00:00:44.820 --> 00:00:46.080
+and you will learn a lot.
+
+19
+00:00:46.080 --> 00:00:47.880
+But take your time. It's not a race.
+
+20
+00:00:47.880 --> 00:00:51.800
+You'll learn a lot every day by doing little by little.
+
+21
+00:00:51.800 --> 00:00:54.150
+Then this course is a bit special,
+
+22
+00:00:54.150 --> 00:00:56.700
+because I want you to learn also by doing.
+
+23
+00:00:56.700 --> 00:00:58.650
+It's a key learning technique in this course.
+
+24
+00:00:58.650 --> 00:01:01.379
+So this course will mix both theory lectures
+
+25
+00:01:01.379 --> 00:01:04.890
+and where necessary, hands-on where you can follow along
+
+26
+00:01:04.890 --> 00:01:08.019
+with me in the course by creating your own AWS accounts
+
+27
+00:01:08.019 --> 00:01:10.555
+and reproducing what I do on screen.
+
+28
+00:01:10.555 --> 00:01:12.780
+So now we're preparing for a certification.
+
+29
+00:01:12.780 --> 00:01:14.130
+I want to show you the type
+
+30
+00:01:14.130 --> 00:01:15.720
+of questions you're going to get.
+
+31
+00:01:15.720 --> 00:01:18.360
+So this is a sample question from the exam
+
+32
+00:01:18.360 --> 00:01:22.020
+which says, "Which AWS service would simplify the migration
+
+33
+00:01:22.020 --> 00:01:24.397
+of a database to AWS?"
+
+34
+00:01:24.397 --> 00:01:25.860
+It will have four answers,
+
+35
+00:01:25.860 --> 00:01:28.590
+Storage Gateway, Database Migration Service,
+
+36
+00:01:28.590 --> 00:01:32.100
+EC2 and Amazon AppStream 2.0.
+
+37
+00:01:32.100 --> 00:01:34.800
+Now this course is going to cover most of the services.
+
+38
+00:01:34.800 --> 00:01:38.040
+For example, the first service we will learn in this course.
+
+39
+00:01:38.040 --> 00:01:39.750
+The second service, the name is obvious,
+
+40
+00:01:39.750 --> 00:01:41.250
+it is the answer to the question.
+
+41
+00:01:41.250 --> 00:01:42.390
+That is the correct answer
+
+42
+00:01:42.390 --> 00:01:44.940
+and we will cover this service as well.
+
+43
+00:01:44.940 --> 00:01:46.980
+For EC2, we will learn as well,
+
+44
+00:01:46.980 --> 00:01:48.894
+and it is possible in the course you have services
+
+45
+00:01:48.894 --> 00:01:51.360
+that will be called distractors.
+
+46
+00:01:51.360 --> 00:01:54.544
+So they will not be covered in the course
+
+47
+00:01:54.544 --> 00:01:56.550
+because there are over 200 services in AWS,
+
+48
+00:01:56.550 --> 00:02:00.030
+but they will appear at the exam as a wrong answer.
+
+49
+00:02:00.030 --> 00:02:02.430
+So in this course I want to focus on the service
+
+50
+00:02:02.430 --> 00:02:04.050
+that I know are core to AWS
+
+51
+00:02:04.050 --> 00:02:05.520
+and that will come up in the exam
+
+52
+00:02:05.520 --> 00:02:08.070
+but it will not focus on explaining you the distractors
+
+53
+00:02:08.070 --> 00:02:11.280
+because that would make too much information into your head.
+
+54
+00:02:11.280 --> 00:02:13.380
+If you're interested into checking out the sample questions
+
+55
+00:02:13.380 --> 00:02:15.453
+for the exam, you can use this link.
+
+56
+00:02:16.530 --> 00:02:18.270
+So now a little bit about me.
+
+57
+00:02:18.270 --> 00:02:19.590
+So my name is Stephane Maarek
+
+58
+00:02:19.590 --> 00:02:21.376
+and I will be your instructor for this course.
+
+59
+00:02:21.376 --> 00:02:25.037
+I have 11 AWS certifications, so all of them,
+
+60
+00:02:25.037 --> 00:02:27.060
+and I've worked with AWS for many years.
+
+61
+00:02:27.060 --> 00:02:28.590
+I've built websites, applications
+
+62
+00:02:28.590 --> 00:02:30.150
+streaming platforms and so on.
+
+63
+00:02:30.150 --> 00:02:33.000
+I've been teaching for almost seven years on Udemy
+
+64
+00:02:33.000 --> 00:02:34.500
+about AI certifications
+
+65
+00:02:34.500 --> 00:02:37.920
+or services CloudFormation, Lambda and EC2.
+
+66
+00:02:37.920 --> 00:02:40.410
+As you can see, I have over 2 million students
+
+67
+00:02:40.410 --> 00:02:41.820
+that have went through my courses
+
+68
+00:02:41.820 --> 00:02:44.250
+and everyone has been very successful with this course.
+
+69
+00:02:44.250 --> 00:02:45.750
+So I'm very happy that you're here
+
+70
+00:02:45.750 --> 00:02:47.640
+following along with me.
+
+71
+00:02:47.640 --> 00:02:49.320
+So you can connect with me on social media.
+
+72
+00:02:49.320 --> 00:02:52.655
+You can follow me on LinkedIn, on Instagram, on Medium,
+
+73
+00:02:52.655 --> 00:02:56.195
+Twitter and GitHub, and the links are here.
+
+74
+00:02:56.195 --> 00:02:58.140
+So welcome to AWS.
+
+75
+00:02:58.140 --> 00:02:59.520
+You are going to get certified
+
+76
+00:02:59.520 --> 00:03:02.317
+and you're going to get the first certification in AWS
+
+77
+00:03:02.317 --> 00:03:04.797
+called the Foundational certification
+
+78
+00:03:04.797 --> 00:03:06.990
+for AWS cloud practitioner.
+
+79
+00:03:06.990 --> 00:03:10.500
+This is a great first choice, but this is pretty high level.
+
+80
+00:03:10.500 --> 00:03:12.090
+If you want to deepen your knowledge
+
+81
+00:03:12.090 --> 00:03:14.460
+and get more technical about AWS.
+
+82
+00:03:14.460 --> 00:03:16.381
+Then after this course,
+
+83
+00:03:16.381 --> 00:03:18.840
+I would recommend you tackle the Associate certifications.
+
+84
+00:03:18.840 --> 00:03:21.210
+Then if you're really an aficionado of AWS
+
+85
+00:03:21.210 --> 00:03:24.300
+and want to learn more and more and more, the Specialty exam
+
+86
+00:03:24.300 --> 00:03:26.580
+and the Professional exams are really difficult
+
+87
+00:03:26.580 --> 00:03:28.770
+and will test your in-depth knowledge.
+
+88
+00:03:28.770 --> 00:03:30.630
+In this course, we're just going to prepare
+
+89
+00:03:30.630 --> 00:03:33.090
+for the foundational knowledge necessary to pass
+
+90
+00:03:33.090 --> 00:03:34.530
+with flying colors
+
+91
+00:03:34.530 --> 00:03:37.581
+the AWS certified cloud practitioner examination.
+
+92
+00:03:37.581 --> 00:03:40.579
+Finally, I said we are going to practice in this course.
+
+93
+00:03:40.579 --> 00:03:42.750
+So you may have a question,
+
+94
+00:03:42.750 --> 00:03:45.270
+which is how much will this course cost me?
+
+95
+00:03:45.270 --> 00:03:47.887
+So this is how much it costs me at the end of this course,
+
+96
+00:03:47.887 --> 00:03:49.830
+$12 and 70 cents.
+
+97
+00:03:49.830 --> 00:03:50.970
+But I wanna tell you right away
+
+98
+00:03:50.970 --> 00:03:52.980
+that most of the services we'll use
+
+99
+00:03:52.980 --> 00:03:56.640
+in this course will be within the AWS Free Tier.
+
+100
+00:03:56.640 --> 00:04:00.030
+So there is a chance for you to have a cost of zero.
+
+101
+00:04:00.030 --> 00:04:01.260
+Now, if I use a service
+
+102
+00:04:01.260 --> 00:04:04.260
+in this course that will cost you money, I will mention it
+
+103
+00:04:04.260 --> 00:04:06.750
+and I will give you the option to not do the hands-on
+
+104
+00:04:06.750 --> 00:04:08.730
+with me and just watch me do.
+
+105
+00:04:08.730 --> 00:04:10.890
+For example, the most expensive item
+
+106
+00:04:10.890 --> 00:04:14.160
+in here is the registrar because I purchased a domain name.
+
+107
+00:04:14.160 --> 00:04:18.240
+So a URL, for example, stephaneccp.com.
+
+108
+00:04:18.240 --> 00:04:21.090
+You can read more about the Free Tier at this URL
+
+109
+00:04:21.090 --> 00:04:22.950
+if you're unsure about if something is going
+
+110
+00:04:22.950 --> 00:04:24.300
+to cost you money or not
+
+111
+00:04:24.300 --> 00:04:25.603
+or you can just come back to the slide
+
+112
+00:04:25.603 --> 00:04:28.040
+and then see based on the service we're watching
+
+113
+00:04:28.040 --> 00:04:30.750
+if it's going to cost you anything or not.
+
+114
+00:04:30.750 --> 00:04:33.180
+As I mentioned, most of the services we'll be using
+
+115
+00:04:33.180 --> 00:04:35.490
+will be within the Free Tier, so don't worry there,
+
+116
+00:04:35.490 --> 00:04:37.350
+I'll be guiding you all along the way.
+
+117
+00:04:37.350 --> 00:04:39.930
+I am super happy that you're here with me in this course
+
+118
+00:04:39.930 --> 00:04:41.703
+and I wish you a happy learning.
+

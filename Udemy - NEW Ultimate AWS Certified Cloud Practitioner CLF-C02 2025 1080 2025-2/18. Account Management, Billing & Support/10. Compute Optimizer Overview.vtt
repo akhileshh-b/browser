@@ -1,0 +1,94 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:02.900
+<v Instructor>Now, let's talk about AWS Compute Optimizer</v>
+
+2
+00:00:02.900 --> 00:00:05.720
+which is used to reduce costs and improve performance
+
+3
+00:00:05.720 --> 00:00:09.370
+by recommending optimal AWS resources for your workloads.
+
+4
+00:00:09.370 --> 00:00:11.350
+So it's going to do an analysis
+
+5
+00:00:11.350 --> 00:00:14.340
+of your EC2 instances, your auto scaling groups,
+
+6
+00:00:14.340 --> 00:00:15.620
+and tell you, for example,
+
+7
+00:00:15.620 --> 00:00:18.350
+which one are over-provisioned or under provisioned
+
+8
+00:00:18.350 --> 00:00:20.610
+and then you can build your optimizations
+
+9
+00:00:20.610 --> 00:00:22.430
+and then you can have a better cost perspective
+
+10
+00:00:22.430 --> 00:00:23.980
+and also a better performance.
+
+11
+00:00:23.980 --> 00:00:25.960
+This way it does it is that it will use machine learning
+
+12
+00:00:25.960 --> 00:00:28.650
+under the hood to analyze your resource configuration
+
+13
+00:00:28.650 --> 00:00:30.780
+as well as track their CloudWatch metrics
+
+14
+00:00:30.780 --> 00:00:32.800
+to understand their utilization.
+
+15
+00:00:32.800 --> 00:00:34.840
+So supported resources by Compute Optimizer
+
+16
+00:00:34.840 --> 00:00:37.530
+are EC2 instances, auto scaling groups,
+
+17
+00:00:37.530 --> 00:00:39.870
+EBS volumes, Lambda functions.
+
+18
+00:00:39.870 --> 00:00:43.070
+And this allows you to lower your costs by up to 25%
+
+19
+00:00:43.070 --> 00:00:44.280
+without doing much
+
+20
+00:00:44.280 --> 00:00:45.560
+and the recommendations themselves
+
+21
+00:00:45.560 --> 00:00:47.930
+can be exported into Amazon S3.
+
+22
+00:00:47.930 --> 00:00:49.300
+So that's it, I hope you liked it
+
+23
+00:00:49.300 --> 00:00:51.250
+and I will see you in the next lecture.
+

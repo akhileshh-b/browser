@@ -1,0 +1,538 @@
+WEBVTT
+
+00:00:00.130 --> 00:00:02.340
+<v Instructor>So now let's talk about cloud computing.</v>
+
+00:00:02.340 --> 00:00:03.910
+So what is cloud computing?
+
+00:00:03.910 --> 00:00:06.000
+The definition is as such,
+
+00:00:06.000 --> 00:00:09.890
+cloud computing is the on-demand delivery of compute power,
+
+00:00:09.890 --> 00:00:14.440
+database storage, application, and other IT resources.
+
+00:00:14.440 --> 00:00:17.150
+The very important keyword here is on-demand,
+
+00:00:17.150 --> 00:00:19.207
+you get it when you need it.
+
+00:00:19.207 --> 00:00:22.060
+And then through a cloud service platform,
+
+00:00:22.060 --> 00:00:25.270
+you're going to get a pay-as-you-go pricing.
+
+00:00:25.270 --> 00:00:27.010
+That means that you're only going to pay
+
+00:00:27.010 --> 00:00:29.720
+for what you requested when you requested it
+
+00:00:29.720 --> 00:00:32.600
+and as you're using it, when you're done using it,
+
+00:00:32.600 --> 00:00:34.230
+you're not going to pay anymore.
+
+00:00:34.230 --> 00:00:35.840
+This is a big shift, right?
+
+00:00:35.840 --> 00:00:37.640
+Then this is cloud computing.
+
+00:00:37.640 --> 00:00:40.730
+So we can provision exactly the right type
+
+00:00:40.730 --> 00:00:43.380
+and size of computing resources you need.
+
+00:00:43.380 --> 00:00:45.620
+Do you need a big server? We have that for you.
+
+00:00:45.620 --> 00:00:47.740
+Do you want a small one? We have that too.
+
+00:00:47.740 --> 00:00:48.830
+Do you want 10? Yes.
+
+00:00:48.830 --> 00:00:50.900
+Do you want two tomorrow? Of course.
+
+00:00:50.900 --> 00:00:53.200
+The cloud really allows you to adapt
+
+00:00:53.200 --> 00:00:55.550
+to the type and size you need.
+
+00:00:55.550 --> 00:00:58.620
+Then you can access all these resources,
+
+00:00:58.620 --> 00:01:01.560
+not with 24-hour notice, not with two hours notice,
+
+00:01:01.560 --> 00:01:04.870
+but instantly, you don't need to order things in advance.
+
+00:01:04.870 --> 00:01:07.180
+When you want a server, and you'll see this in this course,
+
+00:01:07.180 --> 00:01:09.250
+you'll have it within seconds.
+
+00:01:09.250 --> 00:01:12.690
+Then the cloud will also give you a really nice interface
+
+00:01:12.690 --> 00:01:15.900
+so you can easily access your servers, your storage,
+
+00:01:15.900 --> 00:01:19.560
+databases, and a set of application services.
+
+00:01:19.560 --> 00:01:23.060
+Something about the cloud, but in specific AWS,
+
+00:01:23.060 --> 00:01:25.950
+which is Amazon Web Services owns and maintains
+
+00:01:25.950 --> 00:01:27.640
+the network-connected hardware required
+
+00:01:27.640 --> 00:01:30.640
+for these application services while you provision and use
+
+00:01:30.640 --> 00:01:33.370
+what you need via a web application.
+
+00:01:33.370 --> 00:01:35.260
+So with this interface,
+
+00:01:35.260 --> 00:01:38.120
+we'll make all these things a reality.
+
+00:01:38.120 --> 00:01:40.620
+Now, let's go back to our traditional IT.
+
+00:01:40.620 --> 00:01:41.810
+So we're changing.
+
+00:01:41.810 --> 00:01:44.090
+We have our office or our garage,
+
+00:01:44.090 --> 00:01:46.730
+but now instead of building our own data center
+
+00:01:46.730 --> 00:01:49.050
+we're going to use the cloud, and in the cloud,
+
+00:01:49.050 --> 00:01:52.300
+which is also a data center, is just not our data center,
+
+00:01:52.300 --> 00:01:56.620
+we're going to have servers one, two, three, as we need
+
+00:01:56.620 --> 00:01:59.580
+and as we go and we're just going to pay for exactly
+
+00:01:59.580 --> 00:02:00.720
+what we're using.
+
+00:02:00.720 --> 00:02:03.640
+So you have actually been using the cloud without
+
+00:02:03.640 --> 00:02:06.120
+even knowing it because it is omnipresent,
+
+00:02:06.120 --> 00:02:08.120
+but not necessarily visible.
+
+00:02:08.120 --> 00:02:10.830
+So if you use a web client such as Gmail,
+
+00:02:10.830 --> 00:02:13.800
+well, for example, it's an email cloud service
+
+00:02:13.800 --> 00:02:16.690
+and you're going to pay only for the emails you stored.
+
+00:02:16.690 --> 00:02:18.870
+You're not provisioning servers when you use Gmail,
+
+00:02:18.870 --> 00:02:20.420
+you just use it.
+
+00:02:20.420 --> 00:02:22.550
+Maybe you've stored some data on the cloud,
+
+00:02:22.550 --> 00:02:25.310
+maybe through Dropbox, Google Drive, Google Photos,
+
+00:02:25.310 --> 00:02:26.920
+iCloud, I don't know.
+
+00:02:26.920 --> 00:02:29.920
+But with Dropbox, for example, it's a cloud store service,
+
+00:02:29.920 --> 00:02:31.980
+you're going to put your files on Dropbox.
+
+00:02:31.980 --> 00:02:36.280
+And originally, fun fact, Dropbox was built on AWS.
+
+00:02:36.280 --> 00:02:38.750
+So we've been using a cloud storage service as well
+
+00:02:38.750 --> 00:02:39.880
+without knowing it.
+
+00:02:39.880 --> 00:02:41.920
+And Netflix, it's huge.
+
+00:02:41.920 --> 00:02:45.770
+It is built entirely on AWS and it provides you
+
+00:02:45.770 --> 00:02:49.260
+a cloud service, which is to get video on-demand.
+
+00:02:49.260 --> 00:02:52.100
+Now, obviously these cloud services are very different
+
+00:02:52.100 --> 00:02:56.090
+from AWS, but we'll learn what it goes behind these services
+
+00:02:56.090 --> 00:02:58.230
+and how AWS can help you build
+
+00:02:58.230 --> 00:03:00.600
+these kinds of cloud services.
+
+00:03:00.600 --> 00:03:02.770
+So let's go one step further.
+
+00:03:02.770 --> 00:03:04.820
+There are different kinds of clouds out there.
+
+00:03:04.820 --> 00:03:08.480
+The first one is called a private cloud and the provider is,
+
+00:03:08.480 --> 00:03:10.530
+could be Rackspace.
+
+00:03:10.530 --> 00:03:13.650
+This is cloud services used by a single organization,
+
+00:03:13.650 --> 00:03:15.010
+they're not exposed to the public,
+
+00:03:15.010 --> 00:03:16.840
+so you get your own private cloud,
+
+00:03:16.840 --> 00:03:17.860
+your own private data center,
+
+00:03:17.860 --> 00:03:19.480
+it's just managed by someone else.
+
+00:03:19.480 --> 00:03:21.220
+You still have complete control over it
+
+00:03:21.220 --> 00:03:24.210
+and you have more security for a sensitive application,
+
+00:03:24.210 --> 00:03:27.040
+which may need some specific business needs.
+
+00:03:27.040 --> 00:03:29.190
+This is out of scope for this course,
+
+00:03:29.190 --> 00:03:30.710
+but still good to mention.
+
+00:03:30.710 --> 00:03:33.030
+Now the public cloud is more interesting.
+
+00:03:33.030 --> 00:03:35.990
+So three famous cloud providers that are public,
+
+00:03:35.990 --> 00:03:40.990
+are Microsoft Azure, Google Cloud, and Amazon Web Services
+
+00:03:41.260 --> 00:03:43.850
+that we'll be learning in this course, obviously.
+
+00:03:43.850 --> 00:03:48.000
+So in this case, the cloud resources own and operated
+
+00:03:48.000 --> 00:03:50.610
+by a third party cloud service provider
+
+00:03:50.610 --> 00:03:53.240
+and they're delivered over the Internet
+
+00:03:53.240 --> 00:03:56.950
+and we'll see the six advantages of using cloud computing.
+
+00:03:56.950 --> 00:03:59.140
+So in this instance, that means that from AWS,
+
+00:03:59.140 --> 00:04:02.350
+we'll be able to request what we need when we want it.
+
+00:04:02.350 --> 00:04:05.300
+And then lastly, which is also important for the exam
+
+00:04:05.300 --> 00:04:07.760
+is the concept of a hybrid cloud.
+
+00:04:07.760 --> 00:04:09.700
+So with hybrid, we're actually getting the mix
+
+00:04:09.700 --> 00:04:10.840
+of private and public.
+
+00:04:10.840 --> 00:04:13.990
+We're going to keep some servers on premises and we'll
+
+00:04:13.990 --> 00:04:17.530
+extend some of the capabilities we need into the cloud.
+
+00:04:17.530 --> 00:04:20.210
+That means that we'll have a hybrid of our own
+
+00:04:20.210 --> 00:04:23.380
+infrastructure and the AWS cloud.
+
+00:04:23.380 --> 00:04:25.350
+We'll have control over sensitive assets
+
+00:04:25.350 --> 00:04:27.200
+in your private infrastructure,
+
+00:04:27.200 --> 00:04:30.430
+but we'll have the flexibility and the cost effectiveness
+
+00:04:30.430 --> 00:04:32.393
+of using the public cloud.
+
+00:04:33.590 --> 00:04:36.730
+Now, five characteristics of cloud computing.
+
+00:04:36.730 --> 00:04:41.330
+The first one is that it's fully on-demand and self service.
+
+00:04:41.330 --> 00:04:43.330
+Users, and we'll see this in this course,
+
+00:04:43.330 --> 00:04:45.050
+we will be able to provision resources
+
+00:04:45.050 --> 00:04:49.640
+and use them without having anyone from AWS intervene.
+
+00:04:49.640 --> 00:04:52.740
+Then we'll be having access to a broad network,
+
+00:04:52.740 --> 00:04:55.130
+the resources will be available over the network,
+
+00:04:55.130 --> 00:04:57.300
+and it can be accessed in diverse ways
+
+00:04:57.300 --> 00:04:58.900
+as we'll see in this course.
+
+00:04:58.900 --> 00:05:00.940
+It'll be multi-tenancy and we'll have resource pooling.
+
+00:05:00.940 --> 00:05:04.170
+So that means that not just us, but other customers
+
+00:05:04.170 --> 00:05:07.210
+from AWS can share the same infrastructure
+
+00:05:07.210 --> 00:05:11.620
+and applications while still having security and privacy.
+
+00:05:11.620 --> 00:05:14.160
+And then these multiple customers are getting serviced
+
+00:05:14.160 --> 00:05:16.190
+from the same physical resources.
+
+00:05:16.190 --> 00:05:19.090
+So here, me, you, and other customers,
+
+00:05:19.090 --> 00:05:22.860
+we're going to share this entire data center of the cloud.
+
+00:05:22.860 --> 00:05:26.260
+This gives us rapid elasticity and scalability.
+
+00:05:26.260 --> 00:05:29.540
+That means that we can automatically and quickly acquire
+
+00:05:29.540 --> 00:05:32.180
+and dispose resources when we need.
+
+00:05:32.180 --> 00:05:34.390
+And that means that we can quickly
+
+00:05:34.390 --> 00:05:36.700
+and easily scale based on demand.
+
+00:05:36.700 --> 00:05:39.760
+And that is a major advantage of the cloud.
+
+00:05:39.760 --> 00:05:42.680
+Finally, it's a measured service, so the usage is going
+
+00:05:42.680 --> 00:05:44.790
+to be measured and we're going to pay exactly
+
+00:05:44.790 --> 00:05:46.150
+for what we have used.
+
+00:05:46.150 --> 00:05:48.930
+This is a big shift from on premises.
+
+00:05:48.930 --> 00:05:50.980
+Now, six advantages.
+
+00:05:50.980 --> 00:05:53.310
+We're going to trade capital expenses
+
+00:05:53.310 --> 00:05:56.510
+for operational expenses, so CAPEX or OPEX.
+
+00:05:56.510 --> 00:05:58.830
+That means that you don't own hardware,
+
+00:05:58.830 --> 00:06:01.550
+you're going to pay on-demand and that will reduce
+
+00:06:01.550 --> 00:06:04.220
+your total cost of ownership, your TCO,
+
+00:06:04.220 --> 00:06:06.410
+and your operational expense.
+
+00:06:06.410 --> 00:06:08.610
+That means that you don't buy the hardware in advance,
+
+00:06:08.610 --> 00:06:10.557
+you're just going to rent it from AWS.
+
+00:06:11.490 --> 00:06:15.160
+Then we're going to benefit from massive economies of scale.
+
+00:06:15.160 --> 00:06:18.790
+The price is because we are using AWS, not just us,
+
+00:06:18.790 --> 00:06:21.220
+but other customers and so many people are using it,
+
+00:06:21.220 --> 00:06:24.150
+then the prices will be reduced by AWS over time because AWS
+
+00:06:24.150 --> 00:06:28.930
+will be more efficient at running due to its large scale.
+
+00:06:28.930 --> 00:06:31.110
+We also need to stop guessing capacity.
+
+00:06:31.110 --> 00:06:33.870
+Before we had to plan and buy servers in advance
+
+00:06:33.870 --> 00:06:36.230
+and hope that it would meet the capacity,
+
+00:06:36.230 --> 00:06:39.110
+but now we can actually scale automatically
+
+00:06:39.110 --> 00:06:42.710
+based on the actual measured usage for our application.
+
+00:06:42.710 --> 00:06:44.430
+And because everything's on-demand,
+
+00:06:44.430 --> 00:06:46.510
+we have increased speed and agility.
+
+00:06:46.510 --> 00:06:49.570
+We can create, operate and do stuff right away,
+
+00:06:49.570 --> 00:06:52.250
+no blockers for us to be efficient.
+
+00:06:52.250 --> 00:06:55.390
+And finally, we have a huge cost that we don't need
+
+00:06:55.390 --> 00:06:58.700
+to have anymore, which is we can stop spending money running
+
+00:06:58.700 --> 00:07:00.300
+and maintaining data centers.
+
+00:07:00.300 --> 00:07:03.080
+And this allows a team of say five people
+
+00:07:03.080 --> 00:07:05.990
+to create a global application in minutes,
+
+00:07:05.990 --> 00:07:09.600
+thanks to leveraging this AWS global infrastructure
+
+00:07:09.600 --> 00:07:11.760
+that is going to be worldwide.
+
+00:07:11.760 --> 00:07:14.270
+Okay. So the problems we've just solved by using the cloud
+
+00:07:14.270 --> 00:07:17.860
+is that we're more flexible, we're more cost effective,
+
+00:07:17.860 --> 00:07:21.050
+we are more scalable because we can add resources
+
+00:07:21.050 --> 00:07:22.540
+as we need to go along,
+
+00:07:22.540 --> 00:07:25.250
+we're elastic, we can scale out and scale-in when needed,
+
+00:07:25.250 --> 00:07:28.460
+we also have high availability and fault tolerance
+
+00:07:28.460 --> 00:07:30.520
+because we don't really on the one data center,
+
+00:07:30.520 --> 00:07:33.890
+we rely on the fleet of data centers all around the world.
+
+00:07:33.890 --> 00:07:36.080
+We're more agile, we can rapidly develop,
+
+00:07:36.080 --> 00:07:38.020
+test and launch software applications,
+
+00:07:38.020 --> 00:07:42.700
+and although this make the cloud a really no brainer.
+
+00:07:42.700 --> 00:07:45.010
+So that's it, just for an introduction of how the cloud
+
+00:07:45.010 --> 00:07:46.420
+is going to be effective.
+
+00:07:46.420 --> 00:07:47.730
+Now in the next lecture,
+
+00:07:47.730 --> 00:07:49.740
+we're going to view one step further,
+
+00:07:49.740 --> 00:07:52.140
+what are the different types of cloud computing.

@@ -1,0 +1,414 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:01.774
+<v Instructor>So now is the time to sign</v>
+
+2
+00:00:01.774 --> 00:00:04.765
+into your AWS Certification accounts.
+
+3
+00:00:04.765 --> 00:00:09.765
+For this, you go to this URL, aws.training/certification,
+
+4
+00:00:09.787 --> 00:00:12.840
+and then you click on Sign In.
+
+5
+00:00:12.840 --> 00:00:13.841
+From there, you're going to have to create
+
+6
+00:00:13.841 --> 00:00:17.752
+an AWS Builder ID, which is a specific account
+
+7
+00:00:17.752 --> 00:00:20.550
+for AWS certifications.
+
+8
+00:00:20.550 --> 00:00:22.765
+So you click on it, you go through the process,
+
+9
+00:00:22.765 --> 00:00:24.745
+and then you'll be good to go.
+
+10
+00:00:24.745 --> 00:00:28.750
+After you sign in, click on Go to Your Account,
+
+11
+00:00:28.750 --> 00:00:32.563
+and this is going to take you into the certification portal.
+
+12
+00:00:32.563 --> 00:00:34.860
+And in here you have several options.
+
+13
+00:00:34.860 --> 00:00:36.502
+So in this video I'm going to show you
+
+14
+00:00:36.502 --> 00:00:40.290
+how to schedule an exam, but I strongly recommend
+
+15
+00:00:40.290 --> 00:00:42.810
+as well that you watch the next two videos.
+
+16
+00:00:42.810 --> 00:00:46.420
+One is around exam accommodations to get extra time
+
+17
+00:00:46.420 --> 00:00:48.719
+if you're not a native English speaker,
+
+18
+00:00:48.719 --> 00:00:51.511
+which can really help you during your exam.
+
+19
+00:00:51.511 --> 00:00:54.482
+And also, I will show you certification benefits
+
+20
+00:00:54.482 --> 00:00:58.980
+on how to sometimes get 50% on your next AWS exam.
+
+21
+00:00:58.980 --> 00:01:00.802
+So please make sure to watch these videos next.
+
+22
+00:01:00.802 --> 00:01:03.300
+But right now, lemme show you the exam registration.
+
+23
+00:01:03.300 --> 00:01:06.782
+So you click on Exam Registration and schedule an exam.
+
+24
+00:01:06.782 --> 00:01:11.003
+And in here, we have at the bottom, the exams we can pass.
+
+25
+00:01:11.003 --> 00:01:13.272
+So some of them are going to be authorized,
+
+26
+00:01:13.272 --> 00:01:16.485
+some of them are going to be click to authorize to schedule.
+
+27
+00:01:16.485 --> 00:01:19.752
+So you click on Authorize and it will just do something,
+
+28
+00:01:19.752 --> 00:01:21.303
+and then schedule is available.
+
+29
+00:01:21.303 --> 00:01:22.754
+So I'm not sure why you have to authorize things,
+
+30
+00:01:22.754 --> 00:01:24.472
+but here it is.
+
+31
+00:01:24.472 --> 00:01:25.975
+Okay, so now let's say for example,
+
+32
+00:01:25.975 --> 00:01:27.736
+that we want to schedule the
+
+33
+00:01:27.736 --> 00:01:30.239
+AWS Certified Developer Associate Exam.
+
+34
+00:01:30.239 --> 00:01:32.752
+So click on Schedule, and this is going to take you
+
+35
+00:01:32.752 --> 00:01:36.840
+into the Pearson VUE portal, which is going to be
+
+36
+00:01:36.840 --> 00:01:40.302
+the exam schedule partner of AWS.
+
+37
+00:01:40.302 --> 00:01:42.733
+So in here, we have several options.
+
+38
+00:01:42.733 --> 00:01:46.770
+We can specify to want to take the exam
+
+39
+00:01:46.770 --> 00:01:50.132
+in person at a test center or online with OnVUE.
+
+40
+00:01:50.132 --> 00:01:52.970
+So this is when you want to actually go somewhere
+
+41
+00:01:52.970 --> 00:01:55.273
+and take it in a specific room,
+
+42
+00:01:55.273 --> 00:01:57.660
+because for example, you don't wanna take it from home.
+
+43
+00:01:57.660 --> 00:01:59.767
+So in that case, you need to bring your photo ID,
+
+44
+00:01:59.767 --> 00:02:01.742
+you need to make sure that you understand how it works,
+
+45
+00:02:01.742 --> 00:02:05.760
+and what you can and cannot bring during the test.
+
+46
+00:02:05.760 --> 00:02:06.832
+You would click on Next.
+
+47
+00:02:06.832 --> 00:02:10.754
+And in the following pages, you are able to select
+
+48
+00:02:10.754 --> 00:02:13.044
+the language you want to take your exam in.
+
+49
+00:02:13.044 --> 00:02:16.199
+So different options based on where you're from.
+
+50
+00:02:16.199 --> 00:02:20.754
+And finally, you can also select where you want to take it.
+
+51
+00:02:20.754 --> 00:02:23.788
+And so for this, you're going to have to agree
+
+52
+00:02:23.788 --> 00:02:28.762
+to these conditions, first of all, and then find a place.
+
+53
+00:02:28.762 --> 00:02:31.523
+So you would just enter an address,
+
+54
+00:02:31.523 --> 00:02:34.532
+and then you would look at different addresses
+
+55
+00:02:34.532 --> 00:02:36.775
+where you can actually take your exam.
+
+56
+00:02:36.775 --> 00:02:39.559
+So the alternative is to do online with OnVUE,
+
+57
+00:02:39.559 --> 00:02:41.551
+and I like it because you're at home,
+
+58
+00:02:41.551 --> 00:02:42.800
+it's very easy to take it.
+
+59
+00:02:42.800 --> 00:02:44.705
+So you need your computer with a webcam
+
+60
+00:02:44.705 --> 00:02:46.786
+and a good internet connection.
+
+61
+00:02:46.786 --> 00:02:48.475
+And here it says Run system test.
+
+62
+00:02:48.475 --> 00:02:50.737
+And I strongly, strongly, strongly recommend you
+
+63
+00:02:50.737 --> 00:02:52.768
+to run the system test way before your exam
+
+64
+00:02:52.768 --> 00:02:54.725
+so you make sure everything is good.
+
+65
+00:02:54.725 --> 00:02:57.734
+Your testing space must be clear of everything.
+
+66
+00:02:57.734 --> 00:03:02.284
+So you'll need put nothing on your desk, remove everything,
+
+67
+00:03:02.284 --> 00:03:04.797
+and make sure that the person controlling that
+
+68
+00:03:04.797 --> 00:03:07.160
+will be asking you to show your desk and so on.
+
+69
+00:03:07.160 --> 00:03:09.709
+So there are some examples here.
+
+70
+00:03:09.709 --> 00:03:12.660
+Bring an ID, and then you need to check in
+
+71
+00:03:12.660 --> 00:03:14.009
+about 30 minutes before your appointment time
+
+72
+00:03:14.009 --> 00:03:15.719
+just to make sure that you are
+
+73
+00:03:15.719 --> 00:03:18.840
+going to be attending your exam on time.
+
+74
+00:03:18.840 --> 00:03:20.714
+Then you click on Next.
+
+75
+00:03:20.714 --> 00:03:22.742
+You choose your language again.
+
+76
+00:03:22.742 --> 00:03:25.474
+Then you agree to all the things
+
+77
+00:03:25.474 --> 00:03:28.080
+that you need to agree about, making sure
+
+78
+00:03:28.080 --> 00:03:31.711
+you are taking this space, this exam from your home.
+
+79
+00:03:31.711 --> 00:03:35.143
+Then you agree, then you choose the language you want
+
+80
+00:03:35.143 --> 00:03:37.386
+the person who is going to check your desk,
+
+81
+00:03:37.386 --> 00:03:40.394
+and so on, to speak, so you have these options,
+
+82
+00:03:40.394 --> 00:03:42.990
+but this is different from your exam version.
+
+83
+00:03:42.990 --> 00:03:44.640
+This is just to check you in.
+
+84
+00:03:44.640 --> 00:03:46.713
+Then, what is your time zone.
+
+85
+00:03:46.713 --> 00:03:50.677
+Finally, selecting a date, selecting a time,
+
+86
+00:03:50.677 --> 00:03:54.769
+and then booking, and finally, completing the payments.
+
+87
+00:03:54.769 --> 00:03:57.723
+And adding a voucher, if you have a discount voucher,
+
+88
+00:03:57.723 --> 00:04:00.783
+which I will show you how to do it in the next lecture.
+
+89
+00:04:00.783 --> 00:04:01.671
+So that's it.
+
+90
+00:04:01.671 --> 00:04:05.490
+Now, once the exam is scheduled, to actually take it,
+
+91
+00:04:05.490 --> 00:04:07.707
+maybe it'll appear upon a coming exam,
+
+92
+00:04:07.707 --> 00:04:11.536
+but the way I like to do it is to go on Home, Dashboard.
+
+93
+00:04:11.536 --> 00:04:14.065
+And when you're ready, before your exam,
+
+94
+00:04:14.065 --> 00:04:16.781
+you click on Manage my Pearson VUE account,
+
+95
+00:04:16.781 --> 00:04:18.738
+which is going to take you, again,
+
+96
+00:04:18.738 --> 00:04:20.735
+to the homepage of Pearson VUE.
+
+97
+00:04:20.735 --> 00:04:25.433
+And from there, you will be seeing a launch exam button,
+
+98
+00:04:25.433 --> 00:04:26.751
+which is very easy to access.
+
+99
+00:04:26.751 --> 00:04:29.235
+So you'll have here, the exam appearing,
+
+100
+00:04:29.235 --> 00:04:31.720
+and you just click on Launch, and you're good to go.
+
+101
+00:04:31.720 --> 00:04:33.203
+All right, so that's it for this lecture.
+
+102
+00:04:33.203 --> 00:04:34.339
+I hope you liked it.
+
+103
+00:04:34.339 --> 00:04:36.933
+And I will see you in the next lecture.
+

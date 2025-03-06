@@ -1,0 +1,530 @@
+WEBVTT
+
+1
+00:00:00.030 --> 00:00:01.200
+<v Instructor>Okay. So now, let's discuss</v>
+
+2
+00:00:01.200 --> 00:00:04.830
+the SSM Session Manager feature of Systems Manager.
+
+3
+00:00:04.830 --> 00:00:06.930
+So this allows you to start a secure shell
+
+4
+00:00:06.930 --> 00:00:09.660
+on your EC2 instances and on-premises servers
+
+5
+00:00:09.660 --> 00:00:13.080
+without having SSH access or the need for bastion host
+
+6
+00:00:13.080 --> 00:00:14.820
+or any SSH keys.
+
+7
+00:00:14.820 --> 00:00:17.220
+That means that the port 22 on your EC2 instances
+
+8
+00:00:17.220 --> 00:00:19.800
+is going to be closed because there is going to be
+
+9
+00:00:19.800 --> 00:00:23.610
+no need to do SSH to establish a secure shell
+
+10
+00:00:23.610 --> 00:00:25.620
+onto your EC2 instance.
+
+11
+00:00:25.620 --> 00:00:27.030
+That means better security.
+
+12
+00:00:27.030 --> 00:00:28.080
+So how does that work?
+
+13
+00:00:28.080 --> 00:00:30.120
+Well, the EC2 instance that we're going to show you
+
+14
+00:00:30.120 --> 00:00:32.430
+in a second has an SSM Agent
+
+15
+00:00:32.430 --> 00:00:35.970
+and that agent is connected to the Session Manager service.
+
+16
+00:00:35.970 --> 00:00:38.070
+So that means that our users can access
+
+17
+00:00:38.070 --> 00:00:40.290
+through the Session Manager service
+
+18
+00:00:40.290 --> 00:00:43.170
+these two instance and execute some commands on it.
+
+19
+00:00:43.170 --> 00:00:45.780
+This has support for Linux, macOS and Windows
+
+20
+00:00:45.780 --> 00:00:49.380
+and we can send log data to Amazon S3 or CloudWatch Logs
+
+21
+00:00:49.380 --> 00:00:50.940
+to make it super secure.
+
+22
+00:00:50.940 --> 00:00:52.080
+I think it'll make a lot more sense
+
+23
+00:00:52.080 --> 00:00:54.300
+when we do the hands-on so let's do it.
+
+24
+00:00:54.300 --> 00:00:57.960
+So let's have a look at the SSM Session Manager service,
+
+25
+00:00:57.960 --> 00:01:00.480
+but first, we need to launch an EC2 instance.
+
+26
+00:01:00.480 --> 00:01:03.300
+So let's launch an instance right now
+
+27
+00:01:03.300 --> 00:01:04.890
+and I will scroll down.
+
+28
+00:01:04.890 --> 00:01:08.820
+We will choose Amazon Linux 2 AMI, t2.micro.
+
+29
+00:01:08.820 --> 00:01:11.430
+We will not use any key pair.
+
+30
+00:01:11.430 --> 00:01:14.250
+And then I will disable SSH traffic.
+
+31
+00:01:14.250 --> 00:01:15.780
+So as you can see, my EC2 instance will have
+
+32
+00:01:15.780 --> 00:01:18.120
+a security group that allows nothing.
+
+33
+00:01:18.120 --> 00:01:21.510
+No HTTP, no HTTPS, no SSH.
+
+34
+00:01:21.510 --> 00:01:26.010
+Yet, we will be able to use an SSM Session Manager shell.
+
+35
+00:01:26.010 --> 00:01:28.140
+So what I need to do actually is
+
+36
+00:01:28.140 --> 00:01:31.560
+to attach an IAM instance profile to my instance
+
+37
+00:01:31.560 --> 00:01:35.160
+to allow it to talk to the SSM service.
+
+38
+00:01:35.160 --> 00:01:36.120
+So I have a few right here,
+
+39
+00:01:36.120 --> 00:01:38.580
+but I'm going to create a new one just to show the process.
+
+40
+00:01:38.580 --> 00:01:41.670
+So click on create a new IAM role profile.
+
+41
+00:01:41.670 --> 00:01:43.503
+Then let's create a role.
+
+42
+00:01:44.550 --> 00:01:47.793
+For a service on AWS, it will be Amazon EC2.
+
+43
+00:01:48.720 --> 00:01:50.220
+Click on next. Then, for permissions,
+
+44
+00:01:50.220 --> 00:01:52.500
+we're going to filter for SSM
+
+45
+00:01:52.500 --> 00:01:56.520
+and we will choose the Amazon SSM managed instance core.
+
+46
+00:01:56.520 --> 00:01:59.970
+So let's select this and click on next.
+
+47
+00:01:59.970 --> 00:02:04.970
+And then I will call it demo EC2 role for SSM,
+
+48
+00:02:05.250 --> 00:02:09.180
+which allows the EC2 instance to use this policy
+
+49
+00:02:09.180 --> 00:02:11.460
+to talk to the SSM service.
+
+50
+00:02:11.460 --> 00:02:13.080
+So this is necessary for my instance
+
+51
+00:02:13.080 --> 00:02:15.210
+to be managed by the SSM service
+
+52
+00:02:15.210 --> 00:02:19.500
+and so we can use the SSM Session Manager feature.
+
+53
+00:02:19.500 --> 00:02:21.270
+So now that this role is created,
+
+54
+00:02:21.270 --> 00:02:23.760
+we're going to refresh here and we're going to look
+
+55
+00:02:23.760 --> 00:02:27.240
+for this demo EC2 role for SSM.
+
+56
+00:02:27.240 --> 00:02:29.580
+Perfect. So let's go ahead
+
+57
+00:02:29.580 --> 00:02:32.853
+and now, create and launch our instance,
+
+58
+00:02:35.730 --> 00:02:36.780
+which is now launched
+
+59
+00:02:37.950 --> 00:02:39.630
+and it's going to boot.
+
+60
+00:02:39.630 --> 00:02:42.570
+And so the thing I have to check now is the SSM service.
+
+61
+00:02:42.570 --> 00:02:44.343
+So let's go into Systems Manager.
+
+62
+00:02:46.530 --> 00:02:47.910
+And on the left hand side,
+
+63
+00:02:47.910 --> 00:02:50.470
+you're going to look for Fleet Manager
+
+64
+00:02:53.880 --> 00:02:57.810
+and Fleet Manager is a service where all the EC2 instances
+
+65
+00:02:57.810 --> 00:03:01.200
+that are registered with SSM will appear here.
+
+66
+00:03:01.200 --> 00:03:03.120
+So they're called managed nodes.
+
+67
+00:03:03.120 --> 00:03:03.990
+And as you can see right now,
+
+68
+00:03:03.990 --> 00:03:05.040
+we don't have any managed nodes,
+
+69
+00:03:05.040 --> 00:03:07.500
+but we need to wait for the EC2 instance to boot up
+
+70
+00:03:07.500 --> 00:03:09.930
+and then it will appear right here.
+
+71
+00:03:09.930 --> 00:03:12.090
+Okay. So I just refreshed and as you can see,
+
+72
+00:03:12.090 --> 00:03:14.130
+there's one instance. It's running.
+
+73
+00:03:14.130 --> 00:03:16.710
+We can see the SSM Agent is online.
+
+74
+00:03:16.710 --> 00:03:18.810
+We can see the platform, the operating system,
+
+75
+00:03:18.810 --> 00:03:21.660
+Amazon Linux 2, the SSM Agent version
+
+76
+00:03:21.660 --> 00:03:25.080
+and then links to the EC2 instance if we wanted to.
+
+77
+00:03:25.080 --> 00:03:28.020
+Okay. So as soon as our instance is under Fleet Manager,
+
+78
+00:03:28.020 --> 00:03:28.920
+that means that we're ready
+
+79
+00:03:28.920 --> 00:03:31.290
+to run a secure shell against it.
+
+80
+00:03:31.290 --> 00:03:33.300
+So to do so, I will scroll down
+
+81
+00:03:33.300 --> 00:03:35.283
+and I will look for Session Manager.
+
+82
+00:03:36.570 --> 00:03:38.370
+Now, Session Manager is a way for us
+
+83
+00:03:38.370 --> 00:03:41.100
+to access our Linux instances and Windows instances.
+
+84
+00:03:41.100 --> 00:03:42.363
+So let's start a session.
+
+85
+00:03:43.350 --> 00:03:45.000
+And as you can see here, okay,
+
+86
+00:03:45.000 --> 00:03:47.170
+my EC2 instance under the security group
+
+87
+00:03:48.660 --> 00:03:50.490
+does not have any inbound rule.
+
+88
+00:03:50.490 --> 00:03:52.290
+Okay. So zero inbound rules in here.
+
+89
+00:03:53.160 --> 00:03:58.160
+So let's start a session on this EC2 instance and start it.
+
+90
+00:03:58.440 --> 00:04:00.540
+And the idea is that we're going to get a secure shell,
+
+91
+00:04:00.540 --> 00:04:01.373
+as you'll see in a second.
+
+92
+00:04:01.373 --> 00:04:02.940
+Here we go, we have a secure shell
+
+93
+00:04:02.940 --> 00:04:04.800
+and I didn't need to have SSH access
+
+94
+00:04:04.800 --> 00:04:07.800
+so I can do ping google.com
+
+95
+00:04:07.800 --> 00:04:10.440
+and this command is going to work, obviously.
+
+96
+00:04:10.440 --> 00:04:13.560
+And if I do host to get the host name, so host name,
+
+97
+00:04:13.560 --> 00:04:17.910
+we can see that this is IP 172-31-1-148,
+
+98
+00:04:17.910 --> 00:04:19.830
+which is exactly corresponding to,
+
+99
+00:04:19.830 --> 00:04:21.180
+and if you go into networking,
+
+100
+00:04:21.180 --> 00:04:24.180
+the private IP address of my instance.
+
+101
+00:04:24.180 --> 00:04:26.790
+So that means that using the SSM secure shell,
+
+102
+00:04:26.790 --> 00:04:29.970
+we're able to have indeed a secure shell directly
+
+103
+00:04:29.970 --> 00:04:34.970
+from AWS without having SSH security keys and SSH access.
+
+104
+00:04:35.160 --> 00:04:36.690
+So to summarize, we have three ways
+
+105
+00:04:36.690 --> 00:04:38.910
+of accessing our EC2 instance.
+
+106
+00:04:38.910 --> 00:04:43.110
+Number one is to open the port 22 and then use SSH keys
+
+107
+00:04:43.110 --> 00:04:47.280
+and with a terminal to do the SSH command.
+
+108
+00:04:47.280 --> 00:04:50.280
+Number two is to use EC2 Instance Connect
+
+109
+00:04:50.280 --> 00:04:52.230
+and that didn't require to get SSH keys
+
+110
+00:04:52.230 --> 00:04:54.120
+because they will be temporarily uploaded
+
+111
+00:04:54.120 --> 00:04:56.280
+onto the Amazon EC2 instance if we need to.
+
+112
+00:04:56.280 --> 00:04:58.440
+So that was number two, but this required still
+
+113
+00:04:58.440 --> 00:05:01.410
+the port 22 to be opened on our EC2 instance
+
+114
+00:05:01.410 --> 00:05:04.320
+to have access with using EC2 Instance Connect.
+
+115
+00:05:04.320 --> 00:05:06.150
+And then we've explored the third option
+
+116
+00:05:06.150 --> 00:05:07.560
+which is Session Manager.
+
+117
+00:05:07.560 --> 00:05:10.500
+So we need to make sure that we had an EC2 instance
+
+118
+00:05:10.500 --> 00:05:12.450
+with Amazon Linux 2 and make sure
+
+119
+00:05:12.450 --> 00:05:15.090
+that this EC2 instance had an IAM role
+
+120
+00:05:15.090 --> 00:05:18.660
+and this IAM role, okay, as you can see under security,
+
+121
+00:05:18.660 --> 00:05:21.690
+had an IAM role and this IAM role allowed access
+
+122
+00:05:21.690 --> 00:05:24.330
+from the EC2 instance to Systems Manager
+
+123
+00:05:24.330 --> 00:05:27.750
+and this is what allowed us to get the secure shell running.
+
+124
+00:05:27.750 --> 00:05:29.010
+So that's it for this lecture.
+
+125
+00:05:29.010 --> 00:05:31.350
+We can terminate this session and the cool thing is
+
+126
+00:05:31.350 --> 00:05:34.290
+that the session history will be saved in terms of logs.
+
+127
+00:05:34.290 --> 00:05:36.450
+So we can see the session history right here.
+
+128
+00:05:36.450 --> 00:05:37.770
+So this is awesome.
+
+129
+00:05:37.770 --> 00:05:41.580
+And to finish, just take your instance and terminate it.
+
+130
+00:05:41.580 --> 00:05:42.413
+That's it.
+
+131
+00:05:42.413 --> 00:05:43.410
+I hope you like this lecture
+
+132
+00:05:43.410 --> 00:05:45.360
+and I will see you in the next lecture.
+

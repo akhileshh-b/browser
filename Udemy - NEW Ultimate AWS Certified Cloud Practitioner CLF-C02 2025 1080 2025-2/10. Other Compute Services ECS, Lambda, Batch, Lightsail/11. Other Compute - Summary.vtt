@@ -1,0 +1,202 @@
+WEBVTT
+
+00:00:00.360 --> 00:00:02.260
+<v Instructor>Okay, so let's do a summary of all</v>
+
+00:00:02.260 --> 00:00:04.750
+these new compute services we've just learned about.
+
+00:00:04.750 --> 00:00:06.990
+And the first thing is that we learned about Docker,
+
+00:00:06.990 --> 00:00:08.720
+which is a technology,
+
+00:00:08.720 --> 00:00:11.770
+a container technology that allows you to run applications.
+
+00:00:11.770 --> 00:00:14.520
+And we've seen how to run Docker on AWS.
+
+00:00:14.520 --> 00:00:16.830
+The first way is to use ECS.
+
+00:00:16.830 --> 00:00:18.890
+And this is going to allow you to run your Docker containers
+
+00:00:18.890 --> 00:00:22.380
+on EC2 instances, but you have to provision
+
+00:00:22.380 --> 00:00:24.410
+these instances in advance.
+
+00:00:24.410 --> 00:00:26.640
+For Fargate, it is the exact same way
+
+00:00:26.640 --> 00:00:28.770
+but this time we run the Docker containers
+
+00:00:28.770 --> 00:00:30.840
+without provisioning the infrastructure,
+
+00:00:30.840 --> 00:00:33.290
+it is transparent to us.
+
+00:00:33.290 --> 00:00:35.760
+And then next Fargate, a serverless offering
+
+00:00:35.760 --> 00:00:38.640
+because we don't manage any EC2 instances
+
+00:00:38.640 --> 00:00:41.260
+to run these Docker containers.
+
+00:00:41.260 --> 00:00:44.710
+These Docker containers can be stored on the AWS using ECR,
+
+00:00:44.710 --> 00:00:48.010
+which has a Private Docker Images Repository.
+
+00:00:48.010 --> 00:00:50.400
+And we've also seen about the batch service.
+
+00:00:50.400 --> 00:00:52.810
+Batch allows you to run batch jobs on AWS
+
+00:00:52.810 --> 00:00:56.120
+across a set of managed EC2 instances.
+
+00:00:56.120 --> 00:00:58.630
+And actually, the batch service actually runs
+
+00:00:58.630 --> 00:01:01.750
+on top of the ECS service.
+
+00:01:01.750 --> 00:01:04.940
+We've finally seen about a new type of service
+
+00:01:04.940 --> 00:01:07.700
+to run predictable and low pricing simple applications
+
+00:01:07.700 --> 00:01:09.880
+and database techs, which is LightSail,
+
+00:01:09.880 --> 00:01:12.390
+which is most likely going to be a distractor at the exam
+
+00:01:12.390 --> 00:01:14.960
+but we've done a hands-on, and now we knew what to expect
+
+00:01:14.960 --> 00:01:16.623
+and how the service works.
+
+00:01:17.600 --> 00:01:19.280
+So now let's talk about Lambda.
+
+00:01:19.280 --> 00:01:21.290
+Lambda is going to be a serverless service
+
+00:01:21.290 --> 00:01:22.360
+which is going to give you
+
+00:01:22.360 --> 00:01:25.050
+a capability of function as a service,
+
+00:01:25.050 --> 00:01:27.140
+and it's going to have seamless scaling.
+
+00:01:27.140 --> 00:01:28.350
+So from one invocation
+
+00:01:28.350 --> 00:01:30.370
+to thousands of invocation per second,
+
+00:01:30.370 --> 00:01:31.980
+and it's fully reactive.
+
+00:01:31.980 --> 00:01:34.420
+You have two components for building of Lambda.
+
+00:01:34.420 --> 00:01:35.790
+You have by the time run,
+
+00:01:35.790 --> 00:01:38.010
+times the amount of memory provisions
+
+00:01:38.010 --> 00:01:39.400
+for the Lambda function.
+
+00:01:39.400 --> 00:01:41.840
+And also by the number of times your Lambda function
+
+00:01:41.840 --> 00:01:43.580
+has been invoked.
+
+00:01:43.580 --> 00:01:45.050
+In terms of language supports,
+
+00:01:45.050 --> 00:01:48.100
+it supports many different kinds of programming languages.
+
+00:01:48.100 --> 00:01:51.420
+And even though it supports container images
+
+00:01:51.420 --> 00:01:53.910
+and then need to implement a specific runtime API.
+
+00:01:53.910 --> 00:01:56.490
+And so I like to say that Lambda does not support
+
+00:01:56.490 --> 00:01:58.070
+arbitrary Docker images,
+
+00:01:58.070 --> 00:02:01.020
+for this you would use ECS and Fargate,
+
+00:02:01.020 --> 00:02:03.520
+but if your Docker image does implement
+
+00:02:03.520 --> 00:02:05.430
+the Lambda container Runtime API,
+
+00:02:05.430 --> 00:02:07.370
+then you can run Docker images on Lambda,
+
+00:02:07.370 --> 00:02:09.410
+but this is not the standard again.
+
+00:02:09.410 --> 00:02:12.390
+The invocation time is up to 15 minutes
+
+00:02:12.390 --> 00:02:15.370
+and the use cases for Lambda is to create funnels
+
+00:02:15.370 --> 00:02:18.500
+for images uploaded onto Amazon history, for example,
+
+00:02:18.500 --> 00:02:21.690
+or to run a serverless Cron job.
+
+00:02:21.690 --> 00:02:24.030
+Finally, if we wanted to expose our Lambda functions
+
+00:02:24.030 --> 00:02:27.440
+as APIs, we would use another serverless service
+
+00:02:27.440 --> 00:02:29.110
+called the API Gateway,
+
+00:02:29.110 --> 00:02:32.940
+that would allow us to expose our functions as HTTP APIs,
+
+00:02:32.940 --> 00:02:36.650
+but also give us capabilities around security, front Ling,
+
+00:02:36.650 --> 00:02:38.610
+API keys, and so on.
+
+00:02:38.610 --> 00:02:40.630
+So that's it for this section, I hope you liked it.
+
+00:02:40.630 --> 00:02:42.580
+And I will see you in the next section.

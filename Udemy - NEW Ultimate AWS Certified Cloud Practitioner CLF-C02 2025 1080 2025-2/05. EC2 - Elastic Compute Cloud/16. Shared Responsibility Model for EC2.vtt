@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00:00.250 --> 00:00:01.430
+<v Narrator>Now again,</v>
+
+00:00:01.430 --> 00:00:04.300
+one more reminder into the Shared Responsibility Model
+
+00:00:04.300 --> 00:00:06.840
+and how this applies for EC2.
+
+00:00:06.840 --> 00:00:10.530
+So AWS is going to be responsible for all data centers,
+
+00:00:10.530 --> 00:00:13.260
+their infrastructure and the security of them,
+
+00:00:13.260 --> 00:00:15.580
+then AWS is going to be responsible
+
+00:00:15.580 --> 00:00:18.530
+for making sure you have isolation on the physical host,
+
+00:00:18.530 --> 00:00:19.363
+if you're getting,
+
+00:00:19.363 --> 00:00:22.690
+for example, a dedicated host or replacing faulty hardware
+
+00:00:22.690 --> 00:00:24.650
+if one of their servers is failing,
+
+00:00:24.650 --> 00:00:27.510
+or making sure they are still compliant with the regulations
+
+00:00:27.510 --> 00:00:29.060
+that they have agreed to.
+
+00:00:29.060 --> 00:00:30.420
+But you as a user,
+
+00:00:30.420 --> 00:00:33.010
+you're responsible for the security in the cloud.
+
+00:00:33.010 --> 00:00:36.070
+So that means that you define your own security group rules.
+
+00:00:36.070 --> 00:00:38.920
+And this allows you or other people to access
+
+00:00:38.920 --> 00:00:41.420
+or not your EC2 instances.
+
+00:00:41.420 --> 00:00:44.680
+You own the entire virtual machine
+
+00:00:44.680 --> 00:00:46.510
+inside of your EC2 instance.
+
+00:00:46.510 --> 00:00:48.810
+So that means that your operating system will be Windows
+
+00:00:48.810 --> 00:00:51.280
+or Linux, all the patches and the updates.
+
+00:00:51.280 --> 00:00:53.707
+You have to do them not AWS.
+
+00:00:53.707 --> 00:00:55.490
+AWS will give you the virtual machine.
+
+00:00:55.490 --> 00:00:57.587
+It's up to you to handle it the way you want.
+
+00:00:57.587 --> 00:00:59.491
+That means that all the software
+
+00:00:59.491 --> 00:01:02.750
+and the utilities that are installed on this EC2 instance,
+
+00:01:02.750 --> 00:01:05.220
+also are yours to be responsible for.
+
+00:01:05.220 --> 00:01:09.580
+Finally, understanding how to assign AM Roles
+
+00:01:09.580 --> 00:01:11.580
+and make sure the permissions are correct.
+
+00:01:11.580 --> 00:01:15.140
+And finally, making sure data is secure on your instance
+
+00:01:15.140 --> 00:01:17.950
+is also very important for your EC2 instances.
+
+00:01:17.950 --> 00:01:18.783
+So that's it.
+
+00:01:18.783 --> 00:01:20.850
+Hope that again puts a bit of perspective
+
+00:01:20.850 --> 00:01:23.169
+on to the shared responsibility model for EC2
+
+00:01:23.169 --> 00:01:25.263
+and I will see you in the next lecture.

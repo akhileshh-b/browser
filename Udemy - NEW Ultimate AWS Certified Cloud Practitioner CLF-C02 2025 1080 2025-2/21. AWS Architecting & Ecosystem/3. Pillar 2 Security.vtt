@@ -1,0 +1,414 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:01.960
+<v Instructor>Security is the second pillar</v>
+
+2
+00:00:01.960 --> 00:00:04.670
+of the Well-Architected Framework and I really like it.
+
+3
+00:00:04.670 --> 00:00:06.230
+So security we all know what it is,
+
+4
+00:00:06.230 --> 00:00:09.210
+but it includes the ability to protect information,
+
+5
+00:00:09.210 --> 00:00:12.630
+systems and assets while delivering business value
+
+6
+00:00:12.630 --> 00:00:15.540
+through risk assessment and mitigation strategies.
+
+7
+00:00:15.540 --> 00:00:18.970
+So usually people see security as like oh we have to do it
+
+8
+00:00:18.970 --> 00:00:21.670
+but in the end when your application is secure,
+
+9
+00:00:21.670 --> 00:00:25.100
+you're really minimizing a risk over time and you save cost
+
+10
+00:00:25.100 --> 00:00:27.630
+from disasters and you really don't want to have a risk,
+
+11
+00:00:27.630 --> 00:00:29.780
+or a security issue in your company.
+
+12
+00:00:29.780 --> 00:00:31.780
+Now how do we design strong security?
+
+13
+00:00:31.780 --> 00:00:34.570
+Well we need to have a strong identity foundation.
+
+14
+00:00:34.570 --> 00:00:37.660
+So we want to centralize how we manage user accounts.
+
+15
+00:00:37.660 --> 00:00:41.580
+We want to rely on least privilege and maybe IAM
+
+16
+00:00:41.580 --> 00:00:44.560
+is going to be one of these services to help us do that.
+
+17
+00:00:44.560 --> 00:00:47.860
+We want to enable traceability, that means we need to look
+
+18
+00:00:47.860 --> 00:00:50.570
+at all the logs, all the metrics and store them
+
+19
+00:00:50.570 --> 00:00:52.560
+and automatically respond and take action,
+
+20
+00:00:52.560 --> 00:00:54.670
+every time something looks really weird.
+
+21
+00:00:54.670 --> 00:00:57.150
+We need to apply security at all layers, okay?
+
+22
+00:00:57.150 --> 00:00:59.100
+You need to secure every single layer,
+
+23
+00:00:59.100 --> 00:01:01.770
+such as if one fail maybe the next one will take over.
+
+24
+00:01:01.770 --> 00:01:04.930
+So edge network, VPC, subnet, load balancer,
+
+25
+00:01:04.930 --> 00:01:07.740
+every institute instance you have, the OS, patching it,
+
+26
+00:01:07.740 --> 00:01:09.500
+the application, making sure it's up to date,
+
+27
+00:01:09.500 --> 00:01:10.620
+all these things.
+
+28
+00:01:10.620 --> 00:01:12.720
+You need to automate security best practices, okay?
+
+29
+00:01:12.720 --> 00:01:14.630
+Security is not something you do manually,
+
+30
+00:01:14.630 --> 00:01:17.730
+it's mostly done well, when it's automated.
+
+31
+00:01:17.730 --> 00:01:20.340
+You need to protect data in transit and at rest.
+
+32
+00:01:20.340 --> 00:01:23.710
+That means always enable encryption, always do SSL,
+
+33
+00:01:23.710 --> 00:01:26.410
+always use tokenization and do access control.
+
+34
+00:01:26.410 --> 00:01:28.450
+And you need to keep people away from data.
+
+35
+00:01:28.450 --> 00:01:30.590
+So why is someone requesting data?
+
+36
+00:01:30.590 --> 00:01:33.480
+Isn't that a risk when you allow someone to access data,
+
+37
+00:01:33.480 --> 00:01:36.720
+do they really need it or is there a way to automate
+
+38
+00:01:36.720 --> 00:01:38.370
+the need for that direct access
+
+39
+00:01:38.370 --> 00:01:40.020
+in that manual processing of data?
+
+40
+00:01:40.020 --> 00:01:42.100
+And then you need to prepare for security events.
+
+41
+00:01:42.100 --> 00:01:44.490
+So security events must happen some day
+
+42
+00:01:44.490 --> 00:01:48.280
+in every company, I think, and so run response simulations,
+
+43
+00:01:48.280 --> 00:01:50.440
+use tools to automate the speed of detection,
+
+44
+00:01:50.440 --> 00:01:53.410
+investigation and recovery, okay?
+
+45
+00:01:53.410 --> 00:01:55.820
+So in terms of AWS Services, what does that mean?
+
+46
+00:01:55.820 --> 00:01:57.500
+Well the first one is going to be identity
+
+47
+00:01:57.500 --> 00:01:58.590
+and access management.
+
+48
+00:01:58.590 --> 00:02:01.420
+So we all know what that means, that means IAM,
+
+49
+00:02:01.420 --> 00:02:03.970
+STS for generating temporary credentials,
+
+50
+00:02:03.970 --> 00:02:06.270
+maybe Multi-Factor Authentication token
+
+51
+00:02:06.270 --> 00:02:08.550
+and AWS Organization to manage
+
+52
+00:02:08.550 --> 00:02:11.070
+multiple address accounts centrally.
+
+53
+00:02:11.070 --> 00:02:12.270
+Then detective controls.
+
+54
+00:02:12.270 --> 00:02:13.810
+So how do we detect stuff goes wrong?
+
+55
+00:02:13.810 --> 00:02:17.040
+AWS Config for compliance, CloudTrail to look
+
+56
+00:02:17.040 --> 00:02:18.970
+at API calls that look suspicious.
+
+57
+00:02:18.970 --> 00:02:20.850
+CloudWatch to look at metrics and things
+
+58
+00:02:20.850 --> 00:02:24.560
+that may go completely out of norm.
+
+59
+00:02:24.560 --> 00:02:26.160
+And then we get infrastructure protection.
+
+60
+00:02:26.160 --> 00:02:28.040
+So how do we protect our own Cloud?
+
+61
+00:02:28.040 --> 00:02:29.890
+Well CloudFront is going to be a really great
+
+62
+00:02:29.890 --> 00:02:32.730
+first line of defense against DDoS attacks.
+
+63
+00:02:32.730 --> 00:02:35.020
+Amazon VPC to secure your network
+
+64
+00:02:35.020 --> 00:02:36.970
+and making sure you set the right ACLs.
+
+65
+00:02:36.970 --> 00:02:39.390
+And then Shield, we haven't seen this, but it's like
+
+66
+00:02:39.390 --> 00:02:42.200
+basically a way to protect your AWs account from DDoS.
+
+67
+00:02:42.200 --> 00:02:44.540
+WAF which is a Web Application Firewall
+
+68
+00:02:44.540 --> 00:02:46.710
+and Inspector to basically look at the security
+
+69
+00:02:46.710 --> 00:02:48.490
+of our institute instances.
+
+70
+00:02:48.490 --> 00:02:50.370
+Now we haven't see all these services, they are more
+
+71
+00:02:50.370 --> 00:02:53.240
+for the SysOps exam, but again I just wanna give you here
+
+72
+00:02:53.240 --> 00:02:55.230
+an overview of all the AWS Services
+
+73
+00:02:55.230 --> 00:02:57.960
+that can help you achieve full security.
+
+74
+00:02:57.960 --> 00:03:01.140
+For data protection, well we know there is KMS
+
+75
+00:03:01.140 --> 00:03:03.270
+to encrypt all the data at rest.
+
+76
+00:03:03.270 --> 00:03:06.490
+Then there is S3, which has a tons of encryption mechanism,
+
+77
+00:03:06.490 --> 00:03:10.110
+we have SSES3, we have SSEKMS,
+
+78
+00:03:10.110 --> 00:03:12.120
+SSEC or client setting encryption.
+
+79
+00:03:12.120 --> 00:03:14.950
+On top of it we get bucket policies and all that stuff.
+
+80
+00:03:14.950 --> 00:03:17.300
+And then every, you know, every managed service
+
+81
+00:03:17.300 --> 00:03:19.000
+has some kind of data protection.
+
+82
+00:03:19.000 --> 00:03:23.210
+So Load Balancer can enable to expose a HTPS end point.
+
+83
+00:03:23.210 --> 00:03:26.490
+EBS volumes can be encrypted at rest, RDS instances
+
+84
+00:03:26.490 --> 00:03:29.530
+also can be encrypted at rest and they have SSL capability.
+
+85
+00:03:29.530 --> 00:03:32.750
+So all these things are here to protect your data.
+
+86
+00:03:32.750 --> 00:03:35.320
+Incident response, what happens when there's a problem?
+
+87
+00:03:35.320 --> 00:03:37.540
+Well IAM is going to be your first good line of defense
+
+88
+00:03:37.540 --> 00:03:39.270
+if there is an account being compromised
+
+89
+00:03:39.270 --> 00:03:42.470
+and just delete that account or give it zero privilege.
+
+90
+00:03:42.470 --> 00:03:44.270
+CouldFormation will be great, for example
+
+91
+00:03:44.270 --> 00:03:46.470
+if someone deletes your entire infrastructure,
+
+92
+00:03:46.470 --> 00:03:48.380
+how do you get back into a running state?
+
+93
+00:03:48.380 --> 00:03:50.540
+Well CloudFormation is the answer.
+
+94
+00:03:50.540 --> 00:03:53.420
+Then, for example, how do we automate
+
+95
+00:03:53.420 --> 00:03:54.690
+all these incident response?
+
+96
+00:03:54.690 --> 00:03:57.426
+How do we automate the fact that if someone deletes
+
+97
+00:03:57.426 --> 00:04:00.520
+a resource, maybe we should alert, CloudWatch Events
+
+98
+00:04:00.520 --> 00:04:02.170
+could be a great way of doing that.
+
+99
+00:04:02.170 --> 00:04:03.990
+So that's it, again just to show you the synergy.
+
+100
+00:04:03.990 --> 00:04:05.630
+Here there is a lot of AWS Services
+
+101
+00:04:05.630 --> 00:04:08.140
+and this is just an example of how you could achieve
+
+102
+00:04:08.140 --> 00:04:11.150
+all these principles with the Services.
+
+103
+00:04:11.150 --> 00:04:14.023
+I hoped you liked it and I will see you in the next lecture.
+

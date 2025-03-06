@@ -1,0 +1,466 @@
+WEBVTT
+
+1
+00:00:00.083 --> 00:00:01.660
+<v Instructor>Welcome to this section</v>
+
+2
+00:00:01.660 --> 00:00:04.410
+where we will at look the different storage options
+
+3
+00:00:04.410 --> 00:00:06.270
+for EC2 instances.
+
+4
+00:00:06.270 --> 00:00:07.930
+So first, the most important ones
+
+5
+00:00:07.930 --> 00:00:11.120
+are going to be EBS Volumes, so let's define what they are.
+
+6
+00:00:11.120 --> 00:00:15.230
+An EBS Volume stands for Elastic Block Store.
+
+7
+00:00:15.230 --> 00:00:18.400
+It's a network drive that you can attach to your instances
+
+8
+00:00:18.400 --> 00:00:19.720
+while they run,
+
+9
+00:00:19.720 --> 00:00:22.040
+and we've been using them without even knowing.
+
+10
+00:00:22.040 --> 00:00:25.980
+So this EBS Volumes allow us to persist data,
+
+11
+00:00:25.980 --> 00:00:28.890
+even after the instance is terminated.
+
+12
+00:00:28.890 --> 00:00:30.500
+And so that's the whole purpose,
+
+13
+00:00:30.500 --> 00:00:32.260
+we can recreate an instance
+
+14
+00:00:32.260 --> 00:00:34.670
+and mount to the same EBS Volume from before
+
+15
+00:00:34.670 --> 00:00:36.560
+and we'll get back our data.
+
+16
+00:00:36.560 --> 00:00:38.060
+That is very helpful.
+
+17
+00:00:38.060 --> 00:00:41.160
+So these EBS Volumes, at the CCP level,
+
+18
+00:00:41.160 --> 00:00:45.160
+can only be mounted to one instance at a time, okay?
+
+19
+00:00:45.160 --> 00:00:47.250
+And when you create an EBS Volume,
+
+20
+00:00:47.250 --> 00:00:49.970
+it is bound to a specific availability zone.
+
+21
+00:00:49.970 --> 00:00:52.293
+That means that you cannot have an EBS Volume
+
+22
+00:00:52.293 --> 00:00:57.293
+in created, for example, us-east-1a
+
+23
+00:00:58.000 --> 00:00:59.990
+we'll see this in the diagram in a second.
+
+24
+00:00:59.990 --> 00:01:02.170
+So how do you think of EBS Volumes?
+
+25
+00:01:02.170 --> 00:01:05.590
+Well, you can think of them as network USB sticks.
+
+26
+00:01:05.590 --> 00:01:09.040
+So, it's a USB stick that you can take from a computer
+
+27
+00:01:09.040 --> 00:01:10.440
+and put it in another computer
+
+28
+00:01:10.440 --> 00:01:13.080
+but you actually don't physically put it in a computer.
+
+29
+00:01:13.080 --> 00:01:15.670
+It's attached through the network.
+
+30
+00:01:15.670 --> 00:01:18.530
+The feature gives us 30 GBs of free EBS storage
+
+31
+00:01:18.530 --> 00:01:21.350
+of type General Purpose or SSD or Magnetic per month.
+
+32
+00:01:21.350 --> 00:01:23.210
+And in this course, we'll be using this
+
+33
+00:01:23.210 --> 00:01:25.550
+with the GP2 to GP3 Volumes.
+
+34
+00:01:25.550 --> 00:01:26.540
+Now let's look at it.
+
+35
+00:01:26.540 --> 00:01:28.070
+So EBS Volumes are network drivers
+
+36
+00:01:28.070 --> 00:01:30.060
+that is not a physical drive, okay?
+
+37
+00:01:30.060 --> 00:01:33.750
+So to communicate between the instance and the EBS Volume,
+
+38
+00:01:33.750 --> 00:01:35.540
+it will be using the network.
+
+39
+00:01:35.540 --> 00:01:37.060
+And because the network is used,
+
+40
+00:01:37.060 --> 00:01:39.500
+there may be a bit of latency from one computer
+
+41
+00:01:39.500 --> 00:01:41.530
+to reach to another server.
+
+42
+00:01:41.530 --> 00:01:44.310
+Now, EBS Volumes, because they are a network drive
+
+43
+00:01:44.310 --> 00:01:46.610
+they can be detached from an EC2 instance
+
+44
+00:01:46.610 --> 00:01:49.380
+and attached to another one very quickly.
+
+45
+00:01:49.380 --> 00:01:51.320
+And that's makes it super handy
+
+46
+00:01:51.320 --> 00:01:53.830
+when you want to do failovers for example.
+
+47
+00:01:53.830 --> 00:01:57.460
+EBS Volumes are locked to a specific availability zones,
+
+48
+00:01:57.460 --> 00:01:59.860
+that means that, as I said, if it's created in us-east-1a
+
+49
+00:01:59.860 --> 00:02:01.750
+it cannot be attached to us-east-1b
+
+50
+00:02:01.750 --> 00:02:05.630
+but, we will see in this section that if we do a snapshot,
+
+51
+00:02:05.630 --> 00:02:08.390
+then we are able to move a volume across
+
+52
+00:02:08.390 --> 00:02:10.350
+from different availability zones.
+
+53
+00:02:10.350 --> 00:02:11.920
+And finally, it's a volume,
+
+54
+00:02:11.920 --> 00:02:14.440
+so you have to provision capacity in advance.
+
+55
+00:02:14.440 --> 00:02:17.450
+So you need to say how many GBs you want in advance
+
+56
+00:02:17.450 --> 00:02:21.050
+and the IOPS, which is I/O operations per seconds,
+
+57
+00:02:21.050 --> 00:02:23.660
+and you're basically defining how you want
+
+58
+00:02:23.660 --> 00:02:25.560
+your EBS Volume to perform.
+
+59
+00:02:25.560 --> 00:02:28.780
+You're going to get billed for that provision capacity
+
+60
+00:02:28.780 --> 00:02:30.920
+and you can increase the capacity over time
+
+61
+00:02:30.920 --> 00:02:33.750
+if you want you to have better performance or more size.
+
+62
+00:02:33.750 --> 00:02:35.810
+So, as a diagram, how does it look like?
+
+63
+00:02:35.810 --> 00:02:38.890
+Well, we have us-east-1a with one EC2 instance
+
+64
+00:02:38.890 --> 00:02:40.090
+and we can attach, for example
+
+65
+00:02:40.090 --> 00:02:43.260
+one EBS Volume to the EC2 instance.
+
+66
+00:02:43.260 --> 00:02:45.630
+If we create another EC2 instance,
+
+67
+00:02:45.630 --> 00:02:48.860
+as I said an EBS Volume can not be attached to two instances
+
+68
+00:02:48.860 --> 00:02:52.570
+at a time at the Certified Cloud Practitioner level.
+
+69
+00:02:52.570 --> 00:02:54.740
+And therefore, what I wanna say is that
+
+70
+00:02:54.740 --> 00:02:56.900
+this other EC2 instance needs to have
+
+71
+00:02:56.900 --> 00:02:59.300
+its own EBS Volume attached to it,
+
+72
+00:02:59.300 --> 00:03:03.120
+but it is a very possible for us to have two EBS Volumes
+
+73
+00:03:03.120 --> 00:03:04.810
+attached to one instance
+
+74
+00:03:04.810 --> 00:03:09.000
+think of it as two network USB sticks into one machine
+
+75
+00:03:09.000 --> 00:03:10.490
+that makes a lot of sense.
+
+76
+00:03:10.490 --> 00:03:13.810
+Now EBS Volumes are linked to an availability zone.
+
+77
+00:03:13.810 --> 00:03:16.490
+So as we can see, all this diagram has been so far using
+
+78
+00:03:16.490 --> 00:03:18.020
+us-east-1a.
+
+79
+00:03:18.020 --> 00:03:21.400
+So if you want it to have other EBS Volumes in an other AZ
+
+80
+00:03:21.400 --> 00:03:24.510
+then you would need to create this separately
+
+81
+00:03:24.510 --> 00:03:25.830
+in the other availability zone.
+
+82
+00:03:25.830 --> 00:03:28.470
+So just same way that's your EC2 instances
+
+83
+00:03:28.470 --> 00:03:32.730
+are bound to an AZ, so are the EBS Volumes.
+
+84
+00:03:32.730 --> 00:03:35.970
+Finally, it is possible for us to create EBS Volumes
+
+85
+00:03:35.970 --> 00:03:37.600
+and leave them unattached
+
+86
+00:03:37.600 --> 00:03:39.260
+they don't need to be necessarily attached
+
+87
+00:03:39.260 --> 00:03:41.800
+to an ECG instance, they can be attached on demand
+
+88
+00:03:41.800 --> 00:03:44.180
+and that makes it very, very powerful.
+
+89
+00:03:44.180 --> 00:03:48.650
+Finally, when we go ahead and create EBS Volumes
+
+90
+00:03:48.650 --> 00:03:50.900
+through EC2 instances, there is this thing
+
+91
+00:03:50.900 --> 00:03:52.970
+called a Deletes on Termination attribute
+
+92
+00:03:52.970 --> 00:03:55.150
+and this can come up in the exam so,
+
+93
+00:03:55.150 --> 00:03:57.750
+if you look at this when we create
+
+94
+00:03:57.750 --> 00:04:02.750
+an EBS Volume in the console, when we create an EC2 instance
+
+95
+00:04:03.430 --> 00:04:05.290
+there is the second to last column
+
+96
+00:04:05.290 --> 00:04:07.280
+called Delete on Termination.
+
+97
+00:04:07.280 --> 00:04:09.960
+And by default, it is ticked for the Root Volume
+
+98
+00:04:09.960 --> 00:04:12.770
+and not ticked for a new EBS Volume.
+
+99
+00:04:12.770 --> 00:04:14.970
+So this controls the EBS behavior
+
+100
+00:04:14.970 --> 00:04:17.840
+when an EC2 instance is being terminated.
+
+101
+00:04:17.840 --> 00:04:21.000
+So by default, as we can see, the root EBS Volume
+
+102
+00:04:21.000 --> 00:04:24.450
+is deleted alongside the instance being terminated.
+
+103
+00:04:24.450 --> 00:04:25.700
+So it's enabled
+
+104
+00:04:25.700 --> 00:04:29.680
+and the default any other attached EBS Volume is not deleted
+
+105
+00:04:29.680 --> 00:04:31.740
+because it's disabled by default.
+
+106
+00:04:31.740 --> 00:04:35.210
+But obviously as we can see in this UI, we can control
+
+107
+00:04:35.210 --> 00:04:38.730
+if you want to enable or disable delete on termination.
+
+108
+00:04:38.730 --> 00:04:40.810
+And so use case right, would be for example,
+
+109
+00:04:40.810 --> 00:04:43.370
+if you want to preserve the root volume,
+
+110
+00:04:43.370 --> 00:04:44.670
+when an instance is terminated,
+
+111
+00:04:44.670 --> 00:04:46.850
+for example, to save some data
+
+112
+00:04:46.850 --> 00:04:48.830
+then you can disable delete on termination
+
+113
+00:04:48.830 --> 00:04:51.160
+for the root volume, and you'll be good to go
+
+114
+00:04:51.160 --> 00:04:54.400
+and it could be an exam scenario at the exam.
+
+115
+00:04:54.400 --> 00:04:55.310
+So I hope you liked it.
+
+116
+00:04:55.310 --> 00:04:57.260
+And I will see you in the next lecture.
+

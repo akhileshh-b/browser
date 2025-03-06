@@ -1,0 +1,472 @@
+WEBVTT
+
+00:00:00.110 --> 00:00:02.460
+<v Instructor>Now let's talk about AWS Config.</v>
+
+00:00:02.460 --> 00:00:05.640
+So Config helps with auditing and recording the compliance
+
+00:00:05.640 --> 00:00:08.810
+of your resources by recording the configuration
+
+00:00:08.810 --> 00:00:10.630
+and their changes over time.
+
+00:00:10.630 --> 00:00:12.490
+So any time we've been doing some manual changes
+
+00:00:12.490 --> 00:00:16.220
+of the configuration in AWS, we did not have a list
+
+00:00:16.220 --> 00:00:17.780
+of all the changes that happened,
+
+00:00:17.780 --> 00:00:20.680
+but we can have this using Config.
+
+00:00:20.680 --> 00:00:24.280
+Then this configuration data can be stored into Amazon S3,
+
+00:00:24.280 --> 00:00:28.390
+to be later analyzed by Athena, or to be recovered.
+
+00:00:28.390 --> 00:00:31.060
+The question that can be solved by using Config,
+
+00:00:31.060 --> 00:00:34.130
+can be is there unrestricted SSH access
+
+00:00:34.130 --> 00:00:35.740
+to my security groups?
+
+00:00:35.740 --> 00:00:38.480
+Or do buckets have any public access?
+
+00:00:38.480 --> 00:00:41.780
+Or has my ALB configuration changed over time?
+
+00:00:41.780 --> 00:00:45.350
+All these things can be resolved by Config and Config rules.
+
+00:00:45.350 --> 00:00:48.730
+Then you can receive alerts through SNS notifications
+
+00:00:48.730 --> 00:00:51.440
+for any changes done onto your infrastructure,
+
+00:00:51.440 --> 00:00:53.410
+and Config is a per-region service,
+
+00:00:53.410 --> 00:00:56.160
+but you can create multiple Config configurations
+
+00:00:56.160 --> 00:00:59.080
+and then aggregate all the results across all the accounts
+
+00:00:59.080 --> 00:01:00.740
+and all the regions.
+
+00:01:00.740 --> 00:01:02.840
+So let's have an example of how Config work.
+
+00:01:02.840 --> 00:01:05.070
+So if you want to see the compliance of a resource
+
+00:01:05.070 --> 00:01:07.040
+over time, this is for a security group,
+
+00:01:07.040 --> 00:01:09.360
+you can see that it was noncompliant,
+
+00:01:09.360 --> 00:01:10.740
+and then after making some changes,
+
+00:01:10.740 --> 00:01:12.800
+it became compliant and green.
+
+00:01:12.800 --> 00:01:15.850
+You can also view the configuration of a resource over time
+
+00:01:15.850 --> 00:01:17.700
+to see how their configuration
+
+00:01:17.700 --> 00:01:20.170
+of that security group has changed.
+
+00:01:20.170 --> 00:01:23.380
+And finally, you can view who made these changes
+
+00:01:23.380 --> 00:01:25.700
+to the resources based on CloudTrail
+
+00:01:25.700 --> 00:01:29.040
+if you have enabled CloudTrail in your accounts.
+
+00:01:29.040 --> 00:01:32.490
+So I am in the Config console, I'm going to get started,
+
+00:01:32.490 --> 00:01:34.330
+and I need to choose the type of resources
+
+00:01:34.330 --> 00:01:35.480
+that I want to record.
+
+00:01:35.480 --> 00:01:37.450
+Just know that Config is not a free service,
+
+00:01:37.450 --> 00:01:40.060
+so if you enable it, then you will have to pay.
+
+00:01:40.060 --> 00:01:42.790
+For this, I will enable to record all the resources
+
+00:01:42.790 --> 00:01:45.440
+in this region, including the global resources,
+
+00:01:45.440 --> 00:01:46.640
+and it will create a bucket
+
+00:01:46.640 --> 00:01:49.820
+in which all the configuration will be stored.
+
+00:01:49.820 --> 00:01:53.450
+Then I can select a topic to send notifications
+
+00:01:53.450 --> 00:01:56.650
+to for all the changes of the configurations.
+
+00:01:56.650 --> 00:01:58.050
+I will disable this for now,
+
+00:01:58.050 --> 00:02:01.200
+and it will create a Config service-linked role.
+
+00:02:01.200 --> 00:02:04.070
+I'll click on next, then I can choose Config rules,
+
+00:02:04.070 --> 00:02:06.080
+so these are rules to apply on my account.
+
+00:02:06.080 --> 00:02:08.710
+For example, to check if SSH is open.
+
+00:02:08.710 --> 00:02:10.830
+So the restricted-ssh is one rule,
+
+00:02:10.830 --> 00:02:13.420
+you can have also public entry buckets.
+
+00:02:13.420 --> 00:02:16.790
+So if you go to rds-instance-public-access-check,
+
+00:02:16.790 --> 00:02:20.100
+for example this is an example, or if I type S3,
+
+00:02:20.100 --> 00:02:23.220
+we can see s3-bucket-logging-enabled,
+
+00:02:23.220 --> 00:02:25.580
+or s3-account-level-public-access-blocks.
+
+00:02:25.580 --> 00:02:28.280
+So these are a bunch of rules in which they can be enabled
+
+00:02:28.280 --> 00:02:32.240
+to check the compliance of our resources within our account.
+
+00:02:32.240 --> 00:02:34.830
+For this example, and remember this is going to be paid,
+
+00:02:34.830 --> 00:02:37.960
+I'm going to enable the restricted-ssh rule to show you
+
+00:02:37.960 --> 00:02:40.270
+the compliance of my security groups.
+
+00:02:40.270 --> 00:02:42.370
+I'll click on Next, and then as I can see,
+
+00:02:42.370 --> 00:02:45.030
+I'm going to record the configuration of all the resources,
+
+00:02:45.030 --> 00:02:46.460
+it's going to be put in the S3 bucket,
+
+00:02:46.460 --> 00:02:51.300
+and it is going to apply this Config rule, restricted-ssh.
+
+00:02:51.300 --> 00:02:52.600
+I'll click on Confirm,
+
+00:02:52.600 --> 00:02:54.290
+and setting up Config can take a time,
+
+00:02:54.290 --> 00:02:56.080
+so I will wait for Config to be done,
+
+00:02:56.080 --> 00:02:58.810
+and to record everything in my account.
+
+00:02:58.810 --> 00:03:01.710
+Okay, so I'm in Config, and I'm going to use the new console
+
+00:03:01.710 --> 00:03:04.743
+to match your experience, and so in Config,
+
+00:03:04.743 --> 00:03:07.830
+what I'm going to be able to see is the inventory
+
+00:03:07.830 --> 00:03:10.500
+of all my resources in AWS.
+
+00:03:10.500 --> 00:03:12.580
+As you can see, I have five security groups,
+
+00:03:12.580 --> 00:03:14.570
+three subnet, one InternetGateway,
+
+00:03:14.570 --> 00:03:16.410
+and so on you can read with me.
+
+00:03:16.410 --> 00:03:20.040
+And it turns out, that as part of all my resources,
+
+00:03:20.040 --> 00:03:22.210
+I have some resources that are not compliant.
+
+00:03:22.210 --> 00:03:24.480
+So there's one rule that is not compliant,
+
+00:03:24.480 --> 00:03:26.940
+and that is the restricted-ssh rule.
+
+00:03:26.940 --> 00:03:29.560
+If I click on this, I can look at the rule detail,
+
+00:03:29.560 --> 00:03:31.210
+and I can see the resources in scope,
+
+00:03:31.210 --> 00:03:34.370
+and I can see that three out of five security groups
+
+00:03:34.370 --> 00:03:36.170
+are not compliant.
+
+00:03:36.170 --> 00:03:38.570
+So if I click on one of these security group,
+
+00:03:38.570 --> 00:03:41.320
+I can look at the details of the security group,
+
+00:03:41.320 --> 00:03:42.820
+and I can see the rule is applied,
+
+00:03:42.820 --> 00:03:45.670
+and I can see that this rule is not compliant.
+
+00:03:45.670 --> 00:03:48.190
+So this rule, what did it describe?
+
+00:03:48.190 --> 00:03:51.570
+Well, it described the fact that there is unrestricted
+
+00:03:51.570 --> 00:03:54.730
+SSH allowed onto my security group.
+
+00:03:54.730 --> 00:03:56.830
+So what I can do, is that I can fix this rule.
+
+00:03:56.830 --> 00:04:01.040
+So let's go into Resources and then I will find
+
+00:04:01.040 --> 00:04:04.080
+my security group that is not compliant, so this one,
+
+00:04:04.080 --> 00:04:05.380
+and we'll click on it,
+
+00:04:05.380 --> 00:04:08.660
+and then I'm going to click on Resource Timeline.
+
+00:04:08.660 --> 00:04:11.060
+So I can see my configuration timeline,
+
+00:04:11.060 --> 00:04:13.920
+and I can see that my configuration was done
+
+00:04:13.920 --> 00:04:16.210
+on the 2nd of June, and I can also look at
+
+00:04:16.210 --> 00:04:17.930
+my compliance timeline, and I can see
+
+00:04:17.930 --> 00:04:21.450
+that my security group right now, is not compliant.
+
+00:04:21.450 --> 00:04:23.410
+So if I scroll down, I look at the rules,
+
+00:04:23.410 --> 00:04:25.880
+and say, yes, this is not compliant,
+
+00:04:25.880 --> 00:04:28.750
+and this is because we have a port opened
+
+00:04:28.750 --> 00:04:31.540
+on SSH for everyone to use.
+
+00:04:31.540 --> 00:04:34.260
+So what I can do is that I can fix this resource.
+
+00:04:34.260 --> 00:04:35.430
+So for this I'm gonna go
+
+00:04:35.430 --> 00:04:39.050
+into our security group configurations,
+
+00:04:39.050 --> 00:04:41.147
+so this is this one I'm looking at,
+
+00:04:41.147 --> 00:04:43.220
+and I'm gonna go into the EC2 consoles,
+
+00:04:43.220 --> 00:04:46.740
+so I'll go into EC2, I will find the security group.
+
+00:04:46.740 --> 00:04:49.440
+On the left-hand side I will go under security groups,
+
+00:04:49.440 --> 00:04:51.740
+I will filter for the security group I'm looking for,
+
+00:04:51.740 --> 00:04:54.970
+press Enter, here it is, and for the inbound rule
+
+00:04:54.970 --> 00:04:59.290
+I can see that yes, SSH on port 22 is opened for everyone.
+
+00:04:59.290 --> 00:05:01.520
+So what I'm going to do is that I will for example,
+
+00:05:01.520 --> 00:05:05.250
+delete this rule temporarily, save the rule,
+
+00:05:05.250 --> 00:05:07.900
+and then what I'll be waiting for is for my resource
+
+00:05:07.900 --> 00:05:09.600
+to become compliant again.
+
+00:05:09.600 --> 00:05:12.460
+So for this, I can either wait a little bit of time,
+
+00:05:12.460 --> 00:05:13.770
+and this would show me the compliance,
+
+00:05:13.770 --> 00:05:15.680
+or I can go a bit faster,
+
+00:05:15.680 --> 00:05:18.550
+and then I can launch a rule and make sure it runs again.
+
+00:05:18.550 --> 00:05:21.390
+So this rule that I created right here, I can do Action,
+
+00:05:21.390 --> 00:05:24.670
+and Re-evaluate, and this is going to re-evaluate
+
+00:05:24.670 --> 00:05:26.550
+all my noncompliant resources.
+
+00:05:26.550 --> 00:05:29.370
+So let me pause a bit to wait for it to be done.
+
+00:05:29.370 --> 00:05:31.363
+Now I'm going to refresh this page,
+
+00:05:33.720 --> 00:05:36.520
+and what we are seeing now is that only two noncompliant
+
+00:05:36.520 --> 00:05:40.060
+resources are done, so what I did, did fix one compliance.
+
+00:05:40.060 --> 00:05:42.350
+If you go back to the Resource Timeline,
+
+00:05:42.350 --> 00:05:44.320
+and I'm going to refresh this again,
+
+00:05:44.320 --> 00:05:45.580
+let's see what happened.
+
+00:05:45.580 --> 00:05:47.460
+We can see that now my resource is green,
+
+00:05:47.460 --> 00:05:50.130
+and it's compliant, and if I click on Changes,
+
+00:05:50.130 --> 00:05:52.820
+I can see that the fact that my Config rule
+
+00:05:52.820 --> 00:05:55.790
+went from noncompliant to compliant.
+
+00:05:55.790 --> 00:05:57.900
+If we want to look at the configuration changes
+
+00:05:57.900 --> 00:05:59.070
+that are associated with this,
+
+00:05:59.070 --> 00:06:01.740
+if I go to Configuration Timeline, I can see
+
+00:06:01.740 --> 00:06:05.520
+that the resource has changed configuration on this.
+
+00:06:05.520 --> 00:06:08.460
+So if I go to one change, I can click on it,
+
+00:06:08.460 --> 00:06:10.020
+and I can see that this rule right here
+
+00:06:10.020 --> 00:06:13.040
+that is described as-is, went to nothing,
+
+00:06:13.040 --> 00:06:14.770
+which means it was deleted.
+
+00:06:14.770 --> 00:06:16.170
+And if you look at CloudTrail,
+
+00:06:16.170 --> 00:06:17.890
+we have the CloudTrail integration that said
+
+00:06:17.890 --> 00:06:21.920
+that my root user did remove that security ingress rule.
+
+00:06:21.920 --> 00:06:25.430
+And we can view that event in Details in CloudTrail.
+
+00:06:25.430 --> 00:06:27.840
+So I hope that's helpful, I hope you now understand
+
+00:06:27.840 --> 00:06:31.000
+the whole aspect of using Config to track
+
+00:06:31.000 --> 00:06:33.580
+the resource configuration and their compliance over time,
+
+00:06:33.580 --> 00:06:36.570
+and this is very helpful to ensure that all the resources
+
+00:06:36.570 --> 00:06:40.080
+created by your employees within your company are compliant
+
+00:06:40.080 --> 00:06:42.680
+with whatever you have decided for security rules.
+
+00:06:42.680 --> 00:06:44.280
+So that's it, I hope that was helpful,
+
+00:06:44.280 --> 00:06:46.230
+and I will see you in the next lecture.

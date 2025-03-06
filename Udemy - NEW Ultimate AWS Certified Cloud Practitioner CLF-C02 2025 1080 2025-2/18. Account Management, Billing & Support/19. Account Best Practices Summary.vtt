@@ -1,0 +1,166 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.500
+<v Instructor>Now let's do a summary</v>
+
+2
+00:00:01.500 --> 00:00:03.150
+of the accounts best practices.
+
+3
+00:00:03.150 --> 00:00:05.610
+So first, if you want to operate multiple accounts,
+
+4
+00:00:05.610 --> 00:00:08.550
+it is recommended you use AWS organizations.
+
+5
+00:00:08.550 --> 00:00:10.050
+And if you want to restrict
+
+6
+00:00:10.050 --> 00:00:12.360
+which account can do what, their power,
+
+7
+00:00:12.360 --> 00:00:15.690
+then you should use SCP for service control policies.
+
+8
+00:00:15.690 --> 00:00:16.530
+It's very easy
+
+9
+00:00:16.530 --> 00:00:18.000
+for you to set up multiple accounts
+
+10
+00:00:18.000 --> 00:00:21.870
+with best security practices with AWS Control Tower,
+
+11
+00:00:21.870 --> 00:00:24.960
+which is sitting on top of organizations.
+
+12
+00:00:24.960 --> 00:00:27.120
+You should use tags and cost allocation tags
+
+13
+00:00:27.120 --> 00:00:29.880
+for easy management and billing in your accounts.
+
+14
+00:00:29.880 --> 00:00:31.830
+And you need to remember the IAM guidelines,
+
+15
+00:00:31.830 --> 00:00:34.950
+such as enabling multifactor authentication, MFA,
+
+16
+00:00:34.950 --> 00:00:38.730
+the lease privilege, creating a password policy
+
+17
+00:00:38.730 --> 00:00:40.770
+and enabling password rotation.
+
+18
+00:00:40.770 --> 00:00:43.710
+Use AWS Config to record all resource configurations
+
+19
+00:00:43.710 --> 00:00:45.330
+and compliance over time
+
+20
+00:00:45.330 --> 00:00:46.860
+in case something goes wrong.
+
+21
+00:00:46.860 --> 00:00:49.260
+CloudFormation is extremely helpful to deploy stacks
+
+22
+00:00:49.260 --> 00:00:51.150
+across multiple accounts and regions,
+
+23
+00:00:51.150 --> 00:00:54.690
+and for you to really manage all these accounts all at once.
+
+24
+00:00:54.690 --> 00:00:57.060
+Trusted Advisor is great to get insights
+
+25
+00:00:57.060 --> 00:01:00.000
+and to find the right support plan adapted to your needs.
+
+26
+00:01:00.000 --> 00:01:02.340
+Send your service logs and access logs
+
+27
+00:01:02.340 --> 00:01:04.410
+through Amazon S3 or CloudWatch logs,
+
+28
+00:01:04.410 --> 00:01:06.990
+maybe even in a separate account for logging
+
+29
+00:01:06.990 --> 00:01:09.900
+just as you adhere to the best security practices.
+
+30
+00:01:09.900 --> 00:01:13.440
+Use CloudTrail to record API calls made within your accounts
+
+31
+00:01:13.440 --> 00:01:15.990
+or in different regions and so on.
+
+32
+00:01:15.990 --> 00:01:18.270
+And then if your account happens to be compromised,
+
+33
+00:01:18.270 --> 00:01:20.040
+then please change the root password,
+
+34
+00:01:20.040 --> 00:01:22.110
+delete and all passwords and keys,
+
+35
+00:01:22.110 --> 00:01:24.930
+and contact the AWS Support.
+
+36
+00:01:24.930 --> 00:01:27.600
+Finally, you can use AWS Service Catalog
+
+37
+00:01:27.600 --> 00:01:29.940
+to allow users to create predefined stacks
+
+38
+00:01:29.940 --> 00:01:33.060
+that are defined by administrators in the first place.
+
+39
+00:01:33.060 --> 00:01:33.960
+So that's it for this lecture.
+
+40
+00:01:33.960 --> 00:01:34.793
+I hope you liked it,
+
+41
+00:01:34.793 --> 00:01:36.630
+and I will see you in the next lecture.
+

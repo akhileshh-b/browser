@@ -1,0 +1,314 @@
+WEBVTT
+
+1
+00:00:00.090 --> 00:00:01.500
+<v Instructor>As we will see in this course,</v>
+
+2
+00:00:01.500 --> 00:00:03.450
+there are different types of cloud computing
+
+3
+00:00:03.450 --> 00:00:06.330
+and it is important for us to be able to recognize them.
+
+4
+00:00:06.330 --> 00:00:11.280
+The first one is called Infrastructure as a Service or IaaS.
+
+5
+00:00:11.280 --> 00:00:14.700
+This is to provide the building blocks for cloud IT.
+
+6
+00:00:14.700 --> 00:00:17.910
+With this IAAS, we're going to provide networking,
+
+7
+00:00:17.910 --> 00:00:21.840
+computers and data storage space in its raw form.
+
+8
+00:00:21.840 --> 00:00:23.550
+And using these building blocks, (indistinct)
+
+9
+00:00:23.550 --> 00:00:24.570
+building LEGOs,
+
+10
+00:00:24.570 --> 00:00:27.930
+We're going to be given a very high level of flexibility
+
+11
+00:00:27.930 --> 00:00:29.730
+and we can easily understand
+
+12
+00:00:29.730 --> 00:00:33.120
+how we can migrate from traditional on-premises IT
+
+13
+00:00:33.120 --> 00:00:34.620
+to the cloud.
+
+14
+00:00:34.620 --> 00:00:37.380
+Then we're gonna get platform as a service.
+
+15
+00:00:37.380 --> 00:00:39.180
+In this, we're going to remove the need
+
+16
+00:00:39.180 --> 00:00:40.200
+for your organization
+
+17
+00:00:40.200 --> 00:00:42.960
+to manage the underlying infrastructure,
+
+18
+00:00:42.960 --> 00:00:45.060
+and you can just focus on the deployment
+
+19
+00:00:45.060 --> 00:00:47.190
+and management of your applications.
+
+20
+00:00:47.190 --> 00:00:50.100
+And then one step even further is software
+
+21
+00:00:50.100 --> 00:00:52.050
+as a service or SaaS.
+
+22
+00:00:52.050 --> 00:00:54.930
+This is a completed product that is going to be run
+
+23
+00:00:54.930 --> 00:00:57.840
+and managed by the service provider.
+
+24
+00:00:57.840 --> 00:01:00.060
+So if you wanna compare all these things, well,
+
+25
+00:01:00.060 --> 00:01:01.470
+let's look at an example.
+
+26
+00:01:01.470 --> 00:01:04.110
+On premises, you're going to manage everything.
+
+27
+00:01:04.110 --> 00:01:06.840
+So your applications, your data, your runtime,
+
+28
+00:01:06.840 --> 00:01:10.140
+your middleware, the operating system, virtualization,
+
+29
+00:01:10.140 --> 00:01:12.930
+servers, storage and networking.
+
+30
+00:01:12.930 --> 00:01:14.400
+And that's a lot.
+
+31
+00:01:14.400 --> 00:01:17.910
+With IaaS, so infrastructure as a service, we're going
+
+32
+00:01:17.910 --> 00:01:20.340
+to manage the application, the data, the runtime,
+
+33
+00:01:20.340 --> 00:01:22.050
+the malware, and the OS.
+
+34
+00:01:22.050 --> 00:01:25.350
+But all the virtualization servers, storage
+
+35
+00:01:25.350 --> 00:01:28.290
+and networking are going to be managed by others.
+
+36
+00:01:28.290 --> 00:01:30.420
+And in our case, AWS.
+
+37
+00:01:30.420 --> 00:01:33.360
+With platform as a service, we manage even less.
+
+38
+00:01:33.360 --> 00:01:35.400
+So everything from the runtime
+
+39
+00:01:35.400 --> 00:01:37.260
+to the networking is managed by AWS.
+
+40
+00:01:37.260 --> 00:01:40.710
+And the only thing we care about when we use a platform
+
+41
+00:01:40.710 --> 00:01:44.550
+as a service is our application and our data.
+
+42
+00:01:44.550 --> 00:01:47.400
+And finally, well, if you're using software as a service,
+
+43
+00:01:47.400 --> 00:01:49.773
+everything is going to be managed by AWS.
+
+44
+00:01:50.790 --> 00:01:51.993
+So well, how does it translate?
+
+45
+00:01:51.993 --> 00:01:56.130
+Well, with IaaS, we can use Amazon EC2 on AWS,
+
+46
+00:01:56.130 --> 00:01:58.230
+but we have other services, such as Google Cloud,
+
+47
+00:01:58.230 --> 00:02:01.200
+Azure, Rackspace, Digital Ocean and Linode,
+
+48
+00:02:01.200 --> 00:02:04.140
+which will provide us a cloud computing infrastructure
+
+49
+00:02:04.140 --> 00:02:05.730
+as a service.
+
+50
+00:02:05.730 --> 00:02:08.070
+Platform as a service also exists on AWS
+
+51
+00:02:08.070 --> 00:02:09.180
+with Elastic Beanstalk.
+
+52
+00:02:09.180 --> 00:02:11.730
+And we'll see all the services obviously in this course.
+
+53
+00:02:11.730 --> 00:02:15.870
+And outside of AWS, we have Heroku, Google App Engine,
+
+54
+00:02:15.870 --> 00:02:17.940
+and Windows Azure.
+
+55
+00:02:17.940 --> 00:02:19.110
+For software as a service,
+
+56
+00:02:19.110 --> 00:02:22.560
+we'll also have this on AWS that represents many services
+
+57
+00:02:22.560 --> 00:02:25.500
+of AWS, for example, Rekognition where we want
+
+58
+00:02:25.500 --> 00:02:27.060
+to do some machine learning,
+
+59
+00:02:27.060 --> 00:02:29.430
+but we've been using it as well in the real world
+
+60
+00:02:29.430 --> 00:02:32.400
+with Google Apps, such as Gmail or Dropbox
+
+61
+00:02:32.400 --> 00:02:34.230
+or Zoom for your meetings.
+
+62
+00:02:34.230 --> 00:02:36.060
+So the Cloud has different flavors,
+
+63
+00:02:36.060 --> 00:02:37.440
+but one thing is common
+
+64
+00:02:37.440 --> 00:02:40.820
+is that the pricing is very different from what you know.
+
+65
+00:02:40.820 --> 00:02:43.530
+AWS has three pricing fundamentals
+
+66
+00:02:43.530 --> 00:02:46.140
+and it will follow the pay-as-you-go pricing model.
+
+67
+00:02:46.140 --> 00:02:49.140
+So for the compute, and that represents various services,
+
+68
+00:02:49.140 --> 00:02:52.080
+we're going to pay for the exact compute time.
+
+69
+00:02:52.080 --> 00:02:54.810
+For the storage, we're going to pay for the exact amount
+
+70
+00:02:54.810 --> 00:02:57.000
+of data stored in the cloud.
+
+71
+00:02:57.000 --> 00:02:58.620
+And for the networking, we're going
+
+72
+00:02:58.620 --> 00:03:01.590
+to only pay when the data leaves the cloud.
+
+73
+00:03:01.590 --> 00:03:04.710
+Any data that goes into the cloud is free.
+
+74
+00:03:04.710 --> 00:03:08.802
+And this solves the expensive issue of traditional IT
+
+75
+00:03:08.802 --> 00:03:11.310
+because now we only pay exactly what we need.
+
+76
+00:03:11.310 --> 00:03:14.250
+And so we have huge cost savings ahead of us.
+
+77
+00:03:14.250 --> 00:03:15.630
+So that's it for this lecture.
+
+78
+00:03:15.630 --> 00:03:19.053
+In the next lecture, we'll be having a deeper dive on AWS.
+

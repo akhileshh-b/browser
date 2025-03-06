@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00:00.120 --> 00:00:02.690
+<v Narrator>Now let's talk about Amazon CloudWatch Logs,</v>
+
+00:00:02.690 --> 00:00:04.890
+so CloudWatch Logs, as the name indicates,
+
+00:00:04.890 --> 00:00:06.720
+is to collect log files.
+
+00:00:06.720 --> 00:00:07.980
+So what is a log file?
+
+00:00:07.980 --> 00:00:09.920
+Well, when you have an application running
+
+00:00:09.920 --> 00:00:12.510
+on any server, usually you want the application
+
+00:00:12.510 --> 00:00:14.890
+to write some text about how it is doing.
+
+00:00:14.890 --> 00:00:17.700
+For example, when it is doing some actions for a user
+
+00:00:17.700 --> 00:00:20.180
+when it is performing some clean ups, et cetera, et cetera,
+
+00:00:20.180 --> 00:00:22.580
+and so all these logs can be collected
+
+00:00:22.580 --> 00:00:25.620
+and when a user needs to troubleshoot something,
+
+00:00:25.620 --> 00:00:27.520
+then they will go through the log file
+
+00:00:27.520 --> 00:00:30.130
+and see what the application did or said,
+
+00:00:30.130 --> 00:00:32.370
+and so these logs can exist in different forms,
+
+00:00:32.370 --> 00:00:35.380
+but you can collect the logs from Elastic Beanstalk.
+
+00:00:35.380 --> 00:00:39.290
+You can collect the logs from ECS, Lambda, CloudTrail,
+
+00:00:39.290 --> 00:00:40.430
+CloudWatch logs agents,
+
+00:00:40.430 --> 00:00:42.850
+which is when you install a log agent
+
+00:00:42.850 --> 00:00:45.330
+on an EC2 machine or an on-premise server
+
+00:00:45.330 --> 00:00:50.250
+to get your log directly from that server onto AWS,
+
+00:00:50.250 --> 00:00:53.380
+or Route53 for logging DNS queries,
+
+00:00:53.380 --> 00:00:55.140
+and CloudWatch logs overall,
+
+00:00:55.140 --> 00:00:56.490
+when they collect all these logs
+
+00:00:56.490 --> 00:00:59.490
+it allows for real-time monitoring of your logs
+
+00:00:59.490 --> 00:01:02.590
+and then with it you can react to whatever is happening
+
+00:01:02.590 --> 00:01:03.720
+within your logs.
+
+00:01:03.720 --> 00:01:07.110
+Also, your logs can be readjustable for the retention.
+
+00:01:07.110 --> 00:01:08.340
+That means that you can have your logs,
+
+00:01:08.340 --> 00:01:09.790
+for example, for just one week
+
+00:01:09.790 --> 00:01:13.870
+or 30 days or a year or infinitely.
+
+00:01:13.870 --> 00:01:17.320
+So how does CloudWatch Logs work for EC2 instances?
+
+00:01:17.320 --> 00:01:21.030
+By default, your EC2 instances will not send any log files
+
+00:01:21.030 --> 00:01:22.180
+to CloudWatch Logs.
+
+00:01:22.180 --> 00:01:25.420
+For this you need to create a CloudWatch Log agent
+
+00:01:25.420 --> 00:01:26.820
+on your EC2 instances,
+
+00:01:26.820 --> 00:01:29.220
+and they will push the log files that you want
+
+00:01:29.220 --> 00:01:31.140
+onto the CloudWatch Log service,
+
+00:01:31.140 --> 00:01:33.810
+so to summarize, the CloudWatch Logs service is running.
+
+00:01:33.810 --> 00:01:35.270
+Here's your EC2 instance.
+
+00:01:35.270 --> 00:01:37.890
+We will install the CloudWatch Logs agent
+
+00:01:37.890 --> 00:01:39.480
+and this agent will send the log files
+
+00:01:39.480 --> 00:01:41.420
+directly into CloudWatch Logs.
+
+00:01:41.420 --> 00:01:44.600
+For this to work we need to make sure that our EC2 instance
+
+00:01:44.600 --> 00:01:48.740
+has a proper instance role with the correct IAM permissions
+
+00:01:48.740 --> 00:01:51.750
+to send the log data into CloudWatch Logs.
+
+00:01:51.750 --> 00:01:56.330
+Then, the log agent can also be setup on on-premises servers
+
+00:01:56.330 --> 00:01:58.830
+as well, so this is a hybrid agent.
+
+00:01:58.830 --> 00:02:02.540
+It works both on-premises or on AWS
+
+00:02:02.540 --> 00:02:04.350
+and it allows you to collect logs
+
+00:02:04.350 --> 00:02:08.080
+from both your EC2 instances and your on-premises servers
+
+00:02:08.080 --> 00:02:10.040
+directly into the CloudWatch Log service,
+
+00:02:10.040 --> 00:02:10.930
+so that's it.
+
+00:02:10.930 --> 00:02:12.070
+Let's go in the next lecture
+
+00:02:12.070 --> 00:02:13.853
+to see how CloudWatch Logs works.

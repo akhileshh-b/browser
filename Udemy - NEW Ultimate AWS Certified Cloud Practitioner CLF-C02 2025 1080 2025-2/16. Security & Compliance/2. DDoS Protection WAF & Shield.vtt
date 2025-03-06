@@ -1,0 +1,436 @@
+WEBVTT
+
+00:00:00.080 --> 00:00:00.980
+<v Narrator>Now let's talk about</v>
+
+00:00:00.980 --> 00:00:03.650
+how we can protect ourselves from a DDoS attack.
+
+00:00:03.650 --> 00:00:06.790
+A DDoS attack is a Distributed Denial-of-Service attack
+
+00:00:06.790 --> 00:00:08.360
+on our infrastructure
+
+00:00:08.360 --> 00:00:09.890
+and we'll see how this works.
+
+00:00:09.890 --> 00:00:10.980
+So say there's an attacker,
+
+00:00:10.980 --> 00:00:12.040
+that's a hacker
+
+00:00:12.040 --> 00:00:13.730
+and they want to do a DDoS attack
+
+00:00:13.730 --> 00:00:15.660
+against our application server.
+
+00:00:15.660 --> 00:00:19.080
+In this case they're going to launch multiple master servers
+
+00:00:19.080 --> 00:00:21.190
+and these servers are going to launch bots,
+
+00:00:21.190 --> 00:00:22.310
+a lot of bots
+
+00:00:22.310 --> 00:00:23.170
+and all these bots
+
+00:00:23.170 --> 00:00:26.920
+are going to send a request to our application server.
+
+00:00:26.920 --> 00:00:28.630
+Now our server is not meant
+
+00:00:28.630 --> 00:00:30.060
+to handle this many requests
+
+00:00:30.060 --> 00:00:31.230
+so it will be overwhelmed
+
+00:00:31.230 --> 00:00:32.950
+and it will not be working anymore,
+
+00:00:32.950 --> 00:00:34.400
+he will be denied a service
+
+00:00:34.400 --> 00:00:37.530
+and therefore any normal user trying to connect
+
+00:00:37.530 --> 00:00:39.130
+to our application server,
+
+00:00:39.130 --> 00:00:41.320
+will see that our server is not accessible
+
+00:00:41.320 --> 00:00:42.500
+or not responsive,
+
+00:00:42.500 --> 00:00:44.900
+effectively making our application down.
+
+00:00:44.900 --> 00:00:46.750
+So a DDoS attack is quite scary
+
+00:00:46.750 --> 00:00:47.700
+when you think about it
+
+00:00:47.700 --> 00:00:49.180
+but on AWS
+
+00:00:49.180 --> 00:00:50.670
+you can protect yourself from it.
+
+00:00:50.670 --> 00:00:54.040
+The first way is to use AWS Shield Standard
+
+00:00:54.040 --> 00:00:57.700
+and that's enabled for all customers at no additional cost
+
+00:00:57.700 --> 00:00:59.710
+and it will protect you against a DDoS attack
+
+00:00:59.710 --> 00:01:01.520
+for your websites and application.
+
+00:01:01.520 --> 00:01:03.670
+If you want a premium DDoS protection,
+
+00:01:03.670 --> 00:01:06.610
+you have to use AWS Shield Advanced
+
+00:01:06.610 --> 00:01:08.350
+which is going to give you 24/7
+
+00:01:08.350 --> 00:01:09.270
+so 24 hours a day,
+
+00:01:09.270 --> 00:01:11.860
+seven days a week protection on DDoS.
+
+00:01:11.860 --> 00:01:13.070
+Then you have WAF
+
+00:01:13.070 --> 00:01:15.340
+to filter specific requests based on rules,
+
+00:01:15.340 --> 00:01:17.450
+this is the web application firewall.
+
+00:01:17.450 --> 00:01:20.180
+CloudFront and Route 53 that we've already seen
+
+00:01:20.180 --> 00:01:23.570
+to give us protection by using the global edge network
+
+00:01:23.570 --> 00:01:25.200
+and so when it's combined with Shield
+
+00:01:25.200 --> 00:01:29.040
+it will provide attack mitigation at the edge locations
+
+00:01:29.040 --> 00:01:31.210
+and finally you need to be ready to scale
+
+00:01:31.210 --> 00:01:32.310
+if you're under attack
+
+00:01:32.310 --> 00:01:35.770
+maybe by leveraging auto scaling on AWS.
+
+00:01:35.770 --> 00:01:38.640
+So here is what the sample reference architecture
+
+00:01:38.640 --> 00:01:40.450
+looks like for DDoS protection.
+
+00:01:40.450 --> 00:01:41.620
+So we have our users
+
+00:01:41.620 --> 00:01:44.470
+and they will be routed through the DNS on Route 53
+
+00:01:44.470 --> 00:01:46.030
+which is protected by shield
+
+00:01:46.030 --> 00:01:48.430
+so your DNS is safe from DDoS attack,
+
+00:01:48.430 --> 00:01:50.540
+then you should use a CloudFront distribution
+
+00:01:50.540 --> 00:01:52.990
+to make sure your content is cached at the edge
+
+00:01:52.990 --> 00:01:55.090
+and then it is also protected by shield
+
+00:01:55.090 --> 00:01:56.340
+and in case you need to filter
+
+00:01:56.340 --> 00:01:57.320
+and protect from an attack,
+
+00:01:57.320 --> 00:01:59.370
+you can use the web application firewall,
+
+00:01:59.370 --> 00:02:00.800
+then to serve that application
+
+00:02:00.800 --> 00:02:03.470
+you can use a load balancer in the public subnet
+
+00:02:03.470 --> 00:02:04.980
+that will scale for you
+
+00:02:04.980 --> 00:02:07.050
+and finally behind the load balancer
+
+00:02:07.050 --> 00:02:08.650
+you should use EC2 instances
+
+00:02:08.650 --> 00:02:09.950
+in an auto scaling group
+
+00:02:09.950 --> 00:02:12.530
+to be able to scale to the higher demand.
+
+00:02:12.530 --> 00:02:15.260
+So all of this will give you a really good DDoS protection
+
+00:02:15.260 --> 00:02:17.260
+against these type of attacks.
+
+00:02:17.260 --> 00:02:18.910
+Now let's do a deep dive into the services
+
+00:02:18.910 --> 00:02:19.990
+that I just mentioned.
+
+00:02:19.990 --> 00:02:21.910
+So Shield is made up of two components,
+
+00:02:21.910 --> 00:02:23.330
+we have Shield Standard
+
+00:02:23.330 --> 00:02:24.320
+which is a free service
+
+00:02:24.320 --> 00:02:27.460
+that is activated for every AWS customer
+
+00:02:27.460 --> 00:02:28.800
+and this will provide you
+
+00:02:28.800 --> 00:02:31.860
+protection against the common attacks for DDoS,
+
+00:02:31.860 --> 00:02:34.830
+they're called SYN/UDP Reflection Floods,
+
+00:02:34.830 --> 00:02:35.670
+Reflection attacks
+
+00:02:35.670 --> 00:02:38.050
+and other layer three or layer four attacks.
+
+00:02:38.050 --> 00:02:39.350
+Then you have Shield Advanced
+
+00:02:39.350 --> 00:02:40.530
+which is an optional service,
+
+00:02:40.530 --> 00:02:43.870
+it cost you about $3000 per month per organization
+
+00:02:43.870 --> 00:02:45.370
+and they will give you protection
+
+00:02:45.370 --> 00:02:47.300
+against more sophisticated attacks
+
+00:02:47.300 --> 00:02:50.900
+on your EC2, ELB, CloudFront, Global Accelerator
+
+00:02:50.900 --> 00:02:52.430
+and Route 53.
+
+00:02:52.430 --> 00:02:54.590
+You also get access to your response team
+
+00:02:54.590 --> 00:02:55.550
+when you need it
+
+00:02:55.550 --> 00:02:57.090
+to help you protect yourself
+
+00:02:57.090 --> 00:02:58.630
+during these DDoS attacks
+
+00:02:58.630 --> 00:03:00.790
+and in case you are incurring some costs
+
+00:03:00.790 --> 00:03:01.700
+on these attacks,
+
+00:03:01.700 --> 00:03:04.810
+then any fees that is incurred during this attack
+
+00:03:04.810 --> 00:03:06.720
+is on AWS.
+
+00:03:06.720 --> 00:03:08.640
+So Shield from an exam perspective
+
+00:03:08.640 --> 00:03:10.580
+remember that the free version
+
+00:03:10.580 --> 00:03:13.010
+is activated by default for every customer
+
+00:03:13.010 --> 00:03:14.690
+and if you need that response team
+
+00:03:14.690 --> 00:03:17.330
+if you need to be having a higher level of defense
+
+00:03:17.330 --> 00:03:18.190
+then Shield Advanced
+
+00:03:18.190 --> 00:03:19.380
+is something that you enable yourself
+
+00:03:19.380 --> 00:03:21.443
+and it cost about $3000 per month.
+
+00:03:22.640 --> 00:03:25.450
+Next we have the Web Application Firewall, so WAF
+
+00:03:25.450 --> 00:03:27.700
+and this is to protect your web applications
+
+00:03:27.700 --> 00:03:29.840
+from common web exploits,
+
+00:03:29.840 --> 00:03:31.340
+for example on layer seven.
+
+00:03:31.340 --> 00:03:32.570
+Layer seven as you remember
+
+00:03:32.570 --> 00:03:34.590
+maybe is HTTP
+
+00:03:34.590 --> 00:03:36.960
+whereas layer four was for TCP.
+
+00:03:36.960 --> 00:03:38.450
+So because it is layer seven
+
+00:03:38.450 --> 00:03:41.820
+it can be deployed only on HTTP friendly devices
+
+00:03:41.820 --> 00:03:44.950
+so it can be deployed on your application load balancer
+
+00:03:44.950 --> 00:03:46.490
+your API gateway we haven't seen it,
+
+00:03:46.490 --> 00:03:47.980
+it's out of scope for the exam
+
+00:03:47.980 --> 00:03:49.320
+and CloudFronts.
+
+00:03:49.320 --> 00:03:50.790
+On your web application firewall
+
+00:03:50.790 --> 00:03:52.490
+you can define Web ACL
+
+00:03:52.490 --> 00:03:54.540
+so Web Access Control Lists
+
+00:03:54.540 --> 00:03:57.050
+and these rules on this ACL
+
+00:03:57.050 --> 00:03:58.910
+can include filtering for example
+
+00:03:58.910 --> 00:04:00.760
+based on the IP addresses,
+
+00:04:00.760 --> 00:04:01.790
+the headers of HTTP,
+
+00:04:01.790 --> 00:04:03.620
+the body, some strings
+
+00:04:03.620 --> 00:04:05.520
+it can protect you against common attacks
+
+00:04:05.520 --> 00:04:06.860
+such as a SQL injection
+
+00:04:06.860 --> 00:04:08.750
+or Cross-Site Scripting.
+
+00:04:08.750 --> 00:04:10.380
+You can have size constraints
+
+00:04:10.380 --> 00:04:12.430
+to make sure the requests are not too big
+
+00:04:12.430 --> 00:04:15.240
+and also block certain countries using a geo-match.
+
+00:04:15.240 --> 00:04:17.180
+Finally for DDoS protection
+
+00:04:17.180 --> 00:04:19.170
+you can use Rate-based rules
+
+00:04:19.170 --> 00:04:21.490
+to count the occurrences of events,
+
+00:04:21.490 --> 00:04:22.670
+therefore saying that
+
+00:04:22.670 --> 00:04:23.840
+you know a user cannot do
+
+00:04:23.840 --> 00:04:25.700
+more than five requests per second
+
+00:04:25.700 --> 00:04:29.120
+and that would help to be protected against a DDoS attack.
+
+00:04:29.120 --> 00:04:30.010
+So that's it's,
+
+00:04:30.010 --> 00:04:31.320
+just at a high level remember
+
+00:04:31.320 --> 00:04:32.330
+that it is a combination of
+
+00:04:32.330 --> 00:04:35.630
+Shield, WAF, CloudFront, Route 53
+
+00:04:35.630 --> 00:04:37.750
+they will give you an entire DDoS protection
+
+00:04:37.750 --> 00:04:39.560
+and again all these service you need to them
+
+00:04:39.560 --> 00:04:40.700
+at a high level.
+
+00:04:40.700 --> 00:04:41.650
+So hope that was helpful
+
+00:04:41.650 --> 00:04:43.600
+and I will see you in the next lecture.

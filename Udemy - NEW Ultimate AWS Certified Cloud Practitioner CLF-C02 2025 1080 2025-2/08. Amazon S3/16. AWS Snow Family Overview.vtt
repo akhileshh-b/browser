@@ -1,0 +1,274 @@
+WEBVTT
+
+1
+00:00:00.030 --> 00:00:03.240
+<v Instructor>Okay, so now let's talk about AWS Snowball.</v>
+
+2
+00:00:03.240 --> 00:00:06.150
+So it's a highly secure and portable device
+
+3
+00:00:06.150 --> 00:00:08.040
+that allows you to collect and process data
+
+4
+00:00:08.040 --> 00:00:11.910
+at the edge and migrate data in and out of AWS.
+
+5
+00:00:11.910 --> 00:00:15.480
+So if you have a migration of say, petabytes of data,
+
+6
+00:00:15.480 --> 00:00:17.760
+Snowball may be a good use case.
+
+7
+00:00:17.760 --> 00:00:20.610
+So we have two kind of Snowball edge devices.
+
+8
+00:00:20.610 --> 00:00:22.920
+One is called the Edge Storage Optimized,
+
+9
+00:00:22.920 --> 00:00:25.710
+and the other one is called the Edge Compute Optimized.
+
+10
+00:00:25.710 --> 00:00:28.140
+And the difference lies in their storage.
+
+11
+00:00:28.140 --> 00:00:30.240
+As you can see, one has 210 terabytes
+
+12
+00:00:30.240 --> 00:00:32.310
+and the other one has 28 terabytes.
+
+13
+00:00:32.310 --> 00:00:33.930
+So obviously one is for storage
+
+14
+00:00:33.930 --> 00:00:36.030
+and the other one is only used for computer.
+
+15
+00:00:36.030 --> 00:00:38.513
+So let me tell you about data migrations.
+
+16
+00:00:38.513 --> 00:00:42.510
+So it takes a lot of time to transfer some data
+
+17
+00:00:42.510 --> 00:00:44.550
+over a specific bandwidth speed.
+
+18
+00:00:44.550 --> 00:00:47.190
+For example, if you want to transfer a hundred terabytes
+
+19
+00:00:47.190 --> 00:00:49.590
+over one gigabytes per second connection,
+
+20
+00:00:49.590 --> 00:00:51.180
+it would take you 12 days.
+
+21
+00:00:51.180 --> 00:00:54.090
+So when you have a slow connection,
+
+22
+00:00:54.090 --> 00:00:56.820
+you may have limited connectivity, limited bandwidth,
+
+23
+00:00:56.820 --> 00:00:59.910
+very high network cost, and you have to share the bandwidth,
+
+24
+00:00:59.910 --> 00:01:02.215
+for example, with some other applications,
+
+25
+00:01:02.215 --> 00:01:04.200
+the connection may not be stable.
+
+26
+00:01:04.200 --> 00:01:06.750
+So whenever you have these kind of challenges,
+
+27
+00:01:06.750 --> 00:01:09.000
+or if it takes you, for example, over a week
+
+28
+00:01:09.000 --> 00:01:11.040
+to transfer data over the network,
+
+29
+00:01:11.040 --> 00:01:14.610
+the recommendation is to use a Snowball device.
+
+30
+00:01:14.610 --> 00:01:17.250
+So the idea is that if you upload directly to Amazon S3,
+
+31
+00:01:17.250 --> 00:01:19.980
+it's simple, but it may use all your bandwidth.
+
+32
+00:01:19.980 --> 00:01:21.210
+And if you use Snowball,
+
+33
+00:01:21.210 --> 00:01:24.589
+well, you're going to receive a physical Snowball device,
+
+34
+00:01:24.589 --> 00:01:27.180
+you, yourself in your own infrastructure.
+
+35
+00:01:27.180 --> 00:01:29.670
+So it's a physical machine,
+
+36
+00:01:29.670 --> 00:01:32.100
+and then you load it with the data you need,
+
+37
+00:01:32.100 --> 00:01:35.280
+and then finally you ship it back to AWS.
+
+38
+00:01:35.280 --> 00:01:40.280
+And then you will be having an export process
+
+39
+00:01:40.410 --> 00:01:43.950
+within AWS to take your data from the Snowball onto,
+
+40
+00:01:43.950 --> 00:01:46.200
+for example, an Amazon S3 bucket.
+
+41
+00:01:46.200 --> 00:01:48.990
+So this is the main use case of a Snowball device.
+
+42
+00:01:48.990 --> 00:01:51.810
+The other one is a edge computing use case.
+
+43
+00:01:51.810 --> 00:01:53.760
+So the idea is that you wanna process data
+
+44
+00:01:53.760 --> 00:01:56.100
+while it's being created on an edge location.
+
+45
+00:01:56.100 --> 00:01:58.890
+For example, it's a truck on the road or a ship on the sea,
+
+46
+00:01:58.890 --> 00:02:00.930
+or a mining station on the ground.
+
+47
+00:02:00.930 --> 00:02:03.450
+And these locations may have no internet access
+
+48
+00:02:03.450 --> 00:02:06.360
+or limited access to internet or compute power.
+
+49
+00:02:06.360 --> 00:02:08.400
+So here again, we order one of these
+
+50
+00:02:08.400 --> 00:02:12.000
+big Snowball edge devices and we do edge computing.
+
+51
+00:02:12.000 --> 00:02:15.090
+And so that means that we have the Compute Optimized,
+
+52
+00:02:15.090 --> 00:02:16.440
+this is dedicated for that use case
+
+53
+00:02:16.440 --> 00:02:18.600
+for the search optimized devices.
+
+54
+00:02:18.600 --> 00:02:21.540
+And then because they have computing capability,
+
+55
+00:02:21.540 --> 00:02:23.700
+we can actually run EC2 instances
+
+56
+00:02:23.700 --> 00:02:26.850
+or Lambda functions directly on these devices.
+
+57
+00:02:26.850 --> 00:02:29.640
+The idea is that once the data is created
+
+58
+00:02:29.640 --> 00:02:33.000
+and processed, we can send it back again to AWS,
+
+59
+00:02:33.000 --> 00:02:35.400
+but by using an edge computing device,
+
+60
+00:02:35.400 --> 00:02:36.840
+we can pre-process the data
+
+61
+00:02:36.840 --> 00:02:38.610
+or we can do machine learning at the edge
+
+62
+00:02:38.610 --> 00:02:40.770
+or directly transcode media at the edge.
+
+63
+00:02:40.770 --> 00:02:43.650
+And that's the use case for edge computing.
+
+64
+00:02:43.650 --> 00:02:44.733
+So hopefully that makes sense.
+
+65
+00:02:44.733 --> 00:02:48.450
+The Snowball service is really just something that is used
+
+66
+00:02:48.450 --> 00:02:51.090
+for data migrations and edge computing.
+
+67
+00:02:51.090 --> 00:02:52.680
+Alright, that's it, I hope you liked it
+
+68
+00:02:52.680 --> 00:02:54.630
+and I will see you in the next lecture.
+

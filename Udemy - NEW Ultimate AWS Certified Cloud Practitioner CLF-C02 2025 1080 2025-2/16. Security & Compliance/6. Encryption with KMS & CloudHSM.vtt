@@ -1,0 +1,502 @@
+WEBVTT
+
+1
+00:00:00.450 --> 00:00:02.730
+<v Instructor>Okay, so now let's talk about encryption.</v>
+
+2
+00:00:02.730 --> 00:00:04.680
+And we've seen encryption a little bit in this course,
+
+3
+00:00:04.680 --> 00:00:06.630
+but now let's try to formalize what it means.
+
+4
+00:00:06.630 --> 00:00:09.660
+So, there are two types of encryptions happening within AWS.
+
+5
+00:00:09.660 --> 00:00:12.309
+You have encryption at rest and encryption in transit.
+
+6
+00:00:12.309 --> 00:00:14.850
+So, data at rest means that the data
+
+7
+00:00:14.850 --> 00:00:18.420
+is stored or archive on a physical device.
+
+8
+00:00:18.420 --> 00:00:21.120
+So that could be a hard drive or like a hard disk.
+
+9
+00:00:21.120 --> 00:00:23.756
+It could be an RDS instance because it's a database.
+
+10
+00:00:23.756 --> 00:00:26.610
+It could be an S3 Glacier Deep Archive,
+
+11
+00:00:26.610 --> 00:00:28.470
+or any kind of S3 buckets, actually.
+
+12
+00:00:28.470 --> 00:00:29.310
+These kind of things, right?
+
+13
+00:00:29.310 --> 00:00:31.260
+It's at rest because it's not moving.
+
+14
+00:00:31.260 --> 00:00:32.816
+It's written somewhere.
+
+15
+00:00:32.816 --> 00:00:35.280
+So, for example, we can have encrypted data
+
+16
+00:00:35.280 --> 00:00:37.440
+at rest on an EFS network drive,
+
+17
+00:00:37.440 --> 00:00:41.460
+or we can have encrypted data at rest on Amazon S3,
+
+18
+00:00:41.460 --> 00:00:43.320
+but there's a second kind of encryption,
+
+19
+00:00:43.320 --> 00:00:44.850
+which is in transit.
+
+20
+00:00:44.850 --> 00:00:47.670
+In transit means that encryption while the data is being
+
+21
+00:00:47.670 --> 00:00:50.610
+moved from one place to another.
+
+22
+00:00:50.610 --> 00:00:53.010
+And so that means in motion.
+
+23
+00:00:53.010 --> 00:00:56.040
+And so, for example, it says whenever you transfer data
+
+24
+00:00:56.040 --> 00:00:59.445
+from your on-premises data centers to AWS
+
+25
+00:00:59.445 --> 00:01:02.116
+or when you move from between an EC2 instance
+
+26
+00:01:02.116 --> 00:01:04.200
+and a DymamoDB table, for example,
+
+27
+00:01:04.200 --> 00:01:06.180
+because it's writing data or retrieving data,
+
+28
+00:01:06.180 --> 00:01:10.530
+or, in this example, up there from EFS to Amazon S3.
+
+29
+00:01:10.530 --> 00:01:12.660
+So, in transit means that data,
+
+30
+00:01:12.660 --> 00:01:15.660
+the data is transferred on the network.
+
+31
+00:01:15.660 --> 00:01:17.700
+And so there are two kinds of encryption.
+
+32
+00:01:17.700 --> 00:01:19.860
+There's encryption at rest and encryption in transit.
+
+33
+00:01:19.860 --> 00:01:21.600
+They use different techniques, okay?
+
+34
+00:01:21.600 --> 00:01:23.520
+But ideally, because we want our data
+
+35
+00:01:23.520 --> 00:01:25.800
+to be encrypted and protected all the time,
+
+36
+00:01:25.800 --> 00:01:28.890
+we want to encrypt data in both states to protect it.
+
+37
+00:01:28.890 --> 00:01:31.830
+For this, we leverage something called encryption keys.
+
+38
+00:01:31.830 --> 00:01:33.150
+And I'm going to stop right there
+
+39
+00:01:33.150 --> 00:01:34.800
+because you don't need to know how the encryption
+
+40
+00:01:34.800 --> 00:01:36.570
+key works at the CCP level.
+
+41
+00:01:36.570 --> 00:01:38.925
+But just so you know, that using these encryption keys,
+
+42
+00:01:38.925 --> 00:01:40.590
+we can encrypt the data.
+
+43
+00:01:40.590 --> 00:01:42.163
+That means that someone who does not have access
+
+44
+00:01:42.163 --> 00:01:43.945
+to these encryption keys,
+
+45
+00:01:43.945 --> 00:01:45.519
+even if they had access to our data,
+
+46
+00:01:45.519 --> 00:01:47.130
+they could not decrypt it,
+
+47
+00:01:47.130 --> 00:01:50.250
+and they could not read it, and therefore it's protected.
+
+48
+00:01:50.250 --> 00:01:51.947
+So the encryption service at the center
+
+49
+00:01:51.947 --> 00:01:56.010
+of AWS is called KMS, Key Management Service.
+
+50
+00:01:56.010 --> 00:01:58.050
+So, anytime you hear encryption for a service,
+
+51
+00:01:58.050 --> 00:01:59.970
+it's most likely going to be KMS.
+
+52
+00:01:59.970 --> 00:02:03.287
+And so with KMS, we don't have access to the keys.
+
+53
+00:02:03.287 --> 00:02:05.790
+AWS will manage the keys for us,
+
+54
+00:02:05.790 --> 00:02:07.908
+and we just define who can access these keys.
+
+55
+00:02:07.908 --> 00:02:10.320
+So there is an opt-in for encryption.
+
+56
+00:02:10.320 --> 00:02:12.240
+So, for example, for your EBS volumes,
+
+57
+00:02:12.240 --> 00:02:15.330
+you can choose to encrypt them with KMS.
+
+58
+00:02:15.330 --> 00:02:16.980
+For S3 buckets, you also have the option
+
+59
+00:02:16.980 --> 00:02:18.930
+to do server-side encryption of objects.
+
+60
+00:02:18.930 --> 00:02:20.130
+For Redshift databases,
+
+61
+00:02:20.130 --> 00:02:21.930
+you can do the encryption of your database.
+
+62
+00:02:21.930 --> 00:02:23.730
+For RDS, the same thing.
+
+63
+00:02:23.730 --> 00:02:25.859
+For EFS, you can encrypt your files.
+
+64
+00:02:25.859 --> 00:02:27.555
+And there's also some services
+
+65
+00:02:27.555 --> 00:02:30.870
+that have encryption automatically happen no matter what.
+
+66
+00:02:30.870 --> 00:02:33.380
+For example, CloudTrail Logs, S3 Glacier,
+
+67
+00:02:33.380 --> 00:02:35.133
+and Storage Gateway.
+
+68
+00:02:36.000 --> 00:02:37.260
+The second service used
+
+69
+00:02:37.260 --> 00:02:39.990
+to perform encryption is called CloudHSM.
+
+70
+00:02:39.990 --> 00:02:42.060
+So, with KMS, it is AWS
+
+71
+00:02:42.060 --> 00:02:44.023
+who manages the software for encryption.
+
+72
+00:02:44.023 --> 00:02:47.370
+But with CloudHSM, AWS will just provision
+
+73
+00:02:47.370 --> 00:02:50.010
+to us the encryption hardware,
+
+74
+00:02:50.010 --> 00:02:53.047
+but we are managing the keys ourselves.
+
+75
+00:02:53.047 --> 00:02:56.580
+So, a dedicated hardware for us is called an HSM module,
+
+76
+00:02:56.580 --> 00:02:58.470
+so hardware security module,
+
+77
+00:02:58.470 --> 00:03:00.090
+and it looks like this.
+
+78
+00:03:00.090 --> 00:03:02.292
+And so with this aspect,
+
+79
+00:03:02.292 --> 00:03:05.520
+AWS will give us the hardware in their infrastructure,
+
+80
+00:03:05.520 --> 00:03:08.733
+but we manage our own encryption keys entirely, not AWS.
+
+81
+00:03:09.810 --> 00:03:12.630
+And to make sure that no one can to have our keys
+
+82
+00:03:12.630 --> 00:03:15.210
+by sneaking into the data center of AWS,
+
+83
+00:03:15.210 --> 00:03:17.820
+the HSM device is tamper resistant.
+
+84
+00:03:17.820 --> 00:03:20.340
+That means if someone tries to temper it, it will fail.
+
+85
+00:03:20.340 --> 00:03:24.270
+And there is FIPS 140-2 Level 3 compliance,
+
+86
+00:03:24.270 --> 00:03:26.970
+which is a security standard.
+
+87
+00:03:26.970 --> 00:03:28.374
+So, CloudHSM, how does that work?
+
+88
+00:03:28.374 --> 00:03:30.750
+Well, AWS will manage the hardware.
+
+89
+00:03:30.750 --> 00:03:32.670
+So they will manage the device I just showed you,
+
+90
+00:03:32.670 --> 00:03:34.307
+but we use the CloudHSM service
+
+91
+00:03:34.307 --> 00:03:37.680
+with the CloudHSM clients to manage the keys.
+
+92
+00:03:37.680 --> 00:03:39.960
+And obviously, the connection between our clients
+
+93
+00:03:39.960 --> 00:03:41.941
+and CloudHSM is encrypted
+
+94
+00:03:41.941 --> 00:03:44.520
+so that we can manage the keys securely.
+
+95
+00:03:44.520 --> 00:03:47.610
+Okay, so what type of KMS keys do we have?
+
+96
+00:03:47.610 --> 00:03:50.400
+We have the customer-managed key.
+
+97
+00:03:50.400 --> 00:03:53.430
+This is a key that is created, managed,
+
+98
+00:03:53.430 --> 00:03:54.720
+and used by the customer.
+
+99
+00:03:54.720 --> 00:03:55.650
+So, you.
+
+100
+00:03:55.650 --> 00:03:57.912
+And you can enable or disable a specific key.
+
+101
+00:03:57.912 --> 00:04:00.116
+You can also define a key rotation policy.
+
+102
+00:04:00.116 --> 00:04:03.990
+For example, you want a new key to be generated every year
+
+103
+00:04:03.990 --> 00:04:06.450
+while, of course, the old key is preserved.
+
+104
+00:04:06.450 --> 00:04:09.092
+You can also have the possibility to bring your own key.
+
+105
+00:04:09.092 --> 00:04:12.750
+Then you have the AWS-managed keys.
+
+106
+00:04:12.750 --> 00:04:15.000
+So, this time, it's created, managed,
+
+107
+00:04:15.000 --> 00:04:17.973
+and used on the customer's behalf by AWS.
+
+108
+00:04:18.960 --> 00:04:20.250
+So you're going to find it
+
+109
+00:04:20.250 --> 00:04:24.270
+whenever an AWS service has some encryption managed by AWS,
+
+110
+00:04:24.270 --> 00:04:29.270
+and the key name is aws/s3 or aws/ebs and so on.
+
+111
+00:04:31.620 --> 00:04:35.640
+So whenever you see aws/, it's an AWS-managed key.
+
+112
+00:04:35.640 --> 00:04:37.950
+Then we have AWS-owned keys.
+
+113
+00:04:37.950 --> 00:04:40.926
+So it's a collection of keys that a service owns
+
+114
+00:04:40.926 --> 00:04:44.366
+and manages to use in multiple accounts.
+
+115
+00:04:44.366 --> 00:04:46.620
+So AWS can use these keys
+
+116
+00:04:46.620 --> 00:04:48.544
+to protect some resources in your accounts,
+
+117
+00:04:48.544 --> 00:04:51.601
+but you actually don't have any power to view the keys.
+
+118
+00:04:51.601 --> 00:04:55.146
+And finally, you have the CloudHSM keys
+
+119
+00:04:55.146 --> 00:04:57.090
+or custom key store,
+
+120
+00:04:57.090 --> 00:04:58.860
+where the keys are generated
+
+121
+00:04:58.860 --> 00:05:01.293
+from your own CloudHSM hardware device,
+
+122
+00:05:01.293 --> 00:05:03.930
+and all the cryptographic operations
+
+123
+00:05:03.930 --> 00:05:07.886
+will be performed within the CloudHSM cluster.
+
+124
+00:05:07.886 --> 00:05:10.451
+So, that's it for encryption.
+
+125
+00:05:10.451 --> 00:05:14.283
+I hope you liked it, and I will see you in the next lecture.
+

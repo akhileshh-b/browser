@@ -1,0 +1,526 @@
+WEBVTT
+
+1
+00:00:00.420 --> 00:00:01.253
+<v Instructor>So let's have a look</v>
+
+2
+00:00:01.253 --> 00:00:03.550
+at the EBS volumes attached to our instance.
+
+3
+00:00:03.550 --> 00:00:05.490
+So if you click on instance
+
+4
+00:00:05.490 --> 00:00:08.340
+and then you go to the storage tab in here,
+
+5
+00:00:08.340 --> 00:00:11.320
+you find that there is a root device
+
+6
+00:00:11.320 --> 00:00:13.040
+and there's a block device on it.
+
+7
+00:00:13.040 --> 00:00:15.040
+As you can see, we got one volume
+
+8
+00:00:15.040 --> 00:00:17.120
+of eight gigabytes currently attached
+
+9
+00:00:17.120 --> 00:00:19.170
+into our EC2 instance.
+
+10
+00:00:19.170 --> 00:00:21.440
+So what I can do is I can click on this volume
+
+11
+00:00:21.440 --> 00:00:25.220
+and it will take me into the volumes interface of AWS.
+
+12
+00:00:25.220 --> 00:00:26.330
+And we can see that, yes, indeed,
+
+13
+00:00:26.330 --> 00:00:28.580
+our volume exists and it's there.
+
+14
+00:00:28.580 --> 00:00:31.160
+It's in use as shown here
+
+15
+00:00:31.160 --> 00:00:33.070
+and it's attached to an instance right here.
+
+16
+00:00:33.070 --> 00:00:36.270
+So we have a different kind of console here
+
+17
+00:00:36.270 --> 00:00:38.240
+and to access it, you can just go on the left hand side
+
+18
+00:00:38.240 --> 00:00:39.870
+and click on volumes.
+
+19
+00:00:39.870 --> 00:00:43.340
+So as we can see, now we have one EBS of eight gigabytes
+
+20
+00:00:43.340 --> 00:00:45.960
+and what I can do is I can create a second volume.
+
+21
+00:00:45.960 --> 00:00:47.750
+So let me create a volume
+
+22
+00:00:47.750 --> 00:00:49.710
+and I will have many options to choose from,
+
+23
+00:00:49.710 --> 00:00:50.970
+GP2, GP3 and so on
+
+24
+00:00:50.970 --> 00:00:55.970
+but I will just use GP2 of type of size two gigabytes.
+
+25
+00:00:57.180 --> 00:00:59.210
+And then for availability zone,
+
+26
+00:00:59.210 --> 00:01:02.690
+I can choose the same one where my EC2 instance is.
+
+27
+00:01:02.690 --> 00:01:07.690
+So for this, I'm gonna go into my EC2 instance, in here
+
+28
+00:01:07.710 --> 00:01:11.570
+and I will find which availability zone it is on.
+
+29
+00:01:11.570 --> 00:01:12.893
+So I scroll down,
+
+30
+00:01:16.210 --> 00:01:18.930
+and it is going to be in the networking one.
+
+31
+00:01:18.930 --> 00:01:21.140
+So I scroll down in the networking
+
+32
+00:01:21.140 --> 00:01:25.560
+and here, availability zone, it says eu-west-1b.
+
+33
+00:01:25.560 --> 00:01:27.770
+Therefore, the volume I will create
+
+34
+00:01:27.770 --> 00:01:30.170
+is going to be in eu-west-1b
+
+35
+00:01:30.170 --> 00:01:33.193
+because the EBS volumes are bound by specific AZ.
+
+36
+00:01:34.110 --> 00:01:35.020
+So that's good.
+
+37
+00:01:35.020 --> 00:01:39.000
+I will have it done and create this volume.
+
+38
+00:01:39.000 --> 00:01:41.210
+And now my volume is created.
+
+39
+00:01:41.210 --> 00:01:43.530
+And what I can do is if I can click on it,
+
+40
+00:01:43.530 --> 00:01:45.850
+this one is currently not attached.
+
+41
+00:01:45.850 --> 00:01:47.690
+Okay, so it's been creating
+
+42
+00:01:47.690 --> 00:01:50.400
+so let me refresh this to see if it's created.
+
+43
+00:01:50.400 --> 00:01:52.930
+Okay, it's available and it's not attached yet.
+
+44
+00:01:52.930 --> 00:01:54.610
+So therefore, because it's available,
+
+45
+00:01:54.610 --> 00:01:56.740
+what I can do is action
+
+46
+00:01:56.740 --> 00:01:59.580
+and then I can attach the volume
+
+47
+00:01:59.580 --> 00:02:01.310
+and we need to find an instance.
+
+48
+00:02:01.310 --> 00:02:03.040
+So we have one running right here.
+
+49
+00:02:03.040 --> 00:02:05.340
+And so we're going to attach this volume to my instance,
+
+50
+00:02:05.340 --> 00:02:07.520
+click on attach volume and voila,
+
+51
+00:02:07.520 --> 00:02:10.890
+our instance now has two EBS volumes attached to it.
+
+52
+00:02:10.890 --> 00:02:11.950
+How do we know?
+
+53
+00:02:11.950 --> 00:02:14.270
+Well, I can refresh this page,
+
+54
+00:02:14.270 --> 00:02:19.270
+go to storage on my EC2 console, scroll down.
+
+55
+00:02:19.640 --> 00:02:21.780
+As you can see now for block devices,
+
+56
+00:02:21.780 --> 00:02:23.310
+I have two block devices.
+
+57
+00:02:23.310 --> 00:02:25.010
+I have the one of eight gigabytes
+
+58
+00:02:25.010 --> 00:02:27.350
+and the one of two gigabytes.
+
+59
+00:02:27.350 --> 00:02:29.750
+To actually use this new block device,
+
+60
+00:02:29.750 --> 00:02:30.820
+it's a bit more complicated
+
+61
+00:02:30.820 --> 00:02:32.460
+and out of scope for this course,
+
+62
+00:02:32.460 --> 00:02:37.460
+but you can go to format EBS volume attach EC2,
+
+63
+00:02:37.470 --> 00:02:40.390
+and you should find something like, yes,
+
+64
+00:02:40.390 --> 00:02:43.480
+make an Amazon EBS volume available to use on Linux
+
+65
+00:02:43.480 --> 00:02:45.330
+and this gives you instructions on how to do it
+
+66
+00:02:45.330 --> 00:02:47.450
+but again, this is out of scope for this.
+
+67
+00:02:47.450 --> 00:02:50.470
+So now if I go into my volumes and I create a volume,
+
+68
+00:02:50.470 --> 00:02:53.720
+I can create a volume of two gigabytes of GP2
+
+69
+00:02:53.720 --> 00:02:57.400
+but this time the AZ is going to be eu-west-1a
+
+70
+00:02:57.400 --> 00:02:58.570
+and not eu-west-1b.
+
+71
+00:02:58.570 --> 00:03:00.200
+So it's gonna be a different AZ
+
+72
+00:03:00.200 --> 00:03:02.860
+than the one of my EC2 instance.
+
+73
+00:03:02.860 --> 00:03:05.210
+And the reason I do so is to show you
+
+74
+00:03:05.210 --> 00:03:08.110
+that right now, we have three GP2 volumes.
+
+75
+00:03:08.110 --> 00:03:09.600
+So let me refresh this.
+
+76
+00:03:09.600 --> 00:03:12.560
+So the last one is available and it's a different AZ,
+
+77
+00:03:12.560 --> 00:03:14.290
+so eu-west-1a.
+
+78
+00:03:14.290 --> 00:03:18.280
+And if I do actions and then attach volume,
+
+79
+00:03:18.280 --> 00:03:22.170
+as you can see, I cannot attach it to my EC2 instance
+
+80
+00:03:22.170 --> 00:03:25.873
+because my EC2 instance is in eu-west-1b.
+
+81
+00:03:26.745 --> 00:03:29.300
+And so therefore, we can see that the EBS volumes
+
+82
+00:03:29.300 --> 00:03:32.583
+indeed are bound by a specific availability zone.
+
+83
+00:03:33.480 --> 00:03:35.930
+Lastly, what I can do is that I can take this volume,
+
+84
+00:03:35.930 --> 00:03:39.560
+do action, delete volume, and it's gone.
+
+85
+00:03:39.560 --> 00:03:40.980
+And that really shows you the power of the cloud.
+
+86
+00:03:40.980 --> 00:03:43.820
+I can just request volumes, delete volumes
+
+87
+00:03:43.820 --> 00:03:47.170
+right on the go in the matters of seconds.
+
+88
+00:03:47.170 --> 00:03:50.330
+Okay, so we have our two EBS volumes in here
+
+89
+00:03:50.330 --> 00:03:52.800
+and what I wanna show you now is a cool behavior.
+
+90
+00:03:52.800 --> 00:03:56.800
+So what happens if I terminate my instance?
+
+91
+00:03:56.800 --> 00:03:59.030
+Well remember, and I will show you again,
+
+92
+00:03:59.030 --> 00:04:01.330
+this one root volume of eight gigabytes
+
+93
+00:04:01.330 --> 00:04:03.720
+has the delete on termination attribute.
+
+94
+00:04:03.720 --> 00:04:05.130
+So how do we know?
+
+95
+00:04:05.130 --> 00:04:07.140
+Well, if I go into my storage
+
+96
+00:04:07.140 --> 00:04:10.720
+and then go to my block devices, into this table right here,
+
+97
+00:04:10.720 --> 00:04:13.330
+and scroll all the way right,
+
+98
+00:04:13.330 --> 00:04:16.410
+you see the first one has delete on termination yes
+
+99
+00:04:16.410 --> 00:04:18.000
+and the second one no.
+
+100
+00:04:18.000 --> 00:04:19.130
+So why this one is yes?
+
+101
+00:04:19.130 --> 00:04:20.200
+Well, I don't know if you remember,
+
+102
+00:04:20.200 --> 00:04:22.450
+but when you go through the process
+
+103
+00:04:22.450 --> 00:04:24.950
+of launching an instance, okay?
+
+104
+00:04:24.950 --> 00:04:29.670
+And then you scroll down to the storage,
+
+105
+00:04:29.670 --> 00:04:32.290
+in here, if you click on advanced,
+
+106
+00:04:32.290 --> 00:04:33.170
+you can see the fact
+
+107
+00:04:33.170 --> 00:04:35.370
+that it is your roots of eight gigabytes
+
+108
+00:04:35.370 --> 00:04:39.200
+and by default, this delete on termination attribute is yes,
+
+109
+00:04:39.200 --> 00:04:41.140
+which makes sense, but you could set it to no
+
+110
+00:04:41.140 --> 00:04:42.950
+if you wanted to keep the root
+
+111
+00:04:42.950 --> 00:04:44.730
+after terminating your instance.
+
+112
+00:04:44.730 --> 00:04:48.140
+So this explains why we see from before,
+
+113
+00:04:48.140 --> 00:04:51.110
+the yes in this table.
+
+114
+00:04:51.110 --> 00:04:55.450
+And so therefore, if I go ahead and terminate my instance
+
+115
+00:04:55.450 --> 00:04:58.420
+which I will, so it says successfully terminated
+
+116
+00:04:58.420 --> 00:05:01.000
+so it's going to really remove it from here.
+
+117
+00:05:01.000 --> 00:05:04.050
+I can go back into my EBS volumes.
+
+118
+00:05:04.050 --> 00:05:05.233
+I can refresh them.
+
+119
+00:05:06.310 --> 00:05:08.230
+And what's going to happen is that this one
+
+120
+00:05:08.230 --> 00:05:10.490
+soon is going to be available
+
+121
+00:05:10.490 --> 00:05:13.660
+so because it's going to be detached from my EC2 instance
+
+122
+00:05:13.660 --> 00:05:16.110
+and then it's going to be terminated.
+
+123
+00:05:16.110 --> 00:05:18.160
+So I'm going to pause until this is done.
+
+124
+00:05:19.020 --> 00:05:19.853
+And here we go.
+
+125
+00:05:19.853 --> 00:05:22.120
+So my eight gigabyte volume has now disappeared.
+
+126
+00:05:22.120 --> 00:05:24.310
+Only my two gigabyte volume is left
+
+127
+00:05:24.310 --> 00:05:25.660
+and if I go to my EC2 console,
+
+128
+00:05:25.660 --> 00:05:29.340
+well, it says that my first instance has been terminated.
+
+129
+00:05:29.340 --> 00:05:31.040
+So that's it for this lecture.
+
+130
+00:05:31.040 --> 00:05:32.110
+I hope you liked it
+
+131
+00:05:32.110 --> 00:05:34.060
+and I will see you in the next lecture.
+

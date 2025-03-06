@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:00.640 --> 00:00:01.630
+<v Instructor>Now let's talk about</v>
+
+00:00:01.630 --> 00:00:03.360
+another service called CodeBuild.
+
+00:00:03.360 --> 00:00:05.170
+So the name is explicit,
+
+00:00:05.170 --> 00:00:08.330
+it allows you to build your code in the cloud.
+
+00:00:08.330 --> 00:00:09.280
+So what does that mean?
+
+00:00:09.280 --> 00:00:11.520
+That means that the source course is going to be compiled,
+
+00:00:11.520 --> 00:00:13.170
+the tests are going to be run,
+
+00:00:13.170 --> 00:00:16.170
+and then the output of which is going to produce packages,
+
+00:00:16.170 --> 00:00:18.690
+and these packages are going to be ready to be deployed
+
+00:00:18.690 --> 00:00:20.250
+for example, by CodeDeploy
+
+00:00:20.250 --> 00:00:22.820
+onto servers so that your application can run.
+
+00:00:22.820 --> 00:00:25.130
+So, as a diagram, what does it look like?
+
+00:00:25.130 --> 00:00:27.337
+Well, say your code is in CodeCommit,
+
+00:00:27.337 --> 00:00:30.140
+CodeBuild is going to retrieve this code from CodeCommit,
+
+00:00:30.140 --> 00:00:32.800
+run some script that you have to define, build your code,
+
+00:00:32.800 --> 00:00:35.730
+and then you will have a ready-to-deploy artifacts.
+
+00:00:35.730 --> 00:00:37.430
+So why would you use CodeBuild?
+
+00:00:37.430 --> 00:00:39.810
+Well it's fully managed and serverless.
+
+00:00:39.810 --> 00:00:42.690
+It's continuously scalable and highly available
+
+00:00:42.690 --> 00:00:44.980
+and secure, and with pay-as-you-go pricing,
+
+00:00:44.980 --> 00:00:46.220
+that means that you only pay
+
+00:00:46.220 --> 00:00:48.540
+for the time your code is being built.
+
+00:00:48.540 --> 00:00:50.160
+There are no servers to manage.
+
+00:00:50.160 --> 00:00:54.240
+And that means that you can really worry about just coding,
+
+00:00:54.240 --> 00:00:56.580
+and making sure that a service within AWS,
+
+00:00:56.580 --> 00:00:58.150
+will take its time to build your code
+
+00:00:58.150 --> 00:01:00.660
+every single time you push a code updates
+
+00:01:00.660 --> 00:01:02.700
+into your CodeCommit reupholstery.
+
+00:01:02.700 --> 00:01:05.050
+So that's it, very simple, I hope you liked it,
+
+00:01:05.050 --> 00:01:07.000
+and I will see you in the next lecture.

@@ -1,0 +1,310 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.420
+<v Instructor>So let's go ahead and make a bucket policy</v>
+
+2
+00:00:03.420 --> 00:00:07.920
+so that we can access this coffee file from the public URL.
+
+3
+00:00:07.920 --> 00:00:11.010
+So to do so, let's go under the Permission tabs.
+
+4
+00:00:11.010 --> 00:00:12.540
+And the first thing we have to do is
+
+5
+00:00:12.540 --> 00:00:15.480
+to allow public access from the bucket setting,
+
+6
+00:00:15.480 --> 00:00:17.760
+because right now everything is blocked.
+
+7
+00:00:17.760 --> 00:00:20.790
+So we edit this and we're going to untick this,
+
+8
+00:00:20.790 --> 00:00:23.940
+and, therefore, we will allow public access.
+
+9
+00:00:23.940 --> 00:00:25.770
+But again, this is something you would disable
+
+10
+00:00:25.770 --> 00:00:27.990
+only, and only if, you know you want
+
+11
+00:00:27.990 --> 00:00:30.480
+to set a public bucket policy.
+
+12
+00:00:30.480 --> 00:00:31.770
+So this is dangerous action.
+
+13
+00:00:31.770 --> 00:00:35.790
+So we say yes, because, of course, if you set real data
+
+14
+00:00:35.790 --> 00:00:39.000
+of your company on an S3 bucket and you make this public,
+
+15
+00:00:39.000 --> 00:00:41.550
+you have data leaks and that can never be good.
+
+16
+00:00:41.550 --> 00:00:43.650
+So now, under Permissions overview,
+
+17
+00:00:43.650 --> 00:00:46.230
+the access that objects can be public.
+
+18
+00:00:46.230 --> 00:00:47.640
+So that's the first step.
+
+19
+00:00:47.640 --> 00:00:50.700
+Next, we scroll down and we look at Bucket policy.
+
+20
+00:00:50.700 --> 00:00:53.250
+So currently we have none and we wanna create one
+
+21
+00:00:53.250 --> 00:00:56.220
+so that we make our entire bucket public.
+
+22
+00:00:56.220 --> 00:00:58.170
+So the first thing you can do is look
+
+23
+00:00:58.170 --> 00:01:01.110
+at the policies example, and this is the documentation,
+
+24
+00:01:01.110 --> 00:01:02.580
+and it will show you a lot
+
+25
+00:01:02.580 --> 00:01:04.230
+of use cases on the right hand side
+
+26
+00:01:04.230 --> 00:01:06.630
+that will show you what's the appropriate
+
+27
+00:01:06.630 --> 00:01:09.060
+and corresponding bucket policy.
+
+28
+00:01:09.060 --> 00:01:12.870
+But for us, we're going to use the policy generator.
+
+29
+00:01:12.870 --> 00:01:15.240
+So here's the AWS Policy Generator,
+
+30
+00:01:15.240 --> 00:01:18.240
+and we're going to create an S3 Bucket Policy.
+
+31
+00:01:18.240 --> 00:01:20.400
+So let's select the right type.
+
+32
+00:01:20.400 --> 00:01:23.370
+We'll allow, and then the principal is going to be a star
+
+33
+00:01:23.370 --> 00:01:25.650
+because we want to allow anyone
+
+34
+00:01:25.650 --> 00:01:29.400
+on the Amazon S3 service to perform,
+
+35
+00:01:29.400 --> 00:01:32.520
+and because we will read objects on our bucket,
+
+36
+00:01:32.520 --> 00:01:34.650
+we want to perform a getObject.
+
+37
+00:01:34.650 --> 00:01:35.790
+So here it is.
+
+38
+00:01:35.790 --> 00:01:38.250
+We want to allow getObjects.
+
+39
+00:01:38.250 --> 00:01:41.820
+And the Amazon Resource Name must be the bucket name
+
+40
+00:01:41.820 --> 00:01:43.560
+with a slash, and then with a star.
+
+41
+00:01:43.560 --> 00:01:45.150
+So let's have a look first.
+
+42
+00:01:45.150 --> 00:01:48.810
+So back into our S3 buckets, we have the bucket arn here,
+
+43
+00:01:48.810 --> 00:01:50.220
+the Amazon resource name here.
+
+44
+00:01:50.220 --> 00:01:54.930
+So we copy it, we paste it into the Amazon Resource Name,
+
+45
+00:01:54.930 --> 00:01:55.860
+and this is not over.
+
+46
+00:01:55.860 --> 00:01:58.890
+We add a slash and then we add a star.
+
+47
+00:01:58.890 --> 00:02:02.940
+And the reason why we do this is that this action,
+
+48
+00:02:02.940 --> 00:02:05.910
+the getObject action right here,
+
+49
+00:02:05.910 --> 00:02:08.820
+applies to objects within your buckets,
+
+50
+00:02:08.820 --> 00:02:11.460
+and, therefore, objects within your bucket
+
+51
+00:02:11.460 --> 00:02:14.190
+are after a slash and there are stars
+
+52
+00:02:14.190 --> 00:02:16.020
+to represent these objects.
+
+53
+00:02:16.020 --> 00:02:17.820
+So let's add these statements
+
+54
+00:02:17.820 --> 00:02:20.100
+and then let's generate this policy.
+
+55
+00:02:20.100 --> 00:02:23.790
+And this policy is what we copy into here,
+
+56
+00:02:23.790 --> 00:02:26.190
+and this is a public S3 policy.
+
+57
+00:02:26.190 --> 00:02:30.570
+So that means that getObjects are allowed from anyone
+
+58
+00:02:30.570 --> 00:02:33.390
+on any objects of this bucket.
+
+59
+00:02:33.390 --> 00:02:34.440
+Okay, that's good.
+
+60
+00:02:34.440 --> 00:02:36.573
+So let's save these changes.
+
+61
+00:02:38.430 --> 00:02:41.280
+And there is a space here, so let's remove this.
+
+62
+00:02:41.280 --> 00:02:42.420
+Perfect.
+
+63
+00:02:42.420 --> 00:02:43.500
+Save these changes.
+
+64
+00:02:43.500 --> 00:02:44.550
+Now that works.
+
+65
+00:02:44.550 --> 00:02:47.160
+So we can see that our bucket policy
+
+66
+00:02:47.160 --> 00:02:48.750
+has properly been applied.
+
+67
+00:02:48.750 --> 00:02:52.050
+So, now, let's go into our object, coffee.jpg,
+
+68
+00:02:52.050 --> 00:02:54.720
+and let's find the object URL, right here.
+
+69
+00:02:54.720 --> 00:02:57.120
+We copy it and we enter it.
+
+70
+00:02:57.120 --> 00:03:00.197
+And as you can see now, my coffee image is fully visible
+
+71
+00:03:00.197 --> 00:03:03.510
+and it is public as well as any other objects
+
+72
+00:03:03.510 --> 00:03:05.610
+in my Amazon S3 buckets.
+
+73
+00:03:05.610 --> 00:03:06.540
+So that's it for this lecture.
+
+74
+00:03:06.540 --> 00:03:10.320
+We've seen bucket policies, we've seen the policy generator,
+
+75
+00:03:10.320 --> 00:03:12.870
+and we've seen that now our image is public.
+
+76
+00:03:12.870 --> 00:03:14.070
+So I hope you liked it,
+
+77
+00:03:14.070 --> 00:03:16.053
+and I will see you in the next lecture.
+

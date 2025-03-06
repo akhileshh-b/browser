@@ -1,0 +1,522 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.250
+<v Instructor>Been on EC2</v>
+
+2
+00:00:01.250 --> 00:00:05.130
+in which we will create our first website on AWS.
+
+3
+00:00:05.130 --> 00:00:06.700
+So what is Amazon EC2?
+
+4
+00:00:06.700 --> 00:00:11.480
+Well, EC2 is one of the most popular of AWS' offering.
+
+5
+00:00:11.480 --> 00:00:14.000
+It is definitely used everywhere.
+
+6
+00:00:14.000 --> 00:00:14.833
+And what is it?
+
+7
+00:00:14.833 --> 00:00:17.530
+Well, it stands for Elastic Compute Cloud
+
+8
+00:00:17.530 --> 00:00:21.420
+and this is the way to do Infrastructure as a Service
+
+9
+00:00:21.420 --> 00:00:22.850
+on AWS.
+
+10
+00:00:22.850 --> 00:00:24.710
+So EC2 is not just one service.
+
+11
+00:00:24.710 --> 00:00:27.330
+It's composed of many things at a high level.
+
+12
+00:00:27.330 --> 00:00:29.680
+So you can rent virtual machines on EC2,
+
+13
+00:00:29.680 --> 00:00:31.540
+they're called EC2 instances.
+
+14
+00:00:31.540 --> 00:00:35.080
+You can store data on virtual drives or EBS volumes.
+
+15
+00:00:35.080 --> 00:00:37.330
+You can distribute load across machines,
+
+16
+00:00:37.330 --> 00:00:38.750
+Elastic Load Balancer.
+
+17
+00:00:38.750 --> 00:00:42.450
+You can scale services using an auto-scaling group or ASG,
+
+18
+00:00:42.450 --> 00:00:44.460
+and all these things, do not worry,
+
+19
+00:00:44.460 --> 00:00:46.830
+we will see in depth during this course.
+
+20
+00:00:46.830 --> 00:00:50.500
+Knowing how to use EC2 in AWS is fundamental
+
+21
+00:00:50.500 --> 00:00:52.440
+to understand how the cloud works.
+
+22
+00:00:52.440 --> 00:00:54.010
+Because as I said from before,
+
+23
+00:00:54.010 --> 00:00:56.980
+the cloud is to be able to rent these compute
+
+24
+00:00:56.980 --> 00:01:01.000
+whenever you need, on demand, and EC2 is just that.
+
+25
+00:01:01.000 --> 00:01:04.870
+So, EC2, what can we choose for our instances
+
+26
+00:01:04.870 --> 00:01:07.700
+so there're virtual server that were rent from AWS?
+
+27
+00:01:07.700 --> 00:01:09.960
+So what Operating System can we choose
+
+28
+00:01:09.960 --> 00:01:11.900
+for our EC2 instances?
+
+29
+00:01:11.900 --> 00:01:12.980
+Three options:
+
+30
+00:01:12.980 --> 00:01:15.200
+Linux, and it's going to be the most popular,
+
+31
+00:01:15.200 --> 00:01:18.400
+Windows or even Mac OS.
+
+32
+00:01:18.400 --> 00:01:21.410
+How much compute power and cores you want
+
+33
+00:01:21.410 --> 00:01:23.280
+on this virtual machine?
+
+34
+00:01:23.280 --> 00:01:25.143
+So how much CPU?
+
+35
+00:01:25.143 --> 00:01:28.790
+Then you need to choose how much random access memory
+
+36
+00:01:28.790 --> 00:01:30.660
+or RAM you want,
+
+37
+00:01:30.660 --> 00:01:32.340
+and how much storage space.
+
+38
+00:01:32.340 --> 00:01:33.270
+So for example,
+
+39
+00:01:33.270 --> 00:01:35.100
+do you want storage that is going to be attached
+
+40
+00:01:35.100 --> 00:01:36.120
+through the network
+
+41
+00:01:36.120 --> 00:01:39.300
+and we'll see about it with EBS or EFS,
+
+42
+00:01:39.300 --> 00:01:41.150
+or do you want it to be hardware attached?
+
+43
+00:01:41.150 --> 00:01:43.730
+In this case, it will be an EC2 instance store.
+
+44
+00:01:43.730 --> 00:01:45.550
+And we have a whole section on storage,
+
+45
+00:01:45.550 --> 00:01:46.750
+so don't worry about it.
+
+46
+00:01:46.750 --> 00:01:48.140
+And then finally,
+
+47
+00:01:48.140 --> 00:01:51.410
+the type of network you want to attach to your EC2 instance.
+
+48
+00:01:51.410 --> 00:01:54.220
+So, do you want a network card that is going to be fast?
+
+49
+00:01:54.220 --> 00:01:56.910
+What kind of public IP do you want?
+
+50
+00:01:56.910 --> 00:01:59.410
+And finally, we need to handle the firewall rules
+
+51
+00:01:59.410 --> 00:02:02.420
+of our EC2 instance, and that is the security group.
+
+52
+00:02:02.420 --> 00:02:04.420
+And I live, finally, finally,
+
+53
+00:02:04.420 --> 00:02:07.250
+there's the Bootstrap script to configure the instance
+
+54
+00:02:07.250 --> 00:02:09.880
+at first launch, which is called the EC2 User Data.
+
+55
+00:02:09.880 --> 00:02:11.640
+So we have lots and lots of options
+
+56
+00:02:11.640 --> 00:02:12.990
+and as you'll see in the hands-on,
+
+57
+00:02:12.990 --> 00:02:16.300
+even more options at other certification levels
+
+58
+00:02:16.300 --> 00:02:19.090
+that you need to know in EC2 instances,
+
+59
+00:02:19.090 --> 00:02:22.090
+but at a core of it what you need to remember is that
+
+60
+00:02:22.090 --> 00:02:25.170
+you can choose pretty much how you want your visual machine
+
+61
+00:02:25.170 --> 00:02:27.720
+to be and you can rent it from AWS.
+
+62
+00:02:27.720 --> 00:02:29.110
+And that is the power of the cloud.
+
+63
+00:02:29.110 --> 00:02:33.200
+You can do this by just in the blink of the eye, really.
+
+64
+00:02:33.200 --> 00:02:35.930
+So it is possible to bootstrap our instances
+
+65
+00:02:35.930 --> 00:02:38.160
+using the EC2 User Data script.
+
+66
+00:02:38.160 --> 00:02:39.940
+So what does bootstrapping mean?
+
+67
+00:02:39.940 --> 00:02:41.860
+Well, bootstrapping means launching commands when
+
+68
+00:02:41.860 --> 00:02:43.200
+the machine starts.
+
+69
+00:02:43.200 --> 00:02:47.130
+So, that script is only run once and when it first starts,
+
+70
+00:02:47.130 --> 00:02:48.960
+and then will never be run again.
+
+71
+00:02:48.960 --> 00:02:52.160
+So the EC2 User Data has a very specific purpose.
+
+72
+00:02:52.160 --> 00:02:56.060
+It is to automate boot tasks, hence the name bootstrapping.
+
+73
+00:02:56.060 --> 00:02:57.440
+So what tasks do you want to automate?
+
+74
+00:02:57.440 --> 00:02:59.010
+Usually, when you boot your instance
+
+75
+00:02:59.010 --> 00:03:01.990
+while you want to install updates, install software,
+
+76
+00:03:01.990 --> 00:03:03.640
+download common files from the Internet,
+
+77
+00:03:03.640 --> 00:03:05.590
+or anything you can think of really,
+
+78
+00:03:05.590 --> 00:03:07.090
+anything you can think of.
+
+79
+00:03:07.090 --> 00:03:09.000
+So it could be whatever you want,
+
+80
+00:03:09.000 --> 00:03:10.050
+but just know that
+
+81
+00:03:10.050 --> 00:03:13.040
+the more you add into your User Data script,
+
+82
+00:03:13.040 --> 00:03:15.460
+the more your instant has to do at boot time.
+
+83
+00:03:15.460 --> 00:03:16.566
+Simple, right?
+
+84
+00:03:16.566 --> 00:03:17.830
+By the way,
+
+85
+00:03:17.830 --> 00:03:20.620
+the EC2 User Data scripts runs with a root user.
+
+86
+00:03:20.620 --> 00:03:24.710
+So any command you have will have the pseudo rights.
+
+87
+00:03:24.710 --> 00:03:25.730
+Okay?
+
+88
+00:03:25.730 --> 00:03:28.280
+What type of instances do we get for EC2?
+
+89
+00:03:28.280 --> 00:03:29.400
+And this is an example.
+
+90
+00:03:29.400 --> 00:03:32.300
+I have hundreds and hundreds of EC2 instance types,
+
+91
+00:03:32.300 --> 00:03:34.430
+but, here are five for you.
+
+92
+00:03:34.430 --> 00:03:37.450
+So the first one is a t2 micro, very very simple.
+
+93
+00:03:37.450 --> 00:03:41.850
+It has one vCPU, one gigabyte of memory.
+
+94
+00:03:41.850 --> 00:03:43.290
+The storage is only for EBS,
+
+95
+00:03:43.290 --> 00:03:46.170
+and it has a low to moderate network performance.
+
+96
+00:03:46.170 --> 00:03:48.008
+But as soon as you increase the instance type
+
+97
+00:03:48.008 --> 00:03:49.930
+like for example if you stay in the same family,
+
+98
+00:03:49.930 --> 00:03:53.740
+so we stay in the t2 family but we go to t2.xlarge,
+
+99
+00:03:53.740 --> 00:03:56.087
+now we have access to four vCPU
+
+100
+00:03:56.087 --> 00:03:58.196
+16 megabytes of RAM,
+
+101
+00:03:58.196 --> 00:03:59.960
+gigabytes of RAM, sorry,
+
+102
+00:03:59.960 --> 00:04:02.490
+and network performance of moderate.
+
+103
+00:04:02.490 --> 00:04:04.710
+If we go to complete different new levels,
+
+104
+00:04:04.710 --> 00:04:08.730
+so c5d.4xlarge, which is a very complicated name,
+
+105
+00:04:08.730 --> 00:04:12.140
+you get 16 vCPU, so 16 cores,
+
+106
+00:04:12.140 --> 00:04:15.810
+you get 32 gigabytes of memory, so a lot more,
+
+107
+00:04:15.810 --> 00:04:19.450
+you get some storage that is attached to your EC2 instance,
+
+108
+00:04:19.450 --> 00:04:22.980
+this is where it says 400 NVMe SSD.
+
+109
+00:04:22.980 --> 00:04:24.530
+Now the network is going to get really good
+
+110
+00:04:24.530 --> 00:04:25.850
+up to 10 gigabytes,
+
+111
+00:04:25.850 --> 00:04:28.080
+as well as the bandwidth to talk to network storage.
+
+112
+00:04:28.080 --> 00:04:29.100
+And so, as you can see,
+
+113
+00:04:29.100 --> 00:04:33.150
+if you go to r5.16xlarge or m5.8xlarge,
+
+114
+00:04:33.150 --> 00:04:34.600
+again you have different characteristics.
+
+115
+00:04:34.600 --> 00:04:36.320
+So, the idea with this is that
+
+116
+00:04:36.320 --> 00:04:38.880
+you choose the kind of instance that fits best
+
+117
+00:04:38.880 --> 00:04:40.060
+your application,
+
+118
+00:04:40.060 --> 00:04:42.810
+and you can use that on the cloud on demand.
+
+119
+00:04:42.810 --> 00:04:43.830
+Okay?
+
+120
+00:04:43.830 --> 00:04:46.320
+Now, for this instance, for our course,
+
+121
+00:04:46.320 --> 00:04:50.060
+t2 micro is going to be part of the AWS free tier.
+
+122
+00:04:50.060 --> 00:04:53.360
+You can get up to 750 hours per month of t2 micro
+
+123
+00:04:53.360 --> 00:04:55.990
+which represents basically running that instance
+
+124
+00:04:55.990 --> 00:04:57.270
+continuously for a month.
+
+125
+00:04:57.270 --> 00:04:59.520
+And so this is what we'll be using in the hands-on
+
+126
+00:04:59.520 --> 00:05:01.070
+that comes in the next lecture.
+
+127
+00:05:01.070 --> 00:05:03.790
+So this was a short introduction to EC2.
+
+128
+00:05:03.790 --> 00:05:05.740
+Don't worry, it's going to get very very practical
+
+129
+00:05:05.740 --> 00:05:06.600
+very soon.
+
+130
+00:05:06.600 --> 00:05:08.350
+I will see you in the next lecture.
+

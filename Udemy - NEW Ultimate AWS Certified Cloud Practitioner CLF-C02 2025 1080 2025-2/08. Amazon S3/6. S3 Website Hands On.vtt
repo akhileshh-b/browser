@@ -1,0 +1,194 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:02.460
+<v Instructor>Okay, so let's enable our bucket</v>
+
+2
+00:00:02.460 --> 00:00:03.420
+to be a website.
+
+3
+00:00:03.420 --> 00:00:05.760
+But first, I'm going to upload one more file here,
+
+4
+00:00:05.760 --> 00:00:10.110
+I'm going to upload my beach.jpg file into our buckets.
+
+5
+00:00:10.110 --> 00:00:12.900
+Okay, this is done, so we have two files into our buckets,
+
+6
+00:00:12.900 --> 00:00:15.780
+and let's go into Properties, scroll down,
+
+7
+00:00:15.780 --> 00:00:16.740
+and all the way down
+
+8
+00:00:16.740 --> 00:00:19.440
+you will find the static website hosting.
+
+9
+00:00:19.440 --> 00:00:20.610
+So click on Edit,
+
+10
+00:00:20.610 --> 00:00:23.280
+and here we will enable static website hosting.
+
+11
+00:00:23.280 --> 00:00:25.590
+We want to host a static website
+
+12
+00:00:25.590 --> 00:00:28.110
+and we need to specify an index document.
+
+13
+00:00:28.110 --> 00:00:30.390
+So I will say, index.html
+
+14
+00:00:30.390 --> 00:00:32.250
+and we will have to upload that file.
+
+15
+00:00:32.250 --> 00:00:35.430
+This is the default or homepage of the websites.
+
+16
+00:00:35.430 --> 00:00:38.490
+As you can see here, we also have a little warning sign
+
+17
+00:00:38.490 --> 00:00:39.780
+saying, hey, by the way
+
+18
+00:00:39.780 --> 00:00:42.120
+if you want to enable this as a website endpoint
+
+19
+00:00:42.120 --> 00:00:44.910
+you must make all your content publicly readable.
+
+20
+00:00:44.910 --> 00:00:47.550
+And we've done this in the previous lecture, so that's good.
+
+21
+00:00:47.550 --> 00:00:50.220
+Okay, so let's go and save this.
+
+22
+00:00:50.220 --> 00:00:53.850
+So this is saved, and go back into our objects.
+
+23
+00:00:53.850 --> 00:00:55.170
+And the one thing that's missing here
+
+24
+00:00:55.170 --> 00:00:58.170
+is that index, that HTML file.
+
+25
+00:00:58.170 --> 00:00:59.190
+So let's go to upload this,
+
+26
+00:00:59.190 --> 00:01:03.270
+we Add files and then I will click on index.html
+
+27
+00:01:03.270 --> 00:01:06.450
+and then upload, close it.
+
+28
+00:01:06.450 --> 00:01:09.090
+It's created, so now back into Properties,
+
+29
+00:01:09.090 --> 00:01:11.040
+let's scroll all the way down,
+
+30
+00:01:11.040 --> 00:01:13.740
+and you see now that's under static website hosting,
+
+31
+00:01:13.740 --> 00:01:15.600
+we have a bucket website endpoint.
+
+32
+00:01:15.600 --> 00:01:19.350
+So I copy this URL, paste it,
+
+33
+00:01:19.350 --> 00:01:21.630
+and I get, I love coffee.
+
+34
+00:01:21.630 --> 00:01:22.463
+Hello world!
+
+35
+00:01:22.463 --> 00:01:24.810
+And my coffee.jpg file.
+
+36
+00:01:24.810 --> 00:01:28.020
+So this working, so this is my index at HTML file,
+
+37
+00:01:28.020 --> 00:01:30.990
+and if I right click on this and open this image in new tab,
+
+38
+00:01:30.990 --> 00:01:34.170
+we have the public URL of our coffee.jpg.
+
+39
+00:01:34.170 --> 00:01:35.370
+So this is working,
+
+40
+00:01:35.370 --> 00:01:38.370
+and by the way if you wanted to change the coffee for beach,
+
+41
+00:01:38.370 --> 00:01:40.980
+well under beach.jpg we can see as well
+
+42
+00:01:40.980 --> 00:01:42.690
+this beach image right here.
+
+43
+00:01:42.690 --> 00:01:44.970
+So that means that everything is working,
+
+44
+00:01:44.970 --> 00:01:48.390
+our S3 bucket is enabled for static website hosting,
+
+45
+00:01:48.390 --> 00:01:50.970
+and thanks to the S3 bucket policy being public,
+
+46
+00:01:50.970 --> 00:01:53.490
+we can see all these files.
+
+47
+00:01:53.490 --> 00:01:55.860
+So we're good to go, I hope you like this lecture
+
+48
+00:01:55.860 --> 00:01:57.813
+and I will see you in the next lecture.
+

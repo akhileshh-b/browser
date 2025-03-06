@@ -1,0 +1,157 @@
+WEBVTT
+
+00:00:00.280 --> 00:00:02.540
+Welcome to this section on machine learning.
+
+00:00:02.540 --> 00:00:04.200
+So machine learning is not something you need to know
+
+00:00:04.200 --> 00:00:06.590
+in-depth for the exam but there are a few
+
+00:00:06.590 --> 00:00:09.400
+certification services that you need to know.
+
+00:00:09.400 --> 00:00:12.090
+So the first one is Amazon Rekognition,
+
+00:00:12.090 --> 00:00:14.980
+and as the name indicates, it's used to recognize objects,
+
+00:00:14.980 --> 00:00:18.450
+people, text and scene in images and videos
+
+00:00:18.450 --> 00:00:19.730
+using machine learning.
+
+00:00:19.730 --> 00:00:21.920
+So you can do facial analysis and facial search
+
+00:00:21.920 --> 00:00:24.270
+to do user verification and count people.
+
+00:00:24.270 --> 00:00:27.160
+And with this, we can create a database of familiar faces
+
+00:00:27.160 --> 00:00:29.410
+or compare against celebrities.
+
+00:00:29.410 --> 00:00:31.830
+The use cases for Rekognition would be labeling,
+
+00:00:31.830 --> 00:00:34.240
+content moderation, text detection,
+
+00:00:34.240 --> 00:00:36.210
+face detection and analysis,
+
+00:00:36.210 --> 00:00:39.090
+for example the gender, the age range and the emotions,
+
+00:00:39.090 --> 00:00:42.360
+face search and verification, celebrity recognition,
+
+00:00:42.360 --> 00:00:44.090
+and finally, pathing.
+
+00:00:44.090 --> 00:00:46.460
+So if you wanna learn more, you can check out their website
+
+00:00:46.460 --> 00:00:47.890
+which I think is very helpful.
+
+00:00:47.890 --> 00:00:49.340
+So on the Rekognition websites,
+
+00:00:49.340 --> 00:00:51.900
+we can we can automate our image and video analysis
+
+00:00:51.900 --> 00:00:52.950
+with machine learning.
+
+00:00:52.950 --> 00:00:53.940
+And I really like this website
+
+00:00:53.940 --> 00:00:55.590
+because it shows you how it works.
+
+00:00:55.590 --> 00:00:57.040
+So for example, for this image,
+
+00:00:57.040 --> 00:00:59.130
+we can identify the elements of this image,
+
+00:00:59.130 --> 00:01:01.570
+for example, a person, a rock and mountain bike,
+
+00:01:01.570 --> 00:01:03.120
+a crest and outdoors.
+
+00:01:03.120 --> 00:01:05.490
+We can label, for example, what we see in the images,
+
+00:01:05.490 --> 00:01:07.740
+for example, Golden Retrievers or dogs.
+
+00:01:07.740 --> 00:01:10.150
+Then I can look at content moderation
+
+00:01:10.150 --> 00:01:13.030
+to make sure that it's appropriate for all ages.
+
+00:01:13.030 --> 00:01:15.340
+I can detect text, for example for a run,
+
+00:01:15.340 --> 00:01:18.480
+we want to see the numbers of each runner in the run.
+
+00:01:18.480 --> 00:01:20.130
+We can do face detection and analysis.
+
+00:01:20.130 --> 00:01:22.840
+For example, this person looks happy, she is smiling,
+
+00:01:22.840 --> 00:01:24.850
+her eyes are open and she's a female.
+
+00:01:24.850 --> 00:01:26.240
+Face search and verification,
+
+00:01:26.240 --> 00:01:28.770
+maybe if you have a security application.
+
+00:01:28.770 --> 00:01:30.880
+Finally, if you want to recognize a celebrity,
+
+00:01:30.880 --> 00:01:32.280
+you can take a picture of them,
+
+00:01:32.280 --> 00:01:34.970
+and this is the CTO of AWS.
+
+00:01:34.970 --> 00:01:36.400
+And then finally, pathing.
+
+00:01:36.400 --> 00:01:39.060
+For example, if you're monitoring a soccer game,
+
+00:01:39.060 --> 00:01:41.080
+you could see where everyone is going to do
+
+00:01:41.080 --> 00:01:43.040
+maybe some real time analytics.
+
+00:01:43.040 --> 00:01:45.080
+So Rekognition is just a service you need to know
+
+00:01:45.080 --> 00:01:46.550
+at a high level for the exam
+
+00:01:46.550 --> 00:01:47.383
+but I really like this page
+
+00:01:47.383 --> 00:01:49.430
+because it demonstrate the use cases.
+
+00:01:49.430 --> 00:01:51.180
+I will see you in the next lecture.

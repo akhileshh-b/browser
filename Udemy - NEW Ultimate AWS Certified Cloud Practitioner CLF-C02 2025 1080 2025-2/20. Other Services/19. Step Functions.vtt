@@ -1,0 +1,154 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:01.073
+<v Instructor>Now let's learn</v>
+
+2
+00:00:01.073 --> 00:00:04.170
+about the AWS Step Functions.
+
+3
+00:00:04.170 --> 00:00:06.330
+So, Step Functions is a way for you
+
+4
+00:00:06.330 --> 00:00:09.570
+to build a serverless visual workflow
+
+5
+00:00:09.570 --> 00:00:10.980
+to perform orchestration,
+
+6
+00:00:10.980 --> 00:00:13.890
+and it's usually of your Lambda functions.
+
+7
+00:00:13.890 --> 00:00:15.450
+So you would design a graph,
+
+8
+00:00:15.450 --> 00:00:17.970
+and you would say at each step of the graph,
+
+9
+00:00:17.970 --> 00:00:22.650
+in case of success or failure, what goes on next?
+
+10
+00:00:22.650 --> 00:00:23.550
+And this is really cool,
+
+11
+00:00:23.550 --> 00:00:27.120
+because you can start really having some complex workflows
+
+12
+00:00:27.120 --> 00:00:28.830
+within AWS.
+
+13
+00:00:28.830 --> 00:00:31.260
+So Step Functions have some internal features,
+
+14
+00:00:31.260 --> 00:00:34.410
+such as sequencing, parallel functions, conditions,
+
+15
+00:00:34.410 --> 00:00:36.780
+timeouts, error handling, and so much.
+
+16
+00:00:36.780 --> 00:00:39.510
+And it doesn't just do Lambda functions.
+
+17
+00:00:39.510 --> 00:00:44.510
+It is actually integrate with EC2 instances, ECS tasks,
+
+18
+00:00:44.550 --> 00:00:46.530
+On-premises servers, the API Gateway,
+
+19
+00:00:46.530 --> 00:00:48.270
+the SQS queues, [00:00:47 NMADB],
+
+20
+00:00:48.270 --> 00:00:52.320
+and actually a lot of AWS services.
+
+21
+00:00:52.320 --> 00:00:54.150
+Also, it is possible for you
+
+22
+00:00:54.150 --> 00:00:56.220
+within the Step Function workflow
+
+23
+00:00:56.220 --> 00:00:58.590
+to implement a human approval feature.
+
+24
+00:00:58.590 --> 00:01:01.110
+For example, a workflow goes up to some points,
+
+25
+00:01:01.110 --> 00:01:03.990
+and you say, okay, a human will have a look at the results.
+
+26
+00:01:03.990 --> 00:01:06.480
+And if the human says "Yes," then please go on.
+
+27
+00:01:06.480 --> 00:01:08.190
+If "No," then fail.
+
+28
+00:01:08.190 --> 00:01:09.210
+This is something that's possible
+
+29
+00:01:09.210 --> 00:01:10.890
+thanks to the Step Functions.
+
+30
+00:01:10.890 --> 00:01:13.020
+So the use cases of Step Functions are manifold,
+
+31
+00:01:13.020 --> 00:01:16.530
+but, like, we can have, for example, the order fulfillment.
+
+32
+00:01:16.530 --> 00:01:19.350
+We can have data processing, web applications,
+
+33
+00:01:19.350 --> 00:01:22.020
+or any kind of workflow that is complex
+
+34
+00:01:22.020 --> 00:01:24.600
+to describe and that would require some sort
+
+35
+00:01:24.600 --> 00:01:27.330
+of graph for you to visualize it, okay?
+
+36
+00:01:27.330 --> 00:01:29.490
+So that's it for this little intro.
+
+37
+00:01:29.490 --> 00:01:30.360
+I hope you liked it.
+
+38
+00:01:30.360 --> 00:01:32.403
+And I will see you in the next lecture.
+

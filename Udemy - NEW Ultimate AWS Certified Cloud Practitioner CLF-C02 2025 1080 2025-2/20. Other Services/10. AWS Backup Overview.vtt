@@ -1,0 +1,106 @@
+WEBVTT
+
+1
+00:00:00.450 --> 00:00:03.010
+<v Instructor>Now, let's talk about AWS Backup,</v>
+
+2
+00:00:03.010 --> 00:00:04.260
+which as the name indicates,
+
+3
+00:00:04.260 --> 00:00:06.500
+a fully-managed service to centrally manage
+
+4
+00:00:06.500 --> 00:00:10.140
+and automate backups across AWS services.
+
+5
+00:00:10.140 --> 00:00:12.610
+It gets on-demand and schedule backups,
+
+6
+00:00:12.610 --> 00:00:15.620
+and it supports point-in-time recovery, so PITR.
+
+7
+00:00:15.620 --> 00:00:17.990
+You can define the retention periods of your backup,
+
+8
+00:00:17.990 --> 00:00:20.050
+the lifecycle management, the backup policies,
+
+9
+00:00:20.050 --> 00:00:21.360
+et cetera, et cetera.
+
+10
+00:00:21.360 --> 00:00:22.830
+You can do cross-region backups
+
+11
+00:00:22.830 --> 00:00:24.900
+or even cross-account backup
+
+12
+00:00:24.900 --> 00:00:27.730
+that is backed by either of AWS Organizations.
+
+13
+00:00:27.730 --> 00:00:28.740
+So how does that work?
+
+14
+00:00:28.740 --> 00:00:30.090
+Well, when you have the backup service,
+
+15
+00:00:30.090 --> 00:00:31.510
+you're going to create a backup plan,
+
+16
+00:00:31.510 --> 00:00:33.290
+for example, the frequency,
+
+17
+00:00:33.290 --> 00:00:35.730
+as well as the retention policy of your backups.
+
+18
+00:00:35.730 --> 00:00:38.080
+You assign the resources to be backed up
+
+19
+00:00:38.080 --> 00:00:41.547
+by the backup service or it can be Amazon EC2, EBS,
+
+20
+00:00:41.547 --> 00:00:46.140
+DynamoDB, RDS, EFS, Aurora, FSx and Storage Gateway.
+
+21
+00:00:46.140 --> 00:00:49.350
+And then all these services, thanks to this backup plan,
+
+22
+00:00:49.350 --> 00:00:52.360
+will be automatically backed up into Amazon S3.
+
+23
+00:00:52.360 --> 00:00:53.193
+So fairly simple.
+
+24
+00:00:53.193 --> 00:00:55.990
+Anytime you see backups at the exam, think AWS Backup.
+
+25
+00:00:55.990 --> 00:00:57.690
+This is a nicely-named service.
+
+26
+00:00:57.690 --> 00:00:59.440
+I will see you in the next lecture.
+

@@ -1,0 +1,434 @@
+WEBVTT
+
+1
+00:00:00.090 --> 00:00:02.400
+<v ->So now let's play with S3 versioning.</v>
+
+2
+00:00:02.400 --> 00:00:05.250
+And so first you need to go into the properties
+
+3
+00:00:05.250 --> 00:00:07.410
+and then we have a bucket versioning setting.
+
+4
+00:00:07.410 --> 00:00:10.500
+We're going to edit this and we're going to enable it.
+
+5
+00:00:10.500 --> 00:00:12.480
+And this is to enable bucket versioning.
+
+6
+00:00:12.480 --> 00:00:14.870
+And therefore any files we override now
+
+7
+00:00:14.870 --> 00:00:17.910
+is just going to add versions into our buckets.
+
+8
+00:00:17.910 --> 00:00:18.743
+So this is good.
+
+9
+00:00:18.743 --> 00:00:20.100
+Let's go into our objects
+
+10
+00:00:20.100 --> 00:00:22.380
+and say we want to update our website.
+
+11
+00:00:22.380 --> 00:00:24.990
+So let's go back, find the website URL.
+
+12
+00:00:24.990 --> 00:00:26.130
+It is right here.
+
+13
+00:00:26.130 --> 00:00:27.540
+Okay, so we have "I love coffee"
+
+14
+00:00:27.540 --> 00:00:31.530
+but let's say we want to write, "I really love coffee"
+
+15
+00:00:31.530 --> 00:00:34.830
+so therefore let's go back into here, our file.
+
+16
+00:00:34.830 --> 00:00:35.670
+And I'm going to edit it
+
+17
+00:00:35.670 --> 00:00:38.070
+and say I really love coffee.
+
+18
+00:00:38.070 --> 00:00:39.420
+I've saved it.
+
+19
+00:00:39.420 --> 00:00:41.400
+And now I upload this file again.
+
+20
+00:00:41.400 --> 00:00:45.960
+So I'm going to add a file and it will be my index.html.
+
+21
+00:00:45.960 --> 00:00:49.020
+And now we have updated content in that file.
+
+22
+00:00:49.020 --> 00:00:50.403
+So if I upload it.
+
+23
+00:00:51.240 --> 00:00:52.470
+It's successful.
+
+24
+00:00:52.470 --> 00:00:54.840
+So now it's been overwritten.
+
+25
+00:00:54.840 --> 00:00:57.960
+If I go into my first webpage and refresh this,
+
+26
+00:00:57.960 --> 00:01:00.570
+I get "I REALLY love coffee."
+
+27
+00:01:00.570 --> 00:01:03.210
+But what did happen in the back?
+
+28
+00:01:03.210 --> 00:01:04.860
+Well, if we go here
+
+29
+00:01:04.860 --> 00:01:07.950
+and we have here this toggle "Show versions"
+
+30
+00:01:07.950 --> 00:01:11.070
+we're going to show the actual version ID with the files.
+
+31
+00:01:11.070 --> 00:01:12.360
+And so we can notice a few things.
+
+32
+00:01:12.360 --> 00:01:14.610
+Number one, the files that we had uploaded before
+
+33
+00:01:14.610 --> 00:01:17.130
+such as the beach.jpg and the coffee.jpg
+
+34
+00:01:17.130 --> 00:01:18.780
+have a null version id.
+
+35
+00:01:18.780 --> 00:01:20.190
+That's because they were uploaded
+
+36
+00:01:20.190 --> 00:01:22.650
+before we had enabled versioning.
+
+37
+00:01:22.650 --> 00:01:26.220
+But this file index.html as you can see has two versions.
+
+38
+00:01:26.220 --> 00:01:28.770
+One has version ID null, which is the file we had uploaded
+
+39
+00:01:28.770 --> 00:01:30.630
+before enabling versioning.
+
+40
+00:01:30.630 --> 00:01:34.770
+But the file we uploaded just right now has a version ID.
+
+41
+00:01:34.770 --> 00:01:37.050
+And therefore, by updating this file
+
+42
+00:01:37.050 --> 00:01:39.420
+and uploading it into our S3 bucket,
+
+43
+00:01:39.420 --> 00:01:41.820
+we have created a new version ID.
+
+44
+00:01:41.820 --> 00:01:43.710
+So this is something you can only see if you
+
+45
+00:01:43.710 --> 00:01:45.390
+enable this toggle.
+
+46
+00:01:45.390 --> 00:01:46.770
+So now thanks to versioning
+
+47
+00:01:46.770 --> 00:01:49.200
+what we can do is we can actually roll-back our page.
+
+48
+00:01:49.200 --> 00:01:51.300
+So we have, "I REALLY love coffee"
+
+49
+00:01:51.300 --> 00:01:53.490
+but we wanna go back to "I love coffee."
+
+50
+00:01:53.490 --> 00:01:55.380
+So how do we do this while we click on
+
+51
+00:01:55.380 --> 00:01:57.270
+this specific version ID
+
+52
+00:01:57.270 --> 00:02:00.030
+Okay, so make sure that "Show versions" is enabled
+
+53
+00:02:00.030 --> 00:02:01.740
+and then we're going to delete.
+
+54
+00:02:01.740 --> 00:02:05.430
+And here we have to delete a specific version ID
+
+55
+00:02:05.430 --> 00:02:06.450
+of our object.
+
+56
+00:02:06.450 --> 00:02:09.000
+And therefore when we delete a specific version ID
+
+57
+00:02:09.000 --> 00:02:11.490
+of our object, it's called a permanent delete.
+
+58
+00:02:11.490 --> 00:02:14.670
+So it's a destructive operation, it cannot be undone.
+
+59
+00:02:14.670 --> 00:02:16.980
+And so if we're sure, we type permanently delete
+
+60
+00:02:16.980 --> 00:02:20.070
+in this text box and click on delete objects.
+
+61
+00:02:20.070 --> 00:02:21.840
+And now if you go back, as we can see,
+
+62
+00:02:21.840 --> 00:02:24.540
+we are back with the previous date of our bucket.
+
+63
+00:02:24.540 --> 00:02:26.160
+And therefore if I refresh this page,
+
+64
+00:02:26.160 --> 00:02:28.680
+I just get "I love coffee."
+
+65
+00:02:28.680 --> 00:02:30.360
+But what if we disable "Show versions"?
+
+66
+00:02:30.360 --> 00:02:32.220
+So now we just have our objects
+
+67
+00:02:32.220 --> 00:02:34.770
+and I'm going to take this coffee.jpg file,
+
+68
+00:02:34.770 --> 00:02:36.630
+and I will delete it itself.
+
+69
+00:02:36.630 --> 00:02:39.090
+So this time we don't actually delete
+
+70
+00:02:39.090 --> 00:02:41.010
+the underlying version ID,
+
+71
+00:02:41.010 --> 00:02:44.100
+we delete by adding a delete marker.
+
+72
+00:02:44.100 --> 00:02:46.860
+And so it doesn't actually delete the underlying object
+
+73
+00:02:46.860 --> 00:02:47.880
+as we'll see.
+
+74
+00:02:47.880 --> 00:02:50.310
+Let's just type delete this time.
+
+75
+00:02:50.310 --> 00:02:52.560
+It's not permanently delete, it's just delete
+
+76
+00:02:53.430 --> 00:02:54.930
+and we delete the object.
+
+77
+00:02:54.930 --> 00:02:55.770
+Perfect.
+
+78
+00:02:55.770 --> 00:02:58.320
+So now if we have a look at it from within our bucket,
+
+79
+00:02:58.320 --> 00:03:01.080
+it looks like the coffee.jpg file is done.
+
+80
+00:03:01.080 --> 00:03:04.590
+But if we click on "Show versions"
+
+81
+00:03:04.590 --> 00:03:08.880
+we see that we have a delete marker on our coffee.jpg file
+
+82
+00:03:08.880 --> 00:03:10.320
+with this version ID.
+
+83
+00:03:10.320 --> 00:03:14.070
+And the real, the previous, at least, coffee.jpg file
+
+84
+00:03:14.070 --> 00:03:15.600
+is still in our buckets
+
+85
+00:03:15.600 --> 00:03:18.510
+but it's being overwritten at least right now
+
+86
+00:03:18.510 --> 00:03:22.140
+from a version perspective by a delete marker.
+
+87
+00:03:22.140 --> 00:03:24.270
+So back into our webpage, if I refresh this page
+
+88
+00:03:24.270 --> 00:03:26.850
+and I refresh it by forcing a refresh,
+
+89
+00:03:26.850 --> 00:03:30.690
+by doing a Command + Shift + R to force a refresh
+
+90
+00:03:30.690 --> 00:03:33.390
+then we see that the image is not available.
+
+91
+00:03:33.390 --> 00:03:35.220
+So how do we get back this image?
+
+92
+00:03:35.220 --> 00:03:37.350
+And if I just try to, for example,
+
+93
+00:03:37.350 --> 00:03:39.690
+open this image in the new tab, it doesn't work.
+
+94
+00:03:39.690 --> 00:03:42.420
+I get a "404 Not Found."
+
+95
+00:03:42.420 --> 00:03:45.150
+So instead to get back the previous objects
+
+96
+00:03:45.150 --> 00:03:47.850
+I can click on this delete marker
+
+97
+00:03:47.850 --> 00:03:50.130
+and I'm going to delete the delete marker.
+
+98
+00:03:50.130 --> 00:03:54.060
+So I will permanently delete this delete marker.
+
+99
+00:03:54.060 --> 00:03:56.910
+And the effect of that is that it will restore
+
+100
+00:03:56.910 --> 00:03:58.410
+the previous version of my object
+
+101
+00:03:58.410 --> 00:04:00.600
+which is this one from before.
+
+102
+00:04:00.600 --> 00:04:03.780
+So back into my webpage, if I refresh it now
+
+103
+00:04:03.780 --> 00:04:06.480
+we can see that the coffee.jpg file is there.
+
+104
+00:04:06.480 --> 00:04:08.430
+So you can play around with versioning
+
+105
+00:04:08.430 --> 00:04:10.980
+you can add as many file version as you want.
+
+106
+00:04:10.980 --> 00:04:13.680
+You can start deleting them and view what happens.
+
+107
+00:04:13.680 --> 00:04:15.330
+But I hope you like this lecture
+
+108
+00:04:15.330 --> 00:04:17.280
+and I will see you in the next lecture.
+

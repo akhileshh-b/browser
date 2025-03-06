@@ -1,0 +1,154 @@
+WEBVTT
+
+00:00:00.340 --> 00:00:02.760
+<v ->So now let's talk about AWS Artifacts,</v>
+
+00:00:02.760 --> 00:00:04.220
+which is not really a service
+
+00:00:04.220 --> 00:00:07.060
+but it is presented as one in the consult.
+
+00:00:07.060 --> 00:00:07.893
+So what is it?
+
+00:00:07.893 --> 00:00:11.100
+It is a portal that will give you the customer access
+
+00:00:11.100 --> 00:00:13.720
+on demand to the compliance reports
+
+00:00:13.720 --> 00:00:15.310
+and AWS agreements.
+
+00:00:15.310 --> 00:00:17.780
+So these artifact reports can be downloaded
+
+00:00:17.780 --> 00:00:19.790
+and they represent a security
+
+00:00:19.790 --> 00:00:21.553
+and compliance documents from third party auditors,
+
+00:00:21.553 --> 00:00:24.050
+such as the alias ISO certifications,
+
+00:00:24.050 --> 00:00:25.590
+the payment card industry.
+
+00:00:25.590 --> 00:00:28.610
+So PCI reports and the SOC reports.
+
+00:00:28.610 --> 00:00:30.460
+There's also artifacts agreements
+
+00:00:30.460 --> 00:00:31.890
+which is allowing you to review,
+
+00:00:31.890 --> 00:00:34.830
+accept and track the status of alias arguments
+
+00:00:34.830 --> 00:00:37.020
+such as the BAA agreements
+
+00:00:37.020 --> 00:00:40.270
+or the Health Insurance Portability and Accountability Act,
+
+00:00:40.270 --> 00:00:43.700
+which is HIPAA, we'll see this maybe in exempt,
+
+00:00:43.700 --> 00:00:47.960
+for an individual accounts or in your organization.
+
+00:00:47.960 --> 00:00:50.780
+And so these reports can be used
+
+00:00:50.780 --> 00:00:53.800
+to support internal audits capabilities within your company
+
+00:00:53.800 --> 00:00:55.370
+or complaints needs to show
+
+00:00:55.370 --> 00:00:58.023
+that your compliance by using the AWS cloud.
+
+00:00:59.260 --> 00:01:03.113
+So if you go into artifacts for AWS,
+
+00:01:05.510 --> 00:01:08.240
+as we can see this is a global service
+
+00:01:08.240 --> 00:01:10.130
+and we can get some of the artifacts.
+
+00:01:10.130 --> 00:01:13.290
+We can view the reports or view the agreements.
+
+00:01:13.290 --> 00:01:14.730
+So if I click on the reports,
+
+00:01:14.730 --> 00:01:17.650
+I can see 61 reports right now that I can download.
+
+00:01:17.650 --> 00:01:19.090
+For example, I can say,
+
+00:01:19.090 --> 00:01:21.020
+I really want you to get this report right now.
+
+00:01:21.020 --> 00:01:22.500
+I'm going to download it,
+
+00:01:22.500 --> 00:01:25.360
+and I say, okay, I accept the NDA
+
+00:01:25.360 --> 00:01:27.870
+and then I download this report and here I am,
+
+00:01:27.870 --> 00:01:30.930
+I have a report that I can use for compliance internally
+
+00:01:30.930 --> 00:01:33.360
+or also I can go into agreements
+
+00:01:33.360 --> 00:01:34.810
+and find different agreements.
+
+00:01:34.810 --> 00:01:36.750
+For example, three account agreements
+
+00:01:36.750 --> 00:01:38.720
+and we don't have any organization agreements.
+
+00:01:38.720 --> 00:01:40.790
+So I can take one of these agreements.
+
+00:01:40.790 --> 00:01:42.890
+For example, this one, the BAA agreements
+
+00:01:42.890 --> 00:01:45.570
+accept the agreements and then download it,
+
+00:01:45.570 --> 00:01:49.200
+I scroll down, I accept it and then I download it.
+
+00:01:49.200 --> 00:01:50.620
+So it's very, very simple.
+
+00:01:50.620 --> 00:01:51.760
+It's not really a service.
+
+00:01:51.760 --> 00:01:53.800
+It's a way for you to download compliance documents,
+
+00:01:53.800 --> 00:01:54.950
+I just want to show you once
+
+00:01:54.950 --> 00:01:56.220
+and then you have to remember it
+
+00:01:56.220 --> 00:01:57.550
+and that will be it for this lecture.
+
+00:01:57.550 --> 00:01:59.363
+I will see you in the next lecture.

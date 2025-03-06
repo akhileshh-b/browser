@@ -1,0 +1,208 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.640
+<v Instructor>So as we know S3 Buckets</v>
+
+00:00:01.640 --> 00:00:03.660
+are linked to only one region
+
+00:00:03.660 --> 00:00:05.660
+and so sometimes you are looking
+
+00:00:05.660 --> 00:00:07.730
+to transfer files from all around the world
+
+00:00:07.730 --> 00:00:10.080
+into one specific S3 buckets.
+
+00:00:10.080 --> 00:00:12.580
+And there is a way to speed up the transfer
+
+00:00:12.580 --> 00:00:15.040
+using S3 transfer acceleration.
+
+00:00:15.040 --> 00:00:15.940
+The way it works is that
+
+00:00:15.940 --> 00:00:17.110
+your file is for example
+
+00:00:17.110 --> 00:00:18.800
+being uploaded from the United States
+
+00:00:18.800 --> 00:00:20.830
+into this war bucket in Australia.
+
+00:00:20.830 --> 00:00:21.800
+And so what we'll do is that
+
+00:00:21.800 --> 00:00:24.510
+we'll upload the file into a edge location
+
+00:00:24.510 --> 00:00:27.520
+that is going to be very close to a user in the USA
+
+00:00:27.520 --> 00:00:30.030
+and then using the internal network.
+
+00:00:30.030 --> 00:00:32.340
+The education will transfer the file
+
+00:00:32.340 --> 00:00:34.110
+to the S3 Buckets in Australia
+
+00:00:34.110 --> 00:00:36.600
+in a more reliable and fast connection.
+
+00:00:36.600 --> 00:00:40.160
+So this is the basics of how S3 transfer acceleration works.
+
+00:00:40.160 --> 00:00:42.690
+And this is only used when you want to upload
+
+00:00:42.690 --> 00:00:44.730
+or download a file from this bucket.
+
+00:00:44.730 --> 00:00:46.460
+That is far away from you.
+
+00:00:46.460 --> 00:00:47.293
+The cool thing is that
+
+00:00:47.293 --> 00:00:50.040
+we can test the tool and see how effective it is for us.
+
+00:00:50.040 --> 00:00:51.743
+Using this URL so let's have a go.
+
+00:00:52.690 --> 00:00:54.180
+So I am on the URL address.
+
+00:00:54.180 --> 00:00:55.380
+I had in the slide
+
+00:00:55.380 --> 00:00:57.710
+and as we can see it is going to run some tests
+
+00:00:57.710 --> 00:00:59.530
+of the speed connection.
+
+00:00:59.530 --> 00:01:03.070
+If I did a direct upload into an Amazon S3 bucket
+
+00:01:03.070 --> 00:01:04.640
+in U.S. east one
+
+00:01:04.640 --> 00:01:07.880
+or if I use an S3 accelerated transfer upload
+
+00:01:07.880 --> 00:01:09.580
+and so we'll see the difference
+
+00:01:09.580 --> 00:01:11.480
+and how much performance gain we gain
+
+00:01:11.480 --> 00:01:13.210
+if we are uploading the data
+
+00:01:13.210 --> 00:01:15.610
+in two different S3 buckets around the world.
+
+00:01:15.610 --> 00:01:16.970
+And so to give you an idea
+
+00:01:16.970 --> 00:01:18.250
+I am recording this from Europe
+
+00:01:18.250 --> 00:01:21.360
+and so Northern Virginia is a bit far away from me
+
+00:01:21.360 --> 00:01:23.830
+and so I expect the transfer acceleration
+
+00:01:23.830 --> 00:01:25.030
+to be a bit faster.
+
+00:01:25.030 --> 00:01:26.820
+But again my internet is really good
+
+00:01:26.820 --> 00:01:29.210
+so it really depends on where you are located
+
+00:01:29.210 --> 00:01:30.840
+and the type of Internet you have
+
+00:01:30.840 --> 00:01:32.800
+to see if transfer acceleration
+
+00:01:32.800 --> 00:01:34.640
+is worth it for you or not.
+
+00:01:34.640 --> 00:01:36.400
+So as we can see for Virginia
+
+00:01:36.400 --> 00:01:38.290
+using a S3 transfer acceleration
+
+00:01:38.290 --> 00:01:40.580
+is about 13 percent faster
+
+00:01:40.580 --> 00:01:43.910
+and this will also do the test in all the other regions.
+
+00:01:43.910 --> 00:01:46.650
+So we have San Francisco, Oregon, Dublin, Frankfurt,
+
+00:01:46.650 --> 00:01:50.360
+Tokyo, Seoul, Mumbai, Ohio, Canada and so on.
+
+00:01:50.360 --> 00:01:52.230
+So I wait for the test to be over
+
+00:01:52.230 --> 00:01:54.640
+and get back to you with the results
+
+00:01:54.640 --> 00:01:56.210
+so if we look at the results
+
+00:01:56.210 --> 00:01:58.190
+of these S3 transfer acceleration
+
+00:01:58.190 --> 00:02:00.910
+I can see that I am faster in San Francisco,
+
+00:02:00.910 --> 00:02:04.480
+Oregon, Dublin I'm actually faster pretty much everywhere.
+
+00:02:04.480 --> 00:02:06.780
+So this is for us a way to tell us that
+
+00:02:06.780 --> 00:02:08.420
+S3 transfer acceleration
+
+00:02:08.420 --> 00:02:09.840
+is a really really good way
+
+00:02:09.840 --> 00:02:12.330
+to speed up the downloads into Amazon history
+
+00:02:12.330 --> 00:02:13.460
+and the upload as well.
+
+00:02:13.460 --> 00:02:15.080
+And so it would be something you would be using
+
+00:02:15.080 --> 00:02:16.600
+if you had a global application
+
+00:02:16.600 --> 00:02:17.750
+that needs to upload files
+
+00:02:17.750 --> 00:02:20.170
+into a specific Amazon S3 bucket.
+
+00:02:20.170 --> 00:02:21.003
+So hope you liked it
+
+00:02:21.003 --> 00:02:22.890
+and I will see you in the next lecture.

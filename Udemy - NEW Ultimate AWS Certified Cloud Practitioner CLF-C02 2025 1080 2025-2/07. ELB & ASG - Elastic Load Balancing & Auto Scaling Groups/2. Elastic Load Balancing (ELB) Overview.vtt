@@ -1,0 +1,594 @@
+WEBVTT
+
+1
+00:00:00.120 --> 00:00:01.530
+<v Instructor>So let's see, the first service</v>
+
+2
+00:00:01.530 --> 00:00:03.540
+that will allow us to be more elastic
+
+3
+00:00:03.540 --> 00:00:07.200
+on AWS, this is called elastic load balancing.
+
+4
+00:00:07.200 --> 00:00:10.380
+So a load balancer is a server that will forward
+
+5
+00:00:10.380 --> 00:00:14.070
+the internet traffic down to multiple servers downstream.
+
+6
+00:00:14.070 --> 00:00:16.740
+And for then there will be EC2 instances.
+
+7
+00:00:16.740 --> 00:00:19.560
+They're also called the backend EC2 instances.
+
+8
+00:00:19.560 --> 00:00:21.570
+So elastic load balancing is something
+
+9
+00:00:21.570 --> 00:00:23.580
+that is managed by AWS.
+
+10
+00:00:23.580 --> 00:00:24.750
+So we have a load balancer
+
+11
+00:00:24.750 --> 00:00:28.950
+and this is what we will be publicly exposing for our users.
+
+12
+00:00:28.950 --> 00:00:30.930
+And behind that load balancer,
+
+13
+00:00:30.930 --> 00:00:33.600
+we will have multiple EC2 instances,
+
+14
+00:00:33.600 --> 00:00:35.580
+maybe three in that case.
+
+15
+00:00:35.580 --> 00:00:38.490
+And then we have our first user talking
+
+16
+00:00:38.490 --> 00:00:40.560
+to our load balancer, okay?
+
+17
+00:00:40.560 --> 00:00:43.500
+And the load balancer will be directing the traffic
+
+18
+00:00:43.500 --> 00:00:46.110
+to one of these EC2 instances.
+
+19
+00:00:46.110 --> 00:00:48.030
+And the EC2 instance will reply back
+
+20
+00:00:48.030 --> 00:00:51.120
+with something and the user will get the response.
+
+21
+00:00:51.120 --> 00:00:53.460
+But now if a second user comes in,
+
+22
+00:00:53.460 --> 00:00:57.660
+then they will get the reply from another EC2 instance.
+
+23
+00:00:57.660 --> 00:00:59.100
+And if a third user comes in
+
+24
+00:00:59.100 --> 00:01:01.290
+as you can expect, it will be replying
+
+25
+00:01:01.290 --> 00:01:02.850
+from another EC2 instance.
+
+26
+00:01:02.850 --> 00:01:05.490
+And so the load balancer, the more users we have,
+
+27
+00:01:05.490 --> 00:01:07.080
+the more it will balance the load
+
+28
+00:01:07.080 --> 00:01:09.390
+across multiple EC2 instances
+
+29
+00:01:09.390 --> 00:01:13.110
+and that will allow us to scale better our backend.
+
+30
+00:01:13.110 --> 00:01:14.280
+So why would you use one?
+
+31
+00:01:14.280 --> 00:01:15.300
+I think it's clear.
+
+32
+00:01:15.300 --> 00:01:16.620
+You can spread the load
+
+33
+00:01:16.620 --> 00:01:19.080
+across multiple downstream instances.
+
+34
+00:01:19.080 --> 00:01:21.300
+You can expose a single point of access,
+
+35
+00:01:21.300 --> 00:01:24.300
+DNS host name, for your application.
+
+36
+00:01:24.300 --> 00:01:26.040
+You can seamlessly handle the failures
+
+37
+00:01:26.040 --> 00:01:27.270
+of downstream instances.
+
+38
+00:01:27.270 --> 00:01:29.310
+So we do regular health checks
+
+39
+00:01:29.310 --> 00:01:31.860
+on them and if one of them is failing,
+
+40
+00:01:31.860 --> 00:01:33.870
+then the load balancer will not direct
+
+41
+00:01:33.870 --> 00:01:35.400
+traffic to that instance.
+
+42
+00:01:35.400 --> 00:01:37.080
+So we can hide the failure
+
+43
+00:01:37.080 --> 00:01:39.450
+of an instance using a load balancer.
+
+44
+00:01:39.450 --> 00:01:41.760
+We can also provide SSL termination,
+
+45
+00:01:41.760 --> 00:01:45.300
+so HTTPS for your websites very easily.
+
+46
+00:01:45.300 --> 00:01:47.400
+And you are able to use a load balancer
+
+47
+00:01:47.400 --> 00:01:49.800
+across multiple availability zones
+
+48
+00:01:49.800 --> 00:01:53.550
+which was making your application highly available.
+
+49
+00:01:53.550 --> 00:01:55.020
+Okay, let's keep on going.
+
+50
+00:01:55.020 --> 00:01:57.660
+So the ELB is a manager load balancer,
+
+51
+00:01:57.660 --> 00:02:00.150
+so you don't need to be provisioning servers.
+
+52
+00:02:00.150 --> 00:02:01.470
+AWS will do it for you
+
+53
+00:02:01.470 --> 00:02:04.462
+and AWS will guarantee that it will be working.
+
+54
+00:02:04.462 --> 00:02:07.590
+AWS will take care of all the upgrades, maintenance,
+
+55
+00:02:07.590 --> 00:02:11.250
+and high availability of that elastic load balancer.
+
+56
+00:02:11.250 --> 00:02:13.620
+And the only thing we have to do is to configure
+
+57
+00:02:13.620 --> 00:02:17.580
+a few things for the behavior of that load balancer.
+
+58
+00:02:17.580 --> 00:02:19.590
+It's obviously less expensive
+
+59
+00:02:19.590 --> 00:02:22.890
+if you want to set up your own load balancer on EC2.
+
+60
+00:02:22.890 --> 00:02:25.470
+It is definitely possible, but in the end,
+
+61
+00:02:25.470 --> 00:02:27.660
+there will be a lot more effort on your end
+
+62
+00:02:27.660 --> 00:02:31.290
+for maintenance, integration, maintaining and taking care
+
+63
+00:02:31.290 --> 00:02:35.130
+of the operating system, upgrades, et cetera, et cetera.
+
+64
+00:02:35.130 --> 00:02:38.370
+So there are four kinds of load balancers offered
+
+65
+00:02:38.370 --> 00:02:41.370
+by AWS and I need you to know the differences between them.
+
+66
+00:02:41.370 --> 00:02:44.310
+So the first one is the application load balancer,
+
+67
+00:02:44.310 --> 00:02:48.060
+which is for HTTP or HTTPS-only traffic
+
+68
+00:02:48.060 --> 00:02:50.280
+which is called a Layer 7 type
+
+69
+00:02:50.280 --> 00:02:54.180
+of load balancer because it's HTTP and HTTPS.
+
+70
+00:02:54.180 --> 00:02:56.400
+Next, we have the network load balancer.
+
+71
+00:02:56.400 --> 00:02:58.080
+It's ultra high performance.
+
+72
+00:02:58.080 --> 00:02:59.280
+So look for that keyword.
+
+73
+00:02:59.280 --> 00:03:02.310
+It allows for TCP and UDP actually.
+
+74
+00:03:02.310 --> 00:03:04.140
+And it's Layer 4.
+
+75
+00:03:04.140 --> 00:03:08.580
+So it's Layer 4 because it's lower level, so TCP and UDP.
+
+76
+00:03:08.580 --> 00:03:11.160
+Then we have the gateway load balancer.
+
+77
+00:03:11.160 --> 00:03:12.030
+It's Layer 3.
+
+78
+00:03:12.030 --> 00:03:14.670
+I will show you the differences in the next slide.
+
+79
+00:03:14.670 --> 00:03:17.940
+And then finally, we have the classic load balancer
+
+80
+00:03:17.940 --> 00:03:20.730
+but it's being retired in 2023,
+
+81
+00:03:20.730 --> 00:03:23.730
+so it's not going to appear at the exam anymore I feel.
+
+82
+00:03:23.730 --> 00:03:26.310
+But if you wanna know, it was a Layer 4
+
+83
+00:03:26.310 --> 00:03:29.940
+and Layer 7 type of load balancer of older generation.
+
+84
+00:03:29.940 --> 00:03:31.890
+And it's been replaced by the ALB,
+
+85
+00:03:31.890 --> 00:03:33.510
+the application balancer
+
+86
+00:03:33.510 --> 00:03:37.530
+and the NLB, the network load balancer.
+
+87
+00:03:37.530 --> 00:03:41.247
+So if you have a look at the differences between the ALB,
+
+88
+00:03:41.247 --> 00:03:46.247
+the NLB, and the gateway load balancer, also GWLB,
+
+89
+00:03:46.620 --> 00:03:48.120
+then what you'll need to look
+
+90
+00:03:48.120 --> 00:03:50.700
+at for the exam are these kind of keywords.
+
+91
+00:03:50.700 --> 00:03:55.470
+So if you see HTTP, HTTPS or gRPC protocol,
+
+92
+00:03:55.470 --> 00:03:58.530
+it means it's Layer 7 and it's the ALB.
+
+93
+00:03:58.530 --> 00:04:01.800
+Also, anytime you need HTTP routing features,
+
+94
+00:04:01.800 --> 00:04:03.870
+this will be requested.
+
+95
+00:04:03.870 --> 00:04:05.940
+For a static DNS as well,
+
+96
+00:04:05.940 --> 00:04:09.210
+this would be very helpful if you wanna have a static URL.
+
+97
+00:04:09.210 --> 00:04:11.040
+So the architecture is very simple.
+
+98
+00:04:11.040 --> 00:04:13.050
+The users access your load balancers
+
+99
+00:04:13.050 --> 00:04:15.210
+on one of the protocols I just mentioned
+
+100
+00:04:15.210 --> 00:04:17.670
+and then the load balancer routes traffic
+
+101
+00:04:17.670 --> 00:04:20.070
+to the downstream EC2 instances.
+
+102
+00:04:20.070 --> 00:04:21.960
+For example, if you've chosen the targets
+
+103
+00:04:21.960 --> 00:04:24.330
+to be EC2 instances.
+
+104
+00:04:24.330 --> 00:04:25.590
+For the network load balancer,
+
+105
+00:04:25.590 --> 00:04:26.910
+it is Layer 4.
+
+106
+00:04:26.910 --> 00:04:31.440
+So TCP and UDP protocol, and it's very high performance.
+
+107
+00:04:31.440 --> 00:04:34.950
+We're talking millions of requests per second.
+
+108
+00:04:34.950 --> 00:04:38.550
+It gives you a static IP this time, so not a static URL,
+
+109
+00:04:38.550 --> 00:04:41.850
+but a static IP through the use of elastic IP
+
+110
+00:04:41.850 --> 00:04:44.940
+which are IPs that you own that you can move around.
+
+111
+00:04:44.940 --> 00:04:47.610
+So this NLB gives you a static IP
+
+112
+00:04:47.610 --> 00:04:51.180
+and the architecture is the exact same as the ALB.
+
+113
+00:04:51.180 --> 00:04:52.800
+The traffic is being sent
+
+114
+00:04:52.800 --> 00:04:57.800
+to the NLB on the TCP and UDP protocol, and then sent,
+
+115
+00:04:57.900 --> 00:05:00.180
+forwarded to downstream targets.
+
+116
+00:05:00.180 --> 00:05:02.580
+For example, E2 instances.
+
+117
+00:05:02.580 --> 00:05:07.350
+Now, the gateway load balancer is using the GENEVE protocol
+
+118
+00:05:07.350 --> 00:05:09.210
+on the IP packets themselves.
+
+119
+00:05:09.210 --> 00:05:11.040
+So it's Layer 3.
+
+120
+00:05:11.040 --> 00:05:13.200
+And the use case you need to look
+
+121
+00:05:13.200 --> 00:05:15.930
+at for the exam is to route traffic
+
+122
+00:05:15.930 --> 00:05:20.250
+to firewalls that you manage on EC2 instances,
+
+123
+00:05:20.250 --> 00:05:22.950
+so that you can do, for example, classic firewall
+
+124
+00:05:22.950 --> 00:05:27.480
+or intrusion detection or deep packet inspection.
+
+125
+00:05:27.480 --> 00:05:30.510
+And the architecture, it is a little bit more complicated.
+
+126
+00:05:30.510 --> 00:05:32.760
+So the gateway load balancer doesn't balance
+
+127
+00:05:32.760 --> 00:05:34.680
+the load to your application.
+
+128
+00:05:34.680 --> 00:05:37.530
+It actually balances the load of the traffic
+
+129
+00:05:37.530 --> 00:05:40.230
+to the virtual appliances that you run
+
+130
+00:05:40.230 --> 00:05:43.770
+on EC2 instances so that you can analyze the traffic
+
+131
+00:05:43.770 --> 00:05:45.930
+or perform firewall operations.
+
+132
+00:05:45.930 --> 00:05:46.860
+That's why it's called
+
+133
+00:05:46.860 --> 00:05:49.500
+third-party security virtual appliances.
+
+134
+00:05:49.500 --> 00:05:51.300
+And they can be, many of them address
+
+135
+00:05:51.300 --> 00:05:53.310
+represented one on this diagram.
+
+136
+00:05:53.310 --> 00:05:55.530
+And so therefore, the traffic, when it goes
+
+137
+00:05:55.530 --> 00:05:58.710
+to the gateway load balancer, first sends the traffic
+
+138
+00:05:58.710 --> 00:06:02.010
+to these EC2 instances that will analyze the traffic.
+
+139
+00:06:02.010 --> 00:06:04.410
+The traffic will be sent back afterwards
+
+140
+00:06:04.410 --> 00:06:06.240
+to the gateway load balancer
+
+141
+00:06:06.240 --> 00:06:08.940
+and then forwarded back to the applications.
+
+142
+00:06:08.940 --> 00:06:11.130
+So the gateway load balancer here is
+
+143
+00:06:11.130 --> 00:06:16.050
+in the middle to allow us to inspect the IP packets themself
+
+144
+00:06:16.050 --> 00:06:18.150
+and to perform firewall features
+
+145
+00:06:18.150 --> 00:06:22.080
+or intrusion detection or deep packet inspection.
+
+146
+00:06:22.080 --> 00:06:24.900
+Okay, so if you understood this, you know the differences
+
+147
+00:06:24.900 --> 00:06:27.480
+between the load balancers and you'll be good for the exam.
+
+148
+00:06:27.480 --> 00:06:30.330
+And I will see you in the next lecture for some practice.
+

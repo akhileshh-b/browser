@@ -1,0 +1,354 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:02.070
+<v Instructor>So we have this two gigabyte,</v>
+
+2
+00:00:02.070 --> 00:00:04.650
+GP2 EBS Volume available to us,
+
+3
+00:00:04.650 --> 00:00:06.690
+and we can take a snapshot from it.
+
+4
+00:00:06.690 --> 00:00:10.470
+So if we do Actions, we can Create a snapshot.
+
+5
+00:00:10.470 --> 00:00:13.270
+So we can add a Description, for example, DemoSnapshots,
+
+6
+00:00:14.250 --> 00:00:16.800
+and then click on Create snapshots.
+
+7
+00:00:16.800 --> 00:00:18.870
+So then on the left hand side menu,
+
+8
+00:00:18.870 --> 00:00:22.410
+instead of Volumes, you can click on Snapshots.
+
+9
+00:00:22.410 --> 00:00:23.610
+And Snapshots shows you a list
+
+10
+00:00:23.610 --> 00:00:25.170
+of all the snapshots you have.
+
+11
+00:00:25.170 --> 00:00:27.270
+And as you can see, we have one right here.
+
+12
+00:00:27.270 --> 00:00:28.110
+It is Completed.
+
+13
+00:00:28.110 --> 00:00:30.210
+It is 100% Available.
+
+14
+00:00:30.210 --> 00:00:32.610
+And we get some information around the snapshot itself.
+
+15
+00:00:32.610 --> 00:00:35.820
+For first of all, what we can do is that we can Copy
+
+16
+00:00:35.820 --> 00:00:37.830
+this snapshot into other region.
+
+17
+00:00:37.830 --> 00:00:40.620
+So if you right click and do Copy Snapshots,
+
+18
+00:00:40.620 --> 00:00:42.570
+then as you can see, you can copy the snapshot
+
+19
+00:00:42.570 --> 00:00:45.540
+into any destination region that you want.
+
+20
+00:00:45.540 --> 00:00:47.520
+And this can come in very handy,
+
+21
+00:00:47.520 --> 00:00:49.050
+in case you want for example,
+
+22
+00:00:49.050 --> 00:00:50.970
+to have a Disaster Recovery Strategy,
+
+23
+00:00:50.970 --> 00:00:54.990
+to make sure data is backed up in another region of AWS.
+
+24
+00:00:54.990 --> 00:00:57.960
+So I won't do that, I won't do so, but you get the idea.
+
+25
+00:00:57.960 --> 00:01:00.870
+Another thing I can do is take the Snapshot,
+
+26
+00:01:00.870 --> 00:01:03.360
+and I can recreate a Volume from it.
+
+27
+00:01:03.360 --> 00:01:06.960
+So Action, Create volume from snapshots.
+
+28
+00:01:06.960 --> 00:01:10.410
+And we choose a two gigabytes GP2 Volume.
+
+29
+00:01:10.410 --> 00:01:15.360
+And then the target AZ doesn't have to remain eu-west-1a,
+
+30
+00:01:15.360 --> 00:01:18.180
+it can be, for example, eu-west-1b.
+
+31
+00:01:18.180 --> 00:01:20.400
+And we can also encrypt these volumes if you wanted to
+
+32
+00:01:20.400 --> 00:01:21.750
+and add some Tags.
+
+33
+00:01:21.750 --> 00:01:24.870
+And so as we can see, when we click on Create volume,
+
+34
+00:01:24.870 --> 00:01:27.210
+what's going to happen is that if we go back
+
+35
+00:01:27.210 --> 00:01:28.830
+into our Volumes,
+
+36
+00:01:28.830 --> 00:01:31.710
+well, now we have two Volumes, as you can see.
+
+37
+00:01:31.710 --> 00:01:32.640
+And one of them,
+
+38
+00:01:32.640 --> 00:01:36.690
+this one was restored through a Snapshots, okay?
+
+39
+00:01:36.690 --> 00:01:39.150
+And it is an eu-west-1b.
+
+40
+00:01:39.150 --> 00:01:40.680
+So the idea is that thanks to Snapshots,
+
+41
+00:01:40.680 --> 00:01:44.220
+we can quote unquote copy EBS volumes
+
+42
+00:01:44.220 --> 00:01:46.500
+across different Availability Zones.
+
+43
+00:01:46.500 --> 00:01:48.300
+And that's very handy.
+
+44
+00:01:48.300 --> 00:01:50.550
+If we look again at Snapshots, we can have a look
+
+45
+00:01:50.550 --> 00:01:53.280
+at what's called the Recycle Bin.
+
+46
+00:01:53.280 --> 00:01:55.590
+So the Recycle Bin is a way for you to protect
+
+47
+00:01:55.590 --> 00:01:58.500
+your EBS Snapshots from accidental deletion,
+
+48
+00:01:58.500 --> 00:02:02.220
+as well as your Amazon Machine Images.
+
+49
+00:02:02.220 --> 00:02:05.824
+So we can Create a Retention Rule and name it
+
+50
+00:02:05.824 --> 00:02:07.324
+DemoRetentionRule.
+
+51
+00:02:09.120 --> 00:02:11.580
+I will select EBS Snapshots.
+
+52
+00:02:11.580 --> 00:02:14.160
+I will Apply to all resources and retain them
+
+53
+00:02:14.160 --> 00:02:15.900
+during one day.
+
+54
+00:02:15.900 --> 00:02:18.480
+And for Rule Lock Setting, I will leave this unlocked,
+
+55
+00:02:18.480 --> 00:02:20.820
+so that I can delete this rule whenever I want to.
+
+56
+00:02:20.820 --> 00:02:23.493
+And then click on Create Retention Rule.
+
+57
+00:02:24.870 --> 00:02:28.200
+And now on the Resources, we can see if we have Resources
+
+58
+00:02:28.200 --> 00:02:29.850
+in the Recycle Bin.
+
+59
+00:02:29.850 --> 00:02:34.170
+So let's go back into our Snapshots in the EC2 Console.
+
+60
+00:02:34.170 --> 00:02:35.550
+So I'm going to go into EC2.
+
+61
+00:02:35.550 --> 00:02:37.620
+Here we go, Snapshots.
+
+62
+00:02:37.620 --> 00:02:39.150
+Little shortcuts.
+
+63
+00:02:39.150 --> 00:02:42.030
+And what I'm going to do is take the Snapshots,
+
+64
+00:02:42.030 --> 00:02:43.320
+and first, before I delete it,
+
+65
+00:02:43.320 --> 00:02:44.610
+I wanna show you the Storage Tiers.
+
+66
+00:02:44.610 --> 00:02:47.700
+So right now it is a Standard Storage Tier, okay?
+
+67
+00:02:47.700 --> 00:02:49.530
+But you can move the Storage Tier,
+
+68
+00:02:49.530 --> 00:02:51.360
+by Archiving a snapshots,
+
+69
+00:02:51.360 --> 00:02:53.520
+and so I need to move the Storage Tier
+
+70
+00:02:53.520 --> 00:02:55.950
+into another Pricing Level.
+
+71
+00:02:55.950 --> 00:02:56.910
+But if you want to restore it,
+
+72
+00:02:56.910 --> 00:02:59.850
+of course, you will have to wait 24 to 72 hours.
+
+73
+00:02:59.850 --> 00:03:00.780
+So just to show you.
+
+74
+00:03:00.780 --> 00:03:02.910
+But anyway, let's go ahead and delete the snapshot.
+
+75
+00:03:02.910 --> 00:03:04.980
+So we'll delete the Snapshots.
+
+76
+00:03:04.980 --> 00:03:06.210
+As you can see, it's gone.
+
+77
+00:03:06.210 --> 00:03:09.270
+And before, it used to completely delete the snapshots,
+
+78
+00:03:09.270 --> 00:03:10.920
+and you couldn't recover it, okay?
+
+79
+00:03:10.920 --> 00:03:12.090
+As you can see, it's gone.
+
+80
+00:03:12.090 --> 00:03:14.460
+But now thanks to the Recycle Bin,
+
+81
+00:03:14.460 --> 00:03:17.103
+well, if I refresh here my Resources,
+
+82
+00:03:18.870 --> 00:03:21.510
+I can now see that my Snapshot has appeared here.
+
+83
+00:03:21.510 --> 00:03:24.660
+And what I can do is click on it and Recover it.
+
+84
+00:03:24.660 --> 00:03:28.200
+Yes, Recover Resources, and voila, it's back
+
+85
+00:03:28.200 --> 00:03:31.110
+into my Snapshots on my EC2 console.
+
+86
+00:03:31.110 --> 00:03:33.360
+Okay, that was pretty awesome, right?
+
+87
+00:03:33.360 --> 00:03:35.040
+Okay, that's it for EBS Snapshots.
+
+88
+00:03:35.040 --> 00:03:38.040
+I hope you liked it, and I will see you in the next lecture.
+

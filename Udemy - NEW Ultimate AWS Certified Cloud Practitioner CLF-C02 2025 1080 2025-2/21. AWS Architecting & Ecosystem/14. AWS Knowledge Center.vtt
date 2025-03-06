@@ -1,0 +1,134 @@
+WEBVTT
+
+1
+00:00:00.120 --> 00:00:00.953
+<v Instructor>So, now let's talk</v>
+
+2
+00:00:00.953 --> 00:00:02.910
+about AWS Knowledge Center,
+
+3
+00:00:02.910 --> 00:00:05.760
+which is part of the re:Post portal.
+
+4
+00:00:05.760 --> 00:00:07.650
+So this is a place where you can find
+
+5
+00:00:07.650 --> 00:00:10.983
+the most frequent and common questions and requests on AWS.
+
+6
+00:00:12.030 --> 00:00:14.550
+So, they have a lot of different categories
+
+7
+00:00:14.550 --> 00:00:16.709
+such as popular services, analytics,
+
+8
+00:00:16.709 --> 00:00:19.950
+application integration, and so on.
+
+9
+00:00:19.950 --> 00:00:21.900
+And what I'm going to do is just show you
+
+10
+00:00:21.900 --> 00:00:23.460
+the online portal right now.
+
+11
+00:00:23.460 --> 00:00:25.680
+So, I an now on the Knowledge Center
+
+12
+00:00:25.680 --> 00:00:28.140
+and it's part of AWS re:Post.
+
+13
+00:00:28.140 --> 00:00:29.790
+And so here we have the featured questions.
+
+14
+00:00:29.790 --> 00:00:31.620
+For example, I can look at this one.
+
+15
+00:00:31.620 --> 00:00:33.343
+And you have troubleshooting of objects,
+
+16
+00:00:33.343 --> 00:00:36.450
+replication for Amazon S3 buckets, for example.
+
+17
+00:00:36.450 --> 00:00:38.940
+So, you have the question and then you have the resolution,
+
+18
+00:00:38.940 --> 00:00:41.700
+and a long article that helps you with these things.
+
+19
+00:00:41.700 --> 00:00:43.110
+So, this is quite helpful.
+
+20
+00:00:43.110 --> 00:00:45.030
+And if you go into Knowledge Center,
+
+21
+00:00:45.030 --> 00:00:48.660
+you can go for newly created or popular ones,
+
+22
+00:00:48.660 --> 00:00:51.660
+and then you can browse all the Knowledge Center content.
+
+23
+00:00:51.660 --> 00:00:53.610
+And as you can see here, you can filter by tags.
+
+24
+00:00:53.610 --> 00:00:55.440
+So, you can filter by AWS service.
+
+25
+00:00:55.440 --> 00:00:57.060
+You can do a search and so on.
+
+26
+00:00:57.060 --> 00:00:58.890
+You can sort them, you can view them as a list.
+
+27
+00:00:58.890 --> 00:01:01.320
+I mean, there's a lot of things you can do with this portal.
+
+28
+00:01:01.320 --> 00:01:04.140
+From an exam perspective, it's going to be the place
+
+29
+00:01:04.140 --> 00:01:06.690
+to find the answers to very common questions,
+
+30
+00:01:06.690 --> 00:01:10.563
+so to frequently ask questions and best practices on AWS.
+
+31
+00:01:11.539 --> 00:01:13.320
+Okay, so that's it for this lecture.
+
+32
+00:01:13.320 --> 00:01:14.430
+I hope you liked it.
+
+33
+00:01:14.430 --> 00:01:16.443
+And I will see you in the next lecture.
+

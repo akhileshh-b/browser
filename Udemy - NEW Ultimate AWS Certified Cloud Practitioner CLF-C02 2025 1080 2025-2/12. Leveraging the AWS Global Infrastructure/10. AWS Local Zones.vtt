@@ -1,0 +1,390 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:02.120
+<v ->Here's something that the exam now asks you,</v>
+
+2
+00:00:02.120 --> 00:00:04.690
+which is about AWS Local Zones.
+
+3
+00:00:04.690 --> 00:00:07.770
+So the idea is that we have these availabilities zones
+
+4
+00:00:07.770 --> 00:00:09.610
+and these regions all around the world,
+
+5
+00:00:09.610 --> 00:00:11.720
+but now there's the concept of local zones,
+
+6
+00:00:11.720 --> 00:00:14.230
+which allows you to place compute storage database
+
+7
+00:00:14.230 --> 00:00:16.304
+and other services that are selected by database
+
+8
+00:00:16.304 --> 00:00:17.900
+closer to end users,
+
+9
+00:00:17.900 --> 00:00:20.280
+to run latency sensitive applications.
+
+10
+00:00:20.280 --> 00:00:23.700
+So the idea is that you will extend your AWS region
+
+11
+00:00:23.700 --> 00:00:25.740
+to one or more locations, one or more
+
+12
+00:00:25.740 --> 00:00:27.340
+quote-unquote availability zones,
+
+13
+00:00:27.340 --> 00:00:28.792
+one or more. Then they're called,
+
+14
+00:00:28.792 --> 00:00:31.010
+they're actually called local zones.
+
+15
+00:00:31.010 --> 00:00:32.700
+So this is compatible with EC2, RDS,
+
+16
+00:00:32.700 --> 00:00:35.080
+ECS, EBS, ElastiCache, Direct Connect and so on.
+
+17
+00:00:35.080 --> 00:00:36.500
+And so here's an example,
+
+18
+00:00:36.500 --> 00:00:38.300
+and we'll see this in the hands on very quickly.
+
+19
+00:00:38.300 --> 00:00:41.340
+So there's a region Northern Virginia, US-East-1,
+
+20
+00:00:41.340 --> 00:00:42.910
+and has six AZ by default,
+
+21
+00:00:42.910 --> 00:00:47.120
+but you can extend these AZs with more local zones.
+
+22
+00:00:47.120 --> 00:00:49.680
+So we have Boston Chicago, Dallas, Houston,
+
+23
+00:00:49.680 --> 00:00:51.010
+Miami, and so on.
+
+24
+00:00:51.010 --> 00:00:52.780
+So how does that work? Well, here's your region,
+
+25
+00:00:52.780 --> 00:00:54.560
+US-east-1 with two AZs,
+
+26
+00:00:54.560 --> 00:00:57.921
+but it's possible for you to define a local zone in Boston
+
+27
+00:00:57.921 --> 00:01:00.180
+and then extend your VPC
+
+28
+00:01:00.180 --> 00:01:03.790
+to be going across these AZs and local zones.
+
+29
+00:01:03.790 --> 00:01:06.160
+And then you would be able to launch an EC2 instance
+
+30
+00:01:06.160 --> 00:01:07.800
+into this local zone.
+
+31
+00:01:07.800 --> 00:01:10.270
+Now that may be confusing, So let's go into the console
+
+32
+00:01:10.270 --> 00:01:11.820
+to see how that works.
+
+33
+00:01:11.820 --> 00:01:13.996
+So I am in the EC2 console
+
+34
+00:01:13.996 --> 00:01:15.650
+and let me first pick a region
+
+35
+00:01:15.650 --> 00:01:16.890
+that does not have local zone.
+
+36
+00:01:16.890 --> 00:01:19.790
+For example, let me pick, let me pick Europe, Ireland.
+
+37
+00:01:19.790 --> 00:01:22.420
+So I'm going to pick Europe, Ireland and then under settings
+
+38
+00:01:22.420 --> 00:01:24.100
+right here, there is zones.
+
+39
+00:01:24.100 --> 00:01:26.196
+So I'm going to click on zones, as you can see,
+
+40
+00:01:26.196 --> 00:01:29.620
+in Ireland, we have three AZs right here.
+
+41
+00:01:29.620 --> 00:01:31.910
+They're enabled by default, and this is it.
+
+42
+00:01:31.910 --> 00:01:33.935
+There's no local zone, nothing else, right?
+
+43
+00:01:33.935 --> 00:01:38.840
+But if I switch to US-East-1 for Northern Virginia,
+
+44
+00:01:38.840 --> 00:01:41.360
+as we can see now we have a lot of options.
+
+45
+00:01:41.360 --> 00:01:43.348
+We have local zones, and then if I scroll down,
+
+46
+00:01:43.348 --> 00:01:45.930
+we have wavelength zones,
+
+47
+00:01:45.930 --> 00:01:48.230
+and then we have the availability zones.
+
+48
+00:01:48.230 --> 00:01:50.680
+So we have six AZ in US-East-1.
+
+49
+00:01:50.680 --> 00:01:52.830
+Okay? So there are enabled by default,
+
+50
+00:01:52.830 --> 00:01:55.432
+but our focus right now is local zones.
+
+51
+00:01:55.432 --> 00:01:57.420
+We can enable a local zone, for example,
+
+52
+00:01:57.420 --> 00:02:00.500
+if we knew that we had users in Boston and we really,
+
+53
+00:02:00.500 --> 00:02:03.470
+really want them to have low-latency access to our
+
+54
+00:02:03.470 --> 00:02:04.970
+applications directly from Boston,
+
+55
+00:02:04.970 --> 00:02:07.890
+then we can enable the local zone in Boston.
+
+56
+00:02:07.890 --> 00:02:08.918
+So I will manage this
+
+57
+00:02:08.918 --> 00:02:11.900
+and then I will enable this local zone
+
+58
+00:02:11.900 --> 00:02:16.200
+and update the zone group. And then I will say, yes, enable.
+
+59
+00:02:16.200 --> 00:02:19.830
+So now Boston is actually going to be enabled.
+
+60
+00:02:19.830 --> 00:02:22.720
+So let me just wait for it to take effect.
+
+61
+00:02:22.720 --> 00:02:24.520
+So I just refresh, and as you can see now,
+
+62
+00:02:24.520 --> 00:02:29.320
+the US East Boston, so US-East-1-Boston-1, is enabled.
+
+63
+00:02:29.320 --> 00:02:32.930
+And so what that means is that if I go into my instances
+
+64
+00:02:32.930 --> 00:02:36.570
+and launch an instance, choose Amazon Linux 2,
+
+65
+00:02:36.570 --> 00:02:39.123
+and then T2 micro, just to show you.
+
+66
+00:02:40.420 --> 00:02:44.060
+Then in the instance details, in terms of network,
+
+67
+00:02:44.060 --> 00:02:46.930
+we have our VPC, editors of subnets,
+
+68
+00:02:46.930 --> 00:02:48.500
+We still have our six subnets,
+
+69
+00:02:48.500 --> 00:02:51.680
+but it's possible for us to create a new subnet.
+
+70
+00:02:51.680 --> 00:02:52.890
+And this is quite advanced so,
+
+71
+00:02:52.890 --> 00:02:54.350
+you don't have to follow along with me if you don't
+
+72
+00:02:54.350 --> 00:02:57.020
+understand what I'm doing, but we choose the subnets.
+
+73
+00:02:57.020 --> 00:03:01.470
+We'll call it Boston subnets.
+
+74
+00:03:01.470 --> 00:03:03.820
+And for the AZ, I can actually choose
+
+75
+00:03:03.820 --> 00:03:06.890
+my US-East-1-Boston-1 subnets.
+
+76
+00:03:06.890 --> 00:03:08.280
+And now for the CIDR blocks.
+
+77
+00:03:08.280 --> 00:03:09.660
+So don't worry if you don't understand,
+
+78
+00:03:09.660 --> 00:03:10.900
+this is really advanced,
+
+79
+00:03:10.900 --> 00:03:12.530
+and this is not going to be asked at the exams.
+
+80
+00:03:12.530 --> 00:03:17.530
+I will choose 172.31.96.0/20.
+
+81
+00:03:17.830 --> 00:03:18.720
+Don't ask me why.
+
+82
+00:03:18.720 --> 00:03:21.300
+this is more advanced than the networking bits of AWS.
+
+83
+00:03:21.300 --> 00:03:23.440
+But I just want to show you that we can create a subnet and
+
+84
+00:03:23.440 --> 00:03:26.760
+associate it with a local zone.
+
+85
+00:03:26.760 --> 00:03:29.630
+Okay, so we are creating a subnet.
+
+86
+00:03:29.630 --> 00:03:32.130
+It's successful. Now back into my launch wizard.
+
+87
+00:03:32.130 --> 00:03:34.990
+I can just refer to the PC
+
+88
+00:03:34.990 --> 00:03:36.490
+and then here I have the option
+
+89
+00:03:36.490 --> 00:03:38.370
+to choose my bus and subnets.
+
+90
+00:03:38.370 --> 00:03:39.790
+So that's it really, I will not go ahead
+
+91
+00:03:39.790 --> 00:03:41.160
+with creating these two instance,
+
+92
+00:03:41.160 --> 00:03:42.640
+but at least you saw that it is possible
+
+93
+00:03:42.640 --> 00:03:44.970
+for us to extend our VPC to local zones,
+
+94
+00:03:44.970 --> 00:03:48.620
+and therefore deploy EC2 instances closer to our users.
+
+95
+00:03:48.620 --> 00:03:49.810
+That's it for this lecture.
+
+96
+00:03:49.810 --> 00:03:51.435
+I hope you understand now what local zones are,
+
+97
+00:03:51.435 --> 00:03:53.385
+and I will see you in the next lecture.
+

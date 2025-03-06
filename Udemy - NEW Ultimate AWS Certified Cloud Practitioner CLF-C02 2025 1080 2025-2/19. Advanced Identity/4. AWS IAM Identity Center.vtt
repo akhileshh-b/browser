@@ -1,0 +1,190 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:01.373
+<v Instructor>So now let's talk</v>
+
+2
+00:00:01.373 --> 00:00:03.840
+about the AWS IAM Identity Center
+
+3
+00:00:03.840 --> 00:00:04.980
+which is a successor
+
+4
+00:00:04.980 --> 00:00:07.680
+to the surveys called the AWS Single Sign-On.
+
+5
+00:00:07.680 --> 00:00:10.560
+So if you see one or the other at the exam,
+
+6
+00:00:10.560 --> 00:00:12.000
+just know that the feature
+
+7
+00:00:12.000 --> 00:00:13.680
+is to give you a single sign-on.
+
+8
+00:00:13.680 --> 00:00:17.340
+So one login for all your AWS accounts
+
+9
+00:00:17.340 --> 00:00:19.410
+in your organization which is mostly
+
+10
+00:00:19.410 --> 00:00:21.420
+where the exam is testing you on.
+
+11
+00:00:21.420 --> 00:00:24.090
+But also, you're going to have one login across
+
+12
+00:00:24.090 --> 00:00:25.920
+Business cloud applications,
+
+13
+00:00:25.920 --> 00:00:27.840
+SAML2.0 enabled applications,
+
+14
+00:00:27.840 --> 00:00:30.960
+and your EC2 Windows Instances.
+
+15
+00:00:30.960 --> 00:00:33.060
+So the user logs in and has access
+
+16
+00:00:33.060 --> 00:00:36.150
+to everything you define for that user have access to.
+
+17
+00:00:36.150 --> 00:00:37.890
+And in terms of the identity providers,
+
+18
+00:00:37.890 --> 00:00:41.070
+So where the user data is stored,
+
+19
+00:00:41.070 --> 00:00:43.230
+where you can have a built-in identity store
+
+20
+00:00:43.230 --> 00:00:45.570
+in the IAM Identity Center,
+
+21
+00:00:45.570 --> 00:00:48.480
+or you can connect to a third party identity store
+
+22
+00:00:48.480 --> 00:00:50.910
+such as Microsoft Active Directory,
+
+23
+00:00:50.910 --> 00:00:53.340
+or OneLogin or Okta.
+
+24
+00:00:53.340 --> 00:00:55.590
+The idea here is that from an exam perspective,
+
+25
+00:00:55.590 --> 00:00:59.820
+anytime you see one access to multiple AWS accounts,
+
+26
+00:00:59.820 --> 00:01:03.420
+you have to think about the IAM Identity Center.
+
+27
+00:01:03.420 --> 00:01:05.190
+So very simply, what does it look like?
+
+28
+00:01:05.190 --> 00:01:08.850
+Well, you log in through this one URL,
+
+29
+00:01:08.850 --> 00:01:11.580
+and then you provide your username and password.
+
+30
+00:01:11.580 --> 00:01:12.560
+Then, you have access
+
+31
+00:01:12.560 --> 00:01:15.210
+to the AWS IAM Identity Center portal,
+
+32
+00:01:15.210 --> 00:01:17.160
+which is, I'm showing you mine right now,
+
+33
+00:01:17.160 --> 00:01:20.130
+have access to four accounts under my organization.
+
+34
+00:01:20.130 --> 00:01:22.110
+And then, I can click on one of them
+
+35
+00:01:22.110 --> 00:01:23.910
+and click on management console
+
+36
+00:01:23.910 --> 00:01:25.980
+and I'm going to have direct access
+
+37
+00:01:25.980 --> 00:01:29.610
+to the management console of a specific account.
+
+38
+00:01:29.610 --> 00:01:32.190
+All of this just by remembering one login
+
+39
+00:01:32.190 --> 00:01:33.780
+versus remembering four logins
+
+40
+00:01:33.780 --> 00:01:35.220
+for all of my accounts,
+
+41
+00:01:35.220 --> 00:01:37.590
+and managing my users across my accounts
+
+42
+00:01:37.590 --> 00:01:39.180
+in a central manner instead
+
+43
+00:01:39.180 --> 00:01:42.090
+of managing it on a per account basis.
+
+44
+00:01:42.090 --> 00:01:43.110
+So it's very powerful,
+
+45
+00:01:43.110 --> 00:01:45.360
+and that's all you need to know for the exam.
+
+46
+00:01:45.360 --> 00:01:46.200
+I hope you liked it,
+
+47
+00:01:46.200 --> 00:01:48.150
+and I will see you in the next lecture.
+

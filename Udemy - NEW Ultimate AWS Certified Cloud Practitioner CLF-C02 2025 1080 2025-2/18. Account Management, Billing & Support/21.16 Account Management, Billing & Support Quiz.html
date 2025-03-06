@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900334,"quiz_title":"Account Management, Billing & Support Quiz","questions":[{"_class":"assessment","id":28717544,"assessment_type":"multiple-choice","prompt":{"question":"<p>Which of the following allows you to centrally manage all users and roles permissions in your AWS&nbsp;Organization?</p>","relatedLectureIds":["20056424"],"feedbacks":["A Technical Account Manager is for proactively monitoring your environment and helping with optimization. It does not centrally manage all users and roles permissions in your organization.","Service control policies (SCPs) are a type of organization policy that you can use to manage permissions in your organization. An SCP spans all IAM users, groups, and roles, including the AWS account root user.","You can use AWS IAM to securely control individual and group access to your AWS resources. However, you cannot apply a policy to the AWS account root user.","AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It does not centrally manage all users and roles permissions in your organization."],"answers":["<p>Technical Account Manager (TAM)</p>","<p>Service Control Policies&nbsp;(SCPs)</p>","<p>AWS&nbsp;IAM</p>","<p>AWS&nbsp;Config</p>"]},"correct_response":["b"],"section":"","question_plain":"Which of the following allows you to centrally manage all users and roles permissions in your AWS&nbsp;Organization?","related_lectures":[{"_class":"lecture","id":20056424,"title":"Organizations Overview","created":"2020-05-25T18:32:24Z","is_published":true,"asset":{"_class":"asset","id":58202851,"asset_type":"Video","title":"CCP_-_Organizations_v2.mp4","created":"2024-07-30T08:31:58Z"},"object_index":214,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056424"}]},{"_class":"assessment","id":28717536,"assessment_type":"multiple-choice","prompt":{"feedbacks":["AWS Control Tower offers the easiest way to set up and govern a new, secure, multi-account AWS environment. It establishes a landing zone that is based on best-practices blueprints, and enables governance using guardrails you can choose from a pre-packaged list.","AWS Organizations helps you centrally govern your environment as you scale your workloads on AWS. Even though you can govern your AWS environment, it does not automatically set up your environment.","AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices. It is not used to set up and govern a secure multi-account AWS environment.","AWS Security Hub provides you with a comprehensive view of your security state within AWS and your compliance with security standards and best practices. It is not used to set up and govern a secure multi-account AWS environment."],"relatedLectureIds":["24682634"],"question":"<p>You would like to automatically set up and govern a secure multi-account AWS environment with best practices for your organization. Which AWS tool can you use?</p>","answers":["<p>Control Tower</p>","<p>Organizations</p>","<p>Trusted Advisor</p>","<p>Security Hub</p>"]},"correct_response":["a"],"section":"","question_plain":"You would like to automatically set up and govern a secure multi-account AWS environment with best practices for your organization. Which AWS tool can you use?","related_lectures":[{"_class":"lecture","id":24682634,"title":"AWS Control Tower Overview","created":"2021-01-31T19:48:04Z","is_published":true,"asset":{"_class":"asset","id":31073334,"asset_type":"Video","title":"CCP - Control Tower.mp4","created":"2021-01-31T19:32:58Z"},"object_index":217,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682634"}]},{"_class":"assessment","id":18924830,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It does not give recommendations regarding performance, fault tolerance. Regarding security, it automates security assessments, but does not give recommendations.","AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. It does not give recommendations regarding performance, security and fault tolerance.","AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices, including performance, security, and fault tolerance, but also cost optimization and service limits.","A Technical Account Manager is for proactively monitoring your environment and helping with optimization. It does not give recommendations regarding performance, security, and fault tolerance."],"relatedLectureIds":["20056418"],"question":"<p>A company would like recommendations regarding its performance, security, and fault tolerance. What can it use?</p>","answers":["<p>Inspector</p>","<p>Config</p>","<p>Trusted Advisor</p>","<p>Technical Account Manager</p>"]},"correct_response":["c"],"section":"","question_plain":"A company would like recommendations regarding its performance, security, and fault tolerance. What can it use?","related_lectures":[{"_class":"lecture","id":20056418,"title":"AWS Trusted Advisor","created":"2020-05-25T18:32:12Z","is_published":true,"asset":{"_class":"asset","id":53654028,"asset_type":"Video","title":"CCP_-_AWS_-_Trusted_Advisor_v3.mp4","created":"2023-12-31T16:50:56Z"},"object_index":230,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056418"}]},{"_class":"assessment","id":18924122,"assessment_type":"multiple-choice","prompt":{"feedbacks":["You can manage multiple AWS accounts using AWS Organizations.","AWS Organizations offers consolidated billing across all accounts.","AWS Organizations allows you to benefit from volume discounts by aggregating using across accounts.","AWS Organizations does not offer faster access to the AWS Support."],"relatedLectureIds":["20056424"],"question":"<p>Which of the following is INCORRECT&nbsp;regarding AWS&nbsp;Organizations?</p>","answers":["<p>Manage multiple AWS&nbsp;accounts</p>","<p>Consolidated billing across all accounts</p>","<p>Volume discounts from aggregated usage</p>","<p>Faster access to the AWS&nbsp;Support</p>"]},"correct_response":["d"],"section":"","question_plain":"Which of the following is INCORRECT&nbsp;regarding AWS&nbsp;Organizations?","related_lectures":[{"_class":"lecture","id":20056424,"title":"Organizations Overview","created":"2020-05-25T18:32:24Z","is_published":true,"asset":{"_class":"asset","id":58202851,"asset_type":"Video","title":"CCP_-_Organizations_v2.mp4","created":"2024-07-30T08:31:58Z"},"object_index":214,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056424"}]},{"_class":"assessment","id":18924938,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Basic Support Plan does not offer 24x7 phone, email, and chat support.","Developer Support Plan does not offer 24x7 phone, email, and chat support.","Enterprise Support Plan offers 24x7 phone, email, and chat support, but it is not the most cost-effective option.","Business Support Plan is the most cost-effective option that offers 24x7 phone, email, and chat support."],"relatedLectureIds":["20118390"],"question":"<p>What is the most cost-effective option to have 24x7 phone, email, and chat support?</p>","answers":["<p>Basic Support Plan</p>","<p>Developer Support Plan</p>","<p>Enterprise Support Plan</p>","<p>Business Support Plan</p>"]},"correct_response":["d"],"section":"","question_plain":"What is the most cost-effective option to have 24x7 phone, email, and chat support?","related_lectures":[{"_class":"lecture","id":20118390,"title":"Support Plans for AWS","created":"2020-05-28T13:18:45Z","is_published":true,"asset":{"_class":"asset","id":60516937,"asset_type":"Video","title":"CCP_-_AWS_-_Support_Plans_v4.mp4","created":"2024-11-09T11:02:59Z"},"object_index":231,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20118390"}]},{"_class":"assessment","id":18924566,"assessment_type":"multiple-choice","prompt":{"feedbacks":["The AWS Simple Monthly Calculator is an easy-to-use online tool that enables you to estimate their architecture solution monthly cost of AWS services for your use case based on your expected usage. It is being replaced by AWS Pricing Calculator.","The AWS Cost & Usage Report contains the most comprehensive set of AWS cost and usage data available, including additional metadata about AWS services, pricing, and reservations. It is not used for estimating cost.","The Total Cost of Ownership (TCO) compares the cost of your applications in an on-premises or traditional hosting environment to AWS. However, it is not used for estimating the cost of your architecture solution.","AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices. It is not used for estimating cost."],"relatedLectureIds":["20056406"],"question":"<p>What can you use to estimate the cost of your architecture solution?</p>","answers":["<p>Simple Monthly Calculator/Pricing Calculator</p>","<p>Cost and Usage Reports</p>","<p>Total&nbsp;Cost of Ownership (TCO)</p>","<p>Trusted Advisor</p>"]},"correct_response":["a"],"section":"","question_plain":"What can you use to estimate the cost of your architecture solution?","related_lectures":[{"_class":"lecture","id":20056406,"title":"Estimating Costs in the Cloud - Pricing Calculator","created":"2020-05-25T18:31:54Z","is_published":true,"asset":{"_class":"asset","id":40630546,"asset_type":"Video","title":"CCP_-_AWS_-_Billing_-_Estimating_Costs_v2.mp4","created":"2022-04-06T23:39:47Z"},"object_index":225,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056406"}]},{"_class":"assessment","id":18925048,"assessment_type":"multiple-choice","prompt":{"feedbacks":["The Enterprise Support Plan comes with a business-critical system down response under 15 minutes and offers access to a Technical Account Manager, as well as a Concierge Support Team. It is the only plan to have these features.","The Enterprise Support Plan comes with a business-critical system down response under 15 minutes and offers access to a Technical Account Manager, as well as a Concierge Support Team. It is the only plan to have these features."],"relatedLectureIds":["20118390"],"question":"<p>The Enterprise Support Plan comes with a business-critical system down response under 15 minutes and offers access to a Technical Account Manager, as well as a Concierge Support Team.</p>","answers":["<p>True</p>","<p>False</p>"]},"correct_response":["a"],"section":"","question_plain":"The Enterprise Support Plan comes with a business-critical system down response under 15 minutes and offers access to a Technical Account Manager, as well as a Concierge Support Team.","related_lectures":[{"_class":"lecture","id":20118390,"title":"Support Plans for AWS","created":"2020-05-28T13:18:45Z","is_published":true,"asset":{"_class":"asset","id":60516937,"asset_type":"Video","title":"CCP_-_AWS_-_Support_Plans_v4.mp4","created":"2024-11-09T11:02:59Z"},"object_index":231,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20118390"}]},{"_class":"assessment","id":18924544,"assessment_type":"multiple-choice","prompt":{"question":"<p>A company is not sure whether or not it is cost-effective to migrate to the AWS Cloud. Which service can help the executive board make a decision?</p>","relatedLectureIds":["20056406"],"feedbacks":["The AWS Simple Monthly Calculator helps customers and prospects estimate their architecture monthly AWS bill more efficiently. It is being replaced by AWS Pricing Calculator. It does not compare the price difference between your own infrastructure and the AWS Cloud."," AWS Pricing Calculator is a web based service that you can use to create cost estimates to suit your AWS use cases. AWS Pricing Calculator is useful both for people who have never used AWS and for those who want to reorganize or expand their usage.","The Billing Dashboard allows you to see your current month-to-date usage graphs. It does not compare the price difference between your own infrastructure and the AWS Cloud.","AWS Cost Explorer has an easy-to-use interface that lets you visualize, understand, and manage your AWS costs and usage over time. It is also used for choosing an optimal Savings Plan and forecast usage up to 3 months. It does not compare the price difference between your own infrastructure and the AWS Cloud."],"answers":["<p>Simple Monthly Calculator</p>","<p>Pricing Calculator</p>","<p>Billing Dashboard</p>","<p>Cost Explorer</p>"]},"correct_response":["b"],"section":"","question_plain":"A company is not sure whether or not it is cost-effective to migrate to the AWS Cloud. Which service can help the executive board make a decision?","related_lectures":[{"_class":"lecture","id":20056406,"title":"Estimating Costs in the Cloud - Pricing Calculator","created":"2020-05-25T18:31:54Z","is_published":true,"asset":{"_class":"asset","id":40630546,"asset_type":"Video","title":"CCP_-_AWS_-_Billing_-_Estimating_Costs_v2.mp4","created":"2022-04-06T23:39:47Z"},"object_index":225,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056406"}]},{"_class":"assessment","id":18924148,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This is a distractor. It is made up with words related to the service.","This is a distractor. It is made up with words related to the service.","You can assign metadata to your AWS resources in the form of tags. Tags can help you manage, identify, organize, search for, and filter resources.","This is a distractor. It is made up with words related to the service."],"relatedLectureIds":["20118368"],"question":"<p>What do Resource Groups rely on to group your resources?</p>","answers":["<p>Labels</p>","<p>Categories</p>","<p>Tags</p>","<p>Stickers</p>"]},"correct_response":["c"],"section":"","question_plain":"What do Resource Groups rely on to group your resources?","related_lectures":[{"_class":"lecture","id":20118368,"title":"Tracking Costs in the Cloud - Billing Dashboard, Cost Allocation Tags, Reports","created":"2020-05-28T13:17:51Z","is_published":true,"asset":{"_class":"asset","id":53653752,"asset_type":"Video","title":"CCP_-_AWS_-_Billing_-_Tracking_Costs_v3.mp4","created":"2023-12-31T16:40:54Z"},"object_index":226,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20118368"}]},{"_class":"assessment","id":18924614,"assessment_type":"multiple-choice","prompt":{"feedbacks":["CloudWatch Billing Alarms send an email message when your estimated charges for AWS exceed a specified threshold. It only shows what AWS charged you already. Therefore, it is not best-suited to get alerts when your costs and usage are forecasted to exceed your budget.","AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. Difference with CloudWatch Billing Alarms: CloudWatch Billing Alarms only send alerts when your costs and usage are exceeding your budget, not when it is forecasted to exceed your budget, while AWS Budgets does both.","The AWS Cost & Usage Report contains the most comprehensive set of AWS cost and usage data available, including additional metadata about AWS services, pricing, and reservations. It does not send alerts.","The Billing Dashboard allows you to see your current month-to-date usage graphs. It does not send alerts."],"relatedLectureIds":["20118372"],"question":"<p>What can you use to get alerts when your costs and usage are exceeding or are forecasted to exceed your budgeting amount?</p>","answers":["<p>CloudWatch Billing Alarms</p>","<p>Budgets</p>","<p>Cost and Usage Reports</p>","<p>Billing Dashboard</p>"]},"correct_response":["b"],"section":"","question_plain":"What can you use to get alerts when your costs and usage are exceeding or are forecasted to exceed your budgeting amount?","related_lectures":[{"_class":"lecture","id":20118372,"title":"Monitoring Costs in the Cloud - Billing Alarms & AWS Budgets","created":"2020-05-28T13:18:10Z","is_published":true,"asset":{"_class":"asset","id":48635072,"asset_type":"Video","title":"CCP_-_AWS_-_Billing_-_Monitoring_v2.mp4","created":"2023-05-07T06:37:41Z"},"object_index":227,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20118372"}]},{"_class":"assessment","id":34449050,"assessment_type":"multiple-choice","prompt":{"question":"<p>A company would like to choose the best Savings Plan and forecast its cost in the next 3 months.&nbsp;Which AWS&nbsp;service can help?</p>","answers":["<p>Cost and Usage Reports</p>","<p>Budgets</p>","<p>Cost Explorer</p>","<p>Forecast</p>"],"feedbacks":["The AWS Cost and Usage Reports contains the most comprehensive set of cost and usage data available. It is not used to choose a Saving Plan or forecasting.","AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. It is not used to choose a Saving Plan or forecasting.","Cost Explorer can be used to forecast usage up to 12 months based on the previous usage. It can also be used to choose an optimal Savings Plan. Cost Explorer has an easy-to-use interface that lets you visualize, understand, and manage your AWS costs and usage over time.","Amazon Forecast is a fully managed service that uses machine learning to deliver highly accurate forecasts. It is not used to choose a Saving Plan or forecasting. "],"relatedLectureIds":["20118368"]},"correct_response":["c"],"section":"","question_plain":"A company would like to choose the best Savings Plan and forecast its cost in the next 3 months.&nbsp;Which AWS&nbsp;service can help?","related_lectures":[{"_class":"lecture","id":20118368,"title":"Tracking Costs in the Cloud - Billing Dashboard, Cost Allocation Tags, Reports","created":"2020-05-28T13:17:51Z","is_published":true,"asset":{"_class":"asset","id":53653752,"asset_type":"Video","title":"CCP_-_AWS_-_Billing_-_Tracking_Costs_v3.mp4","created":"2023-12-31T16:40:54Z"},"object_index":226,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20118368"}]},{"_class":"assessment","id":34449052,"assessment_type":"multiple-choice","prompt":{"feedbacks":["AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices. It does not recommend optimal AWS resources, but it can help with reducing costs.","AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount. It does not recommend optimal AWS resources.","AWS Cost Explorer has an easy-to-use interface that lets you visualize, understand, and manage your AWS costs and usage over time. It does not recommend optimal AWS resources.","AWS Compute Optimizer recommends optimal AWS resources for your workloads to reduce costs and improve performance by using machine learning to analyze historical utilization metrics."],"relatedLectureIds":["26623534"],"question":"<p>Which of the following options uses machine learning to recommend optimal AWS resources and therefore reduces costs?</p>","answers":["<p>Trusted Advisor</p>","<p>Budgets</p>","<p>Cost Explorer</p>","<p>Compute Optimizer</p>"]},"correct_response":["d"],"section":"","question_plain":"Which of the following options uses machine learning to recommend optimal AWS resources and therefore reduces costs?","related_lectures":[{"_class":"lecture","id":26623534,"title":"Compute Optimizer Overview","created":"2021-05-21T07:08:42Z","is_published":true,"asset":{"_class":"asset","id":33685544,"asset_type":"Video","title":"CCP_-_Compute_Optimizer_-_Overview_v1.mp4","created":"2021-05-20T19:21:25Z"},"object_index":223,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/26623534"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+WEBVTT
+
+1
+00:00:00.310 --> 00:00:01.143
+<v ->Okay.</v>
+
+2
+00:00:01.143 --> 00:00:03.080
+So now let's discuss that Data sync very quickly, so data
+
+3
+00:00:03.080 --> 00:00:06.050
+sync allows you to move large amount of data's from
+
+4
+00:00:06.050 --> 00:00:07.750
+on-premises to AWS.
+
+5
+00:00:07.750 --> 00:00:11.410
+And you can synchronize the data into Amazon S3, Amazon EFS,
+
+6
+00:00:11.410 --> 00:00:13.810
+or Amazon FSX for windows.
+
+7
+00:00:13.810 --> 00:00:16.530
+Now there's some replication tasks and that can be scheduled
+
+8
+00:00:16.530 --> 00:00:17.363
+regularly, for example,
+
+9
+00:00:17.363 --> 00:00:19.890
+every hour or every day or every week.
+
+10
+00:00:19.890 --> 00:00:23.300
+And what's going to happen is that after the first full load
+
+11
+00:00:23.300 --> 00:00:25.950
+of data from on-premises to AWS,
+
+12
+00:00:25.950 --> 00:00:28.760
+all the other tasks are going to be incremental.
+
+13
+00:00:28.760 --> 00:00:30.950
+So look for that word incremental at the exam.
+
+14
+00:00:30.950 --> 00:00:32.810
+This is going to be a hint.
+
+15
+00:00:32.810 --> 00:00:34.912
+That data sync is going to be the right insert.
+
+16
+00:00:34.912 --> 00:00:37.130
+So if we have a look at a diagram,
+
+17
+00:00:37.130 --> 00:00:38.630
+we have data sync running in AWS,
+
+18
+00:00:38.630 --> 00:00:41.510
+and we want to migrate or replicate some data from an on
+
+19
+00:00:41.510 --> 00:00:42.640
+premises server.
+
+20
+00:00:42.640 --> 00:00:45.370
+So we're going to run the data sync agent on premises,
+
+21
+00:00:45.370 --> 00:00:47.680
+and then the data sync agent is going to connect to
+
+22
+00:00:47.680 --> 00:00:50.630
+the data sync servers and send the data directly
+
+23
+00:00:50.630 --> 00:00:53.360
+into Amazon is free on any storage class
+
+24
+00:00:53.360 --> 00:00:56.720
+or EFS or FSX for windows file server.
+
+25
+00:00:56.720 --> 00:00:58.920
+That's it? This is as simple as it is,
+
+26
+00:00:58.920 --> 00:01:01.240
+and then made sure to keep it very, very simple for you.
+
+27
+00:01:01.240 --> 00:01:02.300
+So hope you liked it.
+
+28
+00:01:02.300 --> 00:01:04.250
+And I will see you in the next lecture.
+

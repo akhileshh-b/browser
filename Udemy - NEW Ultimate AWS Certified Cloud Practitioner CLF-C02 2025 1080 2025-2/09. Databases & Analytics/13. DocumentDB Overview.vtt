@@ -1,0 +1,118 @@
+WEBVTT
+
+1
+00:00:00.450 --> 00:00:02.730
+<v Instructor>Now let's talk about DocumentDB.</v>
+
+2
+00:00:02.730 --> 00:00:06.660
+So the same way we had Aurora as the way for AWS
+
+3
+00:00:06.660 --> 00:00:09.270
+to implement a sort of big cloud native version
+
+4
+00:00:09.270 --> 00:00:11.910
+of PostgreSQL and MySQL,
+
+5
+00:00:11.910 --> 00:00:16.200
+we have DocumentDB, which is an Aurora version for MongoDB.
+
+6
+00:00:16.200 --> 00:00:17.520
+So MongoDB, if you don't know,
+
+7
+00:00:17.520 --> 00:00:19.650
+that's the logo on the top right corner of your screen,
+
+8
+00:00:19.650 --> 00:00:21.840
+it is another no SQL database
+
+9
+00:00:21.840 --> 00:00:23.280
+and you need to remember this for the exam.
+
+10
+00:00:23.280 --> 00:00:25.770
+So DocumentDB is a no SQL database
+
+11
+00:00:25.770 --> 00:00:29.910
+and it's based on top of the MongoDB technology.
+
+12
+00:00:29.910 --> 00:00:31.500
+So it's compatible with MongoDB.
+
+13
+00:00:31.500 --> 00:00:36.500
+So MongoDB is used to store query and index JSON data,
+
+14
+00:00:36.870 --> 00:00:39.960
+and you have the same similar deployment concept
+
+15
+00:00:39.960 --> 00:00:41.190
+as Aurora with DocumentDB.
+
+16
+00:00:41.190 --> 00:00:43.260
+So that means it's a fully managed database,
+
+17
+00:00:43.260 --> 00:00:44.640
+it's highly available.
+
+18
+00:00:44.640 --> 00:00:47.820
+Data is replicated across three availability zones
+
+19
+00:00:47.820 --> 00:00:50.310
+and DocumentDB storage automatically will grow
+
+20
+00:00:50.310 --> 00:00:52.590
+in increments of 10 gigabytes,
+
+21
+00:00:52.590 --> 00:00:54.330
+and DocumentDB has been engineered
+
+22
+00:00:54.330 --> 00:00:55.770
+so it can scale to workloads
+
+23
+00:00:55.770 --> 00:00:58.560
+with millions of requests per second.
+
+24
+00:00:58.560 --> 00:01:02.520
+So at the exam, if you see anything related to MongoDB,
+
+25
+00:01:02.520 --> 00:01:05.280
+think DocumentDB, or if you see anything related
+
+26
+00:01:05.280 --> 00:01:10.280
+to no SQL databases, think DocumentDB and also DynamoDB.
+
+27
+00:01:11.130 --> 00:01:12.210
+That's it for this lecture.
+
+28
+00:01:12.210 --> 00:01:13.043
+I hope you liked it,
+
+29
+00:01:13.043 --> 00:01:14.970
+and I will see you in the next lecture.
+

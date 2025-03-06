@@ -1,0 +1,318 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:03.780
+<v Instructor>So now, let's talk about AWS Trusted Advisor.</v>
+
+2
+00:00:03.780 --> 00:00:05.490
+So you don't need to install anything.
+
+3
+00:00:05.490 --> 00:00:07.633
+It's a service that gives you a high level
+
+4
+00:00:07.633 --> 00:00:10.365
+account assessment on your account.
+
+5
+00:00:10.365 --> 00:00:12.252
+It's going to check for a few things
+
+6
+00:00:12.252 --> 00:00:14.250
+and advise you on them.
+
+7
+00:00:14.250 --> 00:00:15.643
+So the checks can be, for example,
+
+8
+00:00:15.643 --> 00:00:17.995
+do you have EBS Public Snapshots?
+
+9
+00:00:17.995 --> 00:00:21.270
+Or do you have RDS Public Snapshots?
+
+10
+00:00:21.270 --> 00:00:25.400
+Or are you using the root accounts for your accounts?
+
+11
+00:00:25.400 --> 00:00:28.008
+So all these things are checked by Trusted Advisor
+
+12
+00:00:28.008 --> 00:00:30.239
+and they are grouped in six categories.
+
+13
+00:00:30.239 --> 00:00:33.540
+We have cost optimization, performance,
+
+14
+00:00:33.540 --> 00:00:35.239
+security, fault tolerance,
+
+15
+00:00:35.239 --> 00:00:38.501
+service limits, and operational excellence.
+
+16
+00:00:38.501 --> 00:00:43.013
+So you have what's called the three sets of checks,
+
+17
+00:00:43.013 --> 00:00:44.011
+the core sets of checks,
+
+18
+00:00:44.011 --> 00:00:47.288
+and then you have the full set of checks.
+
+19
+00:00:47.288 --> 00:00:49.890
+And to have access to the full set of checks,
+
+20
+00:00:49.890 --> 00:00:51.886
+you need to have a business
+
+21
+00:00:51.886 --> 00:00:54.900
+or an enterprise support plan.
+
+22
+00:00:54.900 --> 00:00:55.742
+On top of it, if you do switch
+
+23
+00:00:55.742 --> 00:00:59.163
+on the business and enterprise support plan,
+
+24
+00:00:59.163 --> 00:01:00.753
+then you get programmatic access
+
+25
+00:01:00.753 --> 00:01:05.753
+to Trusted Advisor through the AWS Support API.
+
+26
+00:01:06.013 --> 00:01:08.377
+So I think it's best for you to see what Trusted
+
+27
+00:01:08.377 --> 00:01:12.000
+Advisor is made of to really understand it.
+
+28
+00:01:12.000 --> 00:01:14.499
+So here, I am in Trusted Advisor.
+
+29
+00:01:14.499 --> 00:01:16.550
+And as you can see, you have recommendations.
+
+30
+00:01:16.550 --> 00:01:17.972
+So zero actions are recommended,
+
+31
+00:01:17.972 --> 00:01:20.999
+but two investigations are recommended for me,
+
+32
+00:01:20.999 --> 00:01:23.506
+and then there are some checks on excluded items or not.
+
+33
+00:01:23.506 --> 00:01:25.254
+But as we can see, we have two
+
+34
+00:01:25.254 --> 00:01:28.260
+on security that must be looked at.
+
+35
+00:01:28.260 --> 00:01:30.384
+So it turns out that one of my bucket
+
+36
+00:01:30.384 --> 00:01:32.991
+is actually allowing a global access.
+
+37
+00:01:32.991 --> 00:01:36.287
+So I need to verify it and make sure it's correct.
+
+38
+00:01:36.287 --> 00:01:40.740
+And as you can see, 29 of my 60 security group rules
+
+39
+00:01:40.740 --> 00:01:44.250
+allow unrestricted access to a specific port.
+
+40
+00:01:44.250 --> 00:01:45.133
+So again, this is something I should look at.
+
+41
+00:01:45.133 --> 00:01:48.512
+Maybe that's my intention, maybe that's a problem.
+
+42
+00:01:48.512 --> 00:01:50.279
+But you can see right away,
+
+43
+00:01:50.279 --> 00:01:52.479
+I get prompted to upgrade my support plan
+
+44
+00:01:52.479 --> 00:01:55.620
+to get all Trusted Advisor checks.
+
+45
+00:01:55.620 --> 00:01:56.489
+So let me show you what I mean.
+
+46
+00:01:56.489 --> 00:01:57.570
+On the left-hand side,
+
+47
+00:01:57.570 --> 00:01:59.910
+we have the Recommendation categories.
+
+48
+00:01:59.910 --> 00:02:02.280
+And if I click on Cost optimization,
+
+49
+00:02:02.280 --> 00:02:04.524
+as you can see, I get none of the checks available
+
+50
+00:02:04.524 --> 00:02:06.487
+because I need to update my support plan.
+
+51
+00:02:06.487 --> 00:02:10.335
+So all these things are actually not available for me
+
+52
+00:02:10.335 --> 00:02:11.510
+and I need to pay for the service
+
+53
+00:02:11.510 --> 00:02:14.430
+to actually make some cost optimizations.
+
+54
+00:02:14.430 --> 00:02:16.625
+Same for performance, I get access to nothing.
+
+55
+00:02:16.625 --> 00:02:17.726
+If I go to Fault tolerance,
+
+56
+00:02:17.726 --> 00:02:19.721
+again, I get access to nothing.
+
+57
+00:02:19.721 --> 00:02:22.560
+Operational excellence, again, access to nothing.
+
+58
+00:02:22.560 --> 00:02:26.400
+The only two things I have access to is security.
+
+59
+00:02:26.400 --> 00:02:30.300
+So here, we get some checks, the core checks.
+
+60
+00:02:30.300 --> 00:02:32.910
+And in here, I have my Bucket Permissions,
+
+61
+00:02:32.910 --> 00:02:35.491
+my Security Group ports, my EBS Public Snapshot,
+
+62
+00:02:35.491 --> 00:02:38.190
+RDS Public Snapshot, and so on.
+
+63
+00:02:38.190 --> 00:02:41.230
+But as soon as I go in here
+
+64
+00:02:41.230 --> 00:02:43.920
+to the more advanced security checks,
+
+65
+00:02:43.920 --> 00:02:46.620
+then, again, I need to update my support plan.
+
+66
+00:02:46.620 --> 00:02:47.453
+Finally, you can have a look
+
+67
+00:02:47.453 --> 00:02:50.252
+at Service limits directly in Trusted Advisor.
+
+68
+00:02:50.252 --> 00:02:52.200
+That's one way of doing it.
+
+69
+00:02:52.200 --> 00:02:53.995
+So you can have a look at your Auto Scaling Groups,
+
+70
+00:02:53.995 --> 00:02:56.241
+your CloudFormation Stacks, your DynamoDB Read
+
+71
+00:02:56.241 --> 00:02:58.778
+and Write Capacity and so on.
+
+72
+00:02:58.778 --> 00:03:01.518
+So Trusted Advisor is not a very interesting service
+
+73
+00:03:01.518 --> 00:03:03.874
+to look at when you don't pay for the support plan,
+
+74
+00:03:03.874 --> 00:03:06.520
+but at least this should give you an idea
+
+75
+00:03:06.520 --> 00:03:10.200
+of how Trusted Advisor is used in AWS,
+
+76
+00:03:10.200 --> 00:03:13.740
+and therefore answer your exam questions on it.
+
+77
+00:03:13.740 --> 00:03:14.573
+All right, so that's it.
+
+78
+00:03:14.573 --> 00:03:15.756
+I hope you liked it
+
+79
+00:03:15.756 --> 00:03:18.183
+and I will see you in the next lecture.
+

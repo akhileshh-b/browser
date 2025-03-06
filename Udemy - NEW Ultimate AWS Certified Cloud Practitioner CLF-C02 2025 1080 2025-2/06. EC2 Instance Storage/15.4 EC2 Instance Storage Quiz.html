@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900308,"quiz_title":"EC2 Instance Storage Quiz","questions":[{"_class":"assessment","id":18796514,"assessment_type":"multiple-choice","prompt":{"answers":["<p>EBS&nbsp;Volume</p>","<p>EC2 Instance Store</p>","<p>EBS&nbsp;Snapshots</p>","<p>EFS</p>"],"question":"<p>Which EC2 Storage would you use to create a shared network file system for your EC2 Instances?</p>","relatedLectureIds":["20055824"],"feedbacks":["An Amazon EBS volume is a durable, block-level storage device that you can attach to one instance at a time. ","An EC2 Instance Store provides temporary block-level storage for your instance. It is not a network file system.","EBS Snapshots are backup of your EBS volume at a point in time, not a shared network file system.","Amazon EFS is a fully managed service that makes it easy to set up, scale, and cost-optimize file storage in the Amazon Cloud."]},"correct_response":["d"],"section":"","question_plain":"Which EC2 Storage would you use to create a shared network file system for your EC2 Instances?","related_lectures":[{"_class":"lecture","id":20055824,"title":"EFS Overview","created":"2020-05-25T18:10:00Z","is_published":true,"asset":{"_class":"asset","id":40630530,"asset_type":"Video","title":"CCP_-_EFS_-_Overview_v3.mp4","created":"2022-04-06T23:39:44Z"},"object_index":60,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055824"}]},{"_class":"assessment","id":28715466,"assessment_type":"multiple-choice","prompt":{"answers":["<p>AMI</p>","<p>EC2 Image Builder</p>","<p>EBS Snapshots</p>","<p>IAM</p>"],"question":"<p>Which service can be used to automate image management processes?</p>","relatedLectureIds":["24682456"],"feedbacks":["Amazon Machine Image (AMI) provides the information required to launch an instance, but it is not an automated image management process service. ","EC2 Image Builder is an automated pipeline for the creation, maintenance, validation, sharing, and deployment of Linux or Windows images for use on AWS and on-premises.","EBS Snapshots are backups of your EBS Volume data at a point in time, but they are not an automated image management process service. ","IAM is used to securely control access to AWS services and resources. It is not used to automate image management processes."]},"correct_response":["b"],"section":"","question_plain":"Which service can be used to automate image management processes?","related_lectures":[{"_class":"lecture","id":24682456,"title":"EC2 Image Builder Overview","created":"2021-01-31T19:39:37Z","is_published":true,"asset":{"_class":"asset","id":54587256,"asset_type":"Video","title":"CCP_-_EBS_-_EC2_Image_Builder_v3.mp4","created":"2024-02-11T17:52:51Z"},"object_index":58,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682456"}]},{"_class":"assessment","id":34449002,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["26623482"],"feedbacks":["Amazon EFS is a fully managed service that makes it easy to set up, scale, and cost-optimize file storage in the Amazon Cloud. It is not a Microsoft Windows native.","Amazon FSx makes it easy and cost effective to launch and run popular file systems that are fully managed by AWS. It comes in two offerings: FSx for Windows File Server (used for business applications), and FSx for Lustre (used for high-performance computing).","EBS is an easy to use, high performance block storage service for EC2 instances. It is not a file system."],"answers":["<p>EFS</p>","<p>FSx</p>","<p>EBS</p>"],"question":"<p>Which of the following is a fully managed native Microsoft Windows file system?</p>"},"correct_response":["b"],"section":"","question_plain":"Which of the following is a fully managed native Microsoft Windows file system?","related_lectures":[{"_class":"lecture","id":26623482,"title":"Amazon FSx Overview","created":"2021-05-21T07:03:15Z","is_published":true,"asset":{"_class":"asset","id":37288534,"asset_type":"Video","title":"CCP_-_FSx_-_Overview_v2.mp4","created":"2021-11-04T13:39:57Z"},"object_index":62,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/26623482"}]},{"_class":"assessment","id":18795614,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Add your own software license</p>","<p>Add your own configuration</p>","<p>Add your own operating-system</p>","<p>Add your own IP&nbsp;addresses</p>"],"question":"<p>What are AMIs NOT used for?</p>","relatedLectureIds":["20055810"],"feedbacks":["You can use AMIs to add your own software license.","You can use AMIs to add your own configuration.","You can use AMIs to add your own operating-system.","You cannot use AMIs to add your IP addresses. IP addresses are added to an instance as you create it."]},"correct_response":["d"],"section":"","question_plain":"What are AMIs NOT used for?","related_lectures":[{"_class":"lecture","id":20055810,"title":"AMI Overview","created":"2020-05-25T18:09:41Z","is_published":true,"asset":{"_class":"asset","id":25143748,"asset_type":"Video","title":"CCP - EC2 - AMI Overview.mp4","created":"2020-06-01T19:07:07Z"},"object_index":56,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055810"}]},{"_class":"assessment","id":18795596,"assessment_type":"multiple-choice","prompt":{"answers":["<p>True</p>","<p>False</p>"],"question":"<p>EBS&nbsp;Volumes CANNOT be attached to multiple EC2 instances at a time.</p>","relatedLectureIds":["20055762"],"feedbacks":["EBS Volumes can be attached to only one EC2 Instance at a time, but EC2 Instances can have multiple EBS Volumes attached to them.","EBS Volumes can be attached to only one EC2 Instance, but EC2 Instances can have multiple EBS Volumes attached to them."]},"correct_response":["a"],"section":"","question_plain":"EBS&nbsp;Volumes CANNOT be attached to multiple EC2 instances at a time.","related_lectures":[{"_class":"lecture","id":20055762,"title":"EBS Overview","created":"2020-05-25T18:08:15Z","is_published":true,"asset":{"_class":"asset","id":33694472,"asset_type":"Video","title":"CCP - EBS - Overview v2.mp4","created":"2021-05-21T06:46:42Z"},"object_index":51,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055762"}]},{"_class":"assessment","id":18795584,"assessment_type":"multiple-choice","prompt":{"answers":["<p>True</p>","<p>False</p>"],"question":"<p>An EBS&nbsp;Volume is a network drive you can attach to your instances while they run, so your instances' data persist even after their termination.</p>","relatedLectureIds":["20055762"],"feedbacks":["EBS Volumes allows instances' data to persist even after their termination.","EBS Volumes allows instances' data to persist even after their termination. EC2 Instance Stores do not keep data after termination."]},"correct_response":["a"],"section":"","question_plain":"An EBS&nbsp;Volume is a network drive you can attach to your instances while they run, so your instances' data persist even after their termination.","related_lectures":[{"_class":"lecture","id":20055762,"title":"EBS Overview","created":"2020-05-25T18:08:15Z","is_published":true,"asset":{"_class":"asset","id":33694472,"asset_type":"Video","title":"CCP - EBS - Overview v2.mp4","created":"2021-05-21T06:46:42Z"},"object_index":51,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055762"}]},{"_class":"assessment","id":18796502,"assessment_type":"multiple-choice","prompt":{"answers":["<p>It is not good to use as a disk to cache content</p>","<p>It has a better I/O performance, but the data is lost if the EC2 Instance is terminated</p>","<p>Your data is always safe with EC2 Instance Store</p>"],"question":"<p>Which statement is CORRECT regarding EC2 Instance Store?</p>","relatedLectureIds":["20055816"],"feedbacks":["EC2 Instance Stores are good to cache content.","EC2 Instance Store has a better I/O performance, but data is lost if: the EC2 instance is stopped or terminated, or when the underlying disk drive fails.","Data can be lost if hardware fails, and data does not persist after EC2 Instance Stores are stopped."]},"correct_response":["b"],"section":"","question_plain":"Which statement is CORRECT regarding EC2 Instance Store?","related_lectures":[{"_class":"lecture","id":20055816,"title":"EC2 Instance Store","created":"2020-05-25T18:09:53Z","is_published":true,"asset":{"_class":"asset","id":25143810,"asset_type":"Video","title":"CCP - EC2 - Instance Store.mp4","created":"2020-06-01T19:07:07Z"},"object_index":59,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055816"}]},{"_class":"assessment","id":18795610,"assessment_type":"multiple-choice","prompt":{"answers":["<p>The operating-system on an EC2 Instance</p>","<p>A backup of your EBS Volume at a point in time</p>","<p>The amount of CPU and RAM of an EC2 Instance</p>"],"question":"<p>What is an EBS&nbsp;Snapshot?</p>","relatedLectureIds":["20055798"],"feedbacks":["The operating-system on an EC2 Instance is just called an operating-system.","EBS Snapshots are used to backup data on your EBS Volumes at a point in time.","These are possible characteristics of the Instance Type."]},"correct_response":["b"],"section":"","question_plain":"What is an EBS&nbsp;Snapshot?","related_lectures":[{"_class":"lecture","id":20055798,"title":"EBS Snapshots Overview","created":"2020-05-25T18:09:28Z","is_published":true,"asset":{"_class":"asset","id":40630544,"asset_type":"Video","title":"CCP_-_EBS_-_Snapshots_v2.mp4","created":"2022-04-06T23:39:47Z"},"object_index":54,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055798"}]},{"_class":"assessment","id":18796306,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Public AMIs</p>","<p>My own AMIs</p>","<p>AWS&nbsp;Marketplace AMIs</p>"],"question":"<p>Where can you find a third party's AMI so you can use it to launch your EC2 Instance?</p>","relatedLectureIds":["20055810"],"feedbacks":["This is to find AWS provided AMIs.","This is to make and maintain your AMIs yourself.","You can use AWS Marketplace AMIs to use someone else's AMI."]},"correct_response":["c"],"section":"","question_plain":"Where can you find a third party's AMI so you can use it to launch your EC2 Instance?","related_lectures":[{"_class":"lecture","id":20055810,"title":"AMI Overview","created":"2020-05-25T18:09:41Z","is_published":true,"asset":{"_class":"asset","id":25143748,"asset_type":"Video","title":"CCP - EC2 - AMI Overview.mp4","created":"2020-06-01T19:07:07Z"},"object_index":56,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055810"}]},{"_class":"assessment","id":18795592,"assessment_type":"multiple-choice","prompt":{"answers":["<p>A&nbsp;region</p>","<p>A data center</p>","<p>An edge location</p>","<p>An availability zone</p>"],"question":"<p>What is an EBS&nbsp;Volume tied to?</p>","relatedLectureIds":["20055762"],"feedbacks":["EBS Volumes are not tied to a region.","EBS Volumes are not tied to a data center.","EBS Volumes are not tied to an edge location.","EBS Volumes are tied to only one availability zone."]},"correct_response":["d"],"section":"","question_plain":"What is an EBS&nbsp;Volume tied to?","related_lectures":[{"_class":"lecture","id":20055762,"title":"EBS Overview","created":"2020-05-25T18:08:15Z","is_published":true,"asset":{"_class":"asset","id":33694472,"asset_type":"Video","title":"CCP - EBS - Overview v2.mp4","created":"2021-05-21T06:46:42Z"},"object_index":51,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055762"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

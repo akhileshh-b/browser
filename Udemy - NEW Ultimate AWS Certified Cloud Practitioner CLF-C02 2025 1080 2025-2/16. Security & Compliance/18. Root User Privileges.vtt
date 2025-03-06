@@ -1,0 +1,160 @@
+WEBVTT
+
+00:00:00.250 --> 00:00:01.890
+<v Instructor>Okay, so another question that has come up</v>
+
+00:00:01.890 --> 00:00:04.930
+in the exam is around the root user privileges.
+
+00:00:04.930 --> 00:00:06.640
+So the root user is the account owner.
+
+00:00:06.640 --> 00:00:09.210
+It's the first user that is going to be used
+
+00:00:09.210 --> 00:00:12.280
+when the account is created and the root user
+
+00:00:12.280 --> 00:00:16.920
+has complete access to all AWS services and resources.
+
+00:00:16.920 --> 00:00:19.810
+And the idea is that the root user can do some actions
+
+00:00:19.810 --> 00:00:22.210
+that even the most privileged created user
+
+00:00:22.210 --> 00:00:23.680
+in your account cannot do.
+
+00:00:23.680 --> 00:00:26.150
+And so, this is what we have to look at in this lecture.
+
+00:00:26.150 --> 00:00:28.160
+So, by the way, if you're using the root user,
+
+00:00:28.160 --> 00:00:29.820
+please lock away the account
+
+00:00:29.820 --> 00:00:31.150
+'cause you shouldn't be using it
+
+00:00:31.150 --> 00:00:32.600
+and as well as your excess keys,
+
+00:00:32.600 --> 00:00:34.340
+secret access keys, this kind of stuff.
+
+00:00:34.340 --> 00:00:36.480
+So do not use the root account for everyday tasks,
+
+00:00:36.480 --> 00:00:37.600
+even administrative tasks.
+
+00:00:37.600 --> 00:00:41.380
+For this, create a specific admin user in your accounts,
+
+00:00:41.380 --> 00:00:43.450
+but some actions can only be performed
+
+00:00:43.450 --> 00:00:45.430
+by the root user and you have to remember them,
+
+00:00:45.430 --> 00:00:47.420
+especially the one that I put in bold.
+
+00:00:47.420 --> 00:00:49.170
+So, the first one is that only the root user
+
+00:00:49.170 --> 00:00:50.880
+can change the account settings,
+
+00:00:50.880 --> 00:00:53.150
+such as the account name, the email address,
+
+00:00:53.150 --> 00:00:56.470
+the root user password and root user access keys,
+
+00:00:56.470 --> 00:00:59.310
+view certain tax invoices, close your account,
+
+00:00:59.310 --> 00:01:00.640
+so it can only be done by the root user
+
+00:01:00.640 --> 00:01:02.680
+and that's pretty helpful, I would say,
+
+00:01:02.680 --> 00:01:04.710
+restore IAM user permissions,
+
+00:01:04.710 --> 00:01:08.940
+change or cancel your AWS Support plan,
+
+00:01:08.940 --> 00:01:11.977
+register as a seller in the Reserved Instance Marketplace.
+
+00:01:11.977 --> 00:01:13.080
+And this one is important,
+
+00:01:13.080 --> 00:01:14.710
+so I'll give you a use case for this.
+
+00:01:14.710 --> 00:01:16.460
+For example, say you are buying
+
+00:01:16.460 --> 00:01:18.770
+a Reserved Instance for three years,
+
+00:01:18.770 --> 00:01:20.010
+but after two years, you realize
+
+00:01:20.010 --> 00:01:22.590
+you don't need to have it anymore,
+
+00:01:22.590 --> 00:01:25.220
+so what you can do is that there is a marketplace
+
+00:01:25.220 --> 00:01:28.110
+in which you can sell back your Reserved Instance
+
+00:01:28.110 --> 00:01:30.740
+and so to do so, you need to register as a seller first
+
+00:01:30.740 --> 00:01:33.460
+and only the root user can do it.
+
+00:01:33.460 --> 00:01:36.550
+Finally, two more things or three more things,
+
+00:01:36.550 --> 00:01:39.400
+to configure an Amazon S3 bucket to enable MFA,
+
+00:01:39.400 --> 00:01:41.980
+to edit or delete an S3 bucket policy
+
+00:01:41.980 --> 00:01:44.530
+that is getting an invalid VPC ID
+
+00:01:44.530 --> 00:01:49.130
+or VPC endpoint ID, to sign up for GovCloud as well.
+
+00:01:49.130 --> 00:01:51.040
+So you do have to remember those,
+
+00:01:51.040 --> 00:01:53.030
+especially the one that I put in bold
+
+00:01:53.030 --> 00:01:56.560
+because the exam may ask you which types of actions
+
+00:01:56.560 --> 00:01:59.390
+are only possible to be done by the root user
+
+00:01:59.390 --> 00:02:00.440
+and you have to know.
+
+00:02:00.440 --> 00:02:01.273
+Okay, that's it.
+
+00:02:01.273 --> 00:02:03.843
+I hope you liked it and I will see you in the next lecture.

@@ -1,0 +1,187 @@
+WEBVTT
+
+00:00:00.120 --> 00:00:01.520
+<v Stephane>So we've seen Amazon S3</v>
+
+00:00:01.520 --> 00:00:04.690
+as a standalone service, but it is possible for you
+
+00:00:04.690 --> 00:00:08.180
+to use it in a hybrid cloud type of setting.
+
+00:00:08.180 --> 00:00:10.340
+So AWS wants you to bridge
+
+00:00:10.340 --> 00:00:12.640
+between your on-premises environment to AWS
+
+00:00:12.640 --> 00:00:14.510
+and that's called a hybrid cloud.
+
+00:00:14.510 --> 00:00:17.960
+So part of your infrastructure is going to be on-premises
+
+00:00:17.960 --> 00:00:20.380
+and the rest is going to be on the cloud.
+
+00:00:20.380 --> 00:00:21.213
+Why?
+
+00:00:21.213 --> 00:00:23.550
+Well, maybe because sometimes you have created,
+
+00:00:23.550 --> 00:00:26.380
+for example, your on-premises infrastructure first
+
+00:00:26.380 --> 00:00:28.180
+and you're doing a migration but it could be long
+
+00:00:28.180 --> 00:00:30.100
+so you can do a long cloud migration
+
+00:00:30.100 --> 00:00:33.120
+or for security requirements or compliance requirements,
+
+00:00:33.120 --> 00:00:36.240
+maybe it's your strategy to have part of it on the cloud
+
+00:00:36.240 --> 00:00:38.070
+and part of it on-premises.
+
+00:00:38.070 --> 00:00:39.760
+You have really different use cases
+
+00:00:39.760 --> 00:00:43.350
+for trying to have two different ways of doing IT.
+
+00:00:43.350 --> 00:00:46.190
+Some of it on-premises and some of it on the cloud.
+
+00:00:46.190 --> 00:00:49.200
+And Amazon S3, it's a proprietary storage technology,
+
+00:00:49.200 --> 00:00:51.840
+so this is not something like the EFS service
+
+00:00:51.840 --> 00:00:54.260
+or NFS protocol we saw from before
+
+00:00:54.260 --> 00:00:57.530
+that we can use directly on two servers on-premises.
+
+00:00:57.530 --> 00:01:00.150
+For exposing S3 data on-premises,
+
+00:01:00.150 --> 00:01:03.423
+you have to use something called a Storage Gateway.
+
+00:01:04.680 --> 00:01:08.730
+So if you wanted to summarize the storage options on AWS,
+
+00:01:08.730 --> 00:01:11.160
+the block storage would be EBS
+
+00:01:11.160 --> 00:01:13.640
+or an EC2 instance store.
+
+00:01:13.640 --> 00:01:16.190
+The file storage would be a network file system
+
+00:01:16.190 --> 00:01:17.880
+so Amazon EFS,
+
+00:01:17.880 --> 00:01:22.210
+and object storage would be Amazon S3 or Glacier.
+
+00:01:22.210 --> 00:01:25.350
+And where does the Storage Gateway fit in all this?
+
+00:01:25.350 --> 00:01:27.660
+Well, the Storage Gateway is going to be bridging
+
+00:01:27.660 --> 00:01:30.940
+your on-premises data and cloud data in AWS.
+
+00:01:30.940 --> 00:01:34.700
+So your hybrid storage will allow your on-premises systems
+
+00:01:34.700 --> 00:01:36.470
+to seamlessly use the cloud
+
+00:01:36.470 --> 00:01:38.410
+to extend the storage capability.
+
+00:01:38.410 --> 00:01:40.510
+So this can be used for disaster recovery,
+
+00:01:40.510 --> 00:01:43.090
+backup and restore or tiered storage.
+
+00:01:43.090 --> 00:01:45.230
+There are different types of Storage Gateway.
+
+00:01:45.230 --> 00:01:49.370
+There is a File Gateway, there is a Volume Gateway
+
+00:01:49.370 --> 00:01:50.890
+and a Tape Gateway.
+
+00:01:50.890 --> 00:01:52.730
+Now you don't need to know all these types
+
+00:01:52.730 --> 00:01:54.290
+going into the exam, okay?
+
+00:01:54.290 --> 00:01:56.330
+What you need to know is that the Storage Gateway
+
+00:01:56.330 --> 00:01:59.410
+allows you to bridge whatever happens on-premises
+
+00:01:59.410 --> 00:02:02.170
+directly into the AWS Cloud.
+
+00:02:02.170 --> 00:02:03.700
+So under the scene,
+
+00:02:03.700 --> 00:02:05.770
+the Storage Gateway will be using Amazon EBS,
+
+00:02:05.770 --> 00:02:09.800
+Amazon S3, and Glacier behind the scenes, okay?
+
+00:02:09.800 --> 00:02:13.650
+So from a certified cloud petitioner perspective,
+
+00:02:13.650 --> 00:02:15.540
+the Storage Gateway is a way for you
+
+00:02:15.540 --> 00:02:20.460
+to bridge your file systems and your storage on-premises
+
+00:02:20.460 --> 00:02:24.200
+into the cloud to leverage best of both worlds, okay?
+
+00:02:24.200 --> 00:02:25.430
+For if you were to do
+
+00:02:25.430 --> 00:02:28.670
+the AWS Certified Solutions Architect Associate course,
+
+00:02:28.670 --> 00:02:30.220
+you would need to understand Storage Gateway
+
+00:02:30.220 --> 00:02:33.310
+a little bit better, but I will save you this right now
+
+00:02:33.310 --> 00:02:35.160
+for the Certified Cloud Practitioner.
+
+00:02:35.160 --> 00:02:35.993
+Okay, that's it.
+
+00:02:35.993 --> 00:02:36.826
+I hope you liked it
+
+00:02:36.826 --> 00:02:38.660
+and I will see you in the next lecture.

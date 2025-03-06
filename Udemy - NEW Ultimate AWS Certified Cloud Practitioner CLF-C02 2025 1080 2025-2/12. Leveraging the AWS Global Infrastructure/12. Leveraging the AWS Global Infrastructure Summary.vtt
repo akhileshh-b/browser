@@ -1,0 +1,202 @@
+WEBVTT
+
+1
+00:00:00.210 --> 00:00:01.043
+<v Instructor>Okay.</v>
+
+2
+00:00:01.043 --> 00:00:02.450
+So let's summarize what we've learned regarding
+
+3
+00:00:02.450 --> 00:00:04.600
+Global Applications in AWS.
+
+4
+00:00:04.600 --> 00:00:07.520
+First, we've seen the global DNS Route 53,
+
+5
+00:00:07.520 --> 00:00:09.900
+and this is a great way for you to route users,
+
+6
+00:00:09.900 --> 00:00:12.480
+to the closer to deployment with the least latency
+
+7
+00:00:12.480 --> 00:00:13.910
+and is going to be very helpful as well
+
+8
+00:00:13.910 --> 00:00:16.110
+when we define disaster recovery strategies.
+
+9
+00:00:16.110 --> 00:00:17.370
+So we showed how to create records
+
+10
+00:00:17.370 --> 00:00:19.270
+and how to have them point from
+
+11
+00:00:19.270 --> 00:00:21.290
+host name to IP for example.
+
+12
+00:00:21.290 --> 00:00:23.480
+We've seen a global content delivery network,
+
+13
+00:00:23.480 --> 00:00:24.840
+CDN CloudFront,
+
+14
+00:00:24.840 --> 00:00:27.590
+and we've actually hooked it up to Amazon S3.
+
+15
+00:00:27.590 --> 00:00:29.470
+So the idea is that we were able to replicate
+
+16
+00:00:29.470 --> 00:00:33.490
+part of our application data into some AWS Edge Locations
+
+17
+00:00:33.490 --> 00:00:35.730
+and this allowed us to decrease latency.
+
+18
+00:00:35.730 --> 00:00:36.760
+And on top of it,
+
+19
+00:00:36.760 --> 00:00:39.780
+we were able to cache the common request in CloudFront,
+
+20
+00:00:39.780 --> 00:00:41.290
+which gives us improve user experience
+
+21
+00:00:41.290 --> 00:00:42.513
+and decreased latency.
+
+22
+00:00:42.513 --> 00:00:44.894
+Next, we have the S3 transfer acceleration
+
+23
+00:00:44.894 --> 00:00:47.800
+that actually is going to allow us to accelerate
+
+24
+00:00:47.800 --> 00:00:50.120
+global uploads and downloads into Amazon S3
+
+25
+00:00:50.120 --> 00:00:54.000
+and also leverages the Edge Locations of AWS.
+
+26
+00:00:54.000 --> 00:00:55.730
+Google Accelerator, yet again,
+
+27
+00:00:55.730 --> 00:00:58.470
+leverages these Edge Locations, the global network,
+
+28
+00:00:58.470 --> 00:01:00.267
+and this gives us an improved global application
+
+29
+00:01:00.267 --> 00:01:02.223
+availability and performance.
+
+30
+00:01:03.080 --> 00:01:04.230
+Next we've seen Outposts.
+
+31
+00:01:04.230 --> 00:01:07.520
+So this is more of how to extend our whole infrastructure.
+
+32
+00:01:07.520 --> 00:01:10.470
+So Outposts allow us to deploy these Outposts Racks
+
+33
+00:01:10.470 --> 00:01:14.270
+into our own data center to extend some AWS services.
+
+34
+00:01:14.270 --> 00:01:18.360
+So here we have the Cloud of AWS within our data center
+
+35
+00:01:18.360 --> 00:01:19.660
+on premises.
+
+36
+00:01:19.660 --> 00:01:22.330
+We have WaveLength and this is to bring in
+
+37
+00:01:22.330 --> 00:01:25.210
+services to the Edge thanks to the 5G networks
+
+38
+00:01:25.210 --> 00:01:28.630
+and give us ultra low latency application.
+
+39
+00:01:28.630 --> 00:01:30.580
+And finally, Local Zones.
+
+40
+00:01:30.580 --> 00:01:33.090
+Local Zones are allowing us to bring resources of AWS
+
+41
+00:01:33.090 --> 00:01:37.000
+to just compute database storage closer to your users,
+
+42
+00:01:37.000 --> 00:01:41.530
+for example, in Boston, Dallas, Miami, Chicago, and so on.
+
+43
+00:01:41.530 --> 00:01:43.020
+And this is going to be really, really good
+
+44
+00:01:43.020 --> 00:01:45.260
+when you have a latency sensitive application
+
+45
+00:01:45.260 --> 00:01:47.680
+that needs to have a very, very fast local access
+
+46
+00:01:47.680 --> 00:01:51.460
+in a specific region of the United States or the World.
+
+47
+00:01:51.460 --> 00:01:53.150
+But for now just the US.
+
+48
+00:01:53.150 --> 00:01:54.570
+Okay, so that's it for this lecture.
+
+49
+00:01:54.570 --> 00:01:55.450
+I hope you liked it.
+
+50
+00:01:55.450 --> 00:01:57.400
+And I will see you in the next lecture.
+

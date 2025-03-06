@@ -1,0 +1,218 @@
+WEBVTT
+
+1
+00:00:00.290 --> 00:00:01.123
+<v Instructor>Now let's talk</v>
+
+2
+00:00:01.123 --> 00:00:04.410
+about AWS Fault Injection Simulator, FIS.
+
+3
+00:00:04.410 --> 00:00:07.178
+So this is a way for you to run fault injection experiments
+
+4
+00:00:07.178 --> 00:00:09.080
+on AWS workloads.
+
+5
+00:00:09.080 --> 00:00:11.890
+And this is based on something called Chaos Engineering,
+
+6
+00:00:11.890 --> 00:00:14.180
+which is that you want to stress an application
+
+7
+00:00:14.180 --> 00:00:16.410
+by creating really, really disruptive events.
+
+8
+00:00:16.410 --> 00:00:18.540
+For example, the CPU starts skyrocketing
+
+9
+00:00:18.540 --> 00:00:20.250
+or the memories go out of memory,
+
+10
+00:00:20.250 --> 00:00:22.130
+or the database is having a failure,
+
+11
+00:00:22.130 --> 00:00:23.420
+or all these kinds of things.
+
+12
+00:00:23.420 --> 00:00:26.200
+And you want to see how your entire application stack
+
+13
+00:00:26.200 --> 00:00:27.960
+reacts to these disasters.
+
+14
+00:00:27.960 --> 00:00:29.410
+And this is why it's called Chaos Engineering,
+
+15
+00:00:29.410 --> 00:00:31.110
+because you're actually creating chaos
+
+16
+00:00:31.110 --> 00:00:32.820
+within your infrastructure.
+
+17
+00:00:32.820 --> 00:00:33.800
+So why do we do this?
+
+18
+00:00:33.800 --> 00:00:36.820
+Well to make sure our application is really solid,
+
+19
+00:00:36.820 --> 00:00:38.814
+and this allows us to uncover hidden bugs
+
+20
+00:00:38.814 --> 00:00:40.620
+and performance bottlenecks.
+
+21
+00:00:40.620 --> 00:00:43.420
+And currently, FIS supports some services,
+
+22
+00:00:43.420 --> 00:00:44.280
+you don't need to know them all,
+
+23
+00:00:44.280 --> 00:00:46.990
+so here's a list and maybe there'll be others over time,
+
+24
+00:00:46.990 --> 00:00:49.670
+but EC2 for example, by terminating EC2 instances,
+
+25
+00:00:49.670 --> 00:00:52.843
+ECS by stopping ECS tasks, EKS, and so on
+
+26
+00:00:52.843 --> 00:00:56.320
+to stop a Kubernetes task and RDS to make failures
+
+27
+00:00:56.320 --> 00:00:57.850
+go alongside our database.
+
+28
+00:00:57.850 --> 00:00:58.910
+So how does that work?
+
+29
+00:00:58.910 --> 00:01:01.530
+Well, we have FIS and we're going to create experiments.
+
+30
+00:01:01.530 --> 00:01:03.200
+And so we can use pre-built templates
+
+31
+00:01:03.200 --> 00:01:04.830
+to generate these disruptions,
+
+32
+00:01:04.830 --> 00:01:08.290
+and then they're going to have disruptions on resources.
+
+33
+00:01:08.290 --> 00:01:10.060
+So really you have to choose what happens
+
+34
+00:01:10.060 --> 00:01:12.640
+to your EC2 instances, what happens to your ECS clusters,
+
+35
+00:01:12.640 --> 00:01:14.160
+your RDS database and so on.
+
+36
+00:01:14.160 --> 00:01:16.210
+And then these experiments will start.
+
+37
+00:01:16.210 --> 00:01:17.923
+So the resources will get disrupted,
+
+38
+00:01:17.923 --> 00:01:20.126
+and then you have to see how your application behaves.
+
+39
+00:01:20.126 --> 00:01:22.620
+So we can monitor it using CloudWatch
+
+40
+00:01:22.620 --> 00:01:25.170
+or EventBridge or X-Ray or whatever you want.
+
+41
+00:01:25.170 --> 00:01:26.950
+And then once you're done,
+
+42
+00:01:26.950 --> 00:01:28.400
+then you stop the experiment
+
+43
+00:01:28.400 --> 00:01:30.090
+and you have a look at your results.
+
+44
+00:01:30.090 --> 00:01:31.760
+Was there any performance issue?
+
+45
+00:01:31.760 --> 00:01:34.570
+Was there observability issues or resiliency issues?
+
+46
+00:01:34.570 --> 00:01:36.020
+And you can improve your application
+
+47
+00:01:36.020 --> 00:01:39.110
+to see where the bottlenecks are okay?
+
+48
+00:01:39.110 --> 00:01:43.690
+So FIS is definitely an advanced kind of monitoring
+
+49
+00:01:43.690 --> 00:01:46.850
+and advanced kind of debugging, but it's definitely helpful.
+
+50
+00:01:46.850 --> 00:01:48.870
+And I'm so glad that AWS is now having this
+
+51
+00:01:48.870 --> 00:01:51.310
+as a native feature from within AWS.
+
+52
+00:01:51.310 --> 00:01:52.330
+So that's it for FIS.
+
+53
+00:01:52.330 --> 00:01:53.240
+I hope you liked it.
+
+54
+00:01:53.240 --> 00:01:55.190
+And I will see you in the next lecture.
+

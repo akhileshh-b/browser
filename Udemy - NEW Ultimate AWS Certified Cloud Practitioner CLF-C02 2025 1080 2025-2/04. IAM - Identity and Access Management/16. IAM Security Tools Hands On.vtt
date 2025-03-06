@@ -1,0 +1,226 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:02.610
+<v Instructor>So let's generate a credentials report.</v>
+
+2
+00:00:02.610 --> 00:00:03.840
+For this, on the left hand side,
+
+3
+00:00:03.840 --> 00:00:05.610
+I just click on Credential report
+
+4
+00:00:05.610 --> 00:00:07.620
+and then Download credential report
+
+5
+00:00:07.620 --> 00:00:10.080
+which is going to create a CSV file.
+
+6
+00:00:10.080 --> 00:00:12.930
+Now this CSV, because I'm using a training account,
+
+7
+00:00:12.930 --> 00:00:13.920
+is not fascinating,
+
+8
+00:00:13.920 --> 00:00:16.530
+but as we can see we have two rows in it.
+
+9
+00:00:16.530 --> 00:00:19.800
+We have my root account and my account name, stephane.
+
+10
+00:00:19.800 --> 00:00:22.260
+We can see when the user was created,
+
+11
+00:00:22.260 --> 00:00:24.840
+if the password was enabled,
+
+12
+00:00:24.840 --> 00:00:28.020
+when the password was last used and last changed,
+
+13
+00:00:28.020 --> 00:00:30.030
+when is the next rotation to be expected
+
+14
+00:00:30.030 --> 00:00:32.460
+if we do enable password rotation?
+
+15
+00:00:32.460 --> 00:00:33.660
+Is MFA active?
+
+16
+00:00:33.660 --> 00:00:35.940
+So we can see it's active from my root accounts
+
+17
+00:00:35.940 --> 00:00:38.760
+but it is not active for my Stefane accounts.
+
+18
+00:00:38.760 --> 00:00:41.310
+Then access keys, are they generated or not?
+
+19
+00:00:41.310 --> 00:00:43.200
+Yes, they're created for my Stefane account,
+
+20
+00:00:43.200 --> 00:00:44.640
+but not for my root account,
+
+21
+00:00:44.640 --> 00:00:48.480
+and when they were last rotated, last used and so on,
+
+22
+00:00:48.480 --> 00:00:51.180
+you can get more information about other access keys
+
+23
+00:00:51.180 --> 00:00:52.890
+and certificates and so on.
+
+24
+00:00:52.890 --> 00:00:54.540
+So this report is extremely helpful
+
+25
+00:00:54.540 --> 00:00:56.460
+if you want to look at some users
+
+26
+00:00:56.460 --> 00:00:57.900
+that haven't been changing the password,
+
+27
+00:00:57.900 --> 00:00:59.490
+or using it, or their account,
+
+28
+00:00:59.490 --> 00:01:02.790
+it could be giving you a great way to find which users
+
+29
+00:01:02.790 --> 00:01:05.880
+that deserve your attention from a security standpoint.
+
+30
+00:01:05.880 --> 00:01:08.280
+Now let's have a look at IAM Access Advisor.
+
+31
+00:01:08.280 --> 00:01:10.650
+For this, I'm gonna go to my user, stephane,
+
+32
+00:01:10.650 --> 00:01:14.280
+and then on the right hand side, I click on Access Advisor.
+
+33
+00:01:14.280 --> 00:01:16.290
+And Access Advisor is going to show me
+
+34
+00:01:16.290 --> 00:01:19.890
+which services were accessed by my user and when.
+
+35
+00:01:19.890 --> 00:01:23.103
+So as you can see, organizations, health,
+
+36
+00:01:24.540 --> 00:01:27.300
+identity and access managers with IAM Service,
+
+37
+00:01:27.300 --> 00:01:30.120
+EC2, Resource Explorer, were all accessed by my user.
+
+38
+00:01:30.120 --> 00:01:32.280
+So I use my user to access these things
+
+39
+00:01:32.280 --> 00:01:36.270
+by clicking in the UI, but some services were not accessed,
+
+40
+00:01:36.270 --> 00:01:38.550
+for example, Alexa for Business
+
+41
+00:01:38.550 --> 00:01:41.070
+or AWS App2Container and so on.
+
+42
+00:01:41.070 --> 00:01:45.600
+So using Access and Advisor, you can actually have a look
+
+43
+00:01:45.600 --> 00:01:48.750
+at whether or not the user has the correct permissions.
+
+44
+00:01:48.750 --> 00:01:51.570
+And it turns out that maybe based on this access,
+
+45
+00:01:51.570 --> 00:01:53.670
+have 37 pages of this,
+
+46
+00:01:53.670 --> 00:01:57.480
+maybe the user needs access only to a few services
+
+47
+00:01:57.480 --> 00:01:58.920
+but not all of them.
+
+48
+00:01:58.920 --> 00:02:02.070
+And this UI allows you to drill down.
+
+49
+00:02:02.070 --> 00:02:05.430
+On top of it, if a user accesses a specific service
+
+50
+00:02:05.430 --> 00:02:07.560
+for example Amazon EC2, we are told
+
+51
+00:02:07.560 --> 00:02:09.780
+that this is the administrator access
+
+52
+00:02:09.780 --> 00:02:11.820
+that granted access to this service.
+
+53
+00:02:11.820 --> 00:02:14.460
+So to summarize, Access Advisor becomes very helpful
+
+54
+00:02:14.460 --> 00:02:18.750
+when you need to do granular user access permissions on AWS.
+
+55
+00:02:18.750 --> 00:02:20.040
+So that's it for this lecture.
+
+56
+00:02:20.040 --> 00:02:23.373
+I hope you liked it and I will see you in the next lecture.
+

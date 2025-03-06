@@ -1,0 +1,278 @@
+WEBVTT
+
+1
+00:00:00.269 --> 00:00:02.220
+<v Narrator>So let's summarize this section</v>
+
+2
+00:00:02.220 --> 00:00:03.955
+on security and compliance and I have to agree,
+
+3
+00:00:03.955 --> 00:00:06.690
+yes, this was a very, very long section
+
+4
+00:00:06.690 --> 00:00:07.650
+and I'm sorry about that.
+
+5
+00:00:07.650 --> 00:00:09.000
+You have to just remember a lot of things.
+
+6
+00:00:09.000 --> 00:00:11.250
+So the shared responsibility model on AWS,
+
+7
+00:00:11.250 --> 00:00:13.260
+we've seen it at length in this course
+
+8
+00:00:13.260 --> 00:00:14.460
+so that you know about it.
+
+9
+00:00:14.460 --> 00:00:17.460
+Shield is a way for you to get automatic DDoS protection
+
+10
+00:00:17.460 --> 00:00:21.510
+and then if you use Shield Advanced, you get 24/7 support.
+
+11
+00:00:21.510 --> 00:00:24.120
+You get WAF web application firewall, which is a firewall
+
+12
+00:00:24.120 --> 00:00:27.870
+to filter incoming requests, based on specific rules.
+
+13
+00:00:27.870 --> 00:00:31.290
+KMS to manage your encryption keys on AWS,
+
+14
+00:00:31.290 --> 00:00:34.170
+CloudHSM to have hardware encryption.
+
+15
+00:00:34.170 --> 00:00:36.360
+And this time, it's not AWS that manages the keys,
+
+16
+00:00:36.360 --> 00:00:40.650
+it is ourselves that manages the encryption keys.
+
+17
+00:00:40.650 --> 00:00:43.260
+AWS will only manage the hardware behind it.
+
+18
+00:00:43.260 --> 00:00:45.840
+ACM, so AWS Certificate Manager is a way for you
+
+19
+00:00:45.840 --> 00:00:49.320
+to provision, manage, and deploy SSL and TLS certificates
+
+20
+00:00:49.320 --> 00:00:51.003
+and to get in-flight encryption.
+
+21
+00:00:51.840 --> 00:00:55.020
+Artifact is going to give you access to complaints reports,
+
+22
+00:00:55.020 --> 00:00:57.720
+such as PCI, ISQ, et cetera, et cetera.
+
+23
+00:00:57.720 --> 00:00:59.130
+GuardDuty is a way for you
+
+24
+00:00:59.130 --> 00:01:02.040
+to find malicious behavior automatically
+
+25
+00:01:02.040 --> 00:01:04.260
+by analyzing VPC logs, DNS logs,
+
+26
+00:01:04.260 --> 00:01:06.630
+and CloudTrail logs and Inspector,
+
+27
+00:01:06.630 --> 00:01:10.380
+you'll find software vulnerabilities in EC2, ECR container
+
+28
+00:01:10.380 --> 00:01:12.630
+images and Lambda functions
+
+29
+00:01:12.630 --> 00:01:14.520
+and Network Firewall, which allows you
+
+30
+00:01:14.520 --> 00:01:18.420
+to protect your VPC against network attacks.
+
+31
+00:01:18.420 --> 00:01:21.120
+Next, we have Config, which is allowing us for compliance
+
+32
+00:01:21.120 --> 00:01:23.136
+to track configuration changes
+
+33
+00:01:23.136 --> 00:01:26.640
+and also create rules to check compliance of these
+
+34
+00:01:26.640 --> 00:01:28.710
+resources configuration over time.
+
+35
+00:01:28.710 --> 00:01:31.500
+Macie is a way for us to find sensitive data.
+
+36
+00:01:31.500 --> 00:01:33.060
+For example, PII data.
+
+37
+00:01:33.060 --> 00:01:37.140
+So personal information in Amazon S3 buckets.
+
+38
+00:01:37.140 --> 00:01:39.810
+CloudTrail is a way for us to track API calls,
+
+39
+00:01:39.810 --> 00:01:42.570
+made by users within the accounts.
+
+40
+00:01:42.570 --> 00:01:44.220
+Security Hub is a way for us
+
+41
+00:01:44.220 --> 00:01:46.260
+to gather all the security findings from
+
+42
+00:01:46.260 --> 00:01:49.860
+so many different services, from multiple AWS accounts
+
+43
+00:01:49.860 --> 00:01:52.440
+into one place and really act on these
+
+44
+00:01:52.440 --> 00:01:54.360
+security findings directly from there.
+
+45
+00:01:54.360 --> 00:01:57.270
+Detective is in case we have a security finding,
+
+46
+00:01:57.270 --> 00:01:59.550
+how do we get to the root cause very quickly,
+
+47
+00:01:59.550 --> 00:02:01.140
+and this is with Detective, which is going
+
+48
+00:02:01.140 --> 00:02:02.670
+to link up all these services together
+
+49
+00:02:02.670 --> 00:02:04.320
+and help you with that.
+
+50
+00:02:04.320 --> 00:02:07.380
+The Abuse team is a team that you report
+
+51
+00:02:07.380 --> 00:02:11.640
+to when you see abusive behavior by using AWS resources
+
+52
+00:02:11.640 --> 00:02:13.440
+for abusive or illegal purposes.
+
+53
+00:02:13.440 --> 00:02:16.200
+And you either have a form or you send them an email.
+
+54
+00:02:16.200 --> 00:02:17.460
+And then you have to remember,
+
+55
+00:02:17.460 --> 00:02:19.620
+I think the four most important things
+
+56
+00:02:19.620 --> 00:02:21.690
+that a root user can do in your accounts.
+
+57
+00:02:21.690 --> 00:02:22.950
+It can change the account settings,
+
+58
+00:02:22.950 --> 00:02:25.920
+it can close your AWS accounts, it can change
+
+59
+00:02:25.920 --> 00:02:29.640
+or cancel your support plan, or it can register as a seller
+
+60
+00:02:29.640 --> 00:02:32.460
+in the Reserved Instances marketplace.
+
+61
+00:02:32.460 --> 00:02:35.400
+We have IAM Access Analyzer, which is used
+
+62
+00:02:35.400 --> 00:02:37.110
+to identify which resources are going
+
+63
+00:02:37.110 --> 00:02:41.310
+to be shared externally, so outside of your zone of trust.
+
+64
+00:02:41.310 --> 00:02:45.240
+And finally, we have the Firewall Manager that is used
+
+65
+00:02:45.240 --> 00:02:48.720
+to manage the security rules across an organization,
+
+66
+00:02:48.720 --> 00:02:52.020
+that is for your security groups, but also for WAF
+
+67
+00:02:52.020 --> 00:02:53.970
+and Shield and so on.
+
+68
+00:02:53.970 --> 00:02:55.680
+Alright, so that's it for this lecture.
+
+69
+00:02:55.680 --> 00:02:58.923
+I hope you liked it and I will see you in the next lecture.
+

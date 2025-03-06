@@ -1,0 +1,138 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.210
+<v Teacher>Now let's talk about AWS Device Farm,</v>
+
+2
+00:00:03.210 --> 00:00:06.220
+which is a fully managed service that will test your web
+
+3
+00:00:06.220 --> 00:00:08.810
+and mobile applications against actual real
+
+4
+00:00:08.810 --> 00:00:12.250
+desktop browsers, real mobile devices and tablets.
+
+5
+00:00:12.250 --> 00:00:14.170
+And you can run these tests concurrently
+
+6
+00:00:14.170 --> 00:00:16.410
+to on multiple device which will speed up
+
+7
+00:00:16.410 --> 00:00:18.160
+the execution of all your tests.
+
+8
+00:00:18.160 --> 00:00:20.560
+And on top of it you can configure these devices
+
+9
+00:00:20.560 --> 00:00:22.530
+just like you want for example, the GPS
+
+10
+00:00:22.530 --> 00:00:25.410
+the language setting, the WiFi, the Bluetooth, et cetera.
+
+11
+00:00:25.410 --> 00:00:28.990
+So Device Farm is a real farm of devices
+
+12
+00:00:28.990 --> 00:00:30.610
+in the aid of its clouds.
+
+13
+00:00:30.610 --> 00:00:32.810
+So we have desktop browsers,
+
+14
+00:00:32.810 --> 00:00:35.080
+we have mobile devices, we have tablets.
+
+15
+00:00:35.080 --> 00:00:37.040
+All of these kinds of things are actual devices.
+
+16
+00:00:37.040 --> 00:00:39.540
+And us as a user of the Device Farm service
+
+17
+00:00:39.540 --> 00:00:41.840
+we can for example, test our application.
+
+18
+00:00:41.840 --> 00:00:43.770
+So think of it as like you're an Android programmer
+
+19
+00:00:43.770 --> 00:00:44.980
+or an iOS programmer
+
+20
+00:00:44.980 --> 00:00:47.170
+and you want you to make sure your app is working across
+
+21
+00:00:47.170 --> 00:00:49.160
+maybe tons of device, thousands of devices
+
+22
+00:00:49.160 --> 00:00:49.993
+and they're all different.
+
+23
+00:00:49.993 --> 00:00:52.570
+They'll have different screen size, et cetera, et cetera.
+
+24
+00:00:52.570 --> 00:00:54.930
+You can test them on Device Farm
+
+25
+00:00:54.930 --> 00:00:57.090
+and then you can catch these bugs very early.
+
+26
+00:00:57.090 --> 00:00:59.640
+You can even interact with these devices
+
+27
+00:00:59.640 --> 00:01:02.370
+and the Device Farm service will send you reports,
+
+28
+00:01:02.370 --> 00:01:05.970
+lugs and screenshots so you can deal with bugs in advance
+
+29
+00:01:05.970 --> 00:01:07.860
+based on the different devices that you run
+
+30
+00:01:07.860 --> 00:01:09.300
+your application onto
+
+31
+00:01:09.300 --> 00:01:11.400
+which can be extremely helpful.
+
+32
+00:01:11.400 --> 00:01:12.570
+So that's it for this service.
+
+33
+00:01:12.570 --> 00:01:13.403
+I hope you liked it.
+
+34
+00:01:13.403 --> 00:01:15.300
+And I will see you in the next lecture.
+

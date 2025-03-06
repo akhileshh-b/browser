@@ -1,0 +1,118 @@
+WEBVTT
+
+1
+00:00:00.360 --> 00:00:02.340
+<v Speaker>So now let's talk about how Amazon S3</v>
+
+2
+00:00:02.340 --> 00:00:05.760
+can be used to create aesthetic websites.
+
+3
+00:00:05.760 --> 00:00:07.320
+So S3 can host static websites
+
+4
+00:00:07.320 --> 00:00:09.810
+and have them accessible on the internet
+
+5
+00:00:09.810 --> 00:00:12.090
+and the website URL will be depending
+
+6
+00:00:12.090 --> 00:00:14.760
+on the AWS region where you create this,
+
+7
+00:00:14.760 --> 00:00:16.440
+either this or that.
+
+8
+00:00:16.440 --> 00:00:19.110
+And they look very, very similar as you can tell.
+
+9
+00:00:19.110 --> 00:00:21.450
+But the only difference is that here, you have a dash
+
+10
+00:00:21.450 --> 00:00:22.800
+and here, you have a dot.
+
+11
+00:00:22.800 --> 00:00:24.930
+It doesn't really matter for you to remember this
+
+12
+00:00:24.930 --> 00:00:26.910
+but just so you know, here it is.
+
+13
+00:00:26.910 --> 00:00:28.320
+So we have an extra bucket
+
+14
+00:00:28.320 --> 00:00:31.920
+and it will contain files, maybe HTML files, maybe images
+
+15
+00:00:31.920 --> 00:00:35.310
+and then we're going to enable this to be compatible
+
+16
+00:00:35.310 --> 00:00:36.360
+with hosting a website.
+
+17
+00:00:36.360 --> 00:00:39.660
+So this is what it will look like with the corresponding URL
+
+18
+00:00:39.660 --> 00:00:42.660
+and then the user will access our S3 buckets.
+
+19
+00:00:42.660 --> 00:00:44.130
+But this will not work
+
+20
+00:00:44.130 --> 00:00:47.940
+if we don't have public reads enabled on our S3 buckets.
+
+21
+00:00:47.940 --> 00:00:49.200
+And this is why in the first place,
+
+22
+00:00:49.200 --> 00:00:52.200
+in the last lecture we learned about S3 bucket policies.
+
+23
+00:00:52.200 --> 00:00:54.870
+So if you have a 403 forbidden error
+
+24
+00:00:54.870 --> 00:00:57.150
+after enabling your S3 bucket for reads,
+
+25
+00:00:57.150 --> 00:00:59.100
+then that means that your bucket is not public.
+
+26
+00:00:59.100 --> 00:01:02.070
+Therefore, you must attach an S3 bucket policy
+
+27
+00:01:02.070 --> 00:01:03.840
+that allows it to be public.
+
+28
+00:01:03.840 --> 00:01:05.190
+So that's it for this short lecture,
+
+29
+00:01:05.190 --> 00:01:07.590
+now let's go into the hands on to practice this.
+

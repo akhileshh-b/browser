@@ -1,0 +1,310 @@
+WEBVTT
+
+1
+00:00:00.290 --> 00:00:02.490
+<v Lecturer>So now let's talk about DynamoDB.</v>
+
+2
+00:00:02.490 --> 00:00:06.010
+DynamoDB is a fully managed, highly available database
+
+3
+00:00:06.010 --> 00:00:09.270
+with replication across three availability zone.
+
+4
+00:00:09.270 --> 00:00:12.140
+It is part of the NoSQL database family,
+
+5
+00:00:12.140 --> 00:00:14.170
+so it's not a relational database.
+
+6
+00:00:14.170 --> 00:00:18.590
+DynamoDB is one of the flagship product of AWS.
+
+7
+00:00:18.590 --> 00:00:20.410
+It scales to massive workload
+
+8
+00:00:20.410 --> 00:00:23.070
+and it's distributed serverless database,
+
+9
+00:00:23.070 --> 00:00:25.120
+that means that we don't provision any servers.
+
+10
+00:00:25.120 --> 00:00:27.030
+With RDS or with ElastiCache
+
+11
+00:00:27.030 --> 00:00:29.490
+we need to provision a instance type,
+
+12
+00:00:29.490 --> 00:00:31.000
+but with DynamoDB we don't.
+
+13
+00:00:31.000 --> 00:00:33.180
+So it's called a serverless database,
+
+14
+00:00:33.180 --> 00:00:34.510
+but there are still servers in the backend,
+
+15
+00:00:34.510 --> 00:00:35.990
+we just don't see them.
+
+16
+00:00:35.990 --> 00:00:37.570
+So DynamoDB is great
+
+17
+00:00:37.570 --> 00:00:40.320
+because it scales to millions of requests per seconds,
+
+18
+00:00:40.320 --> 00:00:43.670
+trillions of rows, and hundreds of terabytes of storage.
+
+19
+00:00:43.670 --> 00:00:45.680
+It has fast and consistent performance.
+
+20
+00:00:45.680 --> 00:00:49.550
+And so anytime you need a single digit millisecond latency
+
+21
+00:00:49.550 --> 00:00:51.180
+with low latency retrieval,
+
+22
+00:00:51.180 --> 00:00:53.770
+DynamoDB is the database for you.
+
+23
+00:00:53.770 --> 00:00:56.610
+So you would be looking for keywords in your exam,
+
+24
+00:00:56.610 --> 00:00:59.360
+such as serverless and low latency.
+
+25
+00:00:59.360 --> 00:01:02.380
+For example, single digit millisecond latency.
+
+26
+00:01:02.380 --> 00:01:04.840
+It is integrated with IAM for security,
+
+27
+00:01:04.840 --> 00:01:07.100
+authorization, and administration.
+
+28
+00:01:07.100 --> 00:01:10.030
+Has low cost and auto scaling capabilities.
+
+29
+00:01:10.030 --> 00:01:10.863
+And finally,
+
+30
+00:01:10.863 --> 00:01:14.420
+a standard and infrequent access, IA, table class
+
+31
+00:01:14.420 --> 00:01:18.671
+based on how you want to classify your data for cost saving.
+
+32
+00:01:18.671 --> 00:01:20.270
+So the question you may have is,
+
+33
+00:01:20.270 --> 00:01:22.650
+what type of data goes into DynamoDB?
+
+34
+00:01:22.650 --> 00:01:24.890
+Well, it's a key value database
+
+35
+00:01:24.890 --> 00:01:26.780
+and the data looks like this.
+
+36
+00:01:26.780 --> 00:01:28.500
+You have a primary key,
+
+37
+00:01:28.500 --> 00:01:30.730
+which is made of one or two columns,
+
+38
+00:01:30.730 --> 00:01:32.600
+a partition key and a sort key.
+
+39
+00:01:32.600 --> 00:01:35.160
+And then attributes on the right hand side
+
+40
+00:01:35.160 --> 00:01:39.260
+where you can define your own columns for your data.
+
+41
+00:01:39.260 --> 00:01:42.220
+Finally, all the items are going to be row by row.
+
+42
+00:01:42.220 --> 00:01:44.960
+And this is how a DynamoDB table works.
+
+43
+00:01:44.960 --> 00:01:46.130
+Very, very simple,
+
+44
+00:01:46.130 --> 00:01:48.530
+but again, remember it's a NoSQL database.
+
+45
+00:01:48.530 --> 00:01:51.390
+It has low latency retrieval of data
+
+46
+00:01:51.390 --> 00:01:56.010
+and you also get access to a serverless database.
+
+47
+00:01:56.010 --> 00:01:59.320
+Then we have DynamoDB Accelerator also called DAX.
+
+48
+00:01:59.320 --> 00:02:01.210
+In the exam both can be used.
+
+49
+00:02:01.210 --> 00:02:05.240
+So it is a fully managed in-memory cache for DynamoDB.
+
+50
+00:02:05.240 --> 00:02:07.990
+So this is a cache that's specific for DynamoDB
+
+51
+00:02:07.990 --> 00:02:09.360
+so it's not like ElastiCache.
+
+52
+00:02:09.360 --> 00:02:10.920
+So for example, say your application wants
+
+53
+00:02:10.920 --> 00:02:14.300
+to access DynamoDB tables in DynamoDB,
+
+54
+00:02:14.300 --> 00:02:15.970
+for this if you want to cache
+
+55
+00:02:15.970 --> 00:02:18.220
+the most frequently read objects,
+
+56
+00:02:18.220 --> 00:02:20.800
+then you would use DAX or DynamoDB Accelerator
+
+57
+00:02:20.800 --> 00:02:22.280
+as a cache in between.
+
+58
+00:02:22.280 --> 00:02:24.630
+And DAX is made just for DynamoDB. Okay?
+
+59
+00:02:24.630 --> 00:02:26.860
+So you would not use ElastiCache in this case.
+
+60
+00:02:26.860 --> 00:02:28.870
+Even though you could, you would use DAX
+
+61
+00:02:28.870 --> 00:02:30.960
+because it's already really, really well integrated
+
+62
+00:02:30.960 --> 00:02:32.070
+with DynamoDB.
+
+63
+00:02:32.070 --> 00:02:34.590
+So this is going to give you a 10x performance improvement.
+
+64
+00:02:34.590 --> 00:02:36.220
+So instead of digit,
+
+65
+00:02:36.220 --> 00:02:38.850
+instead of single digit millisecond latency to read records,
+
+66
+00:02:38.850 --> 00:02:40.690
+you will have microseconds latency
+
+67
+00:02:40.690 --> 00:02:42.650
+when accessing your DynamoDB tables.
+
+68
+00:02:42.650 --> 00:02:44.530
+It's going to be fully secure, highly scalable,
+
+69
+00:02:44.530 --> 00:02:45.820
+and highly available.
+
+70
+00:02:45.820 --> 00:02:47.560
+And the difference with ElastiCache again,
+
+71
+00:02:47.560 --> 00:02:49.610
+is that DAX is only used in,
+
+72
+00:02:49.610 --> 00:02:51.360
+it's fully integrated with DynamoDB.
+
+73
+00:02:51.360 --> 00:02:54.750
+Whereas ElastiCache can be used for other types of databases
+
+74
+00:02:54.750 --> 00:02:57.060
+to provide caching capabilities.
+
+75
+00:02:57.060 --> 00:02:58.330
+So that's it for this lecture.
+
+76
+00:02:58.330 --> 00:02:59.163
+I hope you liked it
+
+77
+00:02:59.163 --> 00:03:00.960
+and I will see you in the next lecture.
+

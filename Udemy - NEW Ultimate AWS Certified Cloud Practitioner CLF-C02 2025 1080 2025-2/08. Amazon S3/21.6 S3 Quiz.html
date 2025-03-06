@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900312,"quiz_title":"S3 Quiz","questions":[{"_class":"assessment","id":18815392,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Amazon Glacier</p>","<p>Amazon Glacier Deep Archive</p>","<p>Amazon S3 Standard-Infrequent Access</p>","<p>Amazon S3 Intelligent Tiering</p>"],"feedbacks":["You can archive data in Amazon Glacier but it is not the most cost-effective if you do not have a retrieval time requirement, as it offers shorter data retrieving time but is more expensive. ","Amazon Glacier Deep Archive is the most cost-effective option if you want to archive data and do not have a retrieval time requirement. You can retrieve data in 12 or 48 hours.","Amazon S3 Standard-Infrequent Access is not used for archiving data, but for less frequently accessed data.","Amazon S3 Intelligent Tiering is not used for archiving data, but for moving data between two access tiers based on changing access patterns."],"relatedLectureIds":["20055948"],"question":"<p>Which S3 Storage Class is the most cost-effective for archiving data with no retrieval time requirement?</p>"},"correct_response":["b"],"section":"","question_plain":"Which S3 Storage Class is the most cost-effective for archiving data with no retrieval time requirement?","related_lectures":[{"_class":"lecture","id":20055948,"title":"S3 Storage Classes Overview","created":"2020-05-25T18:15:17Z","is_published":true,"asset":{"_class":"asset","id":61968773,"asset_type":"Video","title":"SAA_-_S3_Storage_Classes_v4.mp4","created":"2025-01-07T16:05:20Z"},"object_index":83,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055948"}]},{"_class":"assessment","id":18815782,"assessment_type":"multiple-choice","prompt":{"question":"<p>What hybrid&nbsp;AWS&nbsp;service is used to allow on-premises servers to seamlessly use the AWS&nbsp;Cloud at the storage layer?</p>","relatedLectureIds":["20055966"],"feedbacks":["EBS is an easy to use, high performance block storage service for EC2 instances.  but it does not allow on-premises servers to seamlessly use the AWS Cloud at the storage layer.","Snowball is used to move petabytes of data, not to allow on-premises servers to use the AWS Cloud at the storage level.","S3 is an AWS Cloud \"infinitely\" scaling object storage but does not allow on-premises servers to use the AWS Cloud at the storage layer.","AWS Storage Gateway is a hybrid cloud storage service that gives you on-premises access to virtually unlimited cloud storage."],"answers":["<p>Elastic Block Store</p>","<p>Snowball</p>","<p>S3</p>","<p>Storage Gateway</p>"]},"correct_response":["d"],"section":"","question_plain":"What hybrid&nbsp;AWS&nbsp;service is used to allow on-premises servers to seamlessly use the AWS&nbsp;Cloud at the storage layer?","related_lectures":[{"_class":"lecture","id":20055966,"title":"Storage Gateway Overview","created":"2020-05-25T18:16:15Z","is_published":true,"asset":{"_class":"asset","id":25143738,"asset_type":"Video","title":"CCP - S3 - Storage Gateway.mp4","created":"2020-06-01T19:07:07Z"},"object_index":91,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055966"}]},{"_class":"assessment","id":18815382,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Key</p>","<p>Value</p>","<p>Access Keys</p>","<p>Metadata</p>"],"feedbacks":["The key is the full path to the object. Example: s3://my-bucket/my_folder1/another_folder/my_file.txt","Value is the content that you are storing. An object value can be any sequence of bytes.","Access Keys are used to sign programmatic requests to the AWS CLI or AWS API. ","Metadata is a set of name-value pairs with which you can store information regarding the object."],"relatedLectureIds":["20055904"],"question":"<p>What are Objects NOT composed of?</p>"},"correct_response":["c"],"section":"","question_plain":"What are Objects NOT composed of?","related_lectures":[{"_class":"lecture","id":20055904,"title":"S3 Overview","created":"2020-05-25T18:13:50Z","is_published":true,"asset":{"_class":"asset","id":44159968,"asset_type":"Video","title":"CCP_-_S3_-_Overview_v2.mp4","created":"2022-10-12T09:46:11Z"},"object_index":73,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055904"}]},{"_class":"assessment","id":18815376,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Folders</p>","<p>Buckets</p>","<p>Files</p>","<p>Bin</p>"],"feedbacks":["You can create folders in Amazon S3 to organize your objects (visually), but objects are not stored in folders.","Buckets store objects in Amazon S3.","Objects are \"files\" in S3 terminology.","A bin is not used to store objects in S3."],"relatedLectureIds":["20055904"],"question":"<p>Where are objects stored in Amazon S3?</p>"},"correct_response":["b"],"section":"","question_plain":"Where are objects stored in Amazon S3?","related_lectures":[{"_class":"lecture","id":20055904,"title":"S3 Overview","created":"2020-05-25T18:13:50Z","is_published":true,"asset":{"_class":"asset","id":44159968,"asset_type":"Video","title":"CCP_-_S3_-_Overview_v2.mp4","created":"2022-10-12T09:46:11Z"},"object_index":73,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055904"}]},{"_class":"assessment","id":18815396,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Scaling Policy</p>","<p>Bucket Policies</p>","<p>Lifecycle Rules</p>","<p>Replication</p>"],"feedbacks":["A Scaling Policy is used to define how to scale the capacity of your Auto Scaling group in response to changing demand. It is not used to define actions to move S3 objects between different storage classes. S3 scales automatically and is advertised as an “infinite” storage","Bucket policies are JSON documents for granting permission to your Amazon S3 resources. It is not used to define actions to move S3 objects between different storage classes.","Lifecycle Rules can be used to define when S3 objects should be transitioned to another storage class or when objects should be deleted after some time.","Replication enables automatic, asynchronous copying of objects across Amazon S3 buckets, it is not used to define actions to move S3 objects between different storage classes."],"relatedLectureIds":["20055948"],"question":"<p>What can you use to define actions to move S3 objects between different storage classes?</p>"},"correct_response":["c"],"section":"","question_plain":"What can you use to define actions to move S3 objects between different storage classes?","related_lectures":[{"_class":"lecture","id":20055948,"title":"S3 Storage Classes Overview","created":"2020-05-25T18:15:17Z","is_published":true,"asset":{"_class":"asset","id":61968773,"asset_type":"Video","title":"SAA_-_S3_Storage_Classes_v4.mp4","created":"2025-01-07T16:05:20Z"},"object_index":83,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055948"}]},{"_class":"assessment","id":28716928,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Snowball Edge - Storage Optimized</p>","<p>Snowball Edge - Compute Optimized</p>","<p>Snowcone</p>","<p>Snowmobile</p>"],"feedbacks":["Snowball Edge Storage Optimized devices are well suited for large-scale data migrations and recurring transfer workflows, as well as local computing with higher capacity needs.","Snowball Edge Compute Optimized provides powerful computing resources for higher performance workloads such as machine learning, full motion video analysis, analytics, and local computing stacks. Despite providing local computing capacity, AWS Snowball Edge Compute Optimized devices are not best-suited for data transfer, but instead the high performance workloads mentioned above.","AWS Snowcone is a small, portable, rugged, and secure edge computing and data transfer device. It provides up to 8 TB of usable storage. Despite proving local computing capacity, it is not best-suited for petabytes-scale transfers.","AWS Snowmobile is an exabyte-scale data transfer service used to move extremely large amounts of data to AWS. It is not cost-effective for regular transfers of petabytes of data and does not provide local computing capacity."],"relatedLectureIds":["24682476"],"question":"<p>A non-profit organization needs to regularly transfer petabytes of data to the cloud and to have access to local computing capacity. Which service can help with this task?</p>"},"correct_response":["a"],"section":"","question_plain":"A non-profit organization needs to regularly transfer petabytes of data to the cloud and to have access to local computing capacity. Which service can help with this task?","related_lectures":[{"_class":"lecture","id":24682476,"title":"AWS Snow Family Overview","created":"2021-01-31T19:40:26Z","is_published":true,"asset":{"_class":"asset","id":61951085,"asset_type":"Video","title":"CCP_-_Snowball_-_Overview_v6.mp4","created":"2025-01-06T20:24:02Z"},"object_index":88,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682476"}]},{"_class":"assessment","id":18815388,"assessment_type":"multiple-choice","prompt":{"answers":["<p>Amazon S3 Standard - General Purpose</p>","<p>Amazon&nbsp;Glacier</p>","<p>Amazon S3 One Zone-Infrequent Access</p>","<p>Amazon S3 Standard-Infrequent Access</p>"],"feedbacks":["Amazon S3 Standard - General Purpose is used for frequently accessed data, not infrequently accessed data.","Amazon Glacier is used to archive data, but requires time before retrieving data.","Amazon S3 One Zone-Infrequent Access is suitable for infrequently accessed data with rapid access when needed, but because data is stored in one Availability Zone, data is lost in case of disaster. ","Amazon S3 Standard-Infrequent Access allow you to store infrequently accessed data, with rapid access when needed, has a high durability, and is stored in several Availability Zones to avoid data loss in case of a disaster. It can be used to store data for disaster recovery, backups, etc."],"relatedLectureIds":["20055948"],"question":"<p>Which S3 Storage Class is suitable for less frequently accessed data, but with rapid access when needed, while keeping a high durability and allowing an Availability Zone failure?</p>"},"correct_response":["d"],"section":"","question_plain":"Which S3 Storage Class is suitable for less frequently accessed data, but with rapid access when needed, while keeping a high durability and allowing an Availability Zone failure?","related_lectures":[{"_class":"lecture","id":20055948,"title":"S3 Storage Classes Overview","created":"2020-05-25T18:15:17Z","is_published":true,"asset":{"_class":"asset","id":61968773,"asset_type":"Video","title":"SAA_-_S3_Storage_Classes_v4.mp4","created":"2025-01-07T16:05:20Z"},"object_index":83,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055948"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

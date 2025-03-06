@@ -1,0 +1,426 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:00.833
+<v Narrator>Okay.</v>
+
+2
+00:00:00.833 --> 00:00:03.360
+So I would like to talk to you about an alternative
+
+3
+00:00:03.360 --> 00:00:07.480
+to using the terminal to issue commands against AWS.
+
+4
+00:00:07.480 --> 00:00:08.600
+And this is using cloud shell.
+
+5
+00:00:08.600 --> 00:00:11.020
+So cloud shell is this icon right here on the top
+
+6
+00:00:11.020 --> 00:00:12.210
+right corner of your screen.
+
+7
+00:00:12.210 --> 00:00:14.330
+And if you don't see it, just make sure you check
+
+8
+00:00:14.330 --> 00:00:17.216
+out the clutch shell availability regions
+
+9
+00:00:17.216 --> 00:00:19.060
+because it's not available everywhere.
+
+10
+00:00:19.060 --> 00:00:21.950
+And so if you go to the clash of FAC, you can see
+
+11
+00:00:21.950 --> 00:00:24.910
+that there are some regions that's not available.
+
+12
+00:00:24.910 --> 00:00:26.940
+So let's have a look right now with the regions.
+
+13
+00:00:26.940 --> 00:00:28.580
+Here we go. Question three.
+
+14
+00:00:28.580 --> 00:00:29.720
+Right now that's, I'm recording.
+
+15
+00:00:29.720 --> 00:00:31.690
+It's only available in one of these regions.
+
+16
+00:00:31.690 --> 00:00:33.810
+So by the way, I would recommend if you want to follow
+
+17
+00:00:33.810 --> 00:00:35.800
+along to just use one of these regions, then
+
+18
+00:00:35.800 --> 00:00:38.270
+so we can use cloud shell, but if you don't use cloud shell
+
+19
+00:00:38.270 --> 00:00:40.500
+in this hands-on, that is completely fine.
+
+20
+00:00:40.500 --> 00:00:43.610
+If the terminal was working for you, do not worry.
+
+21
+00:00:43.610 --> 00:00:44.443
+You're good to go.
+
+22
+00:00:44.443 --> 00:00:48.290
+Okay. So we have cloud shell in here and within cloud shell
+
+23
+00:00:48.290 --> 00:00:50.410
+you could take a minute maybe to launch your environment.
+
+24
+00:00:50.410 --> 00:00:51.430
+You can issue commands.
+
+25
+00:00:51.430 --> 00:00:54.400
+For example, you can issue the AWS commands.
+
+26
+00:00:54.400 --> 00:00:56.550
+So as you can see is installed, if I do
+
+27
+00:00:56.550 --> 00:00:58.870
+either of us management is version, as we can see
+
+28
+00:00:58.870 --> 00:01:01.990
+I'm on version two.one right now using cloud shell.
+
+29
+00:01:01.990 --> 00:01:06.950
+So cloud shell is basically a terminal in the cloud of AWS.
+
+30
+00:01:06.950 --> 00:01:07.783
+That's free to use.
+
+31
+00:01:07.783 --> 00:01:10.120
+Okay. So the cool thing about cloud shell is
+
+32
+00:01:10.120 --> 00:01:14.430
+that whenever you are using the CLI, so for example
+
+33
+00:01:14.430 --> 00:01:16.440
+it was am list users.
+
+34
+00:01:16.440 --> 00:01:19.910
+This is going to return for you an API call
+
+35
+00:01:19.910 --> 00:01:22.610
+as if the credentials being used, where the credentials
+
+36
+00:01:22.610 --> 00:01:25.260
+of the accounts of you using the cloud right now
+
+37
+00:01:25.260 --> 00:01:27.830
+which is why the API calls are working.
+
+38
+00:01:27.830 --> 00:01:29.792
+And by default, you can specify any kind
+
+39
+00:01:29.792 --> 00:01:31.360
+of region you want to do.
+
+40
+00:01:31.360 --> 00:01:34.140
+The API call using the management is region arguments, but
+
+41
+00:01:34.140 --> 00:01:36.320
+in cloud shell, the default region is going to
+
+42
+00:01:36.320 --> 00:01:37.950
+be the region you're currently in
+
+43
+00:01:37.950 --> 00:01:39.780
+logged in right now in cloud shell.
+
+44
+00:01:39.780 --> 00:01:42.100
+So this is another thing that's good to know.
+
+45
+00:01:42.100 --> 00:01:43.260
+Okay. Other things that you should know
+
+46
+00:01:43.260 --> 00:01:46.220
+about cloud shell is that you have a full repository.
+
+47
+00:01:46.220 --> 00:01:48.630
+So for example, right now, as we can see
+
+48
+00:01:48.630 --> 00:01:50.680
+we have zero files within cloud shell.
+
+49
+00:01:50.680 --> 00:01:52.065
+But if you just do
+
+50
+00:01:52.065 --> 00:01:53.690
+echo
+
+51
+00:01:53.690 --> 00:01:54.523
+tests
+
+52
+00:01:54.523 --> 00:01:58.400
+into demo dot TXT, this is going to create a text
+
+53
+00:01:58.400 --> 00:02:01.660
+file that contains the word texts tests.
+
+54
+00:02:01.660 --> 00:02:02.750
+And so it turns out that
+
+55
+00:02:02.750 --> 00:02:05.430
+if you happen to restart your cloud shell
+
+56
+00:02:05.430 --> 00:02:06.890
+then this file will stick.
+
+57
+00:02:06.890 --> 00:02:08.890
+So all the files you are creating
+
+58
+00:02:08.890 --> 00:02:10.530
+within your cultural environment, for example
+
+59
+00:02:10.530 --> 00:02:13.530
+this demo that's TXT are going to stay.
+
+60
+00:02:13.530 --> 00:02:14.930
+And the other cool thing you can do
+
+61
+00:02:14.930 --> 00:02:16.640
+about cloud shell is that you can configure it.
+
+62
+00:02:16.640 --> 00:02:19.150
+So you can say what font size you want, smallest
+
+63
+00:02:19.150 --> 00:02:19.983
+medium and large.
+
+64
+00:02:19.983 --> 00:02:23.620
+And so on the tech, the theme you want, so light or dark
+
+65
+00:02:23.620 --> 00:02:25.280
+if he wants safe based or nuts.
+
+66
+00:02:25.280 --> 00:02:28.250
+So resist like a bigger cloud shell for me right now.
+
+67
+00:02:28.250 --> 00:02:30.880
+And also you have the possibility to download
+
+68
+00:02:30.880 --> 00:02:32.110
+and upload files.
+
+69
+00:02:32.110 --> 00:02:34.260
+So for example, if I want you to get the full path
+
+70
+00:02:34.260 --> 00:02:36.630
+to my file, so did this demo let's six.
+
+71
+00:02:36.630 --> 00:02:38.530
+I can just copy it right now.
+
+72
+00:02:38.530 --> 00:02:43.210
+Action and download foul, and then do demo dot TXT.
+
+73
+00:02:43.210 --> 00:02:46.320
+And this will go ahead and download the file for me.
+
+74
+00:02:46.320 --> 00:02:48.700
+And alternatively, you could upload your own files
+
+75
+00:02:48.700 --> 00:02:50.160
+into your cultural environments.
+
+76
+00:02:50.160 --> 00:02:51.900
+So I want to show you these handy options
+
+77
+00:02:51.900 --> 00:02:53.120
+because for me, they are lifesavers.
+
+78
+00:02:53.120 --> 00:02:53.953
+Okay.
+
+79
+00:02:53.953 --> 00:02:56.240
+And finally, if you wanted more tabs into this environment
+
+80
+00:02:56.240 --> 00:02:58.170
+you could have a new tab.
+
+81
+00:02:58.170 --> 00:03:00.120
+You can split into column example, and there you go.
+
+82
+00:03:00.120 --> 00:03:01.420
+You have two terminals
+
+83
+00:03:01.420 --> 00:03:03.730
+into cloud shell connected at the same time.
+
+84
+00:03:03.730 --> 00:03:05.230
+So really that once show you the power
+
+85
+00:03:05.230 --> 00:03:07.440
+of cloud shell in this hands-on again, you're doing it.
+
+86
+00:03:07.440 --> 00:03:09.390
+You know, all the commands that data just wants to show you.
+
+87
+00:03:09.390 --> 00:03:12.300
+If you're a power user, then you can do these commands
+
+88
+00:03:12.300 --> 00:03:13.640
+and how they would work with cloud shell.
+
+89
+00:03:13.640 --> 00:03:17.460
+So the bottom line for this lecture again, is number one
+
+90
+00:03:17.460 --> 00:03:19.320
+cloud shell is only available in some regions.
+
+91
+00:03:19.320 --> 00:03:20.810
+So maybe try to choose one
+
+92
+00:03:20.810 --> 00:03:22.680
+of the regions where cloud shell is available.
+
+93
+00:03:22.680 --> 00:03:25.610
+If you want to use it, if you don't want to use cloud shell
+
+94
+00:03:25.610 --> 00:03:27.560
+or cloud shell is not working for you.
+
+95
+00:03:27.560 --> 00:03:29.080
+This is completely fine.
+
+96
+00:03:29.080 --> 00:03:31.470
+As long as you use the terminal, the way we configured it
+
+97
+00:03:31.470 --> 00:03:33.250
+from before, this will work just fine.
+
+98
+00:03:33.250 --> 00:03:36.670
+And you'll be fine in the course to either use cloud shell
+
+99
+00:03:36.670 --> 00:03:38.850
+or your terminal to perform the commands
+
+100
+00:03:38.850 --> 00:03:40.980
+with the CLA against AWS.
+
+101
+00:03:40.980 --> 00:03:44.580
+Okay. And also remember that I really like the upload
+
+102
+00:03:44.580 --> 00:03:46.340
+and download feature of cloud shell
+
+103
+00:03:46.340 --> 00:03:48.350
+choose to upload files and download files from it.
+
+104
+00:03:48.350 --> 00:03:50.330
+Okay. So that's it for this lecture.
+
+105
+00:03:50.330 --> 00:03:51.163
+I hope you liked it.
+
+106
+00:03:51.163 --> 00:03:53.110
+And I will see you in the next lecture.
+

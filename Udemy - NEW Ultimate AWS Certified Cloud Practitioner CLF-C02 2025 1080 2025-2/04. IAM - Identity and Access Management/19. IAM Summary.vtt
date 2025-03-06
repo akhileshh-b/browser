@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.320 --> 00:00:02.920
+<v Stéphane Maarek>So here is a summary for IAM.</v>
+
+2
+00:00:02.920 --> 00:00:05.340
+We've seen IAM users and they should be mapped
+
+3
+00:00:05.340 --> 00:00:08.120
+to an actual physical user within your company.
+
+4
+00:00:08.120 --> 00:00:11.630
+And this user will have a password for the AWS console.
+
+5
+00:00:11.630 --> 00:00:14.220
+Now we can group these users into groups
+
+6
+00:00:14.220 --> 00:00:16.120
+and therefore users only.
+
+7
+00:00:16.120 --> 00:00:17.250
+We can attach policies
+
+8
+00:00:17.250 --> 00:00:19.480
+or share JSON documents that outline the permission
+
+9
+00:00:19.480 --> 00:00:21.640
+for users or groups.
+
+10
+00:00:21.640 --> 00:00:23.520
+And we can also create roles
+
+11
+00:00:23.520 --> 00:00:25.930
+and these roles will be identities, but this time
+
+12
+00:00:25.930 --> 00:00:30.340
+for maybe EC2 instances or other AWS services.
+
+13
+00:00:30.340 --> 00:00:31.890
+We assume that for security
+
+14
+00:00:31.890 --> 00:00:34.400
+we can enable multi-factor authentication so MFA
+
+15
+00:00:34.400 --> 00:00:37.610
+and also set a password policy for our users.
+
+16
+00:00:37.610 --> 00:00:40.570
+We can use the CLI to manage your services
+
+17
+00:00:40.570 --> 00:00:42.030
+using the command line
+
+18
+00:00:42.030 --> 00:00:44.750
+or the SDK to manage your AWS services,
+
+19
+00:00:44.750 --> 00:00:46.700
+using a programming language.
+
+20
+00:00:46.700 --> 00:00:49.550
+Finally, we can create access keys to access AWS
+
+21
+00:00:49.550 --> 00:00:52.150
+using the CLI or the SDK.
+
+22
+00:00:52.150 --> 00:00:55.450
+And finally, we can audit our IAM usage
+
+23
+00:00:55.450 --> 00:00:57.830
+by creating an IAM credentials report
+
+24
+00:00:57.830 --> 00:01:01.250
+and also using the IAM access advisor service.
+
+25
+00:01:01.250 --> 00:01:02.320
+So that's it for this lecture.
+
+26
+00:01:02.320 --> 00:01:03.310
+I hope you liked it.
+
+27
+00:01:03.310 --> 00:01:05.260
+And I will see you in the next lecture.
+

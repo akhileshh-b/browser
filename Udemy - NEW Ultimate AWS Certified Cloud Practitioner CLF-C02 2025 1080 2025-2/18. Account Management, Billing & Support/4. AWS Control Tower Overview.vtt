@@ -1,0 +1,67 @@
+WEBVTT
+
+00:00:00.580 --> 00:00:03.360
+<v Instructor>Now let's talk about AWS Control Tower.</v>
+
+00:00:03.360 --> 00:00:06.600
+So it is for you an easy way to set up and govern
+
+00:00:06.600 --> 00:00:10.190
+a secure and compliant, multi account, AWS environment
+
+00:00:10.190 --> 00:00:12.150
+based on best practices.
+
+00:00:12.150 --> 00:00:14.200
+So instead of doing everything manually
+
+00:00:14.200 --> 00:00:15.940
+creating an organization and so on
+
+00:00:15.940 --> 00:00:17.770
+and then applying security practices,
+
+00:00:17.770 --> 00:00:19.750
+we have Control Tower where you can, with a few clicks,
+
+00:00:19.750 --> 00:00:22.300
+creates a multi account, AWS environment.
+
+00:00:22.300 --> 00:00:24.010
+The benefits is that you can automate the setup
+
+00:00:24.010 --> 00:00:25.660
+of your environments in a few clicks.
+
+00:00:25.660 --> 00:00:28.780
+You can automate ongoing policy management using guardrails.
+
+00:00:28.780 --> 00:00:32.010
+You can detect the policy violations and remediate them.
+
+00:00:32.010 --> 00:00:33.110
+You can monitor your compliance
+
+00:00:33.110 --> 00:00:34.578
+through an interactive dashboard
+
+00:00:34.578 --> 00:00:38.340
+and Control Tower is running on top of organizations.
+
+00:00:38.340 --> 00:00:40.570
+That means that it will automatically set up organizations
+
+00:00:40.570 --> 00:00:42.450
+for you to organize your accounts.
+
+00:00:42.450 --> 00:00:45.370
+And it will implement STP service control policies
+
+00:00:45.370 --> 00:00:49.150
+to make sure that the guardrails are operating effectively.
+
+00:00:49.150 --> 00:00:51.040
+Okay, so I'll go see you in the next lecture
+
+00:00:51.040 --> 00:00:52.453
+for a demo of Control Tower.

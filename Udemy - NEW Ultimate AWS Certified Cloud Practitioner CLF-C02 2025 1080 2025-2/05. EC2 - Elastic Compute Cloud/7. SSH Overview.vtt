@@ -1,0 +1,205 @@
+WEBVTT
+
+00:00:00.980 --> 00:00:03.270
+<v ->You're getting to one of the trickier bits</v>
+
+00:00:03.270 --> 00:00:06.030
+of running in the Cloud, which is how do you connect
+
+00:00:06.030 --> 00:00:07.560
+inside of your servers
+
+00:00:07.560 --> 00:00:10.430
+to perform some maintenance or action.
+
+00:00:10.430 --> 00:00:11.970
+So for this, for Linux servers,
+
+00:00:11.970 --> 00:00:16.020
+we can use SSH to do a secure shell into our servers.
+
+00:00:16.020 --> 00:00:19.310
+So based on the operating system you have on your computer,
+
+00:00:19.310 --> 00:00:21.310
+you have different ways of achieving it.
+
+00:00:21.310 --> 00:00:23.420
+So I have separated Mac, Linux,
+
+00:00:23.420 --> 00:00:27.580
+Windows before version 10 and Windows after version 10.
+
+00:00:27.580 --> 00:00:31.830
+So the SSH is a command line interface utility
+
+00:00:31.830 --> 00:00:34.930
+that can be used on Mac or Linux
+
+00:00:34.930 --> 00:00:38.940
+as well as Windows over version 10.
+
+00:00:38.940 --> 00:00:41.890
+Then if you have Windows less than version 10,
+
+00:00:41.890 --> 00:00:44.060
+you can use something called putty.
+
+00:00:44.060 --> 00:00:46.660
+Putty will exceed the exact same thing as SSH.
+
+00:00:46.660 --> 00:00:49.100
+So when I say you should SSH, if you're on Windows,
+
+00:00:49.100 --> 00:00:50.060
+you can use putty.
+
+00:00:50.060 --> 00:00:52.940
+And putty is valid for any version of Windows.
+
+00:00:52.940 --> 00:00:55.090
+They do the exact same thing, they allow you to
+
+00:00:55.090 --> 00:00:59.620
+use the SSH protocol to connect into your EC2 instances.
+
+00:00:59.620 --> 00:01:01.730
+And then finally, there's something new
+
+00:01:01.730 --> 00:01:03.840
+called the EC2 Instance Connect,
+
+00:01:03.840 --> 00:01:05.680
+which is going to use your web browser.
+
+00:01:05.680 --> 00:01:08.450
+So not a terminal nut putty your web browser
+
+00:01:08.450 --> 00:01:10.100
+to connect to your EC2 instance.
+
+00:01:10.100 --> 00:01:12.540
+And I like it a lot because it is valid
+
+00:01:12.540 --> 00:01:16.070
+for Mac, Linux, Windows, all versions.
+
+00:01:16.070 --> 00:01:18.320
+The cool thing about EC2 Instance Connect is that it works,
+
+00:01:18.320 --> 00:01:20.887
+but it only works for now with Amazon NX2
+
+00:01:20.887 --> 00:01:22.200
+And this is why I've been using
+
+00:01:22.200 --> 00:01:24.210
+Amazon NX2 in this tutorial.
+
+00:01:24.210 --> 00:01:26.290
+So now what should you do?
+
+00:01:26.290 --> 00:01:27.840
+If you are on Mac or Linux,
+
+00:01:27.840 --> 00:01:31.300
+then please watch the SSH lecture on Mac/Linux.
+
+00:01:31.300 --> 00:01:32.470
+If you're on Windows,
+
+00:01:32.470 --> 00:01:35.140
+then you can either watch the Putty Lecture
+
+00:01:35.140 --> 00:01:38.000
+or if you have Windows 10, then I have created an SSH
+
+00:01:38.000 --> 00:01:40.030
+on Windows 10 lecture as well.
+
+00:01:40.030 --> 00:01:41.990
+Regardless, I am going to personally use
+
+00:01:41.990 --> 00:01:44.710
+in the future lectures, EC2 Instance Connect.
+
+00:01:44.710 --> 00:01:46.710
+So if you wanna have a look and play with it,
+
+00:01:46.710 --> 00:01:48.100
+I find it really simple.
+
+00:01:48.100 --> 00:01:49.340
+You don't need to install anything
+
+00:01:49.340 --> 00:01:50.980
+or use the command line interface
+
+00:01:50.980 --> 00:01:52.410
+if you're not familiar with it.
+
+00:01:52.410 --> 00:01:55.110
+So this could be very handy for all of you.
+
+00:01:55.110 --> 00:01:58.040
+Nonetheless, SSH is in my experience
+
+00:01:58.040 --> 00:02:00.000
+and I've taught hundreds of thousands of students
+
+00:02:00.000 --> 00:02:02.600
+what caused the most troubles in this course.
+
+00:02:02.600 --> 00:02:06.689
+So if you get a problem with SSH
+
+00:02:06.689 --> 00:02:09.070
+we can re-watch the lecture, you may have missed something,
+
+00:02:09.070 --> 00:02:11.150
+maybe a security group rule, maybe you command,
+
+00:02:11.150 --> 00:02:12.980
+maybe a typo, I don't know you.
+
+00:02:12.980 --> 00:02:14.530
+There's also a troubleshooting guide
+
+00:02:14.530 --> 00:02:17.660
+that I've put together after these lectures so have a look.
+
+00:02:17.660 --> 00:02:20.200
+I would recommend your try, EC2 Instance Connect
+
+00:02:20.200 --> 00:02:22.980
+as well as sometimes fixes all problems.
+
+00:02:22.980 --> 00:02:26.220
+And if none of these method works, sorry
+
+00:02:26.220 --> 00:02:29.270
+if one method works, then you're good to go.
+
+00:02:29.270 --> 00:02:30.590
+You don't need to have them all working.
+
+00:02:30.590 --> 00:02:32.950
+If one works, you're good to go.
+
+00:02:32.950 --> 00:02:36.340
+And if no method works, that's completely okay.
+
+00:02:36.340 --> 00:02:38.380
+This course is just introductory
+
+00:02:38.380 --> 00:02:41.133
+and he won't use SSH much and you'll be fine.
+
+00:02:42.052 --> 00:02:43.640
+So that's it that just for the introduction.
+
+00:02:43.640 --> 00:02:45.610
+Now find your right lecture and it will see you
+
+00:02:45.610 --> 00:02:46.610
+in the next lecture.

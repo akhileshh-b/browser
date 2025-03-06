@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.120 --> 00:00:01.830
+<v ->So here is a quick lecture</v>
+
+2
+00:00:01.830 --> 00:00:05.520
+on the service named AWS Cost Anomaly Detection.
+
+3
+00:00:05.520 --> 00:00:07.650
+And the name is quite explicit this time.
+
+4
+00:00:07.650 --> 00:00:10.830
+So this continuously monitors your cost and usage data,
+
+5
+00:00:10.830 --> 00:00:14.760
+and it will use machine learning to detect unusual spends.
+
+6
+00:00:14.760 --> 00:00:16.080
+So it's going to learn from you.
+
+7
+00:00:16.080 --> 00:00:19.050
+It's going to learn your unique historical patterns,
+
+8
+00:00:19.050 --> 00:00:22.170
+and then it will detect one-time cost spikes
+
+9
+00:00:22.170 --> 00:00:25.110
+and/or continuous cost increases.
+
+10
+00:00:25.110 --> 00:00:26.550
+And you don't have to define anything,
+
+11
+00:00:26.550 --> 00:00:28.050
+you don't have to define thresholds.
+
+12
+00:00:28.050 --> 00:00:31.050
+It just knows on its own what looks a little bit weird.
+
+13
+00:00:31.050 --> 00:00:34.140
+So it's going to monitor for your AWS services,
+
+14
+00:00:34.140 --> 00:00:37.320
+your member accounts, your cost allocation tags,
+
+15
+00:00:37.320 --> 00:00:39.330
+and your cost categories.
+
+16
+00:00:39.330 --> 00:00:42.000
+And it will send you an anomaly detection report
+
+17
+00:00:42.000 --> 00:00:43.440
+with the root cause analysis
+
+18
+00:00:43.440 --> 00:00:46.140
+of what is happening in your account.
+
+19
+00:00:46.140 --> 00:00:49.950
+You can get notified by either using individual alerts
+
+20
+00:00:49.950 --> 00:00:53.820
+or a daily or weekly summary that leverages SNS.
+
+21
+00:00:53.820 --> 00:00:56.070
+So to summarize, using machine learning,
+
+22
+00:00:56.070 --> 00:00:58.260
+you can have a look at your cost,
+
+23
+00:00:58.260 --> 00:01:01.920
+you can get alerted and quickly analyze the root cause,
+
+24
+00:01:01.920 --> 00:01:06.240
+all of using the AWS cost anomaly detection service.
+
+25
+00:01:06.240 --> 00:01:07.110
+Okay, that's it.
+
+26
+00:01:07.110 --> 00:01:08.130
+I hope you liked it,
+
+27
+00:01:08.130 --> 00:01:10.203
+and I will see you in the next lecture.
+

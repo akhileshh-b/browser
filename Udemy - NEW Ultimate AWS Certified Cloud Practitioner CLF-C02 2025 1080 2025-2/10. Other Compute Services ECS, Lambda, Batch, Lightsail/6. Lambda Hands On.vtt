@@ -1,0 +1,658 @@
+WEBVTT
+
+1
+00:00:00.330 --> 00:00:02.340
+<v Instructor>Okay, so let's practice Lambda.</v>
+
+2
+00:00:02.340 --> 00:00:03.870
+And so if you go in the Lambda console
+
+3
+00:00:03.870 --> 00:00:07.740
+and you get one of these screens, just go into the URL
+
+4
+00:00:07.740 --> 00:00:10.530
+and go to slash and go to slash begin
+
+5
+00:00:10.530 --> 00:00:12.810
+because I really like this little UI
+
+6
+00:00:12.810 --> 00:00:15.330
+to show you how Lambda is working first.
+
+7
+00:00:15.330 --> 00:00:17.520
+It's just to show you a diagram.
+
+8
+00:00:17.520 --> 00:00:20.340
+So here we have the Lambda function,
+
+9
+00:00:20.340 --> 00:00:23.250
+and as you can see, it can be written in several languages,
+
+10
+00:00:23.250 --> 00:00:25.830
+for example, .NET, Java, Node.js, Python, Ruby,
+
+11
+00:00:25.830 --> 00:00:27.780
+or a custom runtime if you wanted to
+
+12
+00:00:27.780 --> 00:00:29.520
+to have other languages.
+
+13
+00:00:29.520 --> 00:00:34.380
+So here, let's take our Node.js and click on Run.
+
+14
+00:00:34.380 --> 00:00:36.990
+So it runs and says, "Hello from Lambda."
+
+15
+00:00:36.990 --> 00:00:40.230
+Next we click on Lambda Responds to Events.
+
+16
+00:00:40.230 --> 00:00:42.150
+So here the pretty cool thing is that
+
+17
+00:00:42.150 --> 00:00:46.650
+we have access to different sources of event triggers
+
+18
+00:00:46.650 --> 00:00:48.407
+that are going to trigger our Lambda function.
+
+19
+00:00:48.407 --> 00:00:50.700
+As you can see right now, we get streaming analytics
+
+20
+00:00:50.700 --> 00:00:53.250
+that's sending data into our Lambda function
+
+21
+00:00:53.250 --> 00:00:56.490
+and our Lambda function is saying, "Hello from Lambda."
+
+22
+00:00:56.490 --> 00:01:00.540
+And so if I somehow click more on all these things,
+
+23
+00:01:00.540 --> 00:01:04.680
+so this, the mobile phone and the camera and so on,
+
+24
+00:01:04.680 --> 00:01:07.290
+as you can see, my Lambda function is scaling up.
+
+25
+00:01:07.290 --> 00:01:09.780
+So right now only have one pair of cogs
+
+26
+00:01:09.780 --> 00:01:12.750
+but if I click a lot more, my Lambda is scaling up
+
+27
+00:01:12.750 --> 00:01:14.520
+and now I have eight or nine,
+
+28
+00:01:14.520 --> 00:01:17.040
+which shows that Lambda can scale seamlessly
+
+29
+00:01:17.040 --> 00:01:18.660
+and is very nice because, well,
+
+30
+00:01:18.660 --> 00:01:20.700
+you get access to scalability
+
+31
+00:01:20.700 --> 00:01:23.220
+without managing any kind of servers.
+
+32
+00:01:23.220 --> 00:01:25.020
+So Lambda can respond to events,
+
+33
+00:01:25.020 --> 00:01:27.030
+for example, here, streaming analytics
+
+34
+00:01:27.030 --> 00:01:28.860
+or your mobile phone sending data
+
+35
+00:01:28.860 --> 00:01:30.990
+into a mobile or IOT backend
+
+36
+00:01:30.990 --> 00:01:33.960
+or photos being dropped into an S3 bucket
+
+37
+00:01:33.960 --> 00:01:36.720
+and Lambda reacting to it in real time.
+
+38
+00:01:36.720 --> 00:01:39.000
+So here as we can see,
+
+39
+00:01:39.000 --> 00:01:41.520
+the more invocations we have, at first it's free
+
+40
+00:01:41.520 --> 00:01:43.740
+because we have a generous free tier,
+
+41
+00:01:43.740 --> 00:01:46.410
+but then if we start having a lot more events,
+
+42
+00:01:46.410 --> 00:01:48.300
+the invocations are going to increase faster
+
+43
+00:01:48.300 --> 00:01:50.580
+and then the cost is going to accumulate.
+
+44
+00:01:50.580 --> 00:01:52.470
+So Lambda can be a cheap service,
+
+45
+00:01:52.470 --> 00:01:55.020
+but, again, it's for you to estimate your workload
+
+46
+00:01:55.020 --> 00:01:57.000
+and see how much it would cost you.
+
+47
+00:01:57.000 --> 00:02:00.990
+So here are some information around what's free.
+
+48
+00:02:00.990 --> 00:02:02.970
+Next, let's click on Create a Function.
+
+49
+00:02:02.970 --> 00:02:05.130
+And so we're going to use a blueprint
+
+50
+00:02:05.130 --> 00:02:06.660
+and we're going to use the hello world.
+
+51
+00:02:06.660 --> 00:02:09.120
+So hello world, and I will choose Python.
+
+52
+00:02:09.120 --> 00:02:12.330
+So it could be whatever Python version you want, but Python.
+
+53
+00:02:12.330 --> 00:02:14.420
+And I'll call this one HelloWorld.
+
+54
+00:02:17.250 --> 00:02:20.490
+And now we have the execution role.
+
+55
+00:02:20.490 --> 00:02:21.450
+So your Lambda function
+
+56
+00:02:21.450 --> 00:02:23.640
+is going to be having execution role.
+
+57
+00:02:23.640 --> 00:02:25.590
+This is similar to the role you would set
+
+58
+00:02:25.590 --> 00:02:28.950
+on an EC2 instance, but this time it's for Lambda function.
+
+59
+00:02:28.950 --> 00:02:30.030
+So we're going to create a new role
+
+60
+00:02:30.030 --> 00:02:32.460
+with basic Lambda permissions,
+
+61
+00:02:32.460 --> 00:02:34.260
+and then this is the function code
+
+62
+00:02:34.260 --> 00:02:36.150
+that will be created automatically.
+
+63
+00:02:36.150 --> 00:02:37.650
+So let's create this function.
+
+64
+00:02:40.020 --> 00:02:42.870
+So my function is now created,
+
+65
+00:02:42.870 --> 00:02:45.630
+and as we can see, we have the code right here
+
+66
+00:02:45.630 --> 00:02:47.130
+that's available to us.
+
+67
+00:02:47.130 --> 00:02:48.540
+And so we have a function
+
+68
+00:02:48.540 --> 00:02:51.180
+and it's saying hey, load this function.
+
+69
+00:02:51.180 --> 00:02:52.530
+And then we have a handler.
+
+70
+00:02:52.530 --> 00:02:55.140
+This is what gets invoked when an event is passed
+
+71
+00:02:55.140 --> 00:02:57.450
+and say hey, we have value one equals this,
+
+72
+00:02:57.450 --> 00:02:59.070
+value two equals this, value three equals this,
+
+73
+00:02:59.070 --> 00:03:02.220
+and then we return just the first event key.
+
+74
+00:03:02.220 --> 00:03:03.630
+So it's not very important
+
+75
+00:03:03.630 --> 00:03:05.430
+for you to know code or anything like this,
+
+76
+00:03:05.430 --> 00:03:07.800
+just so you know that this is the code that gets executed
+
+77
+00:03:07.800 --> 00:03:11.010
+whenever our Lambda function is executed.
+
+78
+00:03:11.010 --> 00:03:12.300
+So what we can do
+
+79
+00:03:12.300 --> 00:03:15.690
+is that we can actually test our function right here
+
+80
+00:03:15.690 --> 00:03:18.210
+and we click on Test,
+
+81
+00:03:18.210 --> 00:03:20.700
+and as you can see, it has succeeded
+
+82
+00:03:20.700 --> 00:03:22.770
+and we get value1 as a result.
+
+83
+00:03:22.770 --> 00:03:26.160
+So the input JSON is in the bottom,
+
+84
+00:03:26.160 --> 00:03:28.110
+this is our hello-world template
+
+85
+00:03:28.110 --> 00:03:31.080
+and key1, value1, key2, value2, key3, value3
+
+86
+00:03:31.080 --> 00:03:34.320
+has been passed as a JSON to our Lambda function.
+
+87
+00:03:34.320 --> 00:03:37.290
+And our Lambda function returned this log,
+
+88
+00:03:37.290 --> 00:03:40.230
+and as you can see, it's successfully executed.
+
+89
+00:03:40.230 --> 00:03:44.160
+If I trigger a failure, for example, by removing this key,
+
+90
+00:03:44.160 --> 00:03:47.400
+I'm just going to remove it temporarily and then test it,
+
+91
+00:03:47.400 --> 00:03:48.840
+my code is going to fail
+
+92
+00:03:48.840 --> 00:03:52.080
+because my code does not know how to handle this exception.
+
+93
+00:03:52.080 --> 00:03:55.380
+This is just something that I know from the code, okay?
+
+94
+00:03:55.380 --> 00:03:58.380
+So I put this back in and I can test it again.
+
+95
+00:03:58.380 --> 00:03:59.880
+So we can save our Lambda function
+
+96
+00:03:59.880 --> 00:04:01.750
+and we say this is our HelloWorld
+
+97
+00:04:03.960 --> 00:04:06.900
+event and we save,
+
+98
+00:04:06.900 --> 00:04:08.880
+and now we have saved our test event,
+
+99
+00:04:08.880 --> 00:04:12.090
+so now we can test it as many times as we want.
+
+100
+00:04:12.090 --> 00:04:15.270
+So we also have the option to monitor our Lambda function.
+
+101
+00:04:15.270 --> 00:04:17.760
+So this is where you get invocations from CloudWatch,
+
+102
+00:04:17.760 --> 00:04:19.020
+we know some statistics,
+
+103
+00:04:19.020 --> 00:04:20.700
+so it takes a bit of time to populate,
+
+104
+00:04:20.700 --> 00:04:23.311
+but if you run it and wait, you'll see some stuff here
+
+105
+00:04:23.311 --> 00:04:25.800
+and you can click on View CloudWatch Logs.
+
+106
+00:04:25.800 --> 00:04:28.590
+This is where you're going to get the logs of your function.
+
+107
+00:04:28.590 --> 00:04:31.830
+And so if I look at my log stream one,
+
+108
+00:04:31.830 --> 00:04:35.460
+as we can see, we get the first time passed,
+
+109
+00:04:35.460 --> 00:04:37.980
+so we get the value1 equals one and so on.
+
+110
+00:04:37.980 --> 00:04:39.990
+And then we also get the error
+
+111
+00:04:39.990 --> 00:04:42.120
+that happened at some point when I triggered it.
+
+112
+00:04:42.120 --> 00:04:44.310
+And so this is cool because we can debug our functions
+
+113
+00:04:44.310 --> 00:04:46.083
+directly from the CloudWatch logs.
+
+114
+00:04:47.550 --> 00:04:50.520
+Okay, then we get access to come to some configuration.
+
+115
+00:04:50.520 --> 00:04:52.140
+So this is where you set
+
+116
+00:04:52.140 --> 00:04:54.270
+the general configuration of your Lambda function,
+
+117
+00:04:54.270 --> 00:04:56.430
+the memory, and you can set it to very large
+
+118
+00:04:56.430 --> 00:04:59.400
+or very small, ephemeral storage,
+
+119
+00:04:59.400 --> 00:05:01.200
+the timeout, so how long you want it to run
+
+120
+00:05:01.200 --> 00:05:03.240
+before saying it should fail,
+
+121
+00:05:03.240 --> 00:05:04.830
+and the execution role.
+
+122
+00:05:04.830 --> 00:05:06.930
+So this role, if you click on it,
+
+123
+00:05:06.930 --> 00:05:10.230
+is the role that allows you to access CloudWatch.
+
+124
+00:05:10.230 --> 00:05:11.130
+So if we look at it,
+
+125
+00:05:11.130 --> 00:05:14.130
+this is the basic Lambda role execution.
+
+126
+00:05:14.130 --> 00:05:16.260
+And if we look at what it does,
+
+127
+00:05:16.260 --> 00:05:17.343
+and we click on this,
+
+128
+00:05:18.690 --> 00:05:20.550
+as you can see, the permissions
+
+129
+00:05:20.550 --> 00:05:22.050
+is around the CloudWatch Logs.
+
+130
+00:05:22.050 --> 00:05:24.480
+And so this allows our Lambda function
+
+131
+00:05:24.480 --> 00:05:26.670
+to write to CloudWatch Logs.
+
+132
+00:05:26.670 --> 00:05:28.170
+And this is very handy
+
+133
+00:05:28.170 --> 00:05:29.940
+because if we wanted to also interact
+
+134
+00:05:29.940 --> 00:05:31.470
+with Amazon S3 and so on,
+
+135
+00:05:31.470 --> 00:05:33.750
+we would just go ahead and change that role
+
+136
+00:05:33.750 --> 00:05:37.080
+and add more permissions to that IAM role.
+
+137
+00:05:37.080 --> 00:05:38.610
+Okay, so let's cancel.
+
+138
+00:05:38.610 --> 00:05:40.050
+So this is general configuration.
+
+139
+00:05:40.050 --> 00:05:42.060
+As you can see, there's tons of configuration
+
+140
+00:05:42.060 --> 00:05:44.400
+in the Lambda world, so I don't wanna go over this,
+
+141
+00:05:44.400 --> 00:05:45.990
+but two things I wanna show you.
+
+142
+00:05:45.990 --> 00:05:47.670
+So first, permissions here.
+
+143
+00:05:47.670 --> 00:05:49.590
+So as you can see, the role again is here
+
+144
+00:05:49.590 --> 00:05:51.090
+and we get a role summary.
+
+145
+00:05:51.090 --> 00:05:53.520
+So we can see that CloudWatch Logs is allowed
+
+146
+00:05:53.520 --> 00:05:55.800
+and we have three actions allowed.
+
+147
+00:05:55.800 --> 00:05:58.260
+We can do it by resource or by action.
+
+148
+00:05:58.260 --> 00:06:00.090
+And then I wanna show you the triggers.
+
+149
+00:06:00.090 --> 00:06:02.370
+So currently we have no triggers, but we can add a trigger,
+
+150
+00:06:02.370 --> 00:06:05.430
+and this shows you all the sources of events
+
+151
+00:06:05.430 --> 00:06:08.100
+that can be triggering a Lambda function.
+
+152
+00:06:08.100 --> 00:06:09.450
+So this is a lot of them.
+
+153
+00:06:09.450 --> 00:06:12.810
+We have some AWS as well as some partner events,
+
+154
+00:06:12.810 --> 00:06:14.010
+but Amazon S3, for example,
+
+155
+00:06:14.010 --> 00:06:16.650
+is going to be one of the main use case,
+
+156
+00:06:16.650 --> 00:06:19.080
+and you have to select a bucket and event types.
+
+157
+00:06:19.080 --> 00:06:21.270
+But this is too much for right now.
+
+158
+00:06:21.270 --> 00:06:23.820
+Okay, so we have pretty much seen
+
+159
+00:06:23.820 --> 00:06:27.570
+how our Lambda function is working end to end.
+
+160
+00:06:27.570 --> 00:06:30.390
+Obviously this is something that can be explored a lot more
+
+161
+00:06:30.390 --> 00:06:32.130
+because this is a very complete service,
+
+162
+00:06:32.130 --> 00:06:33.810
+but this is good enough for an intro.
+
+163
+00:06:33.810 --> 00:06:34.980
+So I hope you liked it
+
+164
+00:06:34.980 --> 00:06:36.963
+and I will see you in the next lecture.
+

@@ -1,0 +1,310 @@
+WEBVTT
+
+00:00:00.340 --> 00:00:02.640
+<v Instructor>Okay. So let's practice using IAM roles</v>
+
+00:00:02.640 --> 00:00:04.070
+for our EC2 Instance.
+
+00:00:04.070 --> 00:00:06.840
+So at first, I'm going to connect to my EC2 Instance.
+
+00:00:06.840 --> 00:00:09.700
+You can SSH, or you can use EC2 Instance Connect
+
+00:00:09.700 --> 00:00:10.790
+if you wanted to.
+
+00:00:10.790 --> 00:00:12.270
+I will use EC2 Instance Connect
+
+00:00:12.270 --> 00:00:14.360
+because it's just going to be in my web browser
+
+00:00:14.360 --> 00:00:16.060
+and a little bit simpler.
+
+00:00:16.060 --> 00:00:17.800
+So back into my instance
+
+00:00:17.800 --> 00:00:20.040
+with EC2 Instance Connect right here.
+
+00:00:20.040 --> 00:00:21.740
+And we are in our Instance.
+
+00:00:21.740 --> 00:00:22.770
+So as we can see,
+
+00:00:22.770 --> 00:00:25.570
+we are ec2-user@ and the private IP.
+
+00:00:25.570 --> 00:00:28.600
+So regardless if you're using EC2 Instance Connects
+
+00:00:28.600 --> 00:00:31.040
+or SSH through your terminal, or whatever,
+
+00:00:31.040 --> 00:00:31.940
+through PuTTY.
+
+00:00:31.940 --> 00:00:34.980
+Then if you see this, we are at the same stage, okay?
+
+00:00:34.980 --> 00:00:37.540
+So now you can just do some Linux commands.
+
+00:00:37.540 --> 00:00:38.930
+For example, ping Google,
+
+00:00:38.930 --> 00:00:41.580
+and you can get some information out of Google.
+
+00:00:41.580 --> 00:00:43.760
+And I will do Control + C to go out of it
+
+00:00:43.760 --> 00:00:46.750
+or issue any kind of Linux commands you want.
+
+00:00:46.750 --> 00:00:48.540
+Okay, you don't need to know the next command
+
+00:00:48.540 --> 00:00:49.373
+going into the exam,
+
+00:00:49.373 --> 00:00:51.940
+but this is just a Linux terminal available
+
+00:00:51.940 --> 00:00:54.090
+to you right now in the cloud.
+
+00:00:54.090 --> 00:00:57.050
+So we'll type clear to clear the screen
+
+00:00:57.050 --> 00:01:00.340
+and next we have to run some IAM commands.
+
+00:01:00.340 --> 00:01:03.580
+So the cool thing is that's the Amazon Linux AMI
+
+00:01:03.580 --> 00:01:06.960
+we're using right now comes with the aid of a CLI.
+
+00:01:06.960 --> 00:01:08.880
+And so, as you can see, it is installed.
+
+00:01:08.880 --> 00:01:11.200
+So what we can do is start using some commands.
+
+00:01:11.200 --> 00:01:14.720
+For example, aws iam list users.
+
+00:01:14.720 --> 00:01:17.570
+And if we do so, it says unable to look at credentials.
+
+00:01:17.570 --> 00:01:21.140
+You can configure credentials by using aws configure.
+
+00:01:21.140 --> 00:01:23.650
+So we could indeed run aws configure
+
+00:01:23.650 --> 00:01:27.070
+to configure the credentials and specify an Access ID
+
+00:01:27.070 --> 00:01:29.030
+a Secret Access key, and a region name.
+
+00:01:29.030 --> 00:01:32.570
+But this is a really, really, really bad idea.
+
+00:01:32.570 --> 00:01:36.180
+And the reason is that if we run aws configure
+
+00:01:36.180 --> 00:01:40.660
+and enter our personal details onto this EC2 Instance,
+
+00:01:40.660 --> 00:01:42.970
+then anyone else in our accounts
+
+00:01:42.970 --> 00:01:45.230
+could again connect to our EC2 Instance.
+
+00:01:45.230 --> 00:01:47.877
+For example, using EC2 Instance Connect
+
+00:01:47.877 --> 00:01:51.160
+and retrieve the value of these credentials in our instance,
+
+00:01:51.160 --> 00:01:52.500
+which is not what we want.
+
+00:01:52.500 --> 00:01:54.370
+This is something that's really, really bad.
+
+00:01:54.370 --> 00:01:57.800
+And so as a rule of thumb, never, ever, ever
+
+00:01:57.800 --> 00:02:00.580
+enter your IAM APA key.
+
+00:02:00.580 --> 00:02:02.970
+So the Access Key ID and the Secret Access key
+
+00:02:02.970 --> 00:02:04.520
+into an EC2 Instance.
+
+00:02:04.520 --> 00:02:06.840
+This is horrible and if you see someone doing it,
+
+00:02:06.840 --> 00:02:08.950
+please show them this video.
+
+00:02:08.950 --> 00:02:12.060
+Instead, what we have to do is use IAM rules.
+
+00:02:12.060 --> 00:02:13.610
+So if you remember,
+
+00:02:13.610 --> 00:02:17.410
+when we were in the management console and we were in IAM,
+
+00:02:17.410 --> 00:02:19.500
+we had created an IAM role.
+
+00:02:19.500 --> 00:02:21.080
+So let's go back into the Roles.
+
+00:02:21.080 --> 00:02:23.660
+We had this demo role for EC2
+
+00:02:23.660 --> 00:02:27.010
+that had one policy attached called IAMReadOnlyAccess.
+
+00:02:27.010 --> 00:02:29.160
+So we are going to attach this role
+
+00:02:29.160 --> 00:02:33.430
+onto our EC2 Instance to provide it with credentials.
+
+00:02:33.430 --> 00:02:35.120
+Okay, so how do we do this?
+
+00:02:35.120 --> 00:02:37.160
+For this, we can go into Security.
+
+00:02:37.160 --> 00:02:38.160
+And as you can see,
+
+00:02:38.160 --> 00:02:41.420
+there is no IAM Role right now onto our instance.
+
+00:02:41.420 --> 00:02:44.300
+So what we can do is go back to our Instances,
+
+00:02:44.300 --> 00:02:48.950
+Action, Security, and then Modify IAM role.
+
+00:02:48.950 --> 00:02:50.550
+Here we have to choose an IAM role.
+
+00:02:50.550 --> 00:02:54.800
+So we have DemoRoleForEC2 and click on Save
+
+00:02:54.800 --> 00:02:56.920
+to attach this IAM role into our Instance.
+
+00:02:56.920 --> 00:02:58.610
+So if you go back to Security,
+
+00:02:58.610 --> 00:03:00.323
+now the IAM role attached to Instance
+
+00:03:00.323 --> 00:03:02.140
+DemoRoleForEC2.
+
+00:03:02.140 --> 00:03:04.220
+So the effect of this is that now
+
+00:03:04.220 --> 00:03:09.220
+if we do aws iam list users and press Enter,
+
+00:03:09.460 --> 00:03:12.260
+where we are getting a response around the users from IAM.
+
+00:03:12.260 --> 00:03:15.720
+So as we can see, we did not run the command aws configure.
+
+00:03:15.720 --> 00:03:18.560
+We just attached an IAM role and ran this command.
+
+00:03:18.560 --> 00:03:19.760
+And it works.
+
+00:03:19.760 --> 00:03:22.800
+And as a proof, if we go into this role
+
+00:03:22.800 --> 00:03:27.680
+and detach this permission, so now it's gone,
+
+00:03:27.680 --> 00:03:32.100
+and run the command again, we're getting an access denied.
+
+00:03:32.100 --> 00:03:35.370
+So the role is really linked now to the EC2 Instance.
+
+00:03:35.370 --> 00:03:38.380
+And this is how we provide AWS credentials
+
+00:03:38.380 --> 00:03:40.150
+to our EC2 Instances only,
+
+00:03:40.150 --> 00:03:42.490
+only through IAM roles, okay?
+
+00:03:42.490 --> 00:03:45.290
+So if we go back to IAM
+
+00:03:45.290 --> 00:03:47.400
+and we attach a policy to this role
+
+00:03:47.400 --> 00:03:49.900
+and go back to IAMReadOnlyAccess,
+
+00:03:49.900 --> 00:03:53.783
+attach this policy and then rerun the command,
+
+00:03:55.730 --> 00:03:56.570
+we get an access denied
+
+00:03:56.570 --> 00:03:58.910
+because sometimes it can take a little bit of time
+
+00:03:58.910 --> 00:04:02.027
+to propagate the changes from IAM into AWS.
+
+00:04:02.027 --> 00:04:04.240
+But if we run it one more time,
+
+00:04:04.240 --> 00:04:06.470
+we're getting the output we expect,
+
+00:04:06.470 --> 00:04:07.500
+which is what we want.
+
+00:04:07.500 --> 00:04:08.690
+So this is very important
+
+00:04:08.690 --> 00:04:10.180
+for you to understand this,
+
+00:04:10.180 --> 00:04:13.490
+use IAM roles for your EC2 Instances.
+
+00:04:13.490 --> 00:04:16.200
+So this is hopefully good for you.
+
+00:04:16.200 --> 00:04:17.490
+I hope you like this hands-on
+
+00:04:17.490 --> 00:04:19.440
+and I will see you in the next lecture.

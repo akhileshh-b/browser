@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00:00.360 --> 00:00:01.403
+<v Stephane>Let's get to KMS.</v>
+
+00:00:01.403 --> 00:00:04.030
+I will type KMS into the find services
+
+00:00:04.030 --> 00:00:06.810
+and we're getting into the key management service.
+
+00:00:06.810 --> 00:00:09.630
+As we can see, we have three types of keys.
+
+00:00:09.630 --> 00:00:12.150
+We have the customer managed keys, which you can create
+
+00:00:12.150 --> 00:00:13.850
+but they will cost you some money
+
+00:00:13.850 --> 00:00:15.620
+or you have the AWS manage keys
+
+00:00:15.620 --> 00:00:19.200
+and they're created for the services of AWS
+
+00:00:19.200 --> 00:00:20.373
+and the custom key store
+
+00:00:20.373 --> 00:00:23.020
+which is going to use a CloudHSM cluster
+
+00:00:23.020 --> 00:00:25.113
+that you need to create, own and manage.
+
+00:00:26.061 --> 00:00:27.900
+So using CloudHSM is expensive.
+
+00:00:27.900 --> 00:00:28.790
+So I'm not going to do this
+
+00:00:28.790 --> 00:00:30.923
+because this is not part of the feature,
+
+00:00:30.923 --> 00:00:31.950
+but as you can see we can get the option
+
+00:00:31.950 --> 00:00:33.950
+of using a custom key store.
+
+00:00:33.950 --> 00:00:36.660
+Now using the managed keys of AWS is interesting
+
+00:00:36.660 --> 00:00:37.710
+I wanna show you how it works.
+
+00:00:37.710 --> 00:00:41.290
+So for example, let's use the AWS/EBS key.
+
+00:00:41.290 --> 00:00:43.660
+So let's go into the EC2 console
+
+00:00:43.660 --> 00:00:45.440
+and we'll try to use that key.
+
+00:00:45.440 --> 00:00:48.240
+So in this example, I'm going to create a volume.
+
+00:00:48.240 --> 00:00:50.830
+So let me go on the volumes on the left hand side,
+
+00:00:50.830 --> 00:00:52.500
+I'm going to create a volume.
+
+00:00:52.500 --> 00:00:55.800
+It's going to be a one gigabyte volume
+
+00:00:55.800 --> 00:00:57.940
+and I'm going to encrypt this volume.
+
+00:00:57.940 --> 00:01:00.920
+Now I have an option either I choose a master key
+
+00:01:00.920 --> 00:01:03.590
+that is a default master key of AWS for the service
+
+00:01:03.590 --> 00:01:07.480
+which did response to the key right here, okay?
+
+00:01:07.480 --> 00:01:08.750
+Or I could use my own key
+
+00:01:08.750 --> 00:01:11.374
+but currently I don't have any keys.
+
+00:01:11.374 --> 00:01:12.207
+So the only option I have
+
+00:01:12.207 --> 00:01:15.460
+is to use this default AWS master key.
+
+00:01:15.460 --> 00:01:17.390
+So this is good, I wanna use this key
+
+00:01:17.390 --> 00:01:18.980
+and click on create volume.
+
+00:01:18.980 --> 00:01:21.200
+And now we have created an encrypted volume.
+
+00:01:21.200 --> 00:01:25.600
+So it is properly protected against for example,
+
+00:01:25.600 --> 00:01:27.660
+attacks if they're trying to decrypt it.
+
+00:01:27.660 --> 00:01:28.688
+Okay, so this is an example
+
+00:01:28.688 --> 00:01:32.190
+where this is a voluntary opt-in for the encryption.
+
+00:01:32.190 --> 00:01:33.874
+But if you remember, I said that for example,
+
+00:01:33.874 --> 00:01:36.890
+for CloudTrail or for Glacier S3
+
+00:01:36.890 --> 00:01:39.410
+encryption was enabled by default.
+
+00:01:39.410 --> 00:01:42.630
+So if I go into CloudTrail and try to use a demo-trail
+
+00:01:42.630 --> 00:01:45.630
+as we can see if we go into the encryption
+
+00:01:45.630 --> 00:01:47.330
+even though it says disabled here
+
+00:01:47.330 --> 00:01:50.530
+the encryption is actually enabled in the S3 buckets.
+
+00:01:50.530 --> 00:01:54.290
+So let's see, and have a look at the S3 bucket itself.
+
+00:01:54.290 --> 00:01:56.730
+So in S3, then we go to CloudTrail,
+
+00:01:56.730 --> 00:01:59.070
+go to EUS1, find this file.
+
+00:01:59.070 --> 00:02:00.840
+So I'll go down in my buckets.
+
+00:02:00.840 --> 00:02:02.930
+And if you look at this file right here,
+
+00:02:02.930 --> 00:02:05.710
+if you look at the property for the encryption
+
+00:02:05.710 --> 00:02:08.090
+it says encryption AES256,
+
+00:02:08.090 --> 00:02:09.510
+which means that this CloudTrail file,
+
+00:02:09.510 --> 00:02:13.520
+even though it said disabled here for the encryption,
+
+00:02:13.520 --> 00:02:16.360
+it actually was enabled in Amazon S3.
+
+00:02:16.360 --> 00:02:18.260
+I won't go over the details of why,
+
+00:02:18.260 --> 00:02:21.040
+but by default CloudTrail will encrypt all the files
+
+00:02:21.040 --> 00:02:22.190
+no matter what.
+
+00:02:22.190 --> 00:02:25.110
+Okay, so we've seen the services we need to opt-in
+
+00:02:25.110 --> 00:02:28.620
+for the encryption, then those that are enabled by default.
+
+00:02:28.620 --> 00:02:30.060
+And then finally, I want to show you
+
+00:02:30.060 --> 00:02:31.710
+about your customer managed keys.
+
+00:02:33.139 --> 00:02:34.460
+So it is possible for you to create a key.
+
+00:02:34.460 --> 00:02:35.980
+Now this will cost you some money.
+
+00:02:35.980 --> 00:02:38.750
+So if you don't want to have a key just watch me do.
+
+00:02:38.750 --> 00:02:41.320
+So it could be a symmetric key or an asymmetric key.
+
+00:02:41.320 --> 00:02:43.900
+I will keep it simple and use symmetric.
+
+00:02:43.900 --> 00:02:45.680
+And for the origin of the key
+
+00:02:45.680 --> 00:02:50.390
+we can generate it from KMS or we can have it external
+
+00:02:50.390 --> 00:02:52.540
+so we need to import our own key,
+
+00:02:52.540 --> 00:02:55.090
+or as I said we can have the key generated
+
+00:02:55.090 --> 00:02:57.980
+from a custom key store, which is CloudHSM.
+
+00:02:57.980 --> 00:03:00.370
+And in which case, all the encryption and the decryption
+
+00:03:00.370 --> 00:03:02.300
+will happen within CloudHSM.
+
+00:03:02.300 --> 00:03:06.220
+So for this, I'm going to create my own key, my own KMS key
+
+00:03:06.220 --> 00:03:08.210
+and then I can display an alias for that key.
+
+00:03:08.210 --> 00:03:13.210
+So I'll call it demokey, and then I'll click on next.
+
+00:03:13.220 --> 00:03:15.730
+Then you can define key administrators and key users
+
+00:03:15.730 --> 00:03:16.690
+which I will skip.
+
+00:03:16.690 --> 00:03:21.420
+So we'll just click on next and again, click on next, okay.
+
+00:03:21.420 --> 00:03:22.940
+And I will review this key policy.
+
+00:03:22.940 --> 00:03:24.480
+This looks good, I will finish it.
+
+00:03:24.480 --> 00:03:25.990
+And remember, this will cost you $1
+
+00:03:25.990 --> 00:03:27.490
+if you do this with this with me.
+
+00:03:27.490 --> 00:03:31.310
+So now I have my demokey and this key is enabled.
+
+00:03:31.310 --> 00:03:33.220
+Now I can do a key rotation.
+
+00:03:33.220 --> 00:03:36.100
+So if I go to key rotation, I can tick this box
+
+00:03:36.100 --> 00:03:37.870
+to make sure this key changes every year
+
+00:03:37.870 --> 00:03:40.190
+which is for enhanced security.
+
+00:03:40.190 --> 00:03:42.080
+And I can also leverage that key.
+
+00:03:42.080 --> 00:03:45.660
+So back into EBS, if I go and create a volume now
+
+00:03:45.660 --> 00:03:48.240
+and try to create another one gigabyte volume
+
+00:03:48.240 --> 00:03:50.220
+this time if I encrypt this volume,
+
+00:03:50.220 --> 00:03:54.170
+the master key can either be the default key managed by AWS
+
+00:03:54.170 --> 00:03:57.250
+for the service or we can use my demokey
+
+00:03:57.250 --> 00:03:59.563
+and use that for encrypting my EBS volume.
+
+00:04:00.710 --> 00:04:02.150
+So click and create volume.
+
+00:04:02.150 --> 00:04:03.420
+Here I am, I'm done.
+
+00:04:03.420 --> 00:04:05.740
+And now I have two volumes in here.
+
+00:04:05.740 --> 00:04:08.140
+They're both encrypted, but they're encrypted differently.
+
+00:04:08.140 --> 00:04:09.960
+So they're both encrypted
+
+00:04:09.960 --> 00:04:12.370
+but this time we are using our own key
+
+00:04:12.370 --> 00:04:15.547
+and in this one, we're using the key managed by AWS.
+
+00:04:15.547 --> 00:04:17.150
+Okay, so that's it for this lecture
+
+00:04:17.150 --> 00:04:18.880
+just a short introduction.
+
+00:04:18.880 --> 00:04:21.110
+Finally, if you just wanna clean up after yourself
+
+00:04:21.110 --> 00:04:23.760
+just make sure to delete these volumes.
+
+00:04:23.760 --> 00:04:25.260
+And if you have created a key,
+
+00:04:25.260 --> 00:04:26.970
+again it will cost you $1 a month
+
+00:04:26.970 --> 00:04:29.470
+but you can still do a disabling of the key
+
+00:04:29.470 --> 00:04:31.740
+and then schedule this key deletion.
+
+00:04:31.740 --> 00:04:34.390
+That's it for me, I will see you in the next lecture.

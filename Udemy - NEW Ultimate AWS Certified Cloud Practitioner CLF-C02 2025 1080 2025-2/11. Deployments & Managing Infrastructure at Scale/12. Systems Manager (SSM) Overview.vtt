@@ -1,0 +1,298 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:03.170
+<v ->Now let's talk about AWS Systems Manager,</v>
+
+2
+00:00:03.170 --> 00:00:04.750
+also called SSM.
+
+3
+00:00:04.750 --> 00:00:09.280
+So, SSM helps you man manage your fleet of EC2 instances,
+
+4
+00:00:09.280 --> 00:00:11.620
+and On-Premises systems at scale,
+
+5
+00:00:11.620 --> 00:00:12.683
+and yet again,
+
+6
+00:00:13.540 --> 00:00:16.472
+it is a way to manage your both On-Premises
+
+7
+00:00:16.472 --> 00:00:17.305
+and AWS.
+
+8
+00:00:17.305 --> 00:00:20.620
+So, therefore it is called a Hybrid AWS service.
+
+9
+00:00:20.620 --> 00:00:22.720
+SSM allows you to do a ton of things
+
+10
+00:00:22.720 --> 00:00:23.920
+that is quite complicated,
+
+11
+00:00:23.920 --> 00:00:24.820
+but the idea is that
+
+12
+00:00:24.820 --> 00:00:26.143
+its a Systems Manager,
+
+13
+00:00:26.987 --> 00:00:27.830
+so you can get operational insights
+
+14
+00:00:27.830 --> 00:00:30.090
+about the state of your infrastructure,
+
+15
+00:00:30.090 --> 00:00:31.320
+and you also get access to a
+
+16
+00:00:31.320 --> 00:00:33.260
+suite of 10 plus products.
+
+17
+00:00:33.260 --> 00:00:34.570
+You don't need to know all the products
+
+18
+00:00:34.570 --> 00:00:35.403
+going into the exam,
+
+19
+00:00:35.403 --> 00:00:37.664
+but the most important products and features are
+
+20
+00:00:37.664 --> 00:00:39.900
+that you can do automotive patching
+
+21
+00:00:39.900 --> 00:00:42.220
+of all your servers and instances
+
+22
+00:00:42.220 --> 00:00:43.540
+for enhanced compliance.
+
+23
+00:00:43.540 --> 00:00:46.170
+You can also run a command across your entire fleet
+
+24
+00:00:46.170 --> 00:00:48.090
+of server directly from SSM,
+
+25
+00:00:48.090 --> 00:00:50.320
+and you can store primary configuration
+
+26
+00:00:50.320 --> 00:00:52.640
+with the SSM Parameter Store.
+
+27
+00:00:52.640 --> 00:00:54.730
+Finally, SSM is nice because it works
+
+28
+00:00:54.730 --> 00:00:56.620
+for Linux, Windows,
+
+29
+00:00:57.589 --> 00:00:58.530
+Mac OS and Raspberry Pi
+
+30
+00:00:58.530 --> 00:01:00.320
+So, from an exam perspective,
+
+31
+00:01:00.320 --> 00:01:04.240
+anytime you see a way to patch your fleet
+
+32
+00:01:04.240 --> 00:01:06.760
+of EC2 instances or On-Premises servers,
+
+33
+00:01:06.760 --> 00:01:08.240
+you have to think about SSM,
+
+34
+00:01:08.240 --> 00:01:10.150
+or if you wanted to run a command consistently
+
+35
+00:01:10.150 --> 00:01:11.540
+across all your servers,
+
+36
+00:01:11.540 --> 00:01:13.940
+again, SSM would be the right way.
+
+37
+00:01:13.940 --> 00:01:15.310
+Now how does SSM work,
+
+38
+00:01:15.310 --> 00:01:16.730
+just to give you a better idea.
+
+39
+00:01:16.730 --> 00:01:18.750
+So, SSM service works on its own,
+
+40
+00:01:18.750 --> 00:01:20.920
+but you need to first install the SSM agent
+
+41
+00:01:20.920 --> 00:01:22.841
+onto the systems we control,
+
+42
+00:01:22.841 --> 00:01:24.520
+and that is a small program
+
+43
+00:01:24.520 --> 00:01:26.170
+that will be running in the background.
+
+44
+00:01:26.170 --> 00:01:27.869
+By default, if you use Amazon Linux AMI
+
+45
+00:01:27.869 --> 00:01:30.360
+or some Ubuntu AMI on the AWS,
+
+46
+00:01:30.360 --> 00:01:32.470
+it will be installed by default.
+
+47
+00:01:32.470 --> 00:01:34.810
+So, if we look at our EC2 instances
+
+48
+00:01:34.810 --> 00:01:36.620
+and on-premise virtual machines,
+
+49
+00:01:36.620 --> 00:01:38.710
+we first have to install the SSM agent
+
+50
+00:01:38.710 --> 00:01:40.010
+on all of these,
+
+51
+00:01:40.010 --> 00:01:42.540
+and the SSM agent will be reporting back
+
+52
+00:01:42.540 --> 00:01:44.890
+to the SSM service in AWS.
+
+53
+00:01:44.890 --> 00:01:45.723
+As you can see,
+
+54
+00:01:46.860 --> 00:01:48.230
+it is linked to both EC2 instances
+
+55
+00:01:48.230 --> 00:01:50.090
+and On-Premises VM,
+
+56
+00:01:50.090 --> 00:01:52.961
+so this makes it a hybrid service.
+
+57
+00:01:52.961 --> 00:01:55.370
+Now if an instance cannot be controlled by SSM,
+
+58
+00:01:55.370 --> 00:01:57.361
+it's only probably an issue with the agent,
+
+59
+00:01:57.361 --> 00:02:00.560
+and now that the agent is installed
+
+60
+00:02:00.560 --> 00:02:01.990
+on both our servers
+
+61
+00:02:01.990 --> 00:02:04.550
+and our EC2 instances,
+
+62
+00:02:04.550 --> 00:02:06.690
+then we can use the SSM service
+
+63
+00:02:06.690 --> 00:02:09.720
+to run commands across all these servers,
+
+64
+00:02:09.720 --> 00:02:11.580
+or we can patch them all at once,
+
+65
+00:02:11.580 --> 00:02:13.410
+or we can configure them consistently
+
+66
+00:02:13.410 --> 00:02:14.990
+using the SSM service.
+
+67
+00:02:14.990 --> 00:02:15.910
+So, if you remember this,
+
+68
+00:02:15.910 --> 00:02:17.310
+you're good to go for the exam.
+
+69
+00:02:17.310 --> 00:02:19.270
+Again, SSM is an advanced service,
+
+70
+00:02:19.270 --> 00:02:20.530
+so I won't do a hands-on on it,
+
+71
+00:02:20.530 --> 00:02:21.760
+but from an exam perspective,
+
+72
+00:02:21.760 --> 00:02:22.640
+you should be good to go.
+
+73
+00:02:22.640 --> 00:02:23.730
+So, I hope you liked this lecture,
+
+74
+00:02:23.730 --> 00:02:25.680
+and I will see you in the next lecture.
+

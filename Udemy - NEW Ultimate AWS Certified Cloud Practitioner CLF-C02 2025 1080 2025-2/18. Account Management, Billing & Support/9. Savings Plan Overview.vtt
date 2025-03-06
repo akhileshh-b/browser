@@ -1,0 +1,434 @@
+WEBVTT
+
+1
+00:00:00.360 --> 00:00:02.820
+<v Stephane>Okay, so now let's talk about a new way</v>
+
+2
+00:00:02.820 --> 00:00:06.120
+of saving on your cost on AWS, which is called Savings Plan.
+
+3
+00:00:06.120 --> 00:00:08.130
+So Savings Plan are a much simpler way
+
+4
+00:00:08.130 --> 00:00:11.250
+to look at your infrastructure on AWS.
+
+5
+00:00:11.250 --> 00:00:14.250
+Instead of reserving instances, you just commit
+
+6
+00:00:14.250 --> 00:00:16.800
+to spending a certain dollar amount per hour
+
+7
+00:00:16.800 --> 00:00:19.620
+for the next one or three years.
+
+8
+00:00:19.620 --> 00:00:22.590
+So it's easier than the rest because you just think
+
+9
+00:00:22.590 --> 00:00:23.970
+in terms of dollars and you don't think
+
+10
+00:00:23.970 --> 00:00:26.700
+in terms of specific resource, and types, and so on.
+
+11
+00:00:26.700 --> 00:00:28.920
+So let me show you the two types
+
+12
+00:00:28.920 --> 00:00:31.050
+of Savings Plans you have on AWS.
+
+13
+00:00:31.050 --> 00:00:33.270
+The first one is an EC2 Savings Plan,
+
+14
+00:00:33.270 --> 00:00:36.030
+and this is going to give you up to 72% discount
+
+15
+00:00:36.030 --> 00:00:38.490
+compared to On-Demand prices for EC2.
+
+16
+00:00:38.490 --> 00:00:41.070
+And you're going to commit to the usage
+
+17
+00:00:41.070 --> 00:00:43.860
+of the individual instance families in a region.
+
+18
+00:00:43.860 --> 00:00:46.537
+For example, you say, "Hey, I'm willing to spend
+
+19
+00:00:46.537 --> 00:00:48.990
+$10 per hour for the next three years
+
+20
+00:00:48.990 --> 00:00:51.510
+on the C5 type of instances."
+
+21
+00:00:51.510 --> 00:00:54.180
+But regardless of the AZ they're launched in,
+
+22
+00:00:54.180 --> 00:00:57.164
+regardless of the size, so you can choose a C5.xl
+
+23
+00:00:57.164 --> 00:01:00.120
+or a C5.4xl, regardless of the operating system,
+
+24
+00:01:00.120 --> 00:01:02.610
+so Linux or Windows, and regardless of the tenancy
+
+25
+00:01:02.610 --> 00:01:05.790
+if you want to choose shared or dedicated host.
+
+26
+00:01:05.790 --> 00:01:09.360
+You can choose, just like reserve instances,
+
+27
+00:01:09.360 --> 00:01:12.360
+to pay everything upfront, partial upfront, or no upfront.
+
+28
+00:01:12.360 --> 00:01:14.460
+And, obviously, if you pay everything upfront,
+
+29
+00:01:14.460 --> 00:01:17.160
+you're going to get a bigger discounts.
+
+30
+00:01:17.160 --> 00:01:20.790
+And the other types of Savings Plan is even more flexible.
+
+31
+00:01:20.790 --> 00:01:23.070
+It's called the Compute Savings Plan.
+
+32
+00:01:23.070 --> 00:01:26.040
+And this one is going to give you up to 66% discounts
+
+33
+00:01:26.040 --> 00:01:27.480
+compared to On-Demand.
+
+34
+00:01:27.480 --> 00:01:31.950
+And this is regardless of the family, the region,
+
+35
+00:01:31.950 --> 00:01:36.030
+the size, the OS, the tenancy, and the compute option.
+
+36
+00:01:36.030 --> 00:01:37.740
+And what do I mean by compute option?
+
+37
+00:01:37.740 --> 00:01:40.650
+I mean that it's applicable to EC2 instances,
+
+38
+00:01:40.650 --> 00:01:43.830
+but also Fargate containers and Lambda functions.
+
+39
+00:01:43.830 --> 00:01:46.680
+So the Compute Savings Plan is really the most flexible
+
+40
+00:01:46.680 --> 00:01:47.700
+where you don't really think much
+
+41
+00:01:47.700 --> 00:01:49.230
+about what this applies to.
+
+42
+00:01:49.230 --> 00:01:51.510
+You just commit a certain dollar amount per hour,
+
+43
+00:01:51.510 --> 00:01:53.670
+and you get discounts based on that.
+
+44
+00:01:53.670 --> 00:01:56.100
+And the last option you have for Savings Plan
+
+45
+00:01:56.100 --> 00:01:57.660
+is the Machine Learning Savings Plan
+
+46
+00:01:57.660 --> 00:02:00.570
+for services such as SageMaker.
+
+47
+00:02:00.570 --> 00:02:02.310
+And how to set up a Savings Plan.
+
+48
+00:02:02.310 --> 00:02:05.340
+Well, you go into the AWS Cost Explorer console,
+
+49
+00:02:05.340 --> 00:02:07.710
+and it will suggest to you the type of right Savings Plan
+
+50
+00:02:07.710 --> 00:02:10.260
+that will work for your current infrastructure.
+
+51
+00:02:10.260 --> 00:02:11.760
+And you can estimate the pricing
+
+52
+00:02:11.760 --> 00:02:14.103
+of Savings Plan at this URL.
+
+53
+00:02:15.000 --> 00:02:18.240
+And so if we go to the Savings Plan website,
+
+54
+00:02:18.240 --> 00:02:19.890
+we have two kinds of Savings Plans,
+
+55
+00:02:19.890 --> 00:02:23.370
+this Compute and the Machine Learning Savings Plan.
+
+56
+00:02:23.370 --> 00:02:25.710
+So for the Compute Savings Plan, we have different ones.
+
+57
+00:02:25.710 --> 00:02:29.190
+So we have Compute or EC2 Instance Savings Plan.
+
+58
+00:02:29.190 --> 00:02:31.890
+And here on this UI, you can basically navigate it
+
+59
+00:02:31.890 --> 00:02:33.660
+so you have for EC2, for Fargate,
+
+60
+00:02:33.660 --> 00:02:36.330
+for Lambda, or for EC2 Instances.
+
+61
+00:02:36.330 --> 00:02:37.710
+And then you can modify the region.
+
+62
+00:02:37.710 --> 00:02:41.220
+So the region, the relocation type you want,
+
+63
+00:02:41.220 --> 00:02:45.030
+the region you want, the term length, so one or three years,
+
+64
+00:02:45.030 --> 00:02:47.790
+payment upfront or not, or partial, and so on.
+
+65
+00:02:47.790 --> 00:02:50.790
+And then it gives you a list of available instances.
+
+66
+00:02:50.790 --> 00:02:53.190
+For example, if we take an a1.large,
+
+67
+00:02:53.190 --> 00:02:54.930
+then using a Savings Plan,
+
+68
+00:02:54.930 --> 00:02:58.410
+we can expect 31% discounts over On-Demand.
+
+69
+00:02:58.410 --> 00:03:00.480
+So this UI is great to estimate
+
+70
+00:03:00.480 --> 00:03:02.640
+all your Compute Savings Plan.
+
+71
+00:03:02.640 --> 00:03:05.190
+And then for Machine Learning, we have something similar.
+
+72
+00:03:05.190 --> 00:03:07.050
+So they will be added over time,
+
+73
+00:03:07.050 --> 00:03:09.030
+but I won't probably add it this lecture
+
+74
+00:03:09.030 --> 00:03:10.260
+because it's not needed.
+
+75
+00:03:10.260 --> 00:03:12.780
+So, right now, we have the Amazon SageMaker Savings Plan,
+
+76
+00:03:12.780 --> 00:03:16.290
+which is enough for us to know from an exam perspective.
+
+77
+00:03:16.290 --> 00:03:19.830
+And we have the region again, the type, and so on.
+
+78
+00:03:19.830 --> 00:03:22.890
+And then besides here, we can take a look
+
+79
+00:03:22.890 --> 00:03:25.950
+at the Notebook instances for SageMaker, for example.
+
+80
+00:03:25.950 --> 00:03:27.750
+And if we do decide to run
+
+81
+00:03:27.750 --> 00:03:31.200
+ml.t3.large-Notebook for a long time,
+
+82
+00:03:31.200 --> 00:03:35.823
+then we can expect savings of 28% over On-Demand, okay.
+
+83
+00:03:36.690 --> 00:03:40.680
+So if you go and type savings plan in your services search,
+
+84
+00:03:40.680 --> 00:03:41.850
+you go under Cost Explorer,
+
+85
+00:03:41.850 --> 00:03:44.310
+there is the top feature, which is Savings Plan,
+
+86
+00:03:44.310 --> 00:03:46.080
+and it takes you to this URL.
+
+87
+00:03:46.080 --> 00:03:48.060
+And you can have a look at the fact you can purchase
+
+88
+00:03:48.060 --> 00:03:50.753
+Compute Savings Plan, which is for Fargate,
+
+89
+00:03:50.753 --> 00:03:52.950
+Lambda, and EC2 instances.
+
+90
+00:03:52.950 --> 00:03:54.960
+You have EC2 Instances Savings Plan,
+
+91
+00:03:54.960 --> 00:03:57.030
+just only for EC2 instances.
+
+92
+00:03:57.030 --> 00:03:58.590
+And then SageMaker Savings Plan,
+
+93
+00:03:58.590 --> 00:04:00.840
+which is the Machine Learning Savings Plan.
+
+94
+00:04:00.840 --> 00:04:03.300
+So if you decide to purchase a Savings Plan,
+
+95
+00:04:03.300 --> 00:04:06.870
+you can choose whatever Savings Plan type we want.
+
+96
+00:04:06.870 --> 00:04:09.960
+The term commitment, for example, one to three year.
+
+97
+00:04:09.960 --> 00:04:11.430
+The purchase commitment, so, for example,
+
+98
+00:04:11.430 --> 00:04:16.020
+I decide to have an hourly cost of $500.
+
+99
+00:04:16.020 --> 00:04:18.450
+And the payment options, so Partial Upfront,
+
+100
+00:04:18.450 --> 00:04:20.430
+and this would be a lot of money to front,
+
+101
+00:04:20.430 --> 00:04:22.290
+so $6 million to say upfront.
+
+102
+00:04:22.290 --> 00:04:25.380
+Anyways, you would see the Savings Plan upfront cost,
+
+103
+00:04:25.380 --> 00:04:27.780
+the monthly payment, and the total cost.
+
+104
+00:04:27.780 --> 00:04:29.760
+And then if you're ready, you just add it to cart
+
+105
+00:04:29.760 --> 00:04:33.390
+and you would have a Savings Plan for your infrastructure.
+
+106
+00:04:33.390 --> 00:04:34.650
+So that's it for this lecture.
+
+107
+00:04:34.650 --> 00:04:35.610
+I hope you liked it,
+
+108
+00:04:35.610 --> 00:04:37.683
+and I will see you in the next lecture.
+

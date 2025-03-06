@@ -1,0 +1,530 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.440
+<v Instructor>So, we are going to make sure</v>
+
+2
+00:00:01.440 --> 00:00:04.110
+to set up a budget and an alarm for that budget
+
+3
+00:00:04.110 --> 00:00:05.340
+for this course in order for us
+
+4
+00:00:05.340 --> 00:00:08.220
+not to spend any money or too much money.
+
+5
+00:00:08.220 --> 00:00:10.710
+So, therefore we need to go into the billing console.
+
+6
+00:00:10.710 --> 00:00:12.870
+So, you can click on the top right of your screen
+
+7
+00:00:12.870 --> 00:00:15.990
+and then click on Billing and Cost Management.
+
+8
+00:00:15.990 --> 00:00:19.290
+So, as you can see here, I get a lot of access denied.
+
+9
+00:00:19.290 --> 00:00:22.110
+This is because I'm logged in as an IAM user, Stephane,
+
+10
+00:00:22.110 --> 00:00:23.430
+from my accounts.
+
+11
+00:00:23.430 --> 00:00:25.320
+And I had administrative access,
+
+12
+00:00:25.320 --> 00:00:27.360
+but even though I have administrative access,
+
+13
+00:00:27.360 --> 00:00:29.940
+I cannot access my billing data.
+
+14
+00:00:29.940 --> 00:00:32.730
+So to fix this, you can go into your root account.
+
+15
+00:00:32.730 --> 00:00:35.010
+So here, I'm in my root account as you can see.
+
+16
+00:00:35.010 --> 00:00:36.750
+It just says the name of my account.
+
+17
+00:00:36.750 --> 00:00:38.640
+It doesn't say IAM user.
+
+18
+00:00:38.640 --> 00:00:41.910
+And then, you click on it and you go to Accounts.
+
+19
+00:00:41.910 --> 00:00:44.313
+So from Accounts, you're going to scroll down.
+
+20
+00:00:45.180 --> 00:00:48.390
+And then scrolling down, you will find the IAM user
+
+21
+00:00:48.390 --> 00:00:51.030
+and role access to billing information.
+
+22
+00:00:51.030 --> 00:00:53.348
+As you can see right now it is deactivated.
+
+23
+00:00:53.348 --> 00:00:56.220
+So, we need to just activate IAM access
+
+24
+00:00:56.220 --> 00:00:58.710
+and this will allow IAM users to access
+
+25
+00:00:58.710 --> 00:01:02.040
+the billing information if they are administrators.
+
+26
+00:01:02.040 --> 00:01:04.350
+So back into my billing console now,
+
+27
+00:01:04.350 --> 00:01:06.330
+and I refresh this page.
+
+28
+00:01:06.330 --> 00:01:09.180
+And I refresh again and it can take a bit of time.
+
+29
+00:01:09.180 --> 00:01:10.770
+As you can see now, I see my data.
+
+30
+00:01:10.770 --> 00:01:12.960
+So, except this for the forecast
+
+31
+00:01:12.960 --> 00:01:15.150
+because there is a data unavailable exception,
+
+32
+00:01:15.150 --> 00:01:17.610
+so insufficient amount of historical data.
+
+33
+00:01:17.610 --> 00:01:21.540
+Except for this, we can see all my cost information in here.
+
+34
+00:01:21.540 --> 00:01:24.030
+So, now let me show you what a billing page looks like
+
+35
+00:01:24.030 --> 00:01:26.490
+for an account that I'm actually using and have some costs.
+
+36
+00:01:26.490 --> 00:01:27.930
+So as we can see, we get some information
+
+37
+00:01:27.930 --> 00:01:29.400
+around the month-to-date's cost.
+
+38
+00:01:29.400 --> 00:01:31.140
+We get the total forecasted cost
+
+39
+00:01:31.140 --> 00:01:32.340
+for the current month and so on,
+
+40
+00:01:32.340 --> 00:01:33.870
+and last month's total cost.
+
+41
+00:01:33.870 --> 00:01:35.698
+So, from this we can get a few information
+
+42
+00:01:35.698 --> 00:01:38.250
+such as the cost breakdown by month.
+
+43
+00:01:38.250 --> 00:01:39.990
+So, this is when you start seeing some cost.
+
+44
+00:01:39.990 --> 00:01:41.850
+And then we can have a look at bills.
+
+45
+00:01:41.850 --> 00:01:42.810
+So if you look at bills,
+
+46
+00:01:42.810 --> 00:01:45.960
+say you have any cost for this tutorial.
+
+47
+00:01:45.960 --> 00:01:49.740
+For this course, let's go into December, 2023.
+
+48
+00:01:49.740 --> 00:01:53.940
+So you will find at the bottom of it, charges by service.
+
+49
+00:01:53.940 --> 00:01:55.569
+And so you'll see the number of active services.
+
+50
+00:01:55.569 --> 00:01:57.390
+Right now I have 28.
+
+51
+00:01:57.390 --> 00:01:58.223
+And for example,
+
+52
+00:01:58.223 --> 00:02:01.770
+if I look at the Elastic Compute Cloud, so EC2,
+
+53
+00:02:01.770 --> 00:02:06.240
+I see I have $43 of cost in EU Ireland.
+
+54
+00:02:06.240 --> 00:02:09.060
+And it turns out that here is the breakdown of my cost.
+
+55
+00:02:09.060 --> 00:02:12.030
+So, there is some Amazon Elastic Compute NatGateway,
+
+56
+00:02:12.030 --> 00:02:14.010
+which is costing me $35.
+
+57
+00:02:14.010 --> 00:02:15.510
+And there is some EBS cost,
+
+58
+00:02:15.510 --> 00:02:17.640
+there is some Elastic IP cost, and so on.
+
+59
+00:02:17.640 --> 00:02:19.860
+And so you can get a lot of information
+
+60
+00:02:19.860 --> 00:02:21.390
+out of just this bill.
+
+61
+00:02:21.390 --> 00:02:24.360
+So, in case you see any kind of cost for your accounts,
+
+62
+00:02:24.360 --> 00:02:25.920
+remember to go into bills,
+
+63
+00:02:25.920 --> 00:02:27.780
+go to the month you're interested into,
+
+64
+00:02:27.780 --> 00:02:30.150
+and then scroll down to get charged by service
+
+65
+00:02:30.150 --> 00:02:31.980
+where you're going to get a lot of information
+
+66
+00:02:31.980 --> 00:02:34.440
+around how every service is being used,
+
+67
+00:02:34.440 --> 00:02:36.030
+and how you are billed for service,
+
+68
+00:02:36.030 --> 00:02:39.720
+which will allow you to break down your bill very easily.
+
+69
+00:02:39.720 --> 00:02:41.970
+Next, you can go into free tier on the left hand side.
+
+70
+00:02:41.970 --> 00:02:44.430
+So, AWs does have a free tier.
+
+71
+00:02:44.430 --> 00:02:47.053
+And you're going to be able to see the current usage
+
+72
+00:02:47.053 --> 00:02:48.450
+and the forecasted usage,
+
+73
+00:02:48.450 --> 00:02:50.850
+as well as again, what the free tier is.
+
+74
+00:02:50.850 --> 00:02:52.260
+And then you will see whether or not
+
+75
+00:02:52.260 --> 00:02:54.240
+you're going to pass the free tier usage.
+
+76
+00:02:54.240 --> 00:02:57.720
+So if you do pass it as a forecast, it goes into the red,
+
+77
+00:02:57.720 --> 00:02:58.830
+then you are going to be billed,
+
+78
+00:02:58.830 --> 00:03:01.140
+so make sure you turn off anything that is turned on
+
+79
+00:03:01.140 --> 00:03:03.060
+and potentially costing you money.
+
+80
+00:03:03.060 --> 00:03:05.880
+So, this is a very, very helpful dashboard.
+
+81
+00:03:05.880 --> 00:03:07.740
+Okay, so now let's go ahead and set up a budget.
+
+82
+00:03:07.740 --> 00:03:10.500
+So, on the left hand side you click on Budgets.
+
+83
+00:03:10.500 --> 00:03:12.900
+And here you can create a budget that will alert you
+
+84
+00:03:12.900 --> 00:03:15.090
+whenever you reach your thresholds.
+
+85
+00:03:15.090 --> 00:03:16.530
+So, let's create a budget.
+
+86
+00:03:16.530 --> 00:03:18.180
+And we're going to use a template simplified.
+
+87
+00:03:18.180 --> 00:03:20.460
+And the first one is going to be a zero spend budget.
+
+88
+00:03:20.460 --> 00:03:24.180
+So as soon as we reach 1 cent, we're going to get an alert.
+
+89
+00:03:24.180 --> 00:03:25.110
+So this is very helpful.
+
+90
+00:03:25.110 --> 00:03:27.960
+So, the budget name is My Zero Spend Budget.
+
+91
+00:03:27.960 --> 00:03:29.675
+Here you add your email.
+
+92
+00:03:29.675 --> 00:03:32.520
+So, I put here stephane@example.com
+
+93
+00:03:32.520 --> 00:03:34.260
+and then create the budget.
+
+94
+00:03:34.260 --> 00:03:36.840
+So whenever I will spend 1 cent,
+
+95
+00:03:36.840 --> 00:03:39.750
+I will have this budget send me an email.
+
+96
+00:03:39.750 --> 00:03:44.750
+You can also use another template for a monthly cost budget.
+
+97
+00:03:44.790 --> 00:03:47.040
+And here we're saying, "Okay, we want to have
+
+98
+00:03:47.040 --> 00:03:51.300
+a monthly cost budget of, for example, $10."
+
+99
+00:03:51.300 --> 00:03:52.500
+And saying, "Hey, I want to spend
+
+100
+00:03:52.500 --> 00:03:55.230
+no more than $10 per month on this course."
+
+101
+00:03:55.230 --> 00:03:56.670
+And then, the email recipients
+
+102
+00:03:56.670 --> 00:03:58.890
+are going to be again, stephane@example.com.
+
+103
+00:03:58.890 --> 00:04:00.810
+And by the way, if you follow this course closely,
+
+104
+00:04:00.810 --> 00:04:02.700
+you should not spend any dollars as you,
+
+105
+00:04:02.700 --> 00:04:04.890
+when things can cost you money.
+
+106
+00:04:04.890 --> 00:04:06.870
+But if you're careful, you should not spend any money.
+
+107
+00:04:06.870 --> 00:04:08.640
+Regardless, it's still good to set up a budget
+
+108
+00:04:08.640 --> 00:04:10.590
+just to make sure in case you do mistakes
+
+109
+00:04:10.590 --> 00:04:13.710
+that you don't have a big bill coming to your way.
+
+110
+00:04:13.710 --> 00:04:16.260
+So now for this $10 budget,
+
+111
+00:04:16.260 --> 00:04:18.180
+I'm actually going to reach an email
+
+112
+00:04:18.180 --> 00:04:21.540
+when my actual spend reaches 85% and my,
+
+113
+00:04:21.540 --> 00:04:24.540
+when my actual spend is going to reach 100%.
+
+114
+00:04:24.540 --> 00:04:27.930
+And if my forecasted spend is expected to also reach 100%.
+
+115
+00:04:27.930 --> 00:04:28.763
+So, very helpful.
+
+116
+00:04:28.763 --> 00:04:31.290
+I can have three emails I can receive from this.
+
+117
+00:04:31.290 --> 00:04:33.390
+And I'm going to create this budget.
+
+118
+00:04:33.390 --> 00:04:34.350
+So as you can see,
+
+119
+00:04:34.350 --> 00:04:36.960
+while my zero spend budget has already been exceeded,
+
+120
+00:04:36.960 --> 00:04:38.970
+because while I've spent some money this month,
+
+121
+00:04:38.970 --> 00:04:41.790
+so I'm getting an email right away at this address.
+
+122
+00:04:41.790 --> 00:04:45.360
+So, with these budgets and access to the free tier
+
+123
+00:04:45.360 --> 00:04:46.890
+on the left hand side to explore,
+
+124
+00:04:46.890 --> 00:04:49.170
+as well as accessing your bills breakdown
+
+125
+00:04:49.170 --> 00:04:50.370
+on the left hand side,
+
+126
+00:04:50.370 --> 00:04:53.340
+you should be able to debug any kind of costing issue
+
+127
+00:04:53.340 --> 00:04:55.530
+and billing issue you have on this course.
+
+128
+00:04:55.530 --> 00:04:57.810
+And this is a skill that is going to be necessary
+
+129
+00:04:57.810 --> 00:05:00.330
+for you when using AWS.
+
+130
+00:05:00.330 --> 00:05:01.830
+All right, so that's it for this lecture.
+
+131
+00:05:01.830 --> 00:05:02.910
+I hope you liked it.
+
+132
+00:05:02.910 --> 00:05:04.893
+And I will see you in the next lecture.
+

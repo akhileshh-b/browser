@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900316,"quiz_title":"Other Compute Services Quiz","questions":[{"_class":"assessment","id":18817012,"assessment_type":"multiple-choice","prompt":{"feedbacks":["The programming language you use or the number of programming languages in your Lambda functions is not included in the paid price.","You do not get charged according to the number of functions in AWS Lambda.","In AWS Lambda, you are charged per request and compute time, that's it.","You do not get charged when functions are inactive in AWS Lambda."],"answers":["<p>Per programming language</p>","<p>Per number of functions</p>","<p>Per call and per duration</p>","<p>Per inactive time</p>"],"question":"<p>How do you get charged in AWS&nbsp;Lambda?</p>","relatedLectureIds":["20056024"]},"correct_response":["c"],"section":"","question_plain":"How do you get charged in AWS&nbsp;Lambda?","related_lectures":[{"_class":"lecture","id":20056024,"title":"Lambda Overview","created":"2020-05-25T18:19:02Z","is_published":true,"asset":{"_class":"asset","id":58203059,"asset_type":"Video","title":"CCP_-_Lambda_Overview_v2.mp4","created":"2024-07-30T08:38:38Z"},"object_index":117,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056024"}]},{"_class":"assessment","id":19761098,"assessment_type":"multiple-choice","prompt":{"question":"<p>You would like to launch Docker containers in AWS&nbsp;without worrying about provisioning or managing any infrastructure. The Docker containers will be used to host a heavy workloads to serve different types of requests. Some requests may need up to 30 minutes to be completed. Which AWS&nbsp;service should you use to run Docker containers in a Serverless way and satisfy the requirements?</p>","relatedLectureIds":["20056046"],"feedbacks":["ECS allows you to launch Docker containers on AWS, but you must provision and maintain the infrastructure. It is not Serverless","Fargate allows you to launch Docker containers on AWS, and you don't need to provision and maintain the infrastructure (=no EC2 instances to manage). It is Serverless.","Elastic Container Registry (ECR) is a service where you store your Docker image so they can be run by ECS or Fargate.","Lambda is a Serverless service but the maximum invocation timeout limit is 15 minutes."],"answers":["<p>ECS</p>","<p>Fargate</p>","<p>ECR</p>","<p>Lambda</p>"]},"correct_response":["b"],"section":"","question_plain":"You would like to launch Docker containers in AWS&nbsp;without worrying about provisioning or managing any infrastructure. The Docker containers will be used to host a heavy workloads to serve different types of requests. Some requests may need up to 30 minutes to be completed. Which AWS&nbsp;service should you use to run Docker containers in a Serverless way and satisfy the requirements?","related_lectures":[{"_class":"lecture","id":20056046,"title":"ECS, Fargate & ECR Overview","created":"2020-05-25T18:19:57Z","is_published":true,"asset":{"_class":"asset","id":25156446,"asset_type":"Video","title":"CCP - ECS - Overview.mp4","created":"2020-06-02T08:16:48Z"},"object_index":114,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056046"}]},{"_class":"assessment","id":19761224,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It does not create allow you to create simple application by itself.","AWS Lambda lets you run code without provisioning or managing servers. It does not create allow you to create simple application.","Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server with AWS. Lightsail plans include everything you need to jumpstart your project – a virtual machine, SSD- based storage, data transfer, DNS management, and a static IP address – for a low, predictable price. It can be used to create a simple web application, a website or a dev/test environment.","This is a distractor. This service does not exist. "],"answers":["<p>EC2</p>","<p>Lambda</p>","<p>Lightsail</p>","<p>EasyStart</p>"],"question":"<p>A complete cloud beginner would like to create a simple application with predictable pricing. What service should this person use?</p>","relatedLectureIds":["20515562"]},"correct_response":["c"],"section":"","question_plain":"A complete cloud beginner would like to create a simple application with predictable pricing. What service should this person use?","related_lectures":[{"_class":"lecture","id":20515562,"title":"Lightsail Overview","created":"2020-06-17T13:15:30Z","is_published":true,"asset":{"_class":"asset","id":25579228,"asset_type":"Video","title":"CCP_-_Lightsail_-_Overview.mp4","created":"2020-06-18T08:34:21Z"},"object_index":121,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20515562"}]},{"_class":"assessment","id":19761096,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This is a distractor. It is not a real software development platform.","This is a distractor. It is not a real software development platform.","Docker is a software development platform that allows you to run applications the same way, regardless of where they are run. It can scale containers up and down within seconds.","Elastic Container Service (ECS) is used to launch Docker containers on AWS."],"answers":["<p>Dolphin</p>","<p>Shark</p>","<p>Docker</p>","<p>ECS</p>"],"question":"<p>What is the name of the software development platform that allows you to run applications the same way, regardless of where they are run?</p>","relatedLectureIds":["20056040"]},"correct_response":["c"],"section":"","question_plain":"What is the name of the software development platform that allows you to run applications the same way, regardless of where they are run?","related_lectures":[{"_class":"lecture","id":20056040,"title":"What is Docker?","created":"2020-05-25T18:19:43Z","is_published":true,"asset":{"_class":"asset","id":25156450,"asset_type":"Video","title":"CCP - ECS - What is Docker.mp4","created":"2020-06-02T08:17:15Z"},"object_index":113,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056040"}]},{"_class":"assessment","id":18817032,"assessment_type":"multiple-choice","prompt":{"feedbacks":["\"Event-driven\" in Lambda does not mean that functions are invoked on a certain day.","\"Event-driven\" in Lambda does not mean that functions are invoked at a certain time.","\"Event-driven\" in Lambda does not mean that functions are invoked on a regular basis.","\"Event-driven\" in Lambda means that functions are invoked when needed. They are triggered."],"answers":["<p>Happens on a certain day</p>","<p>Happens at a certain time</p>","<p>Happens on a regular basis</p>","<p>Happens when needed</p>"],"question":"<p>How would you best describe \"event-driven\" in AWS&nbsp;Lambda?</p>","relatedLectureIds":["20056024"]},"correct_response":["d"],"section":"","question_plain":"How would you best describe \"event-driven\" in AWS&nbsp;Lambda?","related_lectures":[{"_class":"lecture","id":20056024,"title":"Lambda Overview","created":"2020-05-25T18:19:02Z","is_published":true,"asset":{"_class":"asset","id":58203059,"asset_type":"Video","title":"CCP_-_Lambda_Overview_v2.mp4","created":"2024-07-30T08:38:38Z"},"object_index":117,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056024"}]},{"_class":"assessment","id":19761086,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Elastic Container Registry (ECR) is a service where you store your Docker image so they can be run by ECS or Fargate.","Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It does not allow you to launch Docker containers on AWS by itself.","ECS allows you to launch Docker containers on AWS, but you must provision and maintain the infrastructure (i.e. EC2 instances).","Fargate allows you to launch Docker containers on AWS, and you don't need to provision and maintain the infrastructure (=no EC2 instances to manage). It is serverless."],"answers":["<p>ECR</p>","<p>EC2</p>","<p>ECS</p>","<p>Fargate</p>"],"question":"<p>Which AWS&nbsp;service allows you to launch Docker containers on AWS, but requires you to provision and maintain the infrastructure?</p>","relatedLectureIds":["20056046"]},"correct_response":["c"],"section":"","question_plain":"Which AWS&nbsp;service allows you to launch Docker containers on AWS, but requires you to provision and maintain the infrastructure?","related_lectures":[{"_class":"lecture","id":20056046,"title":"ECS, Fargate & ECR Overview","created":"2020-05-25T18:19:57Z","is_published":true,"asset":{"_class":"asset","id":25156446,"asset_type":"Video","title":"CCP - ECS - Overview.mp4","created":"2020-06-02T08:16:48Z"},"object_index":114,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056046"}]},{"_class":"assessment","id":18816878,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Serverless allows you to deploy functions as a service through code.","Serverless does not mean that there are no servers, you just do not manage, provision and see them, but they do exist.","Serverless means that you do not manage, provision, see servers.","AWS Lambda pioneered serverless. They are now serverless databases, messaging, storage, etc."],"answers":["<p>Serverless allows you to deploy functions as a service</p>","<p>There are no servers</p>","<p>You don't need to manage servers</p>","<p>Lambda is the serverless pioneer</p>"],"question":"<p>Which of the following statements is INCORRECT&nbsp;regarding the definition of the term \"serverless\"?</p>","relatedLectureIds":["20056030"]},"correct_response":["b"],"section":"","question_plain":"Which of the following statements is INCORRECT&nbsp;regarding the definition of the term \"serverless\"?","related_lectures":[{"_class":"lecture","id":20056030,"title":"Serverless Introduction","created":"2020-05-25T18:19:18Z","is_published":true,"asset":{"_class":"asset","id":25579258,"asset_type":"Video","title":"CCP - Serverless Overview.mp4","created":"2020-06-18T08:34:45Z"},"object_index":116,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056030"}]},{"_class":"assessment","id":18817056,"assessment_type":"multiple-choice","prompt":{"feedbacks":["In AWS Lambda, you can set up your code to automatically trigger from other AWS services.","AWS Lambda uses virtual functions, there are no servers to manage. AWS Lambda is a serverless service.","Scaling is completely automated and continuous in AWS Lambda.","This is a feature of Auto Scaling Groups, not AWS Lambda."],"answers":["<p>Integration with the whole AWS&nbsp;suite of services</p>","<p>Virtual functions</p>","<p>Automated and continuous scaling</p>","<p>Definition of a minimum and a maximum of EC2 Instances running</p>"],"question":"<p>Which of the following statements is NOT&nbsp;a feature of AWS&nbsp;Lambda?</p>","relatedLectureIds":["20056024"]},"correct_response":["d"],"section":"","question_plain":"Which of the following statements is NOT&nbsp;a feature of AWS&nbsp;Lambda?","related_lectures":[{"_class":"lecture","id":20056024,"title":"Lambda Overview","created":"2020-05-25T18:19:02Z","is_published":true,"asset":{"_class":"asset","id":58203059,"asset_type":"Video","title":"CCP_-_Lambda_Overview_v2.mp4","created":"2024-07-30T08:38:38Z"},"object_index":117,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056024"}]},{"_class":"assessment","id":19762484,"assessment_type":"multiple-choice","prompt":{"feedbacks":["ECS allows you to launch Docker containers on AWS, but you must provision and maintain the infrastructure (i.e. EC2 instances).","You need to manage the compute resources with EC2 Spot Instances.","You need to manage the compute resources with EC2 Instances.","AWS Batch enables developers, scientists, and engineers to easily and efficiently run hundreds of thousands of batch computing jobs on AWS. AWS Batch dynamically provisions the optimal quantity and type of compute resources (e.g., CPU or memory-optimized instances) based on the volume and specific resource requirements of the batch jobs submitted."],"answers":["<p>ECS</p>","<p>EC2 Spot Instances</p>","<p>EC2 Instances</p>","<p>Batch</p>"],"question":"<p>A company needs to run thousands of jobs but would like to NOT&nbsp;manage the compute resources. What service can it use?</p>","relatedLectureIds":["20515556"]},"correct_response":["d"],"section":"","question_plain":"A company needs to run thousands of jobs but would like to NOT&nbsp;manage the compute resources. What service can it use?","related_lectures":[{"_class":"lecture","id":20515556,"title":"Batch Overview","created":"2020-06-17T13:15:20Z","is_published":true,"asset":{"_class":"asset","id":25579236,"asset_type":"Video","title":"CCP_-_Batch_-_Overview.mp4","created":"2020-06-18T08:34:21Z"},"object_index":120,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20515556"}]},{"_class":"assessment","id":19761092,"assessment_type":"multiple-choice","prompt":{"feedbacks":["This service does not exist. It is made up with words related to the service.","This service does not exist. It is made up with words related to the service.","Elastic Container Registry (ECR) is a service where you store your Docker image so they can be run by ECS or Fargate.","This service does not exist. It is made up with words related to the service."],"answers":["<p>Elastic Docker Registry</p>","<p>Elastic Docker File Registry</p>","<p>Elastic Container Registry</p>","<p>Elastic Private Container Registry</p>"],"question":"<p>Where should you store your private Docker images so they can be run by ECS or Fargate?</p>","relatedLectureIds":["20056046"]},"correct_response":["c"],"section":"","question_plain":"Where should you store your private Docker images so they can be run by ECS or Fargate?","related_lectures":[{"_class":"lecture","id":20056046,"title":"ECS, Fargate & ECR Overview","created":"2020-05-25T18:19:57Z","is_published":true,"asset":{"_class":"asset","id":25156446,"asset_type":"Video","title":"CCP - ECS - Overview.mp4","created":"2020-06-02T08:16:48Z"},"object_index":114,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20056046"}]},{"_class":"assessment","id":28717448,"assessment_type":"multiple-choice","prompt":{"answers":["<p>ECR</p>","<p>Lambda</p>","<p>API&nbsp;Gateway</p>"],"feedbacks":["Amazon Elastic Container Registry (ECR) is a fully-managed Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images. It is not used to create APIs.","AWS Lambda lets you run code without provisioning or managing servers. It is a serverless service, but it is not used to create APIs.","Amazon API Gateway is a fully managed serverless service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale."],"relatedLectureIds":["24682546"],"question":"<p>Which AWS serverless service can be used by developers to create APIs?</p>"},"correct_response":["c"],"section":"","question_plain":"Which AWS serverless service can be used by developers to create APIs?","related_lectures":[{"_class":"lecture","id":24682546,"title":"API Gateway Overview","created":"2021-01-31T19:44:18Z","is_published":true,"asset":{"_class":"asset","id":31073296,"asset_type":"Video","title":"CCP - API Gateway.mp4","created":"2021-01-31T19:32:58Z"},"object_index":119,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/24682546"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

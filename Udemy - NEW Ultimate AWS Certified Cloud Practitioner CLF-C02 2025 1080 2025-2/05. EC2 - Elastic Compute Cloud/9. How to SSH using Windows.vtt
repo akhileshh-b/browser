@@ -1,0 +1,618 @@
+WEBVTT
+
+1
+00:00:00.170 --> 00:00:01.003
+<v Narrator>Okay.</v>
+
+2
+00:00:01.003 --> 00:00:01.836
+So we are going to learn how
+
+3
+00:00:01.836 --> 00:00:04.920
+to SSH into our EC2 Instance using Windows.
+
+4
+00:00:04.920 --> 00:00:08.100
+And for this, we used to say, what is SSH?
+
+5
+00:00:08.100 --> 00:00:11.170
+Well, SSH to me is one of the most important function,
+
+6
+00:00:11.170 --> 00:00:13.130
+especially when you deal with Amazon cloud.
+
+7
+00:00:13.130 --> 00:00:16.388
+It will basically allow you to control a machine remotely
+
+8
+00:00:16.388 --> 00:00:18.190
+all using the command line.
+
+9
+00:00:18.190 --> 00:00:19.023
+Okay.
+
+10
+00:00:19.023 --> 00:00:20.280
+And so what does it look like?
+
+11
+00:00:20.280 --> 00:00:23.210
+Well, basically we have our EC2 machine,
+
+12
+00:00:23.210 --> 00:00:25.900
+and it's running Amazon Linux 2, and it has a public IP.
+
+13
+00:00:25.900 --> 00:00:27.570
+And I don't know if you remember,
+
+14
+00:00:27.570 --> 00:00:30.640
+but we had an SSH security group on it.
+
+15
+00:00:30.640 --> 00:00:34.840
+And basically we allowed SSH on port 22 to any IP,
+
+16
+00:00:34.840 --> 00:00:37.950
+which basically allows our Windows machine to connect
+
+17
+00:00:37.950 --> 00:00:40.290
+over the internet directly into the machine
+
+18
+00:00:40.290 --> 00:00:42.330
+and control it using the command line.
+
+19
+00:00:42.330 --> 00:00:46.370
+So we'll see how to do the requirements for parameterizing
+
+20
+00:00:46.370 --> 00:00:47.730
+basically our Windows.
+
+21
+00:00:47.730 --> 00:00:50.660
+And so we'll use PuTTY to do SSH.
+
+22
+00:00:50.660 --> 00:00:52.730
+So this is a free tool available online.
+
+23
+00:00:52.730 --> 00:00:53.563
+And as you can see,
+
+24
+00:00:53.563 --> 00:00:55.200
+it's a little bit tricky to use the first time,
+
+25
+00:00:55.200 --> 00:00:56.210
+but we'll get used to it,
+
+26
+00:00:56.210 --> 00:00:57.940
+and we'll learn how to SSH into Windows,
+
+27
+00:00:57.940 --> 00:00:59.600
+into Linux using PuTTY.
+
+28
+00:00:59.600 --> 00:01:01.230
+So let's get started.
+
+29
+00:01:01.230 --> 00:01:02.063
+<v ->Okay.</v>
+
+30
+00:01:02.063 --> 00:01:03.620
+So we are going to SSH
+
+31
+00:01:03.620 --> 00:01:07.070
+into our EC2 Instance and I'm running on Windows.
+
+32
+00:01:07.070 --> 00:01:09.360
+And for this, I assume that you have Windows 7,
+
+33
+00:01:09.360 --> 00:01:11.190
+or Windows 8, or an older version Window.
+
+34
+00:01:11.190 --> 00:01:12.340
+If you have Windows 10,
+
+35
+00:01:12.340 --> 00:01:15.100
+there is an alternative in the next lecture, both work.
+
+36
+00:01:15.100 --> 00:01:15.933
+Okay.
+
+37
+00:01:15.933 --> 00:01:17.580
+So let's try for, even if you're on Windows 10
+
+38
+00:01:17.580 --> 00:01:18.900
+you can do this technique.
+
+39
+00:01:18.900 --> 00:01:22.390
+So for this, you would go and download PuTTY.
+
+40
+00:01:22.390 --> 00:01:25.110
+So PuTTY is a free SSH client for Windows.
+
+41
+00:01:25.110 --> 00:01:26.900
+So download PuTTY.
+
+42
+00:01:26.900 --> 00:01:28.210
+And then I will choose, for example,
+
+43
+00:01:28.210 --> 00:01:30.993
+the 64 bits installer, the first one.
+
+44
+00:01:34.600 --> 00:01:35.433
+Then I go ahead.
+
+45
+00:01:35.433 --> 00:01:36.960
+I perform the install of PuTTY.
+
+46
+00:01:36.960 --> 00:01:39.740
+So next, next, yes.
+
+47
+00:01:39.740 --> 00:01:41.390
+And yes, I want to install PuTTY.
+
+48
+00:01:42.340 --> 00:01:43.173
+Perfect.
+
+49
+00:01:43.173 --> 00:01:44.740
+So PuTTY is installed.
+
+50
+00:01:44.740 --> 00:01:46.570
+And I have to install PuTTY.
+
+51
+00:01:46.570 --> 00:01:50.240
+So, we have two things here on PuTTY.
+
+52
+00:01:50.240 --> 00:01:53.310
+We have the PuTTY app, as well as PuTTYgen.
+
+53
+00:01:53.310 --> 00:01:55.460
+So let's first open PuTTYgen.
+
+54
+00:01:55.460 --> 00:01:58.670
+And in case you did not download your file
+
+55
+00:01:58.670 --> 00:02:03.350
+in the PPK format, you can actually generate the PPK format
+
+56
+00:02:03.350 --> 00:02:04.730
+directly from here.
+
+57
+00:02:04.730 --> 00:02:06.030
+So let me show you how it's done.
+
+58
+00:02:06.030 --> 00:02:08.760
+So, I need to go ahead and load my file.
+
+59
+00:02:08.760 --> 00:02:12.800
+So I click on load, and then find where my file is.
+
+60
+00:02:12.800 --> 00:02:14.490
+So for me, it's on my desktop.
+
+61
+00:02:14.490 --> 00:02:15.670
+And you can see, I see nothing,
+
+62
+00:02:15.670 --> 00:02:18.447
+but if I go to the bottom right, and show all files
+
+63
+00:02:18.447 --> 00:02:22.280
+I will find my EC2 tutorial in the PEM format.
+
+64
+00:02:22.280 --> 00:02:23.700
+So I can select it.
+
+65
+00:02:23.700 --> 00:02:26.300
+It says, okay, you have successfully imported this.
+
+66
+00:02:26.300 --> 00:02:30.000
+And then you can save it as a private key.
+
+67
+00:02:30.000 --> 00:02:32.388
+So click on save private key.
+
+68
+00:02:32.388 --> 00:02:35.950
+And said you wanna have a pathways, you say,
+
+69
+00:02:35.950 --> 00:02:38.300
+if you don't wanna have path, you say yes.
+
+70
+00:02:38.300 --> 00:02:40.938
+And then you save it on your desktop.
+
+71
+00:02:40.938 --> 00:02:44.030
+So EC2tutorial.PPK
+
+72
+00:02:45.090 --> 00:02:46.660
+Now your file is saved
+
+73
+00:02:46.660 --> 00:02:48.067
+and you have converted successfully
+
+74
+00:02:48.067 --> 00:02:51.450
+a PEM file into the PPK format.
+
+75
+00:02:51.450 --> 00:02:54.610
+If you have done this already, then you're good to go.
+
+76
+00:02:54.610 --> 00:02:56.560
+Next, we need to set up PuTTY
+
+77
+00:02:56.560 --> 00:02:58.640
+to access our EC2 Instance.
+
+78
+00:02:58.640 --> 00:03:01.330
+So, this time you open the PuTTY app,
+
+79
+00:03:01.330 --> 00:03:02.810
+and here we have to enter a host name
+
+80
+00:03:02.810 --> 00:03:05.730
+or an IP address of where we are trying to connect.
+
+81
+00:03:05.730 --> 00:03:08.540
+So this we know it's My First Instance.
+
+82
+00:03:08.540 --> 00:03:12.410
+You copy the public IPv4 address.
+
+83
+00:03:12.410 --> 00:03:13.243
+You paste it.
+
+84
+00:03:14.160 --> 00:03:15.690
+And it's SSH.
+
+85
+00:03:15.690 --> 00:03:20.420
+You're going to save this under EC2 Instance.
+
+86
+00:03:20.420 --> 00:03:23.290
+And then you click on save, but we're not done just yet.
+
+87
+00:03:23.290 --> 00:03:24.123
+Okay.
+
+88
+00:03:24.123 --> 00:03:26.730
+We need to specify the key itself.
+
+89
+00:03:26.730 --> 00:03:29.780
+So let's specify the key in here.
+
+90
+00:03:29.780 --> 00:03:32.173
+So, you have it saved under EC2 Instance.
+
+91
+00:03:33.230 --> 00:03:34.063
+I double clicked.
+
+92
+00:03:34.063 --> 00:03:36.380
+So as you can see, I have to accept this.
+
+93
+00:03:36.380 --> 00:03:38.960
+So if we accept because we trust the host,
+
+94
+00:03:38.960 --> 00:03:40.150
+we say, yes, accept.
+
+95
+00:03:40.150 --> 00:03:42.890
+But we still have the login as prompt and it will not work.
+
+96
+00:03:42.890 --> 00:03:47.050
+So if I do, for example, EC2 user, it says okay,
+
+97
+00:03:47.050 --> 00:03:49.510
+I cannot authenticate right now.
+
+98
+00:03:49.510 --> 00:03:51.223
+So for this, we go back into PuTTY,
+
+99
+00:03:51.223 --> 00:03:52.780
+and we're going to fix things.
+
+100
+00:03:52.780 --> 00:03:56.150
+So click on EC2 Instance and load this profile.
+
+101
+00:03:56.150 --> 00:03:58.810
+The first thing I'm going to add is in the host name.
+
+102
+00:03:58.810 --> 00:04:02.900
+I have EC2 minus user at the IP.
+
+103
+00:04:02.900 --> 00:04:05.710
+So the IP is where we access our server,
+
+104
+00:04:05.710 --> 00:04:09.510
+and the EC2 user is a user already created for us
+
+105
+00:04:09.510 --> 00:04:11.470
+on Amazon Linux 2.
+
+106
+00:04:11.470 --> 00:04:13.090
+So I can click on save again.
+
+107
+00:04:13.090 --> 00:04:14.070
+So we're done in here.
+
+108
+00:04:14.070 --> 00:04:15.230
+This will be saved.
+
+109
+00:04:15.230 --> 00:04:18.720
+And then for the key, we need to go into the SSH.
+
+110
+00:04:18.720 --> 00:04:21.920
+You click the plus, you have the Auth,
+
+111
+00:04:21.920 --> 00:04:24.170
+you click the plus, excuse me, no need to click the plus.
+
+112
+00:04:24.170 --> 00:04:25.870
+So you just click on Auth,
+
+113
+00:04:25.870 --> 00:04:28.170
+and then you need to find a private key file
+
+114
+00:04:28.170 --> 00:04:29.440
+for authentication.
+
+115
+00:04:29.440 --> 00:04:32.300
+Click on browse, go to your desktop.
+
+116
+00:04:32.300 --> 00:04:35.160
+And then you find the EC2 tutorial, that PPK file,
+
+117
+00:04:35.160 --> 00:04:38.020
+you have just generated using Puttygen.
+
+118
+00:04:38.020 --> 00:04:39.879
+Or, if you had downloaded it already
+
+119
+00:04:39.879 --> 00:04:43.550
+from the AWS console, that works as well.
+
+120
+00:04:43.550 --> 00:04:45.030
+So this file is good.
+
+121
+00:04:45.030 --> 00:04:47.220
+Don't click on open just yet, go back to session,
+
+122
+00:04:47.220 --> 00:04:51.840
+and then click on save, to save this profile.
+
+123
+00:04:51.840 --> 00:04:53.760
+This way you don't have to redo all these steps
+
+124
+00:04:53.760 --> 00:04:55.810
+all at once, over again.
+
+125
+00:04:55.810 --> 00:04:57.340
+So click on open.
+
+126
+00:04:57.340 --> 00:04:59.130
+And now it says, okay, you're authenticating
+
+127
+00:04:59.130 --> 00:05:01.100
+using the EC2 user.
+
+128
+00:05:01.100 --> 00:05:03.300
+And we have this file we just opened.
+
+129
+00:05:03.300 --> 00:05:07.620
+And so now we are into our Amazon Linux 2 AMI.
+
+130
+00:05:07.620 --> 00:05:11.620
+So we have successfully performed the SSH using PuTTY.
+
+131
+00:05:11.620 --> 00:05:12.453
+Okay.
+
+132
+00:05:12.453 --> 00:05:14.427
+So if in the course I refer to SSH, just for you,
+
+133
+00:05:14.427 --> 00:05:17.840
+just that means you should PuTTY into the Instance,
+
+134
+00:05:17.840 --> 00:05:19.200
+at least once.
+
+135
+00:05:19.200 --> 00:05:21.277
+And now what I can do, who am I?
+
+136
+00:05:21.277 --> 00:05:23.390
+And you find that I am EC2 user.
+
+137
+00:05:23.390 --> 00:05:26.950
+Or ping google.com and start running some commands.
+
+138
+00:05:26.950 --> 00:05:27.980
+So to stop this,
+
+139
+00:05:27.980 --> 00:05:30.550
+just do control C, and it will stop the command.
+
+140
+00:05:30.550 --> 00:05:32.530
+And then if you want to just exit this,
+
+141
+00:05:32.530 --> 00:05:35.160
+you can just close this, exit this session,
+
+142
+00:05:35.160 --> 00:05:36.440
+and you're good to go.
+
+143
+00:05:36.440 --> 00:05:38.530
+And let's check if you go back into PuTTY.
+
+144
+00:05:38.530 --> 00:05:41.773
+So click back on PuTTY, and you load the EC2 Instance.
+
+145
+00:05:41.773 --> 00:05:44.230
+Hopefully all you're seeing there is save.
+
+146
+00:05:44.230 --> 00:05:46.450
+So as you can see, the top settings are saved,
+
+147
+00:05:46.450 --> 00:05:49.370
+and my SSH Auth also has saved.
+
+148
+00:05:49.370 --> 00:05:51.864
+And therefore, if I click on open, then yes,
+
+149
+00:05:51.864 --> 00:05:55.930
+I have access directly into my EC2 Instance.
+
+150
+00:05:55.930 --> 00:05:58.580
+So we've successfully performed SSH
+
+151
+00:05:59.550 --> 00:06:03.490
+on this Windows 7 or Windows 8, through PuTTY.
+
+152
+00:06:03.490 --> 00:06:04.690
+And I will see you in the next lecture
+
+153
+00:06:04.690 --> 00:06:06.090
+in case you have Windows 10,
+
+154
+00:06:06.090 --> 00:06:08.063
+to show you how to SSH using Windows.
+

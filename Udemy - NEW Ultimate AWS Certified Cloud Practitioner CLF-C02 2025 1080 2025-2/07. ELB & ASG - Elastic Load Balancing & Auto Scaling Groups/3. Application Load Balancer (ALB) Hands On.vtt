@@ -1,0 +1,786 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.860
+<v Instructor>So we are going to practice launching</v>
+
+2
+00:00:01.860 --> 00:00:03.450
+a load balancer, but first,
+
+3
+00:00:03.450 --> 00:00:05.670
+we need to send traffic to something.
+
+4
+00:00:05.670 --> 00:00:08.940
+So first we're going to launch EC2 Instances.
+
+5
+00:00:08.940 --> 00:00:11.370
+So I'm gonna go into launch instances
+
+6
+00:00:11.370 --> 00:00:13.350
+and I will launch two instances.
+
+7
+00:00:13.350 --> 00:00:16.500
+So on the right hand side I can say two instances
+
+8
+00:00:16.500 --> 00:00:18.870
+and the name's going to be My First Instance.
+
+9
+00:00:18.870 --> 00:00:22.050
+We'll rename the second one when it comes to it.
+
+10
+00:00:22.050 --> 00:00:25.650
+We're going to use Amazon Linux 2 on this architecture.
+
+11
+00:00:25.650 --> 00:00:27.900
+We're going to use a t2.micro,
+
+12
+00:00:27.900 --> 00:00:29.520
+and then we are going to proceed
+
+13
+00:00:29.520 --> 00:00:32.850
+without a key pair because we don't need SSH capability.
+
+14
+00:00:32.850 --> 00:00:36.030
+We can use EC2 Instance Connect if we ever need to.
+
+15
+00:00:36.030 --> 00:00:37.800
+Then for network settings
+
+16
+00:00:37.800 --> 00:00:41.130
+we can select an existing security group
+
+17
+00:00:41.130 --> 00:00:44.610
+and we will use the Launch Wizard 1 security group
+
+18
+00:00:44.610 --> 00:00:47.820
+which allowed us to do HTTP traffic
+
+19
+00:00:47.820 --> 00:00:51.300
+and SSH traffic into our EC2 instance.
+
+20
+00:00:51.300 --> 00:00:52.133
+So that's perfect.
+
+21
+00:00:52.133 --> 00:00:54.150
+We're going to use the basic storage
+
+22
+00:00:54.150 --> 00:00:57.210
+and for advanced details, I will scroll down
+
+23
+00:00:57.210 --> 00:01:01.230
+and I will add some EC2 user data,
+
+24
+00:01:01.230 --> 00:01:04.350
+and to do so I'm going to copy what I have here
+
+25
+00:01:04.350 --> 00:01:05.670
+and paste it here.
+
+26
+00:01:05.670 --> 00:01:08.520
+So this will just launch the EC2 instances
+
+27
+00:01:08.520 --> 00:01:10.680
+the same way we've launched them before
+
+28
+00:01:10.680 --> 00:01:13.170
+using this EC2 user data script.
+
+29
+00:01:13.170 --> 00:01:15.010
+So let's launch our two instances
+
+30
+00:01:17.130 --> 00:01:20.130
+and now we're going to view all instances.
+
+31
+00:01:20.130 --> 00:01:22.830
+So I'm going to rename the second one
+
+32
+00:01:22.830 --> 00:01:27.210
+My Second Instance and save.
+
+33
+00:01:27.210 --> 00:01:30.510
+So let's wait for these instances to be ready.
+
+34
+00:01:30.510 --> 00:01:32.880
+So my EC2 instances are now ready.
+
+35
+00:01:32.880 --> 00:01:36.930
+I'm going to copy the first IPv4 address and paste it,
+
+36
+00:01:36.930 --> 00:01:38.400
+and I will visit the URL
+
+37
+00:01:38.400 --> 00:01:41.280
+and as you can see, I get a hello world from my instance
+
+38
+00:01:41.280 --> 00:01:42.570
+so this is great.
+
+39
+00:01:42.570 --> 00:01:45.540
+And then I'm gonna go to my second instance right here.
+
+40
+00:01:45.540 --> 00:01:49.920
+I will copy again the IPv4 and then paste it, press enter,
+
+41
+00:01:49.920 --> 00:01:51.660
+and I get a hello world again.
+
+42
+00:01:51.660 --> 00:01:55.140
+So as you can see, two instances give us two hello worlds,
+
+43
+00:01:55.140 --> 00:01:57.480
+and the last part is changing.
+
+44
+00:01:57.480 --> 00:02:01.020
+And so what we'd like to do is to have only one URL
+
+45
+00:02:01.020 --> 00:02:03.930
+to access these two EC2 instances
+
+46
+00:02:03.930 --> 00:02:06.510
+and balance the load between them.
+
+47
+00:02:06.510 --> 00:02:09.840
+So for this of course, we're going to use a load balancer.
+
+48
+00:02:09.840 --> 00:02:12.750
+So let's scroll down and look at load balancers.
+
+49
+00:02:12.750 --> 00:02:15.330
+And here you can create a load balancer.
+
+50
+00:02:15.330 --> 00:02:17.550
+So we have different load balancer types,
+
+51
+00:02:17.550 --> 00:02:19.440
+and in this demo we're going to only look
+
+52
+00:02:19.440 --> 00:02:21.960
+at the application balancer, but you need to
+
+53
+00:02:21.960 --> 00:02:24.150
+understand the difference between the ALB,
+
+54
+00:02:24.150 --> 00:02:27.810
+the network load balancer, and the gateway load balancer.
+
+55
+00:02:27.810 --> 00:02:29.220
+So for the application of balancer,
+
+56
+00:02:29.220 --> 00:02:32.040
+you can see here it is for HTTP
+
+57
+00:02:32.040 --> 00:02:35.160
+and HTTPS kind of traffic.
+
+58
+00:02:35.160 --> 00:02:38.640
+For the network load balancer it's going to be on the TCP
+
+59
+00:02:38.640 --> 00:02:42.270
+and UDP protocol or TLS over TCP.
+
+60
+00:02:42.270 --> 00:02:43.950
+And this is something you going to use
+
+61
+00:02:43.950 --> 00:02:45.625
+when you need ultra high performance.
+
+62
+00:02:45.625 --> 00:02:49.110
+That means millions of requests per second
+
+63
+00:02:49.110 --> 00:02:51.150
+while maintaining ultra low latency.
+
+64
+00:02:51.150 --> 00:02:54.510
+So this is a very high performance load balancer, this one.
+
+65
+00:02:54.510 --> 00:02:57.300
+And then finally the gateway load balancer right here,
+
+66
+00:02:57.300 --> 00:03:00.510
+as you can see, it's used for security,
+
+67
+00:03:00.510 --> 00:03:04.020
+for intrusion detection, for firewalls and so on.
+
+68
+00:03:04.020 --> 00:03:06.960
+So it's to analyze the network traffic.
+
+69
+00:03:06.960 --> 00:03:09.300
+When it goes to the classic load balancer,
+
+70
+00:03:09.300 --> 00:03:11.640
+by the time you watch this video, this may be gone
+
+71
+00:03:11.640 --> 00:03:14.490
+because the classic load balancer is going away
+
+72
+00:03:14.490 --> 00:03:17.820
+and so therefore I'm not going to discuss it and touch it.
+
+73
+00:03:17.820 --> 00:03:20.370
+Okay, so let's focus on creating
+
+74
+00:03:20.370 --> 00:03:22.710
+the application load balancer.
+
+75
+00:03:22.710 --> 00:03:25.980
+So I'm going to call this one DemoALB.
+
+76
+00:03:25.980 --> 00:03:28.710
+And if you wanted to read about how load balancing works,
+
+77
+00:03:28.710 --> 00:03:29.543
+you can read it here,
+
+78
+00:03:29.543 --> 00:03:32.370
+but hopefully the previous lecture was enough for you.
+
+79
+00:03:32.370 --> 00:03:34.560
+So this scheme is internet facing
+
+80
+00:03:34.560 --> 00:03:37.080
+and the address type is IPv4.
+
+81
+00:03:37.080 --> 00:03:39.480
+For network mapping, we we need to decide where
+
+82
+00:03:39.480 --> 00:03:43.140
+to deploy the load balancer and how many availability zones.
+
+83
+00:03:43.140 --> 00:03:45.693
+So let's deploy it in all of them.
+
+84
+00:03:46.680 --> 00:03:50.220
+Great, and then we need to assign a security group
+
+85
+00:03:50.220 --> 00:03:51.930
+to our load balancer.
+
+86
+00:03:51.930 --> 00:03:53.460
+So it turns out that I'm going to create
+
+87
+00:03:53.460 --> 00:03:55.410
+a new security group for it
+
+88
+00:03:55.410 --> 00:03:57.630
+and we need to only allow HTTP traffic.
+
+89
+00:03:57.630 --> 00:04:01.053
+So I'll call it demo-sg-load-balancer.
+
+90
+00:04:02.220 --> 00:04:07.220
+Allow HTTP into load balancer, into ALB,
+
+91
+00:04:07.740 --> 00:04:09.270
+and the inbound rules
+
+92
+00:04:09.270 --> 00:04:14.270
+is going to allow all HTTP from anywhere.
+
+93
+00:04:17.640 --> 00:04:20.670
+Okay, and the outbound rules are fine.
+
+94
+00:04:20.670 --> 00:04:22.473
+Let's create this security group.
+
+95
+00:04:23.400 --> 00:04:25.020
+So it is now created
+
+96
+00:04:25.020 --> 00:04:27.960
+and I can go back in here, refresh this page,
+
+97
+00:04:27.960 --> 00:04:30.210
+choose my demo-sg-load-balancer
+
+98
+00:04:30.210 --> 00:04:32.700
+and remove the default security group
+
+99
+00:04:32.700 --> 00:04:35.970
+so that I'm only left with one security group.
+
+100
+00:04:35.970 --> 00:04:36.810
+So let's scroll down.
+
+101
+00:04:36.810 --> 00:04:39.390
+And we are under listeners and routing.
+
+102
+00:04:39.390 --> 00:04:41.730
+And so we need to route the traffic
+
+103
+00:04:41.730 --> 00:04:45.030
+from SHTTP on port 80 to a target group.
+
+104
+00:04:45.030 --> 00:04:46.950
+And a target group is nothing more
+
+105
+00:04:46.950 --> 00:04:51.450
+than a group of my EC2 instances that were created.
+
+106
+00:04:51.450 --> 00:04:53.580
+So for this we need to create a target group.
+
+107
+00:04:53.580 --> 00:04:55.280
+So let's click here to create one.
+
+108
+00:04:56.850 --> 00:04:59.610
+And the basic configuration tells us that we want
+
+109
+00:04:59.610 --> 00:05:01.350
+to group instances together,
+
+110
+00:05:01.350 --> 00:05:03.270
+but you can see you have other options.
+
+111
+00:05:03.270 --> 00:05:06.060
+So we want to group instances together
+
+112
+00:05:06.060 --> 00:05:09.540
+and I'll call this one demo-tg-alb.
+
+113
+00:05:09.540 --> 00:05:12.240
+The protocol is HTTP on port 80.
+
+114
+00:05:12.240 --> 00:05:14.160
+You have different options, but based on the option
+
+115
+00:05:14.160 --> 00:05:16.080
+you choose, it's going to be a target group
+
+116
+00:05:16.080 --> 00:05:18.300
+for a different kind of load balancer.
+
+117
+00:05:18.300 --> 00:05:21.540
+So we'll keep it as HTTP on port 80, the version
+
+118
+00:05:21.540 --> 00:05:23.883
+of HTTP is 1 so we'll keep it as 1.
+
+119
+00:05:24.900 --> 00:05:26.910
+The health check is good.
+
+120
+00:05:26.910 --> 00:05:29.580
+And then let's click on next.
+
+121
+00:05:29.580 --> 00:05:31.440
+And then we need to register our targets.
+
+122
+00:05:31.440 --> 00:05:35.910
+So we're going to register both EC2 instances on port 80,
+
+123
+00:05:35.910 --> 00:05:38.880
+and let's include them as spending below.
+
+124
+00:05:38.880 --> 00:05:40.620
+So now my instances are registered
+
+125
+00:05:40.620 --> 00:05:42.513
+and let's create this target group.
+
+126
+00:05:43.380 --> 00:05:47.460
+So it's created, and now I need to refresh my page
+
+127
+00:05:47.460 --> 00:05:48.750
+and actually I had created one before
+
+128
+00:05:48.750 --> 00:05:52.440
+so the one I wanna use is demo-tg-alb.
+
+129
+00:05:52.440 --> 00:05:55.140
+So this target group is created
+
+130
+00:05:55.140 --> 00:05:56.700
+and it's linked to the listener
+
+131
+00:05:56.700 --> 00:05:59.220
+on my load balancer on port 80.
+
+132
+00:05:59.220 --> 00:06:00.210
+So now I'm good to go
+
+133
+00:06:00.210 --> 00:06:05.160
+and I can go ahead and create my load balancer.
+
+134
+00:06:05.160 --> 00:06:06.960
+So I'm going to click on view load balancer,
+
+135
+00:06:06.960 --> 00:06:08.280
+and I'm back into this page
+
+136
+00:06:08.280 --> 00:06:10.320
+where I can have a look at my load balancer.
+
+137
+00:06:10.320 --> 00:06:12.570
+And right now it is in the provisioning space
+
+138
+00:06:12.570 --> 00:06:15.540
+so we need to wait until it is provisioned.
+
+139
+00:06:15.540 --> 00:06:18.510
+So my ALB is now active, it's ready.
+
+140
+00:06:18.510 --> 00:06:21.060
+And as you can see, there's a DNS name available for me.
+
+141
+00:06:21.060 --> 00:06:23.640
+So I'm going to copy this, paste it in a new tab
+
+142
+00:06:23.640 --> 00:06:26.250
+and through the application load balancer
+
+143
+00:06:26.250 --> 00:06:27.900
+I'm able to get a hello world.
+
+144
+00:06:27.900 --> 00:06:28.800
+But the cool thing about it is
+
+145
+00:06:28.800 --> 00:06:30.600
+that if I refresh this page
+
+146
+00:06:30.600 --> 00:06:32.490
+and keep on refreshing it,
+
+147
+00:06:32.490 --> 00:06:35.490
+then as you can see the target is changing.
+
+148
+00:06:35.490 --> 00:06:37.290
+That's because my application load balancer
+
+149
+00:06:37.290 --> 00:06:41.790
+is actually redirecting between both my EC2 instances,
+
+150
+00:06:41.790 --> 00:06:42.623
+which is very cool.
+
+151
+00:06:42.623 --> 00:06:43.590
+And that's the proof
+
+152
+00:06:43.590 --> 00:06:46.650
+that load balancing is actually happening.
+
+153
+00:06:46.650 --> 00:06:47.670
+How do we know?
+
+154
+00:06:47.670 --> 00:06:50.910
+Well, if we go to our target group, this one,
+
+155
+00:06:50.910 --> 00:06:55.350
+and we look at the targets of my target group,
+
+156
+00:06:55.350 --> 00:06:57.390
+as you can see they're both healthy.
+
+157
+00:06:57.390 --> 00:06:59.610
+That means that the application load balancer
+
+158
+00:06:59.610 --> 00:07:01.980
+through the target group is going to send traffic
+
+159
+00:07:01.980 --> 00:07:05.160
+to both of them, one after the other.
+
+160
+00:07:05.160 --> 00:07:07.290
+And the target group is very smart
+
+161
+00:07:07.290 --> 00:07:10.170
+because if I take my first instance for example
+
+162
+00:07:10.170 --> 00:07:11.403
+and I stop it,
+
+163
+00:07:13.590 --> 00:07:14.580
+through this, what we're doing
+
+164
+00:07:14.580 --> 00:07:15.960
+is that we're stopping our two instance
+
+165
+00:07:15.960 --> 00:07:18.000
+and so therefore it's going to be unhealthy
+
+166
+00:07:18.000 --> 00:07:21.480
+because it cannot respond anymore to the traffic coming in.
+
+167
+00:07:21.480 --> 00:07:22.920
+And so if I go in my target group,
+
+168
+00:07:22.920 --> 00:07:24.360
+maybe I'm too fast, let's see,
+
+169
+00:07:24.360 --> 00:07:28.713
+and refresh, so I will wait about 30 seconds.
+
+170
+00:07:31.290 --> 00:07:33.180
+And now as you can see
+
+171
+00:07:33.180 --> 00:07:36.900
+the first instance is unused because it's in stopped states.
+
+172
+00:07:36.900 --> 00:07:38.730
+And so therefore, if I go back
+
+173
+00:07:38.730 --> 00:07:40.230
+to my applicational balancer
+
+174
+00:07:40.230 --> 00:07:43.710
+and refresh, the only response I'm getting
+
+175
+00:07:43.710 --> 00:07:46.230
+for this instance is that one instance
+
+176
+00:07:46.230 --> 00:07:47.670
+that is still up and running.
+
+177
+00:07:47.670 --> 00:07:50.220
+This is the power of using load balancers
+
+178
+00:07:50.220 --> 00:07:52.410
+because they know when the targets are healthy
+
+179
+00:07:52.410 --> 00:07:53.730
+or not healthy.
+
+180
+00:07:53.730 --> 00:07:54.960
+And so this instance is stopped,
+
+181
+00:07:54.960 --> 00:07:58.770
+but of course if I recover it, if I start it again
+
+182
+00:07:58.770 --> 00:08:00.060
+then it's going to boot up
+
+183
+00:08:00.060 --> 00:08:03.900
+and is going to create the service behind the scenes.
+
+184
+00:08:03.900 --> 00:08:06.360
+And so let's wait for the instance to be started
+
+185
+00:08:06.360 --> 00:08:07.860
+and hopefully we'll see it again
+
+186
+00:08:07.860 --> 00:08:10.470
+as being healthy in our target group.
+
+187
+00:08:10.470 --> 00:08:11.760
+The instance is now up
+
+188
+00:08:11.760 --> 00:08:14.670
+and we are in the initial health status as you can see
+
+189
+00:08:14.670 --> 00:08:15.960
+and now we are in a healthy status.
+
+190
+00:08:15.960 --> 00:08:17.880
+So the instance was deemed healthy
+
+191
+00:08:17.880 --> 00:08:19.260
+and so therefore if I go back
+
+192
+00:08:19.260 --> 00:08:22.620
+to my application balancer and refresh, as you can see now,
+
+193
+00:08:22.620 --> 00:08:26.130
+the hello world is coming from both instances.
+
+194
+00:08:26.130 --> 00:08:27.900
+So that's it, we've practiced load balancer,
+
+195
+00:08:27.900 --> 00:08:31.170
+we created one as well as two targets in the target group.
+
+196
+00:08:31.170 --> 00:08:34.173
+I hope you liked it, and I will see you in the next lecture.
+

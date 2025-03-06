@@ -1,0 +1,202 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.640
+<v ->So let's talk about Amazon WorkSpaces.</v>
+
+2
+00:00:02.640 --> 00:00:04.470
+So it's a managed desktop as a service,
+
+3
+00:00:04.470 --> 00:00:06.990
+so DaaS solution to easily provision
+
+4
+00:00:06.990 --> 00:00:08.680
+Windows or Linux desktop.
+
+5
+00:00:08.680 --> 00:00:11.670
+So the idea is that, it's just going to be a solution
+
+6
+00:00:11.670 --> 00:00:12.980
+that is going to allow you
+
+7
+00:00:12.980 --> 00:00:15.440
+to eliminate what's called on-premises VDI,
+
+8
+00:00:15.440 --> 00:00:17.330
+so, Virtual Desktop Infrastructure.
+
+9
+00:00:17.330 --> 00:00:18.530
+So the idea is that if someone,
+
+10
+00:00:18.530 --> 00:00:21.210
+someone wants you to have a windows laptop in the cloud,
+
+11
+00:00:21.210 --> 00:00:23.390
+they can do so using WorkSpaces.
+
+12
+00:00:23.390 --> 00:00:26.290
+It's fast and it quickly scales to thousands of users.
+
+13
+00:00:26.290 --> 00:00:28.650
+It's secured because it's integrated with KMS,
+
+14
+00:00:28.650 --> 00:00:29.780
+and it's pay as you go service,
+
+15
+00:00:29.780 --> 00:00:32.800
+so you only pay for the usage of these actual desktops.
+
+16
+00:00:32.800 --> 00:00:34.980
+So you're a user, you're maybe at home,
+
+17
+00:00:34.980 --> 00:00:37.270
+and you want to access a secure windows desktop
+
+18
+00:00:37.270 --> 00:00:38.670
+from within AWS,
+
+19
+00:00:38.670 --> 00:00:40.750
+you would provision one using workspaces,
+
+20
+00:00:40.750 --> 00:00:43.990
+and then you would get access to your cloud
+
+21
+00:00:43.990 --> 00:00:45.380
+or your corporate data center
+
+22
+00:00:45.380 --> 00:00:46.920
+directly from this virtual desktop
+
+23
+00:00:46.920 --> 00:00:50.020
+that is going to be secure and maybe within your VPC.
+
+24
+00:00:50.020 --> 00:00:51.380
+So that's the IDB one workspaces,
+
+25
+00:00:51.380 --> 00:00:53.420
+if you see anything related to virtual desktops
+
+26
+00:00:53.420 --> 00:00:56.710
+or manage desktop as a service, think workspaces.
+
+27
+00:00:56.710 --> 00:00:59.720
+Finally, there's been some questions in the exam about,
+
+28
+00:00:59.720 --> 00:01:02.700
+minimizing latencies for workspaces.
+
+29
+00:01:02.700 --> 00:01:04.170
+So if you have, for example,
+
+30
+00:01:04.170 --> 00:01:07.510
+two corporate offices in California and Paris
+
+31
+00:01:07.510 --> 00:01:11.490
+and uses there, the best practice is to deploy workspaces
+
+32
+00:01:11.490 --> 00:01:12.820
+as close as possible to your users,
+
+33
+00:01:12.820 --> 00:01:15.890
+so you would deploy maybe one workspace,
+
+34
+00:01:15.890 --> 00:01:17.450
+in the U.S.
+
+35
+00:01:17.450 --> 00:01:19.230
+And then your California user would access
+
+36
+00:01:19.230 --> 00:01:20.760
+that workspace directly for them there
+
+37
+00:01:20.760 --> 00:01:23.260
+and the other one would be obviously to place
+
+38
+00:01:23.260 --> 00:01:26.700
+another workspace closer to your european users in Europe.
+
+39
+00:01:26.700 --> 00:01:27.920
+And so the idea is here,
+
+40
+00:01:27.920 --> 00:01:30.580
+you'd have as many workspace regions as
+
+41
+00:01:30.580 --> 00:01:32.840
+you know, center locations you have for your company
+
+42
+00:01:32.840 --> 00:01:34.240
+to minimize latency.
+
+43
+00:01:34.240 --> 00:01:36.180
+And overall, if you wanna minimize latency,
+
+44
+00:01:36.180 --> 00:01:38.230
+always think about deploying close to users.
+
+45
+00:01:38.230 --> 00:01:40.710
+Okay so, not just workspaces, but any other app,
+
+46
+00:01:40.710 --> 00:01:41.950
+if you wanna minimize latency,
+
+47
+00:01:41.950 --> 00:01:44.250
+deploy it as maintained as possible across the world,
+
+48
+00:01:44.250 --> 00:01:45.480
+close to users.
+
+49
+00:01:45.480 --> 00:01:47.080
+So that's it for this lecture. I hope you liked it.
+
+50
+00:01:47.080 --> 00:01:49.030
+And I will see you in the next lecture.
+

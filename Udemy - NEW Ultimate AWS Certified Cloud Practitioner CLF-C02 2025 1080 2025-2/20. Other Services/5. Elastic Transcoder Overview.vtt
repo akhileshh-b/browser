@@ -1,0 +1,103 @@
+WEBVTT
+
+00:00:00.720 --> 00:00:01.553
+<v Instructor>Now let's talk</v>
+
+00:00:01.553 --> 00:00:03.580
+about Amazon Elastic Transcoder.
+
+00:00:03.580 --> 00:00:06.280
+So Elastic Transcoder is used to convert media files stored
+
+00:00:06.280 --> 00:00:08.970
+in Amazon S3 into media files in the format required
+
+00:00:08.970 --> 00:00:11.570
+by consumer playback devices, so phones, et cetera.
+
+00:00:11.570 --> 00:00:13.300
+So let's take a concrete example.
+
+00:00:13.300 --> 00:00:14.660
+You're going to put a media file,
+
+00:00:14.660 --> 00:00:18.000
+so, for example, a video, into your Amazon S3 buckets,
+
+00:00:18.000 --> 00:00:19.440
+and then you're going to run it
+
+00:00:19.440 --> 00:00:22.460
+through your transcoding pipeline on Elastic Transcoder,
+
+00:00:22.460 --> 00:00:25.090
+and it's going to convert that video file into a bunch
+
+00:00:25.090 --> 00:00:27.400
+of different video files that are all going to be put
+
+00:00:27.400 --> 00:00:29.690
+into an S3 output bucket.
+
+00:00:29.690 --> 00:00:31.920
+And that output bucket is going to have a bunch
+
+00:00:31.920 --> 00:00:34.480
+of files that are going to be compatible with a wide array
+
+00:00:34.480 --> 00:00:36.650
+of different devices, such as your smartphones
+
+00:00:36.650 --> 00:00:39.030
+your tablets, your PC, et cetera, et cetera.
+
+00:00:39.030 --> 00:00:41.170
+So the benefits of using Elastic Transcoder
+
+00:00:41.170 --> 00:00:42.490
+is that it's easy to use.
+
+00:00:42.490 --> 00:00:44.970
+It's highly scalable, so the more files you have
+
+00:00:44.970 --> 00:00:46.600
+in your N3 output bucket,
+
+00:00:46.600 --> 00:00:48.900
+the more processing power that you're going to have.
+
+00:00:48.900 --> 00:00:51.180
+It's cost effective because you're only going to pay
+
+00:00:51.180 --> 00:00:54.140
+for the amount of time that your media was being transcoded,
+
+00:00:54.140 --> 00:00:55.750
+and it's fully managed and secure.
+
+00:00:55.750 --> 00:00:57.310
+You're only going to pay for what you use.
+
+00:00:57.310 --> 00:00:58.600
+So the idea is that, yes,
+
+00:00:58.600 --> 00:01:00.640
+it's perfect use case for the cloud.
+
+00:01:00.640 --> 00:01:02.860
+So you don't need to spend money and money
+
+00:01:02.860 --> 00:01:05.700
+on your EC2 instances to convert your files.
+
+00:01:05.700 --> 00:01:07.250
+You can just use Elastic Transcoder
+
+00:01:07.250 --> 00:01:09.540
+and just pay what has been consumed.
+
+00:01:09.540 --> 00:01:10.860
+So I hope you liked this lecture.
+
+00:01:10.860 --> 00:01:12.610
+I will see you in the next lecture.

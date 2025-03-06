@@ -1,0 +1,102 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:01.320
+<v Stephane>Hey, so we are going to learn</v>
+
+2
+00:00:01.320 --> 00:00:02.153
+about CodeCommit,
+
+3
+00:00:02.153 --> 00:00:05.190
+but on July 25th, 2024,
+
+4
+00:00:05.190 --> 00:00:07.470
+AWS decided to discontinue this service.
+
+5
+00:00:07.470 --> 00:00:09.630
+So new customers cannot use the service,
+
+6
+00:00:09.630 --> 00:00:11.220
+and AWS is recommending you
+
+7
+00:00:11.220 --> 00:00:13.020
+to migrate to another Git solution
+
+8
+00:00:13.020 --> 00:00:15.960
+such as GitHub, GitLab, or a 3rd party git.
+
+9
+00:00:15.960 --> 00:00:18.120
+So you don't know what it is yet, but we'll see this soon.
+
+10
+00:00:18.120 --> 00:00:21.090
+But for this course, CodeCommit might still appear
+
+11
+00:00:21.090 --> 00:00:22.470
+at the exam for now.
+
+12
+00:00:22.470 --> 00:00:25.590
+And so therefore, I keep the CodeCommit lectures.
+
+13
+00:00:25.590 --> 00:00:28.200
+And every time I mention CodeCommit in the course,
+
+14
+00:00:28.200 --> 00:00:30.000
+and it could be in many different places,
+
+15
+00:00:30.000 --> 00:00:32.010
+assume that there's a GitHub integration
+
+16
+00:00:32.010 --> 00:00:33.240
+and don't get freaked out
+
+17
+00:00:33.240 --> 00:00:36.360
+because well, CodeCommit is just a GitHub replacement,
+
+18
+00:00:36.360 --> 00:00:38.580
+and that's all you need to know, as you will see very soon.
+
+19
+00:00:38.580 --> 00:00:40.410
+So that's it. You should be good for the course.
+
+20
+00:00:40.410 --> 00:00:42.570
+Don't worry if you see CodeCommit here and there,
+
+21
+00:00:42.570 --> 00:00:43.830
+it really doesn't matter.
+
+22
+00:00:43.830 --> 00:00:47.370
+But now you know everything about this unfortunate event.
+
+23
+00:00:47.370 --> 00:00:48.240
+All right, that's it.
+
+24
+00:00:48.240 --> 00:00:49.350
+I hope you liked it
+
+25
+00:00:49.350 --> 00:00:51.300
+and I will see you in the next lecture.
+

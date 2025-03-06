@@ -1,0 +1,134 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:01.700
+<v Speaker>Okay, so now let's talk about</v>
+
+2
+00:00:01.700 --> 00:00:03.690
+DynamoDB global tables.
+
+3
+00:00:03.690 --> 00:00:06.280
+So this is a one feature need to know about for DynamoDB.
+
+4
+00:00:06.280 --> 00:00:08.370
+It's a way for you to make DynamoDB table
+
+5
+00:00:08.370 --> 00:00:11.570
+accessible with low latency and this is the key
+
+6
+00:00:11.570 --> 00:00:13.380
+in multiple regions.
+
+7
+00:00:13.380 --> 00:00:14.350
+So let's take an example.
+
+8
+00:00:14.350 --> 00:00:16.990
+We have our DynamoDB table in us-east-one,
+
+9
+00:00:16.990 --> 00:00:18.920
+and we'll set up as a global table.
+
+10
+00:00:18.920 --> 00:00:22.440
+So the basics, of course, our users can do read and write
+
+11
+00:00:22.440 --> 00:00:26.220
+to this DynamoDB table in Northern Virginia us-east-one.
+
+12
+00:00:26.220 --> 00:00:27.730
+But it is possible for us
+
+13
+00:00:27.730 --> 00:00:30.800
+to set up some replication for this global table.
+
+14
+00:00:30.800 --> 00:00:33.800
+So we can create a global table in Paris eu-west-three
+
+15
+00:00:33.800 --> 00:00:34.900
+and we'll say they're the same,
+
+16
+00:00:34.900 --> 00:00:37.240
+so there's two way replication between these tables.
+
+17
+00:00:37.240 --> 00:00:40.190
+That means that the same data is in us-east-one
+
+18
+00:00:40.190 --> 00:00:41.820
+and in eu-west-three,
+
+19
+00:00:41.820 --> 00:00:45.000
+but users, you know, there are close to the Paris region,
+
+20
+00:00:45.000 --> 00:00:48.730
+can access this global table with low latency in Paris.
+
+21
+00:00:48.730 --> 00:00:52.420
+So this is true for one to 10 regions, if you want it to.
+
+22
+00:00:52.420 --> 00:00:53.253
+Okay.
+
+23
+00:00:53.253 --> 00:00:54.960
+A global table is truly global
+
+24
+00:00:54.960 --> 00:00:56.500
+and users can read and write
+
+25
+00:00:56.500 --> 00:00:58.750
+to the table in any specific region,
+
+26
+00:00:58.750 --> 00:01:00.860
+there will just be replication between these two.
+
+27
+00:01:00.860 --> 00:01:03.050
+So the fact that there is read/write access
+
+28
+00:01:03.050 --> 00:01:05.780
+to any region of AWS on this global table,
+
+29
+00:01:05.780 --> 00:01:08.400
+makes it an active-active replication
+
+30
+00:01:08.400 --> 00:01:10.230
+because you can actively write to any region
+
+31
+00:01:10.230 --> 00:01:13.590
+and it will actively be replicated into other regions. Okay.
+
+32
+00:01:13.590 --> 00:01:15.600
+So that's it, all you need to know for the exam.
+
+33
+00:01:15.600 --> 00:01:17.343
+I will see you in the next session.
+

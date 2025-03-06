@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      main {
+        padding-top: 48px;
+      }
+
+      :root {
+        --large-device-width: 850px;
+        --primary-color: #0f172a;
+        --secondary-color: #020617;
+        --primary-text-color: #c7d1dd;
+        --secondary-text-color: #061602;
+        --success-background: hsl(159, 82%, 24%);
+        --success-foreground: hsl(164, 86%, 16%);
+        --success: hsl(160, 84%, 39%);
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --info-background: hsl(218, 81%, 8%);
+        --info-foreground: hsl(217, 91%, 85%);
+        --border-color: #d1d7dc;
+        --check-box-size: 20px;
+        /* control the size */
+        --check-box-color: var(--info-foreground);
+        /* the active color */
+      }
+
+      body {
+        position: relative;
+        background-color: #020617;
+        color: var(--primary-text-color);
+      }
+
+      #score-stats-container {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background-color: var(--info-background);
+
+        padding: 0px 16px;
+        color: var(--info-foreground);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #quiz-container {
+        border-radius: 8px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      input[type='radio'] {
+        height: var(--check-box-size);
+        aspect-ratio: 1;
+        border: calc(var(--check-box-size) / 8) solid #939393;
+        padding: calc(var(--check-box-size) / 8);
+        background: radial-gradient(farthest-side, var(--check-box-color) 94%, #0000) 50%/0 0 no-repeat
+          content-box;
+        border-radius: 50%;
+        outline-offset: calc(var(--check-box-size) / 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: inherit;
+        transition: 0.3s;
+      }
+
+      input[type='radio']:checked {
+        border-color: var(--check-box-color);
+        background-size: 100% 100%;
+      }
+
+      input[type='radio']:disabled {
+        background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      label {
+        /* display: inline-flex; */
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 4px 6px;
+        border-radius: 4px;
+      }
+
+      @media (max-width: 767px) {
+        input[type='radio'],
+        label {
+          cursor: default;
+        }
+
+        #quiz-container {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      /* PC (Desktop devices) */
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          justify-content: center;
+        }
+
+        main {
+          max-width: var(--large-device-width);
+        }
+
+        #score-stats-container {
+          max-width: var(--large-device-width);
+        }
+
+        dialog {
+          max-width: var(--large-device-width);
+        }
+      }
+
+      @media print {
+        input[type='radio'] {
+          background: none !important;
+          border-color: #939393 !important;
+        }
+
+        input[type='radio']:checked {
+          border-color: #939393 !important;
+        }
+      }
+
+      .question-lable {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .button {
+        background-color: var(--success-background);
+        border: none;
+        color: #f4f5f7;
+        opacity: 0.8;
+        font-size: 18px;
+        flex-grow: 1;
+        padding: 8px 16px;
+        border-radius: 8px;
+      }
+
+      .button:hover {
+        opacity: 1;
+      }
+
+      .explanation-btn {
+        border: none;
+        color: var(--success);
+        background-color: transparent;
+      }
+
+      #submit-button:active::after {
+        background-color: #ef4444;
+      }
+
+      .single-question-container {
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+      }
+
+      #modal-content {
+        padding: 16px;
+        line-height: 24px;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog {
+        position: fixed;
+        border: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: rgb(240, 241, 248);
+        padding: 16px;
+        border-radius: 8px;
+        width: 80vw;
+        max-height: 80vh;
+        overflow: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      #close-modal-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        border: none;
+        background-color: var(--danger);
+      }
+
+      .correct-answer label {
+        border: 2px solid var(--success);
+        width: 100%;
+      }
+
+      .incorrect-answer label {
+        border: 2px solid var(--danger);
+        width: 100%;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      #quiz-meta-container {
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        margin-bottom: 12px;
+        padding: 8px;
+      }
+
+      #quiz-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      #quiz-description {
+        line-height: 1.5;
+        padding: 2px 6px;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <main>
+      <section id="quiz-meta-container">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+      </section>
+      <section id="score-stats-container">
+        <div id="score-card">
+          Score: <span id="current-score">999</span> of
+          <span id="pass-percent">999%</span>
+        </div>
+        <div>Correct: <span id="correct-answers">999</span></div>
+        <div>Incorrect: <span id="wrong-answers">999</span></div>
+      </section>
+
+      <section id="quiz-container"></section>
+
+      <dialog id="modal" class="modal-container">
+        <div id="modal-content">
+          <p id="modal-text"></p>
+        </div>
+      </dialog>
+    </main>
+
+    <script>
+      const quizData = {"quiz_id":4900310,"quiz_title":"ELB & ASG Quiz","questions":[{"_class":"assessment","id":18797000,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055858"],"feedbacks":["High Availability goes hand in hand with horizontal scaling, but it is not its main purpose.","High Availability means applications running at least in two AZs to survive a data center loss.","High Availability does not change where you can access your applications.","This is what an Auto Scaling Group does, not High Availability."],"question":"<p>What is the main purpose of High Availability in the Cloud?</p>","answers":["<p>Increase scalability</p>","<p>Application thriving even in case of a disaster</p>","<p>Access on computers and smartphones</p>","<p>Handle greater loads by launching EC2 instances based on the demand</p>"]},"correct_response":["b"],"section":"","question_plain":"What is the main purpose of High Availability in the Cloud?","related_lectures":[{"_class":"lecture","id":20055858,"title":"High Availability, Scalability, Elasticity","created":"2020-05-25T18:11:49Z","is_published":true,"asset":{"_class":"asset","id":25143712,"asset_type":"Video","title":"CCP - Scalability Section Intro.mp4","created":"2020-06-01T19:07:07Z"},"object_index":65,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055858"}]},{"_class":"assessment","id":18815286,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055864"],"feedbacks":["Application Load Balancer is best suited for load balancing of HTTP and HTTPS traffic and provides advanced request routing targeted at the delivery of modern application architectures, including microservices and containers. It operates at Layer 7. It is not suited for extreme performance.","A Network Load Balancer can handle millions of requests per second with low-latency. It operates at Layer 4, and is best-suited for load-balancing TCP, UDP, and TLS traffic with ultra high-performance.","Elastic Load Balancer is the name of the service. It is not a type of Load Balancer."],"question":"<p>Which AWS offered Load Balancer should you use to handle hundreds of thousands of connections with low latency?</p>","answers":["<p>Application Load Balancer</p>","<p>Network Load Balancer</p>","<p>Elastic Load Balancer</p>"]},"correct_response":["b"],"section":"","question_plain":"Which AWS offered Load Balancer should you use to handle hundreds of thousands of connections with low latency?","related_lectures":[{"_class":"lecture","id":20055864,"title":"Elastic Load Balancing (ELB) Overview","created":"2020-05-25T18:12:04Z","is_published":true,"asset":{"_class":"asset","id":45234416,"asset_type":"Video","title":"CCP_-_ELB_-_Overview_v2D.mp4","created":"2022-12-02T11:23:48Z"},"object_index":66,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055864"}]},{"_class":"assessment","id":18796848,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055858"],"feedbacks":["Horizontal scaling means increasing the number of instances/systems for your application, not changing the instance type.","High Availability means running your application/system in at least 2 Availability Zones.","Agility is the rapid ability to develop, test and launch software applications.","Vertical scaling means increasing the size of the instance. Changing from a t3a.medium to a t3a.2xlarge is an example of size increase."],"question":"<p>Changing an EC2 Instance Type from a t3a.medium to a t3a.2xlarge is an example of?</p>","answers":["<p>Horizontal scaling</p>","<p>High Availability</p>","<p>Agility</p>","<p>Vertical scaling</p>"]},"correct_response":["d"],"section":"","question_plain":"Changing an EC2 Instance Type from a t3a.medium to a t3a.2xlarge is an example of?","related_lectures":[{"_class":"lecture","id":20055858,"title":"High Availability, Scalability, Elasticity","created":"2020-05-25T18:11:49Z","is_published":true,"asset":{"_class":"asset","id":25143712,"asset_type":"Video","title":"CCP - Scalability Section Intro.mp4","created":"2020-06-01T19:07:07Z"},"object_index":65,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055858"}]},{"_class":"assessment","id":18815324,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055886"],"feedbacks":["An Elastic Load Balancer is used to spread the load across downstream instances, not handling quickly and automatically the changing load on your applications and websites.","Changing an instance type requires times, is not automatic and not a feature of an Auto Scaling Group. ","An Auto Scaling Group (ASG) can automatically and quickly scale-in and scale-out to match the changing load on your applications and websites.","Health Checks will make sure your EC2 instances are operational, but will not help with handling quickly and automatically the changing load on your applications and websites."],"question":"<p>What can you use to handle quickly and automatically the changing load on your websites and applications by adding compute resources?</p>","answers":["<p>An Elastic Load Balancer</p>","<p>A bigger instance type</p>","<p>An Auto Scaling Group</p>","<p>Health Checks on your EC2 Instances</p>"]},"correct_response":["c"],"section":"","question_plain":"What can you use to handle quickly and automatically the changing load on your websites and applications by adding compute resources?","related_lectures":[{"_class":"lecture","id":20055886,"title":"Auto Scaling Groups (ASG) Overview","created":"2020-05-25T18:13:20Z","is_published":true,"asset":{"_class":"asset","id":25143806,"asset_type":"Video","title":"CCP - ASG - Overview.mp4","created":"2020-06-01T19:07:07Z"},"object_index":68,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055886"}]},{"_class":"assessment","id":18815350,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055886"],"feedbacks":["Auto Scaling Groups can replace unhealthy instances by terminating them and creating new healthy instances.","Auto Scaling Groups allow you to have the exact number of instances required to handle the workload. Therefore, there is no over-provisioning or under-provisioning, it is cost-effective.","New instances created by Auto Scaling Groups can be automatically registered to a load balancer.","Auto Scaling Groups can add or remove instances, but from the same type. They cannot change the EC2 Instances Types on the fly."],"question":"<p>Which of the following statements is INCORRECT&nbsp;regarding Auto Scaling Groups?</p>","answers":["<p>Replace unhealthy instances</p>","<p>Are cost-effective by running at optimal capacity</p>","<p>Automatically register new instances to a load balancer</p>","<p>Automatically changing the EC2 Instances Types</p>"]},"correct_response":["d"],"section":"","question_plain":"Which of the following statements is INCORRECT&nbsp;regarding Auto Scaling Groups?","related_lectures":[{"_class":"lecture","id":20055886,"title":"Auto Scaling Groups (ASG) Overview","created":"2020-05-25T18:13:20Z","is_published":true,"asset":{"_class":"asset","id":25143806,"asset_type":"Video","title":"CCP - ASG - Overview.mp4","created":"2020-06-01T19:07:07Z"},"object_index":68,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055886"}]},{"_class":"assessment","id":18815138,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055864"],"feedbacks":["Network Load Balancers are great for extremely high performance load balancing, as well as lower level Layer 4 TCP and UDP Load Balancing. ","Classic Load Balancers can load balance HTTP and HTTPS traffic, but they are part of the previous generations of Load Balancers on AWS. ","This is the name of the AWS service, not a type of Load Balancer.","Application Load Balancers are used for HTTP and HTTPS load balancing. They are the best-suited for this kind of traffic."],"question":"<p>Which Load Balancer is best suited for HTTP/HTTPS load balancing traffic?</p>","answers":["<p>Network Load Balancer</p>","<p>Classic Load Balancer</p>","<p>Elastic Load Balancer</p>","<p>Application Load Balancer</p>"]},"correct_response":["d"],"section":"","question_plain":"Which Load Balancer is best suited for HTTP/HTTPS load balancing traffic?","related_lectures":[{"_class":"lecture","id":20055864,"title":"Elastic Load Balancing (ELB) Overview","created":"2020-05-25T18:12:04Z","is_published":true,"asset":{"_class":"asset","id":45234416,"asset_type":"Video","title":"CCP_-_ELB_-_Overview_v2D.mp4","created":"2022-12-02T11:23:48Z"},"object_index":66,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055864"}]},{"_class":"assessment","id":34449000,"assessment_type":"multiple-choice","prompt":{"feedbacks":["Manual scaling is the most basic way to scale your resources, where you specify only the change in the maximum, minimum, or desired capacity of your Auto Scaling group. ","Dynamic scaling creates target tracking scaling policies for the resources in your scaling plan. These scaling policies adjust resource capacity in response to live changes in resource utilization.","This is not a scaling strategy. Auto Scaling Strategies include: Manual Scaling, Dynamic Scaling (Simple/Step Scaling, Target Tracking Scaling, Scheduled Scaling), and Predictive Scaling.","Predictive scaling uses machine learning to analyze each resource's historical workload and regularly forecasts the future load for the next two days. This is similar to how weather forecasts work."],"relatedLectureIds":["26623486"],"question":"<p>Which of the following is NOT an Auto Scaling Strategy?</p>","answers":["<p>Manual Scaling</p>","<p>Dynamic Scaling</p>","<p>Active Scaling</p>","<p>Predictive Scaling</p>"]},"correct_response":["c"],"section":"","question_plain":"Which of the following is NOT an Auto Scaling Strategy?","related_lectures":[{"_class":"lecture","id":26623486,"title":"Auto Scaling Groups (ASG) Strategies","created":"2021-05-21T07:03:57Z","is_published":true,"asset":{"_class":"asset","id":33685516,"asset_type":"Video","title":"CCP_-_ASG_-_Strategies_v1.mp4","created":"2021-05-20T19:21:24Z"},"object_index":70,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/26623486"}]},{"_class":"assessment","id":18796996,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055886"],"feedbacks":["EBS is an easy to use, high performance block storage service for EC2 instances.","Amazon Machine Image (AMI) provides the information required to launch an instance.","IAM is a service used for creating and managing AWS users, groups, roles and policies. It has nothing to do with compute capacity.","Auto Scaling Groups (ASG) offers the capacity to scale-out and scale-in by adding or removing instances based on demand."],"question":"<p>Which AWS&nbsp;service offers easy horizontal scaling of compute capacity?</p>","answers":["<p>EBS</p>","<p>AMI</p>","<p>IAM</p>","<p>ASG</p>"]},"correct_response":["d"],"section":"","question_plain":"Which AWS&nbsp;service offers easy horizontal scaling of compute capacity?","related_lectures":[{"_class":"lecture","id":20055886,"title":"Auto Scaling Groups (ASG) Overview","created":"2020-05-25T18:13:20Z","is_published":true,"asset":{"_class":"asset","id":25143806,"asset_type":"Video","title":"CCP - ASG - Overview.mp4","created":"2020-06-01T19:07:07Z"},"object_index":68,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055886"}]},{"_class":"assessment","id":18815254,"assessment_type":"multiple-choice","prompt":{"relatedLectureIds":["20055864"],"feedbacks":["You can use Load Balancers to do regular health checks on your instances.","Load Balancers can be used to distribute load between instances.","Load Balancers have the ability to handle instance failure by redirecting traffic to healthy instances.","Load Balancers cannot help with back-end autoscaling. You should use Auto Scaling Groups."],"question":"<p>Which of the following statements is NOT&nbsp;a feature of Load Balancers?</p>","answers":["<p>Do regular health checks to your instances</p>","<p>Spread load across multiple downstream instances</p>","<p>Handle failures of downstream instances</p>","<p>Back-end autoscaling</p>"]},"correct_response":["d"],"section":"","question_plain":"Which of the following statements is NOT&nbsp;a feature of Load Balancers?","related_lectures":[{"_class":"lecture","id":20055864,"title":"Elastic Load Balancing (ELB) Overview","created":"2020-05-25T18:12:04Z","is_published":true,"asset":{"_class":"asset","id":45234416,"asset_type":"Video","title":"CCP_-_ELB_-_Overview_v2D.mp4","created":"2022-12-02T11:23:48Z"},"object_index":66,"url":"/course/aws-certified-cloud-practitioner-new/learn/lecture/20055864"}]}]};
+      let correct = new Set();
+      let incorrect = new Set();
+      let totalNumberOfQuestions = 0;
+      const quizTitle = quizData.quiz_title;
+      const quizDescription = quizData.quiz_description;
+      const questionData = quizData.questions;
+      const passPercent = quizData.pass_percent;
+      const modalTextElement = document.getElementById('modal-text');
+      const quizContainerElement = document.getElementById('quiz-container');
+
+      const dialog = document.querySelector('dialog');
+      const showButton = document.getElementById('view-explanatin');
+      const closeButton = document.getElementById('close-modal-btn');
+      const quizTitleElement = document.getElementById('quiz-title');
+      const quizDescriptionElement = document.getElementById('quiz-description');
+
+      function main() {
+        // update quiz meta data
+        document.title = quizTitle;
+        quizTitleElement.innerHTML = quizTitle;
+        quizDescriptionElement.innerHTML = quizDescription;
+
+        const passPercentElement = document.getElementById('pass-percent');
+        passPercentElement.innerHTML = passPercent + '%';
+        totalNumberOfQuestions = questionData.length;
+        // shuffle the questionData to randomize the order of the questions
+        for (let i = questionData.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        }
+
+        let formattedQuestions = questionData.map(formatSingleQuestionData);
+        updateScore();
+        // display the formattedQuestions
+        formattedQuestions.forEach((question, idx) => {
+          renderSingleQuestion(question, idx + 1);
+        });
+      }
+
+      /**
+       * Formats the question data from the given QuizData object.
+       *
+       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
+       * @return {Object} The formatted question object with the following properties:
+       *   - id: The ID of the question.
+       *   - question: The text of the question.
+       *   - answers: The array of answer options.
+       *   - correctAnswer: The text of the correct answer.
+       *   - explanation: The explanation of the correct answer.
+       */
+      function formatSingleQuestionData(singleQuizData = null) {
+        const { prompt, correct_response, id } = singleQuizData;
+        const questionText = prompt.question;
+        const answers = prompt.answers;
+        const correctAnswer = correct_response[0];
+        const correctAnswerText = answers[correctAnswer.toLowerCase().charCodeAt(0) - 97];
+        const questionObj = {
+          id: id,
+          question: questionText,
+          answers: answers,
+          correctAnswer,
+          explanation: prompt?.explanation || '',
+        };
+        return questionObj;
+      }
+
+      /**
+       * Renders a single question with its options and submit button.
+       *
+       * @param {Object} singleQuestionData - The data of the question to render.
+       * @param {number} rootIndex - The index of the question in the quiz.
+       * @return {void} return nothing.
+       */
+
+      const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
+        const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
+        // shuffle the answers to randomize the order of the answers
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const optionsHTML = answers
+          .map((option, index) => {
+            const optionId = `${id}_${index}`;
+
+            return `
+        <div class="question-lable">
+          <input type="radio" id="${optionId}" name="${'answer'}" value="${alphabet[index]}" />
+          <label for="${optionId}">${option}</label>
+        </div>
+      `;
+          })
+
+          .join('');
+
+        const container = document.createElement('div');
+        container.innerHTML = `
+        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+          <div style="display: flex;justify-content: space-between;">
+            <p style="font-weight: 600">Question ${rootIndex}:</p>
+            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${'tt'}" data-explanation-id=${id} class="explanation-btn">View Explanation</button>
+          </div>
+          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+          <div class="options-container">
+            ${optionsHTML}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button type="submit" id="submit-button" class="button">Submit</button>
+          </div>
+        </form>
+      `;
+        quizContainerElement.appendChild(container);
+      };
+
+      /**
+       * Updates the score on the page based on the number of correct and incorrect answers.
+       *
+       * @return {void} This function does not return a value.
+       */
+      function updateScore() {
+        const currentParcentageElement = document.getElementById('current-score');
+        const correctAnswerElement = document.getElementById('correct-answers');
+        const wrongAnswerElement = document.getElementById('wrong-answers');
+        correctAnswerElement.innerHTML = correct.size;
+        wrongAnswerElement.innerHTML = incorrect.size;
+        const score = Number((correct.size / totalNumberOfQuestions) * 100).toFixed(2);
+        currentParcentageElement.innerHTML = score;
+      }
+
+      /**
+       * Handles the event when the submit button is clicked.
+       *
+       * @param {Event} e - The event object.
+       * @return {void} This function does not return anything.
+       */
+      const submitButtonListener = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const form = e.target;
+        const selectedOption = e.target.querySelector('input[type="radio"]:checked');
+        if (!selectedOption) {
+          alert('Please select an answer!');
+          return;
+        }
+
+        let isCorrect = false;
+        const { answer: userAnswer } = Object.fromEntries(formData.entries());
+        const correctAnswer = e.target.dataset.correctAnswer;
+        const questionId = e.target.dataset.questionId;
+        if (userAnswer == correctAnswer) {
+          correct.add(questionId);
+          incorrect.delete(questionId);
+          isCorrect = true;
+        } else {
+          incorrect.add(e.target.dataset.questionId);
+          correct.delete(questionId);
+        }
+        updateScore();
+
+        const resultClass = isCorrect ? 'correct-answer' : 'incorrect-answer';
+
+        form.querySelectorAll('.question-lable').forEach(label => {
+          label.classList.remove('correct-answer', 'incorrect-answer');
+        });
+        selectedOption.closest('.question-lable').classList.add(resultClass);
+      };
+
+      function renderExplanation(ev) {
+        const dataid = ev.target.dataset.explanationId;
+        const quiz = quizData.questions.find(q => q.id === Number(dataid));
+        modalTextElement.innerHTML =
+          quiz && quiz.prompt.explanation ? quiz.prompt.explanation : 'no explanation found';
+        // modalTextElement.innerHTML = ev.target.dataset?.explanation || 'no explanation found';
+        dialog.showModal();
+        dialog.addEventListener('click', event => {
+          if (event.target === dialog) {
+            dialog.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+WEBVTT
+
+1
+00:00:00.510 --> 00:00:03.240
+<v Instructor>So let's have a look at CloudTrail.</v>
+
+2
+00:00:03.240 --> 00:00:06.630
+And CloudTrail is a service to intercept any API calls
+
+3
+00:00:06.630 --> 00:00:09.810
+or user activity within your accounts.
+
+4
+00:00:09.810 --> 00:00:13.260
+And so here on here on the left hand side panel,
+
+5
+00:00:13.260 --> 00:00:16.110
+we can have a look at the event history
+
+6
+00:00:16.110 --> 00:00:17.850
+and this is the event history
+
+7
+00:00:17.850 --> 00:00:20.700
+for the last 90 days of management events.
+
+8
+00:00:20.700 --> 00:00:23.010
+So you can see all the API calls that are being made
+
+9
+00:00:23.010 --> 00:00:24.720
+over time in this account.
+
+10
+00:00:24.720 --> 00:00:27.750
+So it doesn't have to be very interesting, okay,
+
+11
+00:00:27.750 --> 00:00:29.670
+but all of them will be here.
+
+12
+00:00:29.670 --> 00:00:32.370
+So what I wanna do for example, is that I want
+
+13
+00:00:32.370 --> 00:00:36.660
+to look in my EC2 console, and I created a demo instance.
+
+14
+00:00:36.660 --> 00:00:37.980
+And what I'm going to do is that I'm going
+
+15
+00:00:37.980 --> 00:00:39.870
+to terminate this instance.
+
+16
+00:00:39.870 --> 00:00:42.420
+So I do right click, terminate,
+
+17
+00:00:42.420 --> 00:00:44.970
+and now the instance is being terminated.
+
+18
+00:00:44.970 --> 00:00:47.070
+And what I'm going to do is I'm going to check whether
+
+19
+00:00:47.070 --> 00:00:51.210
+or not this event happens and appears within CloudTrail.
+
+20
+00:00:51.210 --> 00:00:54.543
+So I'm going to wait about five minutes and get back to you.
+
+21
+00:00:55.410 --> 00:00:57.471
+And so I just refreshed my pages, and as you can see,
+
+22
+00:00:57.471 --> 00:01:01.590
+I ran the terminate instances, API call.
+
+23
+00:01:01.590 --> 00:01:03.540
+And we can see what's the event source.
+
+24
+00:01:03.540 --> 00:01:06.120
+So it's EC2 from where it was done,
+
+25
+00:01:06.120 --> 00:01:07.470
+the access key that was used,
+
+26
+00:01:07.470 --> 00:01:09.600
+the region that was used, and so on.
+
+27
+00:01:09.600 --> 00:01:11.820
+And we can get the whole event right here.
+
+28
+00:01:11.820 --> 00:01:14.460
+So that's the full power of CloudTrail is
+
+29
+00:01:14.460 --> 00:01:17.010
+that we can see all the events really happening
+
+30
+00:01:17.010 --> 00:01:19.290
+from within CloudTrail directly in this UI.
+
+31
+00:01:19.290 --> 00:01:22.290
+And this is a short introduction at the practitioner level,
+
+32
+00:01:22.290 --> 00:01:24.360
+but this is enough for you to get started
+
+33
+00:01:24.360 --> 00:01:26.532
+and to answer questions at the exam.
+
+34
+00:01:26.532 --> 00:01:27.840
+So that's it.
+
+35
+00:01:27.840 --> 00:01:28.673
+I hope you liked it.
+
+36
+00:01:28.673 --> 00:01:30.570
+And I will see you in the next lecture.
+
